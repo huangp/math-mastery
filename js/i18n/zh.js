@@ -13,7 +13,6 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   "ui.nav.resources": "相关项目",
   "ui.judge.yes": "对|正确",
   "ui.judge.no": "错|错误",
-  "ui.colon": "：",
   "ui.lang.next": "EN",
   "ui.lang.title": "Switch to English",
 
@@ -37,6 +36,7 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   "grade.十年级": "十年级",
   "grade.十一年级": "十一年级",
   "grade.十二年级": "十二年级",
+  "grade.大学预科": "大学预科",
   "grade.大学先修": "大学先修",
 
   "level.基础": "基础",
@@ -44,21 +44,8 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   "level.易错": "易错",
 
   /* ---------- 学习路径首页 ---------- */
-  "path.heroTitle": "选择年级，开始融会贯通",
-  "path.heroSub": "从一年级到高中，按学段递进 · 逐级解锁 · 动画演示 · 薄弱点智能复习",
-  "path.stageCount": "{n} 个技巧",
-  "path.techChip": "{n} 技巧",
-  "path.enter": "进入 →",
-  "path.hint": "小学各年级、初一·初二年级：年级内顺序解锁——第一个技巧是入口，掌握后才会解锁本年级下一个。初三及高中：所有技巧均可直接进入。练习做错的题进入「薄弱点」，复习通关才算掌握。",
-  "unlock.seq": "顺序解锁",
-  "unlock.free": "自由进入",
-  "chip.anim": "▶ 动画",
 
   /* ---------- 年级页 ---------- */
-  "grade.mastered": "已掌握 {m}/{total}",
-  "grade.modeFree": "本年级所有技巧均可直接进入，按需挑选。",
-  "grade.modeSeq": "掌握前一个技巧后，自动解锁下一个。",
-  "grade.back": "← 返回年级导航",
   "node.status.lock": "未解锁",
   "node.status.done": "已掌握",
   "node.status.learn": "学习中",
@@ -76,7 +63,6 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   "learn.startGen": "开始练习（每轮 8 题·随机）",
   "learn.startStatic": "开始练习（{n} 题）",
   "learn.mastered": "已掌握 ✓",
-  "learn.back": "返回年级",
 
   /* ---------- 练习 / 通关 ---------- */
   "quiz.titleGate": "通关测试",
@@ -101,10 +87,7 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   /* ---------- 薄弱点复习 ---------- */
   "review.title": "薄弱点复习",
   "review.empty": "🎉 暂时没有薄弱点，继续保持！",
-  "review.hint": "共 {n} 个薄弱点。在这里把它们做对，就能从「薄弱点」中清除；相关技巧的通关测试也会优先考这些。",
   "review.sep": " ｜ ",
-  "review.done": "本轮复习 {n} 题，清空 {ok} 个薄弱点。",
-  "review.refresh": "刷新",
 
   /* ---------- 我的进度 ---------- */
   "io.export": "导出进度",
@@ -116,6 +99,77 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   "io.tooBig": "文件过大，已拒绝导入。",
   "io.nameSuffix": "{name}（导入）",
   "io.allSuffix": "全部学员",
+  /* ---------- 侧边栏导航（上游新版） ---------- */
+  "sb.title": "年级导航",
+  "sb.menu": "目录",
+  "sb.pick": "选择年级 / 学段",
+  "sb.toggle": "收起/展开",
+  "sb.all": "全部方法",
+  "sb.allOf": "全部{stage}",
+  "path.hintSidebar": "按 小学 → 中学 → 高中 排列，细分到年级。小学各年级、初一·初二年级：年级内顺序解锁——第一个技巧是入口，掌握后才会解锁本年级下一个。初三及高中：所有技巧均可直接进入。练习做错的题进入「薄弱点」，复习通关才算掌握。",
+
+  /* ---------- 学习页·典型例题 ---------- */
+  "learn.examples": "典型例题",
+  "learn.examplesHint": "（先读题想一想，再点开解析对照）",
+  "learn.noExamples": "该方法暂未配置例题。",
+  "learn.exNo": "例{n}",
+  "learn.showWhy": "看解析",
+  "learn.exPoint": "🎯 要点：{point}",
+  "learn.backPath": "返回路径",
+
+  /* ---------- AI 专属训练套餐 ---------- */
+  "plan.title": "AI 专属训练套餐",
+  "plan.tag": "个性化",
+  "plan.sub": "根据知识漏洞分析，为你优先安排最需要巩固的题目（连对 2 道即消除）。",
+  "plan.start": "🎯 开始专属训练套餐（{n} 项）",
+  "plan.again": "🔄 再做一组专属训练",
+  "plan.back": "返回诊断",
+  "plan.none": "暂无可练的薄弱点，去练习里制造一些吧",
+
+  /* ---------- 薄弱点复习（连对 2 道） ---------- */
+  "review.hintStreak": "共 {n} 个薄弱点。每个需「连对 2 道同类题」才消除：做对 1 道会再出 1 道同类题确认，做错则回到起点重新计。",
+  "review.prog": "已消除 {done}/{total}　·　待巩固 {left}",
+  "review.cleared": "✅ 连对 2 道，已永久消除",
+  "review.firstOk": "✅ 第 1 道做对，再来 1 道同类题确认",
+  "review.wrongReset": "❌ 做错了，回到起点，需连对 2 道才能消除",
+  "review.allClear": "🎉 全部 {total} 个薄弱点已清零！",
+
+  /* ---------- AI 知识漏洞诊断 ---------- */
+  "diag.title": "AI 知识漏洞诊断",
+  "diag.overall": "总体掌握度",
+  "diag.nearClear": "个将清零",
+  "diag.byStage": "各学段薄弱点分布",
+  "diag.weakOf": "薄弱 {weak}/{total}",
+  "diag.conclusion": "🧠 诊断结论",
+  "diag.goReview": "去薄弱点复习",
+  "diag.goPractise": "去练习巩固",
+  "diag.allClear": "🎉 当前没有未清零的薄弱点，保持得很好！",
+  "diag.listTitle": "薄弱点清单（按严重程度排序）",
+  "diag.sevHigh": "顽固",
+  "diag.sevMid": "待巩固",
+  "diag.sevLow": "轻微",
+  "diag.oneToGo": "连对 1 道 · 再来 1 道即消除",
+  "diag.wrongStreak": "连续错 {n} 次",
+  "diag.wrongCount": "已错 {n} 次",
+  "diag.lastPractice": "上次练习 {when}",
+  "diag.noWeak": "目前没有未清零的薄弱点，说明近期练习质量很好。建议每天保持 10~15 分钟练习，巩固已掌握内容、预防遗忘。",
+  "diag.topStage": "孩子在<b>「{stage}」</b>模块薄弱点最集中（共 {n} 项），是当前重点突破方向。",
+  "diag.stubborn": "其中有 {n} 个「顽固薄弱点」（连续错 3 次以上），建议优先安排专项训练，每天连做 2 道直到清零。",
+  "diag.warming": "另有 {n} 个已做对 1 道、只差 1 道就能消除，趁热打铁很快能清零。",
+  "diag.hardest": "最严重的单点是「{name}」（{grade}），上次练习在 {when}，已错 {fails} 次。",
+  "diag.callToAction": "点击「开始专属训练套餐」，系统会按严重程度自动排程：严重项多练、轻微项少练，连对 2 道即消除。",
+
+  /* ---------- 相对时间 ---------- */
+  "ago.today": "今天",
+  "ago.yesterday": "昨天",
+  "ago.days": "{n} 天前",
+  "ago.weeks": "{n} 周前",
+  "ago.months": "{n} 个月前",
+  "ago.longAgo": "较久之前",
+  "ago.never": "尚未记录",
+
+  "ui.nav.ai": "AI诊断",
+
   "profile.label": "学员",
   "profile.default": "学员 {n}",
   "profile.new": "＋ 新建学员",

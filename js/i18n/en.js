@@ -14,7 +14,6 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "ui.nav.resources": "Related projects",
   "ui.judge.yes": "True|Correct|Yes",
   "ui.judge.no": "False|Incorrect|No",
-  "ui.colon": ": ",
   "ui.lang.next": "中文",
   "ui.lang.title": "切换到中文",
 
@@ -38,6 +37,7 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "grade.十年级": "Grade 10",
   "grade.十一年级": "Grade 11",
   "grade.十二年级": "Grade 12",
+  "grade.大学预科": "Pre-university",
   "grade.大学先修": "Pre-college",
 
   "level.基础": "Core",
@@ -45,21 +45,8 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "level.易错": "Tricky",
 
   /* ---------- Learning path home ---------- */
-  "path.heroTitle": "Pick a grade and start mastering",
-  "path.heroSub": "Grade 1 to Grade 12 · staged progression · unlock as you go · animated demos · smart weak-spot review",
-  "path.stageCount": "{n} methods",
-  "path.techChip": "{n} methods",
-  "path.enter": "Enter →",
-  "path.hint": "Grades 1–8 unlock in order: the first method of a grade is the way in, and mastering it unlocks the next. From Grade 9 up, every method is open right away. Questions you get wrong go to “Weak spots”, and a method only counts as mastered once you clear them.",
-  "unlock.seq": "Unlocks in order",
-  "unlock.free": "Open access",
-  "chip.anim": "▶ Animated",
 
   /* ---------- Grade page ---------- */
-  "grade.mastered": "Mastered {m}/{total}",
-  "grade.modeFree": "Every method in this grade is open — pick whichever you need.",
-  "grade.modeSeq": "Master one method and the next unlocks automatically.",
-  "grade.back": "← Back to grades",
   "node.status.lock": "Locked",
   "node.status.done": "Mastered",
   "node.status.learn": "In progress",
@@ -77,7 +64,6 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "learn.startGen": "Start practising (8 random questions per round)",
   "learn.startStatic": "Start practising ({n} questions)",
   "learn.mastered": "Mastered ✓",
-  "learn.back": "Back to grade",
 
   /* ---------- Practice / mastery test ---------- */
   "quiz.titleGate": "Mastery test",
@@ -102,10 +88,7 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   /* ---------- Weak-spot review ---------- */
   "review.title": "Weak-spot review",
   "review.empty": "🎉 No weak spots right now — keep it up!",
-  "review.hint": "{n} weak spots. Get them right here to clear them; the matching mastery tests will ask about these first too.",
   "review.sep": " | ",
-  "review.done": "Reviewed {n} questions and cleared {ok} weak spots.",
-  "review.refresh": "Refresh",
 
   /* ---------- My progress ---------- */
   "io.export": "Export progress",
@@ -117,6 +100,77 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "io.tooBig": "That file is too large; the import was refused.",
   "io.nameSuffix": "{name} (imported)",
   "io.allSuffix": "all-learners",
+  /* ---------- sidebar navigation ---------- */
+  "sb.title": "Grades",
+  "sb.menu": "Menu",
+  "sb.pick": "Choose a grade or stage",
+  "sb.toggle": "Collapse / expand",
+  "sb.all": "All methods",
+  "sb.allOf": "All of {stage}",
+  "path.hintSidebar": "Ordered primary → middle → high school, then by grade. Grades 1–8 unlock in order: the first method of a grade is the way in, and mastering it unlocks the next. From Grade 9 up, every method is open right away. Questions you get wrong go to “Weak spots”, and a method only counts as mastered once you clear them.",
+
+  /* ---------- learn page · worked examples ---------- */
+  "learn.examples": "Worked examples",
+  "learn.examplesHint": "(read the question and think first, then open the explanation)",
+  "learn.noExamples": "No examples have been set for this method yet.",
+  "learn.exNo": "Example {n}",
+  "learn.showWhy": "Show the working",
+  "learn.exPoint": "🎯 Key point: {point}",
+  "learn.backPath": "Back to the path",
+
+  /* ---------- AI training plan ---------- */
+  "plan.title": "AI training plan",
+  "plan.tag": "Personalised",
+  "plan.sub": "Built from your weak spots, putting what needs most work first (two right in a row clears an item).",
+  "plan.start": "🎯 Start the training plan ({n} items)",
+  "plan.again": "🔄 Another personalised round",
+  "plan.back": "Back to the diagnosis",
+  "plan.none": "No weak spots to practise yet — go make some in the practice pages",
+
+  /* ---------- weak-spot review (two in a row) ---------- */
+  "review.hintStreak": "{n} weak spots. Each needs two of the same kind right in a row: get one right and another follows to confirm it; get one wrong and the count restarts.",
+  "review.prog": "Cleared {done}/{total}　·　still to fix {left}",
+  "review.cleared": "✅ Two in a row — cleared for good",
+  "review.firstOk": "✅ First one right; here's another to confirm it",
+  "review.wrongReset": "❌ Wrong — back to the start; two in a row are needed to clear it",
+  "review.allClear": "🎉 All {total} weak spots cleared!",
+
+  /* ---------- AI diagnosis ---------- */
+  "diag.title": "AI gap diagnosis",
+  "diag.overall": "Overall mastery",
+  "diag.nearClear": "nearly cleared",
+  "diag.byStage": "Weak spots by stage",
+  "diag.weakOf": "weak {weak}/{total}",
+  "diag.conclusion": "🧠 What this says",
+  "diag.goReview": "Go to weak-spot review",
+  "diag.goPractise": "Go and practise",
+  "diag.allClear": "🎉 Nothing outstanding right now — nicely done!",
+  "diag.listTitle": "Weak spots, most serious first",
+  "diag.sevHigh": "stubborn",
+  "diag.sevMid": "needs work",
+  "diag.sevLow": "minor",
+  "diag.oneToGo": "One right · one more clears it",
+  "diag.wrongStreak": "wrong {n} times in a row",
+  "diag.wrongCount": "wrong {n} times so far",
+  "diag.lastPractice": "last practised {when}",
+  "diag.noWeak": "Nothing is outstanding, which says recent practice has gone well. Ten to fifteen minutes a day will keep what you have mastered from slipping.",
+  "diag.topStage": "Weak spots cluster most in <b>{stage}</b> ({n} of them) — that is where to focus next.",
+  "diag.stubborn": "{n} of these are stubborn (wrong three or more times in a row). Give them dedicated practice: two a day until they clear.",
+  "diag.warming": "Another {n} already have one correct answer and need just one more — worth finishing while they are fresh.",
+  "diag.hardest": "The single worst is “{name}” ({grade}), last practised {when}, wrong {fails} times.",
+  "diag.callToAction": "Tap “Start the training plan” and the schedule builds itself by severity: more practice on the serious gaps, less on the minor ones, two right in a row to clear each.",
+
+  /* ---------- relative time ---------- */
+  "ago.today": "today",
+  "ago.yesterday": "yesterday",
+  "ago.days": "{n} days ago",
+  "ago.weeks": "{n} weeks ago",
+  "ago.months": "{n} months ago",
+  "ago.longAgo": "a while back",
+  "ago.never": "not recorded yet",
+
+  "ui.nav.ai": "AI diagnosis",
+
   "profile.label": "Learner",
   "profile.default": "Learner {n}",
   "profile.new": "＋ New learner",

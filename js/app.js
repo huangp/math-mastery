@@ -161,11 +161,8 @@
   let state = load(); // { [id]: { mastered:bool, weak:{ [qidx]:{fails,clear} } } }
   let pendingScrollTech = null; // 返回路径时，定位并高亮到此技巧节点
   const STAGES = ["小学", "中学", "高中"];
-  const STAGE_DESC = {
-    "小学": "1–6 年级 · 数与代数、图形、奥数启蒙",
-    "中学": "7–9 年级 · 初中代数、几何、函数",
-    "高中": "10–12 年级 · 高中数学核心与专题"
-  };
+  // 学段中文串同时是 data.js 的数据键；副标题按 stage.<学段>.sub 取译文
+  function stageDesc(s) { return T("stage." + s + ".sub"); }
   let curFilter = { stage: null, grade: null }; // 当前侧边栏筛选（学段/年级）
 
   /* ---- 解锁规则（按年级动态计算，单一事实来源）----
@@ -273,11 +270,11 @@
     layout.innerHTML = buildSidebar()
       + '<div class="sb-mask" id="sbMask"></div>'
       + '<div class="path-main" id="pathMain"></div>'
-      + '<button class="sb-fab" id="sbFab">☰ 目录</button>';
+      + '<button class="sb-fab" id="sbFab">☰ ' + esc(T("sb.menu")) + '</button>';
     v.appendChild(layout);
     const topBtn = document.createElement("button");
     topBtn.className = "sb-top-btn"; topBtn.id = "sbTopBtn";
-    topBtn.textContent = "☰ 选择年级 / 学段";
+    topBtn.textContent = "☰ " + T("sb.pick");
     topBtn.addEventListener("click", () => layout.classList.toggle("sb-drawer-open"));
     layout.querySelector("#pathMain").insertBefore(topBtn, layout.querySelector("#pathMain").firstChild);
     renderPathMain(layout.querySelector("#pathMain"));
@@ -306,9 +303,9 @@
   // 侧边栏：学段 → 年级 两级导航
   function buildSidebar() {
     let html = '<aside class="sidebar" id="sidebar">'
-      + '<div class="sb-head"><span class="sb-title">年级导航</span>'
-      + '<button class="sb-toggle" id="sbToggle" title="收起/展开">«</button></div>';
-    html += '<a class="sb-item' + (curFilter.stage ? "" : " active") + '" href="#/path"><span class="sb-ico">☰</span>全部方法</a>';
+      + '<div class="sb-head"><span class="sb-title">' + esc(T("sb.title")) + '</span>'
+      + '<button class="sb-toggle" id="sbToggle" title="' + esc(T("sb.toggle")) + '">«</button></div>';
+    html += '<a class="sb-item' + (curFilter.stage ? "" : " active") + '" href="#/path"><span class="sb-ico">☰</span>' + esc(T("sb.all")) + '</a>';
     STAGES.forEach(stage => {
       const grades = [...new Set(TECHNIQUES.filter(t => t.stage === stage).map(t => t.grade))]
         .sort((a, b) => gradeNum(a) - gradeNum(b));
@@ -316,13 +313,13 @@
       const open = !curFilter.stage || curFilter.stage === stage;
       html += '<div class="sb-stage' + (open ? " open" : "") + '">';
       html += '<div class="sb-stage-h" data-stage="' + esc(stage) + '"><span class="sb-caret">' + (open ? "▾" : "▸") + '</span>'
-        + esc(stage) + '<span class="sb-cnt">' + grades.length + '</span></div>';
+        + esc(stageName(stage)) + '<span class="sb-cnt">' + grades.length + '</span></div>';
       html += '<div class="sb-grades">';
-      html += '<a class="sb-grade' + (curFilter.stage === stage && !curFilter.grade ? " active" : "") + '" href="#/path/' + enc(stage) + '">全部' + esc(stage) + '</a>';
+      html += '<a class="sb-grade' + (curFilter.stage === stage && !curFilter.grade ? " active" : "") + '" href="#/path/' + enc(stage) + '">' + esc(T("sb.allOf", { stage: stageName(stage) })) + '</a>';
       grades.forEach(g => {
         const cnt = TECHNIQUES.filter(t => t.stage === stage && t.grade === g).length;
         const act = curFilter.stage === stage && curFilter.grade === g ? " active" : "";
-        html += '<a class="sb-grade' + act + '" href="#/path/' + enc(stage) + '/' + enc(g) + '">' + esc(g)
+        html += '<a class="sb-grade' + act + '" href="#/path/' + enc(stage) + '/' + enc(g) + '">' + esc(gradeName(g))
           + '<span class="sb-cnt">' + cnt + '</span></a>';
       });
       html += '</div></div>';
@@ -353,9 +350,9 @@
 
   // 主区域：按当前筛选渲染学段横幅 + 年级分隔 + 方法节点
   function renderPathMain(main) {
-    const h = document.createElement("h2"); h.className = "section"; h.textContent = "学习路径"; main.appendChild(h);
+    const h = document.createElement("h2"); h.className = "section"; h.textContent = T("ui.nav.path"); main.appendChild(h);
     const hint = document.createElement("div"); hint.className = "hint";
-    hint.textContent = "按 小学 → 中学 → 高中 排列，细分到年级。小学各年级、初一·初二年级：年级内顺序解锁——第一个技巧是入口，掌握后才会解锁本年级下一个。初三及高中：所有技巧均可直接进入。练习做错的题进入「薄弱点」，复习通关才算掌握。";
+    hint.textContent = T("path.hintSidebar");
     main.appendChild(hint);
 
     const groups = {};
@@ -368,12 +365,12 @@
         .sort((a, b) => gradeNum(a) - gradeNum(b));
       if (!grades.length) return;
       const sb = document.createElement("div"); sb.className = "stage-banner";
-      sb.innerHTML = `<span class="stage-name">${stage}</span><span class="stage-desc">${STAGE_DESC[stage]}</span>`;
+      sb.innerHTML = `<span class="stage-name">${esc(stageName(stage))}</span><span class="stage-desc">${esc(stageDesc(stage))}</span>`;
       main.appendChild(sb);
       grades.forEach(g => {
         if (curFilter.grade && curFilter.grade !== g) return;
         const sub = document.createElement("div"); sub.className = "grade-sep";
-        sub.innerHTML = `<span class="grade-tag">${g}</span><span class="grade-count">${groups[stage + "|" + g].length} 个技巧</span>`;
+        sub.innerHTML = `<span class="grade-tag">${esc(gradeName(g))}</span><span class="grade-count">${esc(T("prog.gradeCount", { n: groups[stage + "|" + g].length }))}</span>`;
         main.appendChild(sub);
         sortGroup(groups[stage + "|" + g]).forEach(t => {
           stepNo++;
@@ -386,18 +383,18 @@
           node.innerHTML = `
             <div class="step">${status === "done" ? "✓" : stepNo}</div>
             <div class="body">
-              <div class="title">${esc(t.name)}
+              <div class="title">${esc(techName(t))}
                 ${status === "lock" ? '<span class="lock-ico">🔒</span>' : ""}
-                <span class="status-pill ${status === "lock" ? "lock" : status === "done" ? "done" : "learn"}">${status === "lock" ? "未解锁" : status === "done" ? "已掌握" : "学习中"}</span>
-                ${weakN ? `<span class="tag w">薄弱点 ${weakN}</span>` : ""}
+                <span class="status-pill ${status === "lock" ? "lock" : status === "done" ? "done" : "learn"}">${esc(T("node.status." + status))}</span>
+                ${weakN ? `<span class="tag w">${esc(T("node.weak", { n: weakN }))}</span>` : ""}
               </div>
-              <div class="meta">${esc(t.summary)}</div>
+              <div class="meta">${esc(techSummary(t))}</div>
               <div class="acts">
-                ${open ? `<a class="btn sm" href="#/learn/${t.id}">去学习</a>` : ""}
-                ${open ? `<a class="btn sm ghost" href="#/practice/${t.id}">练习</a>` : ""}
-                ${open && !st.mastered ? `<a class="btn sm soft" href="#/gate/${t.id}">通关测试</a>` : ""}
+                ${open ? `<a class="btn sm" href="#/learn/${t.id}">${esc(T("act.learn"))}</a>` : ""}
+                ${open ? `<a class="btn sm ghost" href="#/practice/${t.id}">${esc(T("act.practice"))}</a>` : ""}
+                ${open && !st.mastered ? `<a class="btn sm soft" href="#/gate/${t.id}">${esc(T("act.gate"))}</a>` : ""}
               </div>
-              ${status === "lock" ? `<div class="meta" style="color:var(--lock)">需先掌握：${esc(tech(t.prereq).name)}</div>` : ""}
+              ${status === "lock" ? `<div class="meta" style="color:var(--lock)">${esc(T("node.needPrereq", { name: techName(tech(t.prereq)) }))}</div>` : ""}
             </div>`;
           node.id = "node-" + t.id;
           main.appendChild(node);
@@ -415,29 +412,31 @@
   function renderLearn(id) {
     const v = view(); v.innerHTML = "";
     const t = tech(id); if (!t) return renderPath();
-    if (!unlocked(id)) { toast("先融会贯通上一技巧才能解锁"); location.hash = "#/path"; return; }
+    if (!unlocked(id)) { toast(T("toast.locked")); location.hash = "#/path"; return; }
     const st = tstate(id);
 
     const card = document.createElement("div"); card.className = "card";
-    const exHtml = (t.questions || []).map((q, qi) => `
+    const exHtml = (t.questions || []).map((raw, qi) => {
+      const q = localizeStatic(t, raw, qi) || raw;
+      return `
       <div class="ex">
-        <div class="ex-q"><span class="ex-no">例${qi + 1}</span><span>${esc(q.q)}</span></div>
+        <div class="ex-q"><span class="ex-no">${esc(T("learn.exNo", { n: qi + 1 }))}</span><span>${esc(q.q)}</span></div>
         <div class="ex-opts">
           ${q.opts.map((o, oi) => `<span class="ex-opt${oi === q.ans ? " correct" : ""}">${oi === q.ans ? "✓ " : ""}${esc(o)}</span>`).join("")}
         </div>
-        <details class="ex-why"><summary>看解析</summary>
+        <details class="ex-why"><summary>${esc(T("learn.showWhy"))}</summary>
           <div class="ex-exp">${esc(q.explain)}</div>
-          <div class="ex-point">🎯 要点：${esc(q.point || "")}</div>
+          <div class="ex-point">${esc(T("learn.exPoint", { point: q.point || "" }))}</div>
         </details>
-      </div>`).join("");
+      </div>`; }).join("");
     card.innerHTML = `
-      <div class="tech-head"><h2 class="section" style="margin:0">${esc(t.name)}</h2><span class="tag">${esc(t.grade)}</span></div>
-      <div class="muted">${esc(t.summary)}</div>
-      <div class="kou"><b>名师口诀：</b>${esc(t.kou)}</div>
-      <h3>解题步骤</h3>
-      <ol class="steps">${t.steps.map(s => `<li>${s}</li>`).join("")}</ol>
-      <h3>典型例题 <span class="hint-inline">（先读题想一想，再点开解析对照）</span></h3>
-      <div class="ex-list">${exHtml || '<div class="muted">该方法暂未配置例题。</div>'}</div>`;
+      <div class="tech-head"><h2 class="section" style="margin:0">${esc(techName(t))}</h2><span class="tag">${esc(gradeName(t.grade))}</span></div>
+      <div class="muted">${esc(techSummary(t))}</div>
+      <div class="kou"><b>${esc(T("learn.kou"))}</b>${esc(techKou(t))}</div>
+      <h3>${esc(T("learn.steps"))}</h3>
+      <ol class="steps">${techSteps(t).map(s => `<li>${s}</li>`).join("")}</ol>
+      <h3>${esc(T("learn.examples"))} <span class="hint-inline">${esc(T("learn.examplesHint"))}</span></h3>
+      <div class="ex-list">${exHtml || `<div class="muted">${esc(T("learn.noExamples"))}</div>`}</div>`;
     v.appendChild(card);
 
     if (t.anim && window.Anim && window.Anim[t.anim]) {
@@ -450,9 +449,9 @@
     const acts = document.createElement("div"); acts.className = "row";
     acts.style.margin = "4px 0 18px";
     acts.innerHTML = `
-      <a class="btn" href="#/practice/${t.id}">开始练习（${typeof t.qgen === "function" ? "每轮 8 题·随机" : t.questions.length + " 题"}）</a>
-      ${!st.mastered ? `<a class="btn soft" href="#/gate/${t.id}">通关测试</a>` : `<span class="status-pill done">已掌握 ✓</span>`}
-      <a class="btn ghost" id="backBtnL" href="#/path">返回路径</a>`;
+      <a class="btn" href="#/practice/${t.id}">${esc(typeof t.qgen === "function" ? T("learn.startGen") : T("learn.startStatic", { n: t.questions.length }))}</a>
+      ${!st.mastered ? `<a class="btn soft" href="#/gate/${t.id}">${esc(T("act.gate"))}</a>` : `<span class="status-pill done">${esc(T("learn.mastered"))}</span>`}
+      <a class="btn ghost" id="backBtnL" href="#/path">${esc(T("learn.backPath"))}</a>`;
     v.appendChild(acts);
     acts.querySelector("#backBtnL").addEventListener("click", (e) => { e.preventDefault(); goPath(t.id); });
   }
@@ -536,7 +535,7 @@
     const isPlan = !!planItems;
     let t = id ? tech(id) : null;
     if (!isPlan && !t) return renderPath();
-    if (!isPlan && !unlocked(id)) { toast("先融会贯通上一技巧才能解锁"); location.hash = "#/path"; return; }
+    if (!isPlan && !unlocked(id)) { toast(T("toast.locked")); location.hash = "#/path"; return; }
     const st = isPlan ? null : tstate(id);
 
     let items; // {q, qidx, gen, t, key}
@@ -564,13 +563,14 @@
     const total = items.length;
     let answered = 0, correct = 0;
 
-    const headTitle = isPlan ? "AI 专属训练套餐" : `${esc(t.name)} · ${mode === "gate" ? "通关测试" : "自由练习"}`;
-    const headSub = isPlan ? "根据知识漏洞分析，为你优先安排最需要巩固的题目（连对 2 道即消除）。"
-      : (mode === "gate" ? "通关测试会优先把你之前的薄弱点放进题里；全部答对并清零薄弱点，才算融会贯通、解锁下一技巧。" : "随手练，做错自动记入薄弱点，可去「薄弱点复习」集中攻克。");
+    const headTitle = isPlan ? esc(T("plan.title"))
+      : `${esc(techName(t))} · ${esc(mode === "gate" ? T("quiz.titleGate") : T("quiz.titlePractice"))}`;
+    const headSub = isPlan ? T("plan.sub")
+      : (mode === "gate" ? T("quiz.descGate") : T("quiz.descPractice"));
     const head = document.createElement("div"); head.className = "card";
     head.innerHTML = `<div class="tech-head"><h2 class="section" style="margin:0">${headTitle}</h2>
-      <span class="tag">${isPlan ? "个性化" : (mode === "gate" ? "需 ≥80% 且薄弱点清零" : "不限量")}</span></div>
-      <div class="muted">${headSub}</div>`;
+      <span class="tag">${esc(isPlan ? T("plan.tag") : (mode === "gate" ? T("quiz.tagGate") : T("quiz.tagPractice")))}</span></div>
+      <div class="muted">${esc(headSub)}</div>`;
     v.appendChild(head);
 
     const list = document.createElement("div"); v.appendChild(list);
@@ -595,8 +595,8 @@
             <a class="btn soft" href="#/review" style="margin-top:8px">${esc(T("quiz.goReview"))}</a>`;
         }
       } else {
-        banner.innerHTML = `<div class="qres">本轮完成 ${total} 题，正确 ${correct} 题。</div>
-          <a class="btn ghost" id="backBtn2" href="#/ai">返回诊断</a>`;
+        banner.innerHTML = `<div class="qres">${esc(T("quiz.doneRound", { total, correct }))}</div>
+          <a class="btn ghost" id="backBtn2" href="#/ai">${esc(T("plan.back"))}</a>`;
         banner.querySelector("#backBtn2").addEventListener("click", (e) => { e.preventDefault(); location.hash = "#/ai"; });
       }
       list.appendChild(banner);
@@ -657,9 +657,9 @@
     if (mode === "practice" || isPlan) {
       const again = document.createElement("div"); again.className = "row"; again.style.margin = "6px 0 16px";
       if (isPlan) {
-        again.innerHTML = `<a class="btn ghost" id="againBtn" href="#/ai">🔄 再做一组专属训练</a><a class="btn soft" id="backBtn" href="#/ai">返回诊断</a>`;
+        again.innerHTML = `<a class="btn ghost" id="againBtn" href="#/ai">${esc(T("plan.again"))}</a><a class="btn soft" id="backBtn" href="#/ai">${esc(T("plan.back"))}</a>`;
       } else {
-        again.innerHTML = `<a class="btn ghost" id="againBtn" href="#/practice/${t.id}">🔄 再练一组</a><a class="btn soft" id="backBtn" href="#/path">返回路径</a>`;
+        again.innerHTML = `<a class="btn ghost" id="againBtn" href="#/practice/${t.id}">${esc(T("quiz.again"))}</a><a class="btn soft" id="backBtn" href="#/path">${esc(T("learn.backPath"))}</a>`;
       }
       v.appendChild(again);
       again.querySelector("#againBtn").addEventListener("click", (e) => {
@@ -698,14 +698,14 @@
       return;
     }
     const tip = document.createElement("div"); tip.className = "hint";
-    tip.textContent = `共 ${items.length} 个薄弱点。每个需「连对 2 道同类题」才消除：做对 1 道会再出 1 道同类题确认，做错则回到起点重新计。`;
+    tip.textContent = T("review.hintStreak", { n: items.length });
     v.appendChild(tip);
 
     let clearedCount = 0; const total = items.length;
     const prog = document.createElement("div"); prog.className = "rev-prog";
     v.appendChild(prog);
     const list = document.createElement("div"); v.appendChild(list);
-    function refreshProg() { prog.innerHTML = `已消除 <b>${clearedCount}</b>/${total}　·　待巩固 <b>${total - clearedCount}</b>`; }
+    function refreshProg() { prog.innerHTML = T("review.prog", { done: `<b>${clearedCount}</b>`, total, left: `<b>${total - clearedCount}</b>` }); }
     refreshProg();
 
     function paintCard(card, it, passes) {
@@ -713,7 +713,7 @@
       const q = it.q, judge = isJudge(q);
       const disp = judge ? { opts: q.opts, ans: q.ans } : shuffleOptions(q);
       const fig = renderFigOf(q);
-      card.innerHTML = `<div class="qtext">${esc(it.t.name)} ｜ ${esc(q.q)}</div>${fig}
+      card.innerHTML = `<div class="qtext">${esc(techName(it.t))}${esc(T("review.sep"))}${esc(q.q)}</div>${fig}
         <div class="opts${judge ? " judge" : ""}">${disp.opts.map((o, j) => `<div class="opt${judge ? " judge" : ""}" data-i="${j}"><span class="mark${judge ? " judge" : ""}">${judge ? judgeMark(o) : String.fromCharCode(65 + j)}</span><span>${esc(o)}</span></div>`).join("")}</div>`;
       const opts = card.querySelectorAll(".opt");
       opts.forEach(op => op.addEventListener("click", () => {
@@ -721,29 +721,29 @@
         const chosen = +op.dataset.i, ans = disp.ans;
         opts.forEach((o, j) => { o.style.pointerEvents = "none"; if (j === ans) o.classList.add("correct"); });
         if (chosen === ans) op.classList.add("correct"); else op.classList.add("wrong");
-        const ex = document.createElement("div"); ex.className = "explain"; ex.innerHTML = "解析：" + esc(q.explain); card.appendChild(ex);
+        const ex = document.createElement("div"); ex.className = "explain"; ex.innerHTML = esc(T("quiz.explain")) + esc(q.explain); card.appendChild(ex);
         const w = tstate(it.t.id).weak[it.key] || (tstate(it.t.id).weak[it.key] = { fails: 0, cleared: false, passes: 0, lastTime: 0, attempts: 0 });
         if (chosen === ans) {
           passes++; w.passes = passes; w.fails = 0; w.lastTime = Date.now(); w.attempts = (w.attempts || 0) + 1;
           if (passes >= 2) {
             w.cleared = true; clearedCount++; save(state); updateBadge(); refreshProg();
             card.classList.add("cleared");
-            const note = document.createElement("div"); note.className = "rev-note ok"; note.textContent = "✅ 连对 2 道，已永久消除"; card.appendChild(note);
+            const note = document.createElement("div"); note.className = "rev-note ok"; note.textContent = T("review.cleared"); card.appendChild(note);
             if (clearedCount === total) {
               const b = document.createElement("div"); b.className = "card center";
-              b.innerHTML = `<div class="qres" style="color:var(--ok)">🎉 全部 ${total} 个薄弱点已清零！</div>`;
+              b.innerHTML = `<div class="qres" style="color:var(--ok)">${esc(T("review.allClear", { total }))}</div>`;
               list.appendChild(b);
               setTimeout(() => renderReview(), 1100); // 自动重渲染，展示空状态
             }
           } else {
             w.cleared = false; w.lastTime = Date.now(); w.attempts = (w.attempts || 0) + 1; save(state); updateBadge();
-            const note = document.createElement("div"); note.className = "rev-note ok"; note.textContent = "✅ 第 1 道做对，再来 1 道同类题确认"; card.appendChild(note);
+            const note = document.createElement("div"); note.className = "rev-note ok"; note.textContent = T("review.firstOk"); card.appendChild(note);
             it.q = nextWeakQ(it);
             setTimeout(() => paintCard(card, it, passes), 650);
           }
         } else {
           passes = 0; w.passes = 0; w.cleared = false; w.fails = (w.fails || 0) + 1; w.lastTime = Date.now(); w.attempts = (w.attempts || 0) + 1; save(state); updateBadge();
-          const note = document.createElement("div"); note.className = "rev-note bad"; note.textContent = "❌ 做错了，回到起点，需连对 2 道才能消除"; card.appendChild(note);
+          const note = document.createElement("div"); note.className = "rev-note bad"; note.textContent = T("review.wrongReset"); card.appendChild(note);
           it.q = nextWeakQ(it);
           setTimeout(() => paintCard(card, it, passes), 650);
         }
@@ -808,7 +808,10 @@
     const top = weak.slice(0, 5);
     const stubborn = weak.filter(x => (x.w.fails || 0) >= 3 && (x.w.passes || 0) < 2);
     const warming = weak.filter(x => (x.w.passes || 0) >= 1 && (x.w.passes || 0) < 2);
-    const days = d => d <= 0 ? "今天" : d < 1 ? "昨天" : d < 7 ? Math.floor(d) + " 天前" : d < 30 ? Math.floor(d / 7) + " 周前" : Math.floor(d / 30) + " 个月前";
+    const days = d => d <= 0 ? T("ago.today") : d < 1 ? T("ago.yesterday")
+      : d < 7 ? T("ago.days", { n: Math.floor(d) })
+      : d < 30 ? T("ago.weeks", { n: Math.floor(d / 7) })
+      : T("ago.months", { n: Math.floor(d / 30) });
     return { now, weak, total, mastered, byStage, byGrade, top, stubborn, warming, days };
   }
   // 个性化排程：每个薄弱点按严重程度出 1~3 题
@@ -828,86 +831,90 @@
   }
   function startPlan() {
     const r = genPlan();
-    if (!r.items.length) { toast("暂无可练的薄弱点，去练习里制造一些吧"); location.hash = "#/ai"; return; }
+    if (!r.items.length) { toast(T("plan.none")); location.hash = "#/ai"; return; }
     renderQuiz(null, "plan", r.items);
   }
   function buildConclusion(r) {
-    if (!r.weak.length) return "目前没有未清零的薄弱点，说明近期练习质量很好。建议每天保持 10~15 分钟练习，巩固已掌握内容、预防遗忘。";
+    if (!r.weak.length) return T("diag.noWeak");
     const parts = [];
     const stageRank = STAGES.map(s => ({ s, n: r.byStage[s].weak })).sort((a, b) => b.n - a.n).filter(x => x.n > 0);
     if (stageRank.length) {
       const top = stageRank[0];
-      parts.push(`孩子在<b>「${top.s}」</b>模块薄弱点最集中（共 ${top.n} 项），是当前重点突破方向。`);
+      parts.push(T("diag.topStage", { stage: `<b>${esc(stageName(top.s))}</b>`, n: top.n }));
     }
     if (r.stubborn.length) {
-      parts.push(`其中有 <b>${r.stubborn.length}</b> 个「顽固薄弱点」（连续错 3 次以上），建议优先安排专项训练，每天连做 2 道直到清零。`);
+      parts.push(T("diag.stubborn", { n: `<b>${r.stubborn.length}</b>` }));
     }
     if (r.warming.length) {
-      parts.push(`另有 <b>${r.warming.length}</b> 个已做对 1 道、只差 1 道就能消除，趁热打铁很快能清零。`);
+      parts.push(T("diag.warming", { n: `<b>${r.warming.length}</b>` }));
     }
     const hardest = r.top[0];
     if (hardest) {
-      const when = hardest.w.lastTime ? (() => { const d = Math.floor((r.now - hardest.w.lastTime) / 86400000); return d <= 0 ? "今天" : d < 7 ? d + " 天前" : "较久之前"; })() : "尚未记录";
-      parts.push(`最严重的单点是「<b>${esc(hardest.t.name)}</b>」（${esc(hardest.grade)}），上次练习在 ${when}，已错 ${hardest.w.fails || 0} 次。`);
+      const when = hardest.w.lastTime
+        ? (() => { const d = Math.floor((r.now - hardest.w.lastTime) / 86400000);
+            return d <= 0 ? T("ago.today") : d < 7 ? T("ago.days", { n: d }) : T("ago.longAgo"); })()
+        : T("ago.never");
+      parts.push(T("diag.hardest", { name: `<b>${esc(techName(hardest.t))}</b>`, grade: esc(gradeName(hardest.grade)), when, fails: hardest.w.fails || 0 }));
     }
-    parts.push(`点击「开始专属训练套餐」，系统会按严重程度自动排程：严重项多练、轻微项少练，连对 2 道即消除。`);
+    parts.push(T("diag.callToAction"));
     return parts.join("");
   }
   function renderDiagnose() {
     const v = view(); v.innerHTML = "";
     const r = analyzeWeakness();
-    const h = document.createElement("h2"); h.className = "section"; h.textContent = "AI 知识漏洞诊断"; v.appendChild(h);
+    const h = document.createElement("h2"); h.className = "section"; h.textContent = T("diag.title"); v.appendChild(h);
 
     const pct = Math.round(r.mastered / r.total * 100);
     const head = document.createElement("div"); head.className = "card diag-head";
     head.innerHTML = `<div class="diag-top">
-        <div class="diag-mastery"><div class="n">${pct}%</div><div class="l">总体掌握度</div></div>
+        <div class="diag-mastery"><div class="n">${pct}%</div><div class="l">${esc(T("diag.overall"))}</div></div>
         <div class="diag-stats">
-          <div><b>${r.mastered}</b> 已掌握</div>
-          <div><b>${r.weak.length}</b> 个薄弱点</div>
-          <div><b>${r.stubborn.length}</b> 个顽固</div>
-          <div><b>${r.warming.length}</b> 个将清零</div>
+          <div><b>${r.mastered}</b> ${esc(T("prog.mastered"))}</div>
+          <div><b>${r.weak.length}</b> ${esc(T("prog.weak"))}</div>
+          <div><b>${r.stubborn.length}</b> ${esc(T("diag.sevHigh"))}</div>
+          <div><b>${r.warming.length}</b> ${esc(T("diag.nearClear"))}</div>
         </div>
       </div>
       <div class="bar"><i style="width:${pct}%"></i></div>`;
     v.appendChild(head);
 
     const stageCard = document.createElement("div"); stageCard.className = "card";
-    stageCard.innerHTML = `<h3>各学段薄弱点分布</h3>` + STAGES.map(s => {
+    stageCard.innerHTML = `<h3>${esc(T("diag.byStage"))}</h3>` + STAGES.map(s => {
       const b = r.byStage[s]; if (!b.total) return "";
       const wpct = Math.round(b.weak / b.total * 100);
-      return `<div class="stage-row"><span class="stage-name">${s}</span>
+      return `<div class="stage-row"><span class="stage-name">${esc(stageName(s))}</span>
         <div class="bar mini"><i class="warn" style="width:${wpct}%"></i></div>
-        <span class="stage-num">薄弱 ${b.weak}/${b.total}</span></div>`;
+        <span class="stage-num">${esc(T("diag.weakOf", { weak: b.weak, total: b.total }))}</span></div>`;
     }).join("");
     v.appendChild(stageCard);
 
     const cb = document.createElement("div"); cb.className = "card diag-concl";
-    cb.innerHTML = `<h3>🧠 诊断结论</h3><div class="muted">${buildConclusion(r)}</div>`;
+    cb.innerHTML = `<h3>${esc(T("diag.conclusion"))}</h3><div class="muted">${buildConclusion(r)}</div>`;
     v.appendChild(cb);
 
     const acts = document.createElement("div"); acts.className = "row"; acts.style.margin = "4px 0 12px";
     if (r.weak.length) {
-      acts.innerHTML = `<button class="btn" id="planBtn">🎯 开始专属训练套餐（${r.weak.length} 项）</button>
-        <a class="btn soft" href="#/review">去薄弱点复习</a>`;
+      acts.innerHTML = `<button class="btn" id="planBtn">${esc(T("plan.start", { n: r.weak.length }))}</button>
+        <a class="btn soft" href="#/review">${esc(T("diag.goReview"))}</a>`;
       acts.querySelector("#planBtn").addEventListener("click", () => startPlan());
     } else {
-      acts.innerHTML = `<div class="qres" style="color:var(--ok)">🎉 当前没有未清零的薄弱点，保持得很好！</div>
-        <a class="btn soft" href="#/path">去练习巩固</a>`;
+      acts.innerHTML = `<div class="qres" style="color:var(--ok)">${esc(T("diag.allClear"))}</div>
+        <a class="btn soft" href="#/path">${esc(T("diag.goPractise"))}</a>`;
     }
     v.appendChild(acts);
 
     if (r.weak.length) {
-      const hl = document.createElement("h3"); hl.textContent = "薄弱点清单（按严重程度排序）"; v.appendChild(hl);
+      const hl = document.createElement("h3"); hl.textContent = T("diag.listTitle"); v.appendChild(hl);
       const list = document.createElement("div"); list.className = "diag-list";
       r.weak.forEach(x => {
-        const lvl = x.sev >= 9 ? ["顽固", "bad"] : (x.sev >= 4 ? ["待巩固", "warn"] : ["轻微", "ok"]);
-        const status = (x.w.passes || 0) >= 1 ? "连对 1 道 · 再来 1 道即消除" : ((x.w.fails || 0) >= 3 ? "连续错 " + x.w.fails + " 次" : "已错 " + (x.w.fails || 0) + " 次");
-        const whenTxt = x.w.lastTime ? r.days((r.now - x.w.lastTime) / 86400000) : "尚未记录";
+        const lvl = x.sev >= 9 ? [T("diag.sevHigh"), "bad"] : (x.sev >= 4 ? [T("diag.sevMid"), "warn"] : [T("diag.sevLow"), "ok"]);
+        const status = (x.w.passes || 0) >= 1 ? T("diag.oneToGo")
+          : ((x.w.fails || 0) >= 3 ? T("diag.wrongStreak", { n: x.w.fails }) : T("diag.wrongCount", { n: x.w.fails || 0 }));
+        const whenTxt = x.w.lastTime ? r.days((r.now - x.w.lastTime) / 86400000) : T("ago.never");
         const row = document.createElement("div"); row.className = "diag-item";
-        row.innerHTML = `<div class="di-main"><div class="di-name">${esc(x.t.name)}</div>
-          <div class="di-meta">${esc(x.grade)} · ${status} · 上次练习 ${whenTxt}</div></div>
-          <span class="tag ${lvl[1]}">${lvl[0]}</span>`;
+        row.innerHTML = `<div class="di-main"><div class="di-name">${esc(techName(x.t))}</div>
+          <div class="di-meta">${esc(gradeName(x.grade))} · ${esc(status)} · ${esc(T("diag.lastPractice", { when: whenTxt }))}</div></div>
+          <span class="tag ${lvl[1]}">${esc(lvl[0])}</span>`;
         list.appendChild(row);
       });
       v.appendChild(list);
