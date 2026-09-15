@@ -1,10 +1,12 @@
 /* 校验内容型译文键：id 是否存在、step 下标是否越界、哪些技巧还没翻 */
 const path = require("path");
 const ROOT = path.join(__dirname, "..");
+function fs2_boot() { return require("fs").readFileSync(path.join(ROOT, "index.html"), "utf8"); }
 global.window = {};
 require(path.join(ROOT, "js/data.js"));
 const T = global.window.TECHNIQUES;
-["js/i18n/en.js", "js/i18n/en.tech.js", "js/i18n/en.q.js", "js/i18n/en.gen.js", "js/i18n/en.fig.js"].forEach(f => {
+// 目录文件清单直接取自 index.html，避免新增分册后这里忘记同步
+[...fs2_boot().matchAll(/<script src="(js\/i18n\/[^"]+)"><\/script>/g)].map(m => m[1]).forEach(f => {
   try { require(path.join(ROOT, f)); } catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
 });
 const EN = global.window.I18N_EN || {};
