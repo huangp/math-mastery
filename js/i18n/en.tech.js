@@ -847,3 +847,98 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "tech.graph_transform.step.1": "Reflection: y = f(−x) in the y-axis; y = −f(x) in the x-axis.",
   "tech.graph_transform.step.2": "Folding: y = |f(x)| flips everything below the x-axis up above it."
 });
+
+/* ===== batch 4: methods added upstream (a082739) — pre-university topics ===== */
+window.I18N_EN = Object.assign(window.I18N_EN || {}, {
+
+  "tech.polar_deep.name": "Polar coordinates in depth",
+  "tech.polar_deep.summary": "Converting with x = ρcosθ, y = ρsinθ; ρ = f(θ) traces a curve, and area comes from (1/2)∫ρ²dθ.",
+  "tech.polar_deep.kou": "To go polar, multiply by cos and sin; read the quadrant from the angle, and take half the square for area.",
+  "tech.polar_deep.step.0": "Conversion: x = ρcosθ, y = ρsinθ, ρ² = x² + y², tanθ = y/x.",
+  "tech.polar_deep.step.1": "The polar equation ρ = 2a cosθ is the circle of radius a centred at (a, 0).",
+  "tech.polar_deep.step.2": "Area: A = (1/2)∫ρ²(θ)dθ; distance between two points: d² = ρ₁² + ρ₂² − 2ρ₁ρ₂cos(θ₁ − θ₂).",
+
+  "tech.param_extremum.name": "Extreme values from parametric form",
+  "tech.param_extremum.summary": "Parametrising turns an extreme-value problem into a trigonometric amplitude or a single-variable one; a cosθ + b sinθ has amplitude √(a² + b²).",
+  "tech.param_extremum.kou": "Parametrise, then read the amplitude: a cosθ + b sinθ peaks at the square root of the sum of the squares.",
+  "tech.param_extremum.step.0": "Trigonometric: with x = a cosθ and y = b sinθ, px + qy has amplitude √(p²a² + q²b²).",
+  "tech.param_extremum.step.1": "Algebraic: with x = t and y = f(t), just find the extreme values of f(t).",
+  "tech.param_extremum.step.2": "Geometric: complete the square on the squared distance to the origin.",
+
+  "tech.vector_geo_adv.name": "Vectors in solid geometry (advanced)",
+  "tech.vector_geo_adv.summary": "Direction and normal vectors give angles between lines, line-plane angles, dihedral angles and point-plane distances — coordinates turn geometry into arithmetic.",
+  "tech.vector_geo_adv.kou": "A direction vector fixes a line, a normal fixes a plane; dot products give angles, cross products give areas.",
+  "tech.vector_geo_adv.step.0": "Angle between lines: cosθ = |u·v|/(|u||v|).",
+  "tech.vector_geo_adv.step.1": "Line-plane angle: sinφ = |s·n|/(|s||n|), with s the direction vector and n the normal.",
+  "tech.vector_geo_adv.step.2": "Point to plane: d = |Ax₀ + By₀ + Cz₀ + D|/√(A² + B² + C²); a dihedral angle is read from the two normals.",
+
+  "tech.abs_ineq.name": "Inequalities with absolute values",
+  "tech.abs_ineq.summary": "|x| < a ⇔ −a < x < a; |x − a| is the distance to a on the number line; the triangle inequality gives |a + b| ≤ |a| + |b|.",
+  "tech.abs_ineq.kou": "Strip the bars into two sides; read it as a distance; the triangle inequality caps it from above.",
+  "tech.abs_ineq.step.0": "Basic form: |x| < a ⇔ −a < x < a; |x| > a ⇔ x > a or x < −a.",
+  "tech.abs_ineq.step.1": "Geometric meaning: |x − a| is the distance from x to a.",
+  "tech.abs_ineq.step.2": "Triangle inequality: ||a| − |b|| ≤ |a ± b| ≤ |a| + |b|.",
+
+  "tech.cauchy_app.name": "Applying Cauchy–Schwarz",
+  "tech.cauchy_app.summary": "(Σaᵢ²)(Σbᵢ²) ≥ (Σaᵢbᵢ)² bounds linear expressions; when the constraint is a sum of squares, the trick is choosing what to pair it with.",
+  "tech.cauchy_app.kou": "Sum of squares times sum of squares beats the square of the dot product; picking the right constants is the whole game.",
+  "tech.cauchy_app.step.0": "Maximum: given Σxᵢ², the largest Σpᵢxᵢ is √(Σpᵢ²)·√(Σxᵢ²).",
+  "tech.cauchy_app.step.1": "Minimum of reciprocals: given Σxᵢ, use (Σxᵢ)(Σ1/xᵢ) ≥ n² to bound Σ1/xᵢ below.",
+  "tech.cauchy_app.step.2": "Equality holds exactly when the two vectors are proportional (pointing the same way).",
+
+  "tech.rearrange_ineq.name": "The rearrangement inequality",
+  "tech.rearrange_ineq.summary": "Similarly ordered ≥ any order ≥ oppositely ordered: to maximise a sum of products, pair the two lists in the same order.",
+  "tech.rearrange_ineq.kou": "Same order is largest, reverse order smallest, anything else sits in between.",
+  "tech.rearrange_ineq.step.0": "The chain: similarly ordered sum ≥ arbitrary order ≥ oppositely ordered sum.",
+  "tech.rearrange_ineq.step.1": "For the maximum, sort both lists the same way and pair them off.",
+  "tech.rearrange_ineq.step.2": "For the minimum, pair the largest with the smallest.",
+
+  "tech.markov.name": "Introducing Markov chains",
+  "tech.markov.summary": "A memoryless process: the next step depends only on the current state. n steps give Pⁿ, and a stationary distribution π satisfies πP = π.",
+  "tech.markov.kou": "Only the present matters; multiply the transition matrix for n steps; the stationary distribution is unchanged by it.",
+  "tech.markov.step.0": "The Markov property: P(next | whole history) = P(next | current state).",
+  "tech.markov.step.1": "The n-step transition matrix is Pⁿ.",
+  "tech.markov.step.2": "A stationary distribution π satisfies πP = π; for an ergodic chain the limiting distribution is that stationary one.",
+
+  "tech.lln.name": "The law of large numbers",
+  "tech.lln.summary": "Weak form: the sample mean converges in probability to the expectation. Bernoulli's form: the observed frequency converges to the probability.",
+  "tech.lln.kou": "More samples pull the mean towards the expectation, and the frequency settles near the probability.",
+  "tech.lln.step.0": "Weak law: X̄ₙ → E[X] in probability.",
+  "tech.lln.step.1": "Bernoulli's law: the frequency m/n → p.",
+  "tech.lln.step.2": "The usual proof uses Chebyshev: P(|X̄ − μ| ≥ ε) ≤ Var(X̄)/ε².",
+
+  "tech.confidence.name": "Confidence intervals",
+  "tech.confidence.summary": "Estimating a population parameter from a sample: interval = estimate ± critical value × standard error; a higher confidence level widens it.",
+  "tech.confidence.kou": "Centre it on the sample, add and subtract the critical value times the standard error; more confidence means a wider interval.",
+  "tech.confidence.step.0": "Construction: the interval is x̄ ± z·SE, where SE = σ/√n.",
+  "tech.confidence.step.1": "For 95% two-tailed, z ≈ 1.96; 99% is wider still.",
+  "tech.confidence.step.2": "What it means: over repeated sampling, about that proportion of intervals cover the true value — the parameter itself is fixed.",
+
+  "tech.hypothesis.name": "Introducing hypothesis testing",
+  "tech.hypothesis.summary": "State a null hypothesis H₀, then compare the p-value with the significance level α: reject H₀ when p < α. Keep the two error types straight.",
+  "tech.hypothesis.kou": "State the null first; reject it when p falls below α; remember both ways the decision can be wrong.",
+  "tech.hypothesis.step.0": "Set up H₀ and H₁ and fix the significance level α.",
+  "tech.hypothesis.step.1": "Compute the p-value: reject H₀ if p < α, otherwise do not reject.",
+  "tech.hypothesis.step.2": "A Type I error rejects a true H₀; a Type II error fails to reject a false one.",
+
+  "tech.improper_int.name": "Improper integrals",
+  "tech.improper_int.summary": "Integrals over an infinite range or of an unbounded function: ∫₁^∞ 1/x^p dx converges for p > 1, while ∫₀¹ 1/x^p dx converges for p < 1.",
+  "tech.improper_int.kou": "Infinite range or unbounded function makes it improper; the exponent p decides convergence fastest.",
+  "tech.improper_int.step.0": "Infinite range: ∫₁^∞ 1/x^p dx converges ⇔ p > 1.",
+  "tech.improper_int.step.1": "Unbounded function: ∫₀¹ 1/x^p dx converges ⇔ p < 1.",
+  "tech.improper_int.step.2": "Worth knowing: ∫₀^∞ e^(−x)dx = 1 and ∫_(−∞)^∞ 1/(1+x²)dx = π.",
+
+  "tech.partial_deriv.name": "Partial derivatives",
+  "tech.partial_deriv.summary": "Differentiating a function of several variables: hold the others fixed and differentiate with respect to one. The total differential is df = f_x dx + f_y dy.",
+  "tech.partial_deriv.kou": "Differentiate one variable and freeze the rest; when the mixed partials are continuous they agree.",
+  "tech.partial_deriv.step.0": "Partial derivative: ∂f/∂x treats y as a constant and differentiates in x.",
+  "tech.partial_deriv.step.1": "Total differential: df = f_x dx + f_y dy.",
+  "tech.partial_deriv.step.2": "When the mixed partials are continuous, ∂²f/∂x∂y = ∂²f/∂y∂x.",
+
+  "tech.gradient.name": "The gradient",
+  "tech.gradient.summary": "∇f = (f_x, f_y) points the way the function grows fastest, its length is the largest directional derivative, and it is perpendicular to the contour lines.",
+  "tech.gradient.kou": "The gradient points uphill and its length is the steepest rate; it meets contours at right angles, and −∇f descends fastest.",
+  "tech.gradient.step.0": "Gradient ∇f = (∂f/∂x, ∂f/∂y), pointing in the direction of fastest increase.",
+  "tech.gradient.step.1": "|∇f| is the largest directional derivative; in general D_u f = ∇f·u.",
+  "tech.gradient.step.2": "The gradient is perpendicular to the contours; steepest descent follows −∇f."
+});
