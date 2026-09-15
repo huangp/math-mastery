@@ -1,0 +1,658 @@
+[
+ {
+  "key": "gen.rational.uq0",
+  "zh": "|{v1}| = ？"
+ },
+ {
+  "key": "gen.rational.ue0",
+  "zh": "绝对值表示数到原点的距离，|{v1}| = {v2}。"
+ },
+ {
+  "key": "gen.rational.uq1",
+  "zh": "{v1} 的相反数是？"
+ },
+ {
+  "key": "gen.rational.ue1",
+  "zh": "相反数只变符号，{v1} 的相反数是 {v2}。"
+ },
+ {
+  "key": "gen.rational.uq2",
+  "zh": "比较 {v1} 与 {v2}，较大的数是？"
+ },
+ {
+  "key": "gen.rational.ue2",
+  "zh": "正数大于负数，{v1} > {v2}，较大的是 {v3}。"
+ },
+ {
+  "key": "gen.rational.uq3",
+  "zh": "数轴上点 A 表示 {v1}，点 B 表示 {v2}，线段 AB 的长度是？"
+ },
+ {
+  "key": "gen.rational.ue3",
+  "zh": "AB = |{v1} − {v2}| = {v3}。"
+ },
+ {
+  "key": "gen.rational.uq4",
+  "zh": "{v1} + ({v2}) = ？"
+ },
+ {
+  "key": "gen.rational.ue4",
+  "zh": "异号相加取绝对值较大符号：{v1} + {v2} = {v3}。"
+ },
+ {
+  "key": "gen.rational.uq5",
+  "zh": "{v1} − ({v2}) = ？"
+ },
+ {
+  "key": "gen.rational.ue5",
+  "zh": "减去一个数等于加相反数：{v1} − {v2} = {v3}。"
+ },
+ {
+  "key": "gen.rational.uq6",
+  "zh": "(−{v1}) × (−{v2}) = ？"
+ },
+ {
+  "key": "gen.rational.ue6",
+  "zh": "负负得正：(−{v1}) × (−{v2}) = {v3}。"
+ },
+ {
+  "key": "gen.rational.uq7",
+  "zh": "{v1} 的倒数是？"
+ },
+ {
+  "key": "gen.rational.ue7",
+  "zh": "乘积为 1 的两个数互为倒数，{v1} 的倒数是 1/{v2}。"
+ },
+ {
+  "key": "gen.rational.uq8",
+  "zh": "三个数 {v1} 中最大的是？"
+ },
+ {
+  "key": "gen.rational.ue8",
+  "zh": "比较大小得最大值是 {v1}。"
+ },
+ {
+  "key": "gen.congruent.uq0",
+  "zh": "已知 AB = DE = {v1}，AC = DF = {v2}，∠A = ∠D = {v3}°，判定 △ABC≌△DEF 的依据是？"
+ },
+ {
+  "key": "gen.congruent.ue0",
+  "zh": "两边及其夹角对应相等 → SAS（边角边）。"
+ },
+ {
+  "key": "gen.congruent.uq1",
+  "zh": "已知 ∠B = ∠E = {v1}°，BC = EF = {v2}，∠C = ∠F = {v3}°，依据是？"
+ },
+ {
+  "key": "gen.congruent.ue1",
+  "zh": "两角及其夹边对应相等 → ASA（角边角）。"
+ },
+ {
+  "key": "gen.congruent.uq2",
+  "zh": "已知 AB = DE = {v1}，BC = EF = {v2}，AC = DF = {v3}，依据是？"
+ },
+ {
+  "key": "gen.congruent.ue2",
+  "zh": "三边对应相等 → SSS（边边边）。"
+ },
+ {
+  "key": "gen.congruent.uq3",
+  "zh": "已知 ∠A = ∠D = {v1}°，∠B = ∠E = {v2}°，BC = EF = {v3}，依据是？"
+ },
+ {
+  "key": "gen.congruent.ue3",
+  "zh": "两角及一角的对边对应相等 → AAS（角角边）。"
+ },
+ {
+  "key": "gen.congruent.uq4",
+  "zh": "Rt△ABC 与 Rt△DEF 中，∠C = ∠F = 90°，斜边 AB = DE = {v1}，直角边 AC = DF = {v2}，依据是？"
+ },
+ {
+  "key": "gen.congruent.ue4",
+  "zh": "直角三角形斜边和一条直角边对应相等 → HL（斜边、直角边）。"
+ },
+ {
+  "key": "gen.congruent.uq5",
+  "zh": "已知 △ABC≌△DEF，AB = {v1}，BC = {v2}，AC = {v3}（B↔E，C↔F），则 EF = ？"
+ },
+ {
+  "key": "gen.congruent.ue5",
+  "zh": "全等三角形对应边相等，EF 对应 BC，故 EF = {v1}。"
+ },
+ {
+  "key": "gen.congruent.uq6",
+  "zh": "已知 △ABC≌△DEF，∠A = {v1}°（A↔D），则 ∠D = ？"
+ },
+ {
+  "key": "gen.congruent.ue6",
+  "zh": "全等三角形对应角相等，∠D = ∠A = {v1}°。"
+ },
+ {
+  "key": "gen.congruent.uq7",
+  "zh": "已知 △ABC≌△DEF，△ABC 的周长为 {v1}，则 △DEF 的周长为？"
+ },
+ {
+  "key": "gen.congruent.ue7",
+  "zh": "全等三角形周长相等，△DEF 周长 = {v1}。"
+ },
+ {
+  "key": "gen.congruent.uq8",
+  "zh": "已知 △ABC≌△DEF，△ABC 的面积为 {v1}，则 △DEF 的面积为？"
+ },
+ {
+  "key": "gen.congruent.ue8",
+  "zh": "全等三角形面积相等，△DEF 面积 = {v1}。"
+ },
+ {
+  "key": "gen.congruent.uo0",
+  "zh": "能"
+ },
+ {
+  "key": "gen.congruent.uo1",
+  "zh": "不能"
+ },
+ {
+  "key": "gen.congruent.uo2",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.congruent.uo3",
+  "zh": "一定不全等"
+ },
+ {
+  "key": "gen.congruent.uq9",
+  "zh": "若 △ABC 与 △DEF 满足 AB = DE = {v1}，AC = DF = {v2}，且夹角 ∠A = ∠D，则两三角形？"
+ },
+ {
+  "key": "gen.congruent.ue9",
+  "zh": "两边及夹角相等（SAS），两三角形全等，故“能”判定。"
+ },
+ {
+  "key": "gen.congruent.upt0",
+  "zh": "全等判定"
+ },
+ {
+  "key": "gen.similar.uq0",
+  "zh": "两个相似三角形对应边分别为 {v1}cm 和 {v2}cm，相似比是？"
+ },
+ {
+  "key": "gen.similar.ue0",
+  "zh": "相似比 = {v1} : {v2} = {v3} : 1。"
+ },
+ {
+  "key": "gen.similar.uq1",
+  "zh": "相似比为 {v1}:1 的两个三角形，面积比是？"
+ },
+ {
+  "key": "gen.similar.ue1",
+  "zh": "面积比 = 相似比的平方 = {v1}² : 1 = {v2} : 1。"
+ },
+ {
+  "key": "gen.similar.uq2",
+  "zh": "两个相似三角形周长比为 {v1}:1，则相似比是？"
+ },
+ {
+  "key": "gen.similar.ue2",
+  "zh": "相似三角形周长比等于相似比，故相似比 = {v1}:1。"
+ },
+ {
+  "key": "gen.similar.uq3",
+  "zh": "△ABC∽△DEF，相似比为 {v1}:1（AB 对应 DE），若 AB = {v2}，则 DE = ？"
+ },
+ {
+  "key": "gen.similar.ue3",
+  "zh": "DE = k × AB = {v1} × {v2} = {v3}。"
+ },
+ {
+  "key": "gen.similar.uq4",
+  "zh": "两个相似三角形面积比为 {v1}:1，则相似比是？"
+ },
+ {
+  "key": "gen.similar.ue4",
+  "zh": "相似比 = √(面积比) = √({v1}) : 1 = {v2}:1。"
+ },
+ {
+  "key": "gen.similar.uq5",
+  "zh": "直线 l∥m，截得的线段 AD:DB = {v1}:{v2}，则 AE:EC = ？"
+ },
+ {
+  "key": "gen.similar.ue5",
+  "zh": "平行线分线段成比例，AE:EC = AD:DB = {v1}:{v2}。"
+ },
+ {
+  "key": "gen.similar.uq6",
+  "zh": "△ABC∽△DEF，AB = {v1}，DE = {v2}，BC = {v3}，则 EF（对应 BC）= ？"
+ },
+ {
+  "key": "gen.similar.ue6",
+  "zh": "对应边成比例：EF/BC = DE/AB = {v1}/{v2} = {v3}，故 EF = {v4} × {v5} = {v6}。"
+ },
+ {
+  "key": "gen.similar.uq7",
+  "zh": "同一时刻，身高 {v1}m 的杆影长 {v2}m，另一杆影长 {v3}m，则另一杆高 = ？"
+ },
+ {
+  "key": "gen.similar.ue7",
+  "zh": "物高与影长成正比：h₂ = h₁ × s₂/s₁ = {v1} × {v2}/{v3} = {v4} = {v5}。"
+ },
+ {
+  "key": "gen.similar.uq8",
+  "zh": "△ABC∽△DEF，∠A = {v1}°（A↔D），则 ∠D = ？"
+ },
+ {
+  "key": "gen.similar.ue8",
+  "zh": "相似三角形对应角相等，∠D = ∠A = {v1}°。"
+ },
+ {
+  "key": "gen.similar.uq9",
+  "zh": "两个相似三角形相似比为 {v1}:1，小三角形周长 {v2}，则大三角形周长 = ？"
+ },
+ {
+  "key": "gen.similar.ue9",
+  "zh": "周长比 = 相似比，大周长 = {v1} × {v2} = {v3}。"
+ },
+ {
+  "key": "gen.pyth.uq0",
+  "zh": "直角三角形两直角边为 {v1} 和 {v2}，斜边为？"
+ },
+ {
+  "key": "gen.pyth.ue0",
+  "zh": "c² = {v1}² + {v2}² = {v3} + {v4} = {v5}，c = {v6}。"
+ },
+ {
+  "key": "gen.pyth.uq1",
+  "zh": "直角三角形斜边 {v1}，一直角边 {v2}，另一直角边为？"
+ },
+ {
+  "key": "gen.pyth.ue1",
+  "zh": "b² = c² − a² = {v1} − {v2} = {v3}，b = {v4}。"
+ },
+ {
+  "key": "gen.pyth.uo0",
+  "zh": "是直角三角形"
+ },
+ {
+  "key": "gen.pyth.uo1",
+  "zh": "不是"
+ },
+ {
+  "key": "gen.pyth.uo2",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.pyth.uo3",
+  "zh": "等边"
+ },
+ {
+  "key": "gen.pyth.uq2",
+  "zh": "三边长为 {v1}, {v2}, {v3}，这个三角形是？"
+ },
+ {
+  "key": "gen.pyth.ue2",
+  "zh": "{v1}² + {v2}² = {v3} = {v4}，满足勾股定理，是直角三角形。"
+ },
+ {
+  "key": "gen.pyth.uq3",
+  "zh": "直角三角形斜边为 {v1}，斜边上的中线长为？"
+ },
+ {
+  "key": "gen.pyth.ue3",
+  "zh": "直角三角形斜边中线 = 斜边一半 = {v1} ÷ 2 = {v2}。"
+ },
+ {
+  "key": "gen.pyth.uq4",
+  "zh": "直角三角形中，30° 角所对直角边 = 斜边 ÷ 2，若斜边为 {v1}，则 30° 所对直角边 = ？"
+ },
+ {
+  "key": "gen.pyth.ue4",
+  "zh": "30° 所对直角边 = 斜边 ÷ 2 = {v1} ÷ 2 = {v2}。"
+ },
+ {
+  "key": "gen.pyth.uq5",
+  "zh": "直角三角形两直角边 {v1}, {v2}，面积为？"
+ },
+ {
+  "key": "gen.pyth.ue5",
+  "zh": "面积 = 两直角边乘积 ÷ 2 = {v1} × {v2} ÷ 2 = {v3}。"
+ },
+ {
+  "key": "gen.pyth.uq6",
+  "zh": "直角三角形三边长为 {v1}, {v2}, {v3}，周长为？"
+ },
+ {
+  "key": "gen.pyth.ue6",
+  "zh": "周长 = {v1} + {v2} + {v3} = {v4}。"
+ },
+ {
+  "key": "gen.pyth.uq7",
+  "zh": "一架长 {v1} 的梯子靠墙，底端距墙 {v2}，则墙高 = ？"
+ },
+ {
+  "key": "gen.pyth.ue7",
+  "zh": "墙高 = √(c² − a²) = √({v1} − {v2}) = √({v3}) = {v4}。"
+ },
+ {
+  "key": "gen.pyth.uq8",
+  "zh": "平面直角坐标系中，点 O(0,0) 到点 P({v1},{v2}) 的距离是？"
+ },
+ {
+  "key": "gen.pyth.ue8",
+  "zh": "距离 = √(a² + b²) = √({v1} + {v2}) = √({v3}) = {v4}。"
+ },
+ {
+  "key": "gen.pyth.uq9",
+  "zh": "直角三角形两直角边 {v1}, {v2}，斜边的平方 c² = ？"
+ },
+ {
+  "key": "gen.pyth.ue9",
+  "zh": "由勾股定理 c² = {v1}² + {v2}² = {v3} + {v4} = {v5}。"
+ },
+ {
+  "key": "gen.quad.uq0",
+  "zh": "平行四边形 ABCD 中，AB = {v1}，则对边 CD = ？"
+ },
+ {
+  "key": "gen.quad.ue0",
+  "zh": "平行四边形对边相等，CD = AB = {v1}。"
+ },
+ {
+  "key": "gen.quad.uq1",
+  "zh": "平行四边形 ABCD 中，∠A = {v1}°，则对角 ∠C = ？"
+ },
+ {
+  "key": "gen.quad.ue1",
+  "zh": "平行四边形对角相等，∠C = ∠A = {v1}°。"
+ },
+ {
+  "key": "gen.quad.uq2",
+  "zh": "平行四边形 ABCD 中，∠A = {v1}°，则邻角 ∠B = ？"
+ },
+ {
+  "key": "gen.quad.ue2",
+  "zh": "平行四边形邻角互补，∠B = 180° − {v1}° = {v2}°。"
+ },
+ {
+  "key": "gen.quad.uq3",
+  "zh": "矩形 ABCD 中，对角线 AC = {v1}，则另一条对角线 BD = ？"
+ },
+ {
+  "key": "gen.quad.ue3",
+  "zh": "矩形对角线相等，BD = AC = {v1}。"
+ },
+ {
+  "key": "gen.quad.uq4",
+  "zh": "矩形长为 {v1}，宽为 {v2}，其对角线的平方 = ？"
+ },
+ {
+  "key": "gen.quad.ue4",
+  "zh": "对角线² = 长² + 宽² = {v1}² + {v2}² = {v3}。"
+ },
+ {
+  "key": "gen.quad.uq5",
+  "zh": "菱形周长为 {v1}，则边长 = ？"
+ },
+ {
+  "key": "gen.quad.ue5",
+  "zh": "菱形四边相等，边长 = 周长 ÷ 4 = {v1} ÷ 4 = {v2}。"
+ },
+ {
+  "key": "gen.quad.uq6",
+  "zh": "菱形的两条对角线长分别为 {v1} 和 {v2}，面积为？"
+ },
+ {
+  "key": "gen.quad.ue6",
+  "zh": "菱形面积 = 对角线乘积 ÷ 2 = {v1} × {v2} ÷ 2 = {v3}。"
+ },
+ {
+  "key": "gen.quad.uq7",
+  "zh": "正方形边长为 {v1}，面积为？"
+ },
+ {
+  "key": "gen.quad.ue7",
+  "zh": "正方形面积 = 边长² = {v1}² = {v2}。"
+ },
+ {
+  "key": "gen.quad.uq8",
+  "zh": "正方形边长为 {v1}，对角线长为？"
+ },
+ {
+  "key": "gen.quad.ue8",
+  "zh": "正方形对角线 = 边长 × √2 = {v1}√2。"
+ },
+ {
+  "key": "gen.quad.uq9",
+  "zh": "梯形上底 {v1}，下底 {v2}，中位线长 = ？"
+ },
+ {
+  "key": "gen.quad.ue9",
+  "zh": "梯形中位线 = (上底 + 下底) ÷ 2 = ({v1} + {v2}) ÷ 2 = {v3}。"
+ },
+ {
+  "key": "gen.quad.uq10",
+  "zh": "平行四边形 ABCD 对角线交于 O，AO = {v1}，则 AC = ？"
+ },
+ {
+  "key": "gen.quad.ue10",
+  "zh": "平行四边形对角线互相平分，AC = 2 × AO = 2 × {v1} = {v2}。"
+ },
+ {
+  "key": "gen.circ.uq0",
+  "zh": "半径为 {v1} 的圆，面积为？"
+ },
+ {
+  "key": "gen.circ.ue0",
+  "zh": "面积 S = πr² = π × {v1}² = {v2}π。"
+ },
+ {
+  "key": "gen.circ.uq1",
+  "zh": "半径为 {v1}、圆心角为 {v2}° 的弧长（保留 π 前系数，即 ___π）是？"
+ },
+ {
+  "key": "gen.circ.ue1",
+  "zh": "弧长 = ({v1}°/360°) × 2πr = {v2} × 2 × {v3}π = {v4}π。"
+ },
+ {
+  "key": "gen.circ.uq2",
+  "zh": "半径为 {v1}、圆心角为 {v2}° 的扇形面积（保留 π 前系数，即 ___π）是？"
+ },
+ {
+  "key": "gen.circ.ue2",
+  "zh": "扇形面积 = ({v1}°/360°) × πr² = {v2} × {v3}²π = {v4}π。"
+ },
+ {
+  "key": "gen.engineer.uq0",
+  "zh": "一项工程，甲单独做需 {v1} 天，乙单独做需 {v2} 天。两人合作需几天完成？"
+ },
+ {
+  "key": "gen.engineer.ue0",
+  "zh": "合作效率 = 1/{v1} + 1/{v2} = ({v3}+{v4})/{v5}，时间 = {v6}/({v7}+{v8}) = {v9} 天。"
+ },
+ {
+  "key": "gen.engineer.uq1",
+  "zh": "一项工程，甲单独做需 {v1} 天，甲乙合作需 {v2} 天。乙单独做需几天？"
+ },
+ {
+  "key": "gen.engineer.ue1",
+  "zh": "1/乙 = 1/{v1} − 1/{v2} = ({v3} − {v4})/({v5})，乙 = {v6}/({v7}−{v8}) = {v9} 天。"
+ },
+ {
+  "key": "gen.engineer.uq2",
+  "zh": "甲单独做 {v1} 天，两人合作 {v2} 天。合作比甲单独少用几天？"
+ },
+ {
+  "key": "gen.engineer.ue2",
+  "zh": "少用 = {v1} − {v2} = {v3} 天。"
+ },
+ {
+  "key": "gen.engineer.uq3",
+  "zh": "一项工程，甲、乙、丙单独做分别需 {v1}、{v2}、{v3} 天。三人合作需几天？"
+ },
+ {
+  "key": "gen.engineer.ue3",
+  "zh": "效率和 = 1/{v1} + 1/{v2} + 1/{v3} = 1/{v4}，合作需 {v5} 天。"
+ },
+ {
+  "key": "gen.engineer.uq4",
+  "zh": "甲、乙、丙单独做分别需 {v1}、{v2}、{v3} 天。三人合作需几天？"
+ },
+ {
+  "key": "gen.engineer.ue4",
+  "zh": "效率和 = 1/{v1} + 1/{v2} + 1/{v3} = 1/{v4}，合作需 {v5} 天。"
+ },
+ {
+  "key": "gen.engineer.uq5",
+  "zh": "甲、乙效率比为 {v1}:{v2}，合作 {v3} 天完成。甲单独做需几天？"
+ },
+ {
+  "key": "gen.engineer.ue5",
+  "zh": "甲效占总效 p/(p+q)，甲单独 = t × (p+q)/p = {v1} × {v2}/{v3} = {v4} 天。"
+ },
+ {
+  "key": "gen.engineer.uq6",
+  "zh": "甲、乙效率比为 {v1}:{v2}，合作 {v3} 天完成。乙单独做需几天？"
+ },
+ {
+  "key": "gen.engineer.ue6",
+  "zh": "乙单独 = t × (p+q)/q = {v1} × {v2}/{v3} = {v4} 天。"
+ },
+ {
+  "key": "gen.engineer.uq7",
+  "zh": "甲单独 {v1} 天、乙单独 {v2} 天，合作完成时甲完成了总工程的几分之几？"
+ },
+ {
+  "key": "gen.engineer.ue7",
+  "zh": "甲完成比例 = 甲效/总效 = (1/{v1})/(1/{v2}+1/{v3}) = {v4}/({v5}+{v6})。"
+ },
+ {
+  "key": "gen.engineer.uq8",
+  "zh": "甲每天做 {v1} 个零件，乙每天做 {v2} 个。两人合作每天共做几个？"
+ },
+ {
+  "key": "gen.engineer.ue8",
+  "zh": "合作每天 = 甲 + 乙 = {v1} + {v2} = {v3} 个。"
+ },
+ {
+  "key": "gen.engineer.uq9",
+  "zh": "甲每天做 {v1} 个、乙每天做 {v2} 个，共需完成 {v3} 个。两人合作需几天？"
+ },
+ {
+  "key": "gen.engineer.ue9",
+  "zh": "合作每天 {v1} 个，需 {v2} ÷ {v3} = {v4} 天。"
+ },
+ {
+  "key": "gen.engineer.uq10",
+  "zh": "甲每天做 {v1} 个、乙每天做 {v2} 个。甲先做 {v3} 天，余下两人合作，还需几天完成共 {v4} 个的任务？"
+ },
+ {
+  "key": "gen.engineer.ue10",
+  "zh": "甲先做 {v1} 个，余 {v2} 个；合作每天 {v3} 个，需 {v4} ÷ {v5} = {v6} 天。"
+ },
+ {
+  "key": "gen.engineer.upt0",
+  "zh": "工程问题"
+ },
+ {
+  "key": "gen.cycle.uq0",
+  "zh": "一串珠子按 {v1} 的顺序不断重复排列。第 {v2} 个珠子是什么？"
+ },
+ {
+  "key": "gen.cycle.ue0",
+  "zh": "周期长 {v1}，{v2} ÷ {v3} = {v4} …… {v5}，余数定位第 {v6} 个 = {v7}。"
+ },
+ {
+  "key": "gen.cycle.uq1",
+  "zh": "数列 1, 2, …, {v1} 依次不断重复，第 {v2} 项是？"
+ },
+ {
+  "key": "gen.cycle.ue1",
+  "zh": "周期长 {v1}，第 {v2} 项 = (( {v3} − 1 ) mod {v4}) + 1 = {v5}。"
+ },
+ {
+  "key": "gen.cycle.uq2",
+  "zh": "今天是星期{v1}，过 {v2} 天后是星期几？"
+ },
+ {
+  "key": "gen.cycle.ue2",
+  "zh": "7 天一循环，{v1} mod 7 = {v2}，星期{v3} 往后推 {v4} 天 = 星期{v5}。"
+ },
+ {
+  "key": "gen.cycle.uq3",
+  "zh": "一年分四季度，第 {v1} 个月属于第几季度？"
+ },
+ {
+  "key": "gen.cycle.ue3",
+  "zh": "季度 = ⌈{v1} ÷ 3⌉ = {v2}。"
+ },
+ {
+  "key": "gen.cycle.uq4",
+  "zh": "彩灯按 红、黄、蓝、绿 循环闪烁，第 {v1} 盏是什么颜色？"
+ },
+ {
+  "key": "gen.cycle.ue4",
+  "zh": "4 色一循环，第 {v1} 盏 = 第 {v2} 个 = {v3}。"
+ },
+ {
+  "key": "gen.cycle.uo0",
+  "zh": "奇数"
+ },
+ {
+  "key": "gen.cycle.uo1",
+  "zh": "偶数"
+ },
+ {
+  "key": "gen.cycle.uo2",
+  "zh": "奇数"
+ },
+ {
+  "key": "gen.cycle.uo3",
+  "zh": "质数"
+ },
+ {
+  "key": "gen.cycle.uo4",
+  "zh": "合数"
+ },
+ {
+  "key": "gen.cycle.uq5",
+  "zh": "数列 奇、偶、奇、偶…… 交替排列，第 {v1} 项是奇数还是偶数？"
+ },
+ {
+  "key": "gen.cycle.ue5",
+  "zh": "第 {v1} 项：{v2} 为{v3}数，故是{v4}。"
+ },
+ {
+  "key": "gen.cycle.uq6",
+  "zh": "数列 2, 4, …, {v1} 依次不断重复，第 {v2} 项是？"
+ },
+ {
+  "key": "gen.cycle.ue6",
+  "zh": "周期长 {v1}，周期内第 {v2} 项 = {v3}。"
+ },
+ {
+  "key": "gen.cycle.uq7",
+  "zh": "图案按 □、○、△ 不断重复，第 {v1} 个图案是？"
+ },
+ {
+  "key": "gen.cycle.ue7",
+  "zh": "3 个一循环，第 {v1} 个 = 第 {v2} 个 = {v3}。"
+ },
+ {
+  "key": "gen.cycle.uq8",
+  "zh": "生肖按 鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪 循环。若今年为{v1}，则 {v2} 年后生肖是？"
+ },
+ {
+  "key": "gen.cycle.ue8",
+  "zh": "12 年一循环，{v1} mod 12 = {v2}，{v3} 往后 {v4} 年 = {v5}。"
+ },
+ {
+  "key": "gen.cycle.uq9",
+  "zh": "数列 3, 5, 7, …, {v1}（连续奇数）依次不断重复，第 {v2} 项是？"
+ },
+ {
+  "key": "gen.cycle.ue9",
+  "zh": "周期长 {v1}，第 {v2} 项对应第 {v3} 个奇数 = {v4}。"
+ },
+ {
+  "key": "gen.cycle.upt0",
+  "zh": "周期问题"
+ }
+]

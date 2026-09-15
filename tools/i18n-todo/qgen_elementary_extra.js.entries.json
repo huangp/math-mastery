@@ -1,0 +1,4050 @@
+[
+ {
+  "key": "gen.count.uq0",
+  "zh": "数 {v1} 的{v2}上的数字是几？"
+ },
+ {
+  "key": "gen.count.ue0",
+  "zh": "{v1} 从右边起：个位是 {v2}，十位是 {v3}，百位是 {v4}。所以{v5}上的数字是 {v6}。"
+ },
+ {
+  "key": "gen.count.upt0",
+  "zh": "认数位"
+ },
+ {
+  "key": "gen.count.uq1",
+  "zh": "{v1} 个百、{v2} 个十、{v3} 个一 合起来是多少？"
+ },
+ {
+  "key": "gen.count.ue1",
+  "zh": "{v1} 个百是 {v2}，{v3} 个十是 {v4}，{v5} 个一是 {v6}；{v7}+{v8}+{v9}={v10}。"
+ },
+ {
+  "key": "gen.count.upt1",
+  "zh": "数的组成"
+ },
+ {
+  "key": "gen.count.uq2",
+  "zh": "{v1} 的{v2}一个数是多少？"
+ },
+ {
+  "key": "gen.count.ue2",
+  "zh": "{v1}。"
+ },
+ {
+  "key": "gen.count.upt2",
+  "zh": "相邻数"
+ },
+ {
+  "key": "gen.count.uq3",
+  "zh": "{v1} 和 {v2} 这两个数中，{v3}的是多少？"
+ },
+ {
+  "key": "gen.count.ue3",
+  "zh": "比较数的大小：先看位数，位数多的大；位数相同就从高位比起。{v1} > {v2}，所以{v3}的是 {v4}。"
+ },
+ {
+  "key": "gen.count.upt3",
+  "zh": "比大小"
+ },
+ {
+  "key": "gen.count.uq4",
+  "zh": "按规律接着数：{v1}, {v2}, {v3}, {v4}, ( )。括号里应填多少？"
+ },
+ {
+  "key": "gen.count.ue4",
+  "zh": "每次都多 {v1}（{v2}−{v3}={v4}），所以括号里是 {v5}+{v6}={v7}。"
+ },
+ {
+  "key": "gen.count.upt4",
+  "zh": "找规律"
+ },
+ {
+  "key": "gen.count.uq5",
+  "zh": "两位数 {v1} 的十位数字与个位数字相加，和是多少？"
+ },
+ {
+  "key": "gen.count.ue5",
+  "zh": "{v1} 的十位数字是 {v2}，个位数字是 {v3}，{v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.count.upt5",
+  "zh": "数位相加"
+ },
+ {
+  "key": "gen.count.uq6",
+  "zh": "一个三位数，百位上是 {v1}，十位上是 {v2}，个位上是 {v3}。这个数是多少？"
+ },
+ {
+  "key": "gen.count.ue6",
+  "zh": "按“百位—十位—个位”的顺序写出来：{v1}{v2}{v3}，即 {v4}。"
+ },
+ {
+  "key": "gen.count.upt6",
+  "zh": "写数"
+ },
+ {
+  "key": "gen.count.uq7",
+  "zh": "小方摆了 {v1} 排小棒，每排 {v2} 根。一共有多少根小棒？"
+ },
+ {
+  "key": "gen.count.ue7",
+  "zh": "{v1} 排，每排 {v2} 根，一共 {v3}×{v4}={v5}（根）。"
+ },
+ {
+  "key": "gen.count.upt7",
+  "zh": "数个数"
+ },
+ {
+  "key": "gen.count.uq8",
+  "zh": "从 {v1} 数到 {v2}（两头都数），一共数了多少个数？"
+ },
+ {
+  "key": "gen.count.ue8",
+  "zh": "个数=末数−首数+1={v1}−{v2}+1={v3}（个）。"
+ },
+ {
+  "key": "gen.count.upt8",
+  "zh": "数数个数"
+ },
+ {
+  "key": "gen.count.uq9",
+  "zh": "{v1} 最接近哪个整十数？"
+ },
+ {
+  "key": "gen.count.ue9",
+  "zh": "{v1} 的个位是 {v2}，{v3}。"
+ },
+ {
+  "key": "gen.count.upt9",
+  "zh": "接近整十"
+ },
+ {
+  "key": "gen.count.uq10",
+  "zh": "在 {v1} 中，十位上的数字 {v2} 表示多少？"
+ },
+ {
+  "key": "gen.count.ue10",
+  "zh": "十位上的 {v1} 表示 {v2} 个十，就是 {v3}×10={v4}。"
+ },
+ {
+  "key": "gen.count.upt10",
+  "zh": "数位的值"
+ },
+ {
+  "key": "gen.count.uq11",
+  "zh": "比 {v1} {v2} {v3} 的数是多少？"
+ },
+ {
+  "key": "gen.count.ue11",
+  "zh": "比 {v1} {v2} {v3}，就是 {v4}{v5}{v6}={v7}。"
+ },
+ {
+  "key": "gen.count.upt11",
+  "zh": "多几少几"
+ },
+ {
+  "key": "gen.addsub.uq0",
+  "zh": "计算：{v1} + {v2} = ?"
+ },
+ {
+  "key": "gen.addsub.ue0",
+  "zh": "个位 {v1}+{v2}={v3}{v4}；十位 {v5}+{v6}{v7}={v8}。所以结果是 {v9}。"
+ },
+ {
+  "key": "gen.addsub.upt0",
+  "zh": "两位数加法"
+ },
+ {
+  "key": "gen.addsub.uq1",
+  "zh": "计算：{v1} − {v2} = ?"
+ },
+ {
+  "key": "gen.addsub.ue1",
+  "zh": "{v1}，最后得 {v2}−{v3}={v4}。"
+ },
+ {
+  "key": "gen.addsub.upt1",
+  "zh": "两位数减法"
+ },
+ {
+  "key": "gen.addsub.uq2",
+  "zh": "计算：{v1} + {v2} + {v3} = ?"
+ },
+ {
+  "key": "gen.addsub.ue2",
+  "zh": "从左往右算：{v1}+{v2}={v3}，{v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.addsub.upt2",
+  "zh": "连加"
+ },
+ {
+  "key": "gen.addsub.uq3",
+  "zh": "计算：{v1} − {v2} − {v3} = ?"
+ },
+ {
+  "key": "gen.addsub.ue3",
+  "zh": "从左往右算：{v1}−{v2}={v3}，{v4}−{v5}={v6}。也可以先算 {v7}+{v8}={v9}，再 {v10}−{v11}={v12}。"
+ },
+ {
+  "key": "gen.addsub.upt3",
+  "zh": "连减"
+ },
+ {
+  "key": "gen.addsub.uq4",
+  "zh": "计算：{v1} + {v2} − {v3} = ?"
+ },
+ {
+  "key": "gen.addsub.ue4",
+  "zh": "按从左到右的顺序：{v1}+{v2}={v3}，{v4}−{v5}={v6}。"
+ },
+ {
+  "key": "gen.addsub.upt4",
+  "zh": "加减混合"
+ },
+ {
+  "key": "gen.addsub.uq5",
+  "zh": "在括号里填数：{v1} + ( ) = {v2}"
+ },
+ {
+  "key": "gen.addsub.ue5",
+  "zh": "求加数用减法：( )={v1}−{v2}={v3}。"
+ },
+ {
+  "key": "gen.addsub.upt5",
+  "zh": "填加数"
+ },
+ {
+  "key": "gen.addsub.uq6",
+  "zh": "在括号里填数：( ) − {v1} = {v2}"
+ },
+ {
+  "key": "gen.addsub.ue6",
+  "zh": "被减数=差+减数={v1}+{v2}={v3}。"
+ },
+ {
+  "key": "gen.addsub.upt6",
+  "zh": "填被减数"
+ },
+ {
+  "key": "gen.addsub.uq7",
+  "zh": "在括号里填数：{v1} − ( ) = {v2}"
+ },
+ {
+  "key": "gen.addsub.ue7",
+  "zh": "减数=被减数−差={v1}−{v2}={v3}。"
+ },
+ {
+  "key": "gen.addsub.upt7",
+  "zh": "填减数"
+ },
+ {
+  "key": "gen.addsub.uq8",
+  "zh": "小明原来有 {v1} {v2}{v3}，妈妈又买回 {v4} {v5}。现在一共有多少{v6}？"
+ },
+ {
+  "key": "gen.addsub.ue8",
+  "zh": "求一共多少用加法：{v1}+{v2}={v3}（{v4}）。"
+ },
+ {
+  "key": "gen.addsub.upt8",
+  "zh": "求和"
+ },
+ {
+  "key": "gen.addsub.uq9",
+  "zh": "果园里有 {v1} 筐苹果，运走了 {v2} 筐。还剩多少筐？"
+ },
+ {
+  "key": "gen.addsub.ue9",
+  "zh": "求还剩多少用减法：{v1}−{v2}={v3}（筐）。"
+ },
+ {
+  "key": "gen.addsub.upt9",
+  "zh": "求剩余"
+ },
+ {
+  "key": "gen.addsub.uq10",
+  "zh": "一班有 {v1} 人，二班有 {v2} 人。一班比二班{v3}多少人？"
+ },
+ {
+  "key": "gen.addsub.ue10",
+  "zh": "求相差多少用大数减小数：{v1}−{v2}={v3}（人）。"
+ },
+ {
+  "key": "gen.addsub.upt10",
+  "zh": "求相差"
+ },
+ {
+  "key": "gen.addsub.uq11",
+  "zh": "找规律填数：{v1}, {v2}, {v3}, {v4}, ( )"
+ },
+ {
+  "key": "gen.addsub.ue11",
+  "zh": "相邻两数都相差 {v1}，所以括号里填 {v2}+{v3}={v4}。"
+ },
+ {
+  "key": "gen.addsub.upt11",
+  "zh": "找规律"
+ },
+ {
+  "key": "gen.addsub.uq12",
+  "zh": "估算：{v1} + {v2} 的和最接近哪个整十数？"
+ },
+ {
+  "key": "gen.addsub.ue12",
+  "zh": "{v1}+{v2}={v3}，个位是 {v4}，{v5}，最接近 {v6}。"
+ },
+ {
+  "key": "gen.addsub.upt12",
+  "zh": "估算"
+ },
+ {
+  "key": "gen.multi.uq0",
+  "zh": "计算：{v1} × {v2} = ?"
+ },
+ {
+  "key": "gen.multi.ue0",
+  "zh": "用口诀“{v1}{v2}{v3}”：{v4}×{v5}={v6}。"
+ },
+ {
+  "key": "gen.multi.upt0",
+  "zh": "乘法口诀"
+ },
+ {
+  "key": "gen.multi.uq1",
+  "zh": "{v1} 个 {v2} 相加，和是多少？"
+ },
+ {
+  "key": "gen.multi.ue1",
+  "zh": "{v1} 个 {v2} 相加就是 {v3}×{v4}={v5}。"
+ },
+ {
+  "key": "gen.multi.upt1",
+  "zh": "乘法意义"
+ },
+ {
+  "key": "gen.multi.uq2",
+  "zh": "计算：{v1} × {v2} + {v3} = ?"
+ },
+ {
+  "key": "gen.multi.ue2",
+  "zh": "先乘后加：{v1}×{v2}={v3}，{v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.multi.upt2",
+  "zh": "乘加"
+ },
+ {
+  "key": "gen.multi.uq3",
+  "zh": "计算：{v1} × {v2} − {v3} = ?"
+ },
+ {
+  "key": "gen.multi.ue3",
+  "zh": "先乘后减：{v1}×{v2}={v3}，{v4}−{v5}={v6}。"
+ },
+ {
+  "key": "gen.multi.upt3",
+  "zh": "乘减"
+ },
+ {
+  "key": "gen.multi.uq4",
+  "zh": "{v1} 的 {v2} 倍是多少？"
+ },
+ {
+  "key": "gen.multi.ue4",
+  "zh": "求一个数的几倍用乘法：{v1}×{v2}={v3}。"
+ },
+ {
+  "key": "gen.multi.upt4",
+  "zh": "求几倍"
+ },
+ {
+  "key": "gen.multi.uq5",
+  "zh": "把 {v1} 个桃子平均分成 {v2} 份，每份有多少个？"
+ },
+ {
+  "key": "gen.multi.ue5",
+  "zh": "平均分用除法：{v1}÷{v2}={v3}（个）。想口诀“{v4}{v5}{v6}”。"
+ },
+ {
+  "key": "gen.multi.upt5",
+  "zh": "平均分"
+ },
+ {
+  "key": "gen.multi.uq6",
+  "zh": "每{v1}装 {v2} {v3}{v4}，{v5} {v6}一共有多少{v7}{v8}？"
+ },
+ {
+  "key": "gen.multi.ue6",
+  "zh": "每{v1} {v2} {v3}，共 {v4} {v5}：{v6}×{v7}={v8}（{v9}）。"
+ },
+ {
+  "key": "gen.multi.upt6",
+  "zh": "图文应用"
+ },
+ {
+  "key": "gen.multi.uq7",
+  "zh": "在括号里填数：( ) × {v1} = {v2}"
+ },
+ {
+  "key": "gen.multi.ue7",
+  "zh": "想“几{v1}{v2}”：{v3}÷{v4}={v5}，所以括号里填 {v6}。"
+ },
+ {
+  "key": "gen.multi.upt7",
+  "zh": "口诀求因数"
+ },
+ {
+  "key": "gen.multi.uq8",
+  "zh": "计算：{v1} × {v2} × {v3} = ?"
+ },
+ {
+  "key": "gen.multi.ue8",
+  "zh": "连乘从左往右：{v1}×{v2}={v3}，{v4}×{v5}={v6}。"
+ },
+ {
+  "key": "gen.multi.upt8",
+  "zh": "连乘"
+ },
+ {
+  "key": "gen.multi.uq9",
+  "zh": "{v1}×{v2} 和 {v3}×{v4} 相比，较大的积是多少？"
+ },
+ {
+  "key": "gen.multi.ue9",
+  "zh": "{v1}×{v2}={v3}，{v4}×{v5}={v6}，较大的是 {v7}。"
+ },
+ {
+  "key": "gen.multi.upt9",
+  "zh": "比较积"
+ },
+ {
+  "key": "gen.multi.uq10",
+  "zh": "{v1} 是 {v2} 的多少倍？"
+ },
+ {
+  "key": "gen.multi.ue10",
+  "zh": "求一个数是另一个数的几倍用除法：{v1}÷{v2}={v3}（倍）。"
+ },
+ {
+  "key": "gen.multi.upt10",
+  "zh": "求倍数"
+ },
+ {
+  "key": "gen.multi.uq11",
+  "zh": "计算：{v1} × ({v2} + {v3}) = ?"
+ },
+ {
+  "key": "gen.multi.ue11",
+  "zh": "先算括号：{v1}+{v2}={v3}，再 {v4}×{v5}={v6}。也可以 {v7}×{v8}+{v9}×{v10}={v11}+{v12}={v13}。"
+ },
+ {
+  "key": "gen.multi.upt11",
+  "zh": "乘法分配"
+ },
+ {
+  "key": "gen.divide.uq0",
+  "zh": "{v1} ÷ {v2} = ? 商是多少？"
+ },
+ {
+  "key": "gen.divide.ue0",
+  "zh": "{v1}×{v2}={v3}，{v4}−{v5}={v6}，且 {v7}<{v8}，所以商是 {v9}，余 {v10}。"
+ },
+ {
+  "key": "gen.divide.upt0",
+  "zh": "求商"
+ },
+ {
+  "key": "gen.divide.uq1",
+  "zh": "{v1} ÷ {v2} 的余数是多少？"
+ },
+ {
+  "key": "gen.divide.ue1",
+  "zh": "{v1}÷{v2}={v3}……{v4}（因为 {v5}×{v6}={v7}，{v8}−{v9}={v10}），余数是 {v11}。"
+ },
+ {
+  "key": "gen.divide.upt1",
+  "zh": "求余数"
+ },
+ {
+  "key": "gen.divide.uq2",
+  "zh": "一道除法算式中，除数是 {v1}，余数最大可能是多少？"
+ },
+ {
+  "key": "gen.divide.ue2",
+  "zh": "余数一定比除数小，除数是 {v1}，所以余数最大是 {v2}−1={v3}。"
+ },
+ {
+  "key": "gen.divide.upt2",
+  "zh": "余数范围"
+ },
+ {
+  "key": "gen.divide.uq3",
+  "zh": "一个除法算式中，除数是 {v1}，商是 {v2}，余数是 {v3}。被除数是多少？"
+ },
+ {
+  "key": "gen.divide.ue3",
+  "zh": "被除数=商×除数+余数={v1}×{v2}+{v3}={v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.divide.upt3",
+  "zh": "还原被除数"
+ },
+ {
+  "key": "gen.divide.uq4",
+  "zh": "把 {v1} 本书平均分给 {v2} 个小组，每组分得同样多。{v3}？"
+ },
+ {
+  "key": "gen.divide.ue4",
+  "zh": "{v1}÷{v2}={v3}……{v4}，每组 {v5} 本，还剩 {v6} 本。所以答案是 {v7}。"
+ },
+ {
+  "key": "gen.divide.upt4",
+  "zh": "平均分"
+ },
+ {
+  "key": "gen.divide.uq5",
+  "zh": "一个数除以 {v1} 余 {v2}，这个数至少再加上几就能被 {v3} 整除？"
+ },
+ {
+  "key": "gen.divide.ue5",
+  "zh": "余 {v1} 说明还差 {v2}−{v3}={v4} 就又满一个 {v5}，所以至少加 {v6}。"
+ },
+ {
+  "key": "gen.divide.upt5",
+  "zh": "补足整除"
+ },
+ {
+  "key": "gen.divide.uq6",
+  "zh": "在括号里填数：( ) ÷ {v1} = {v2}"
+ },
+ {
+  "key": "gen.divide.ue6",
+  "zh": "被除数=商×除数={v1}×{v2}={v3}。"
+ },
+ {
+  "key": "gen.divide.upt6",
+  "zh": "填被除数"
+ },
+ {
+  "key": "gen.divide.ue7",
+  "zh": "{v1}×{v2}={v3}，所以 {v4}÷{v5}={v6}，正好整除没有余数。"
+ },
+ {
+  "key": "gen.divide.upt7",
+  "zh": "整除"
+ },
+ {
+  "key": "gen.divide.uq7",
+  "zh": "有 {v1} 个鸡蛋，每盒装 {v2} 个，能装满多少盒？"
+ },
+ {
+  "key": "gen.divide.ue8",
+  "zh": "{v1}÷{v2}={v3}……{v4}，装满 {v5} 盒，还剩 {v6} 个装不满一盒。"
+ },
+ {
+  "key": "gen.divide.upt8",
+  "zh": "装满几盒"
+ },
+ {
+  "key": "gen.divide.uq8",
+  "zh": "有 {v1} 人要过河，每条船最多坐 {v2} 人。至少需要多少条船？"
+ },
+ {
+  "key": "gen.divide.ue9",
+  "zh": "{v1}÷{v2}={v3}……{v4}，剩下的 {v5} 人也要一条船，所以至少 {v6}+1={v7} 条。"
+ },
+ {
+  "key": "gen.divide.upt9",
+  "zh": "进一法"
+ },
+ {
+  "key": "gen.divide.uq9",
+  "zh": "{v1} ÷ {v2} 的商与余数的和是多少？"
+ },
+ {
+  "key": "gen.divide.ue10",
+  "zh": "{v1}÷{v2}={v3}……{v4}，商 {v5} 加余数 {v6} 得 {v7}。"
+ },
+ {
+  "key": "gen.divide.upt10",
+  "zh": "商与余数"
+ },
+ {
+  "key": "gen.divide.uq10",
+  "zh": "{v1} 除以 {v2}，如果余数不为 0，那么余数是几？"
+ },
+ {
+  "key": "gen.divide.ue11",
+  "zh": "{v1}={v2}×{v3}+{v4}，即 {v5}÷{v6}={v7}……{v8}，余数是 {v9}。"
+ },
+ {
+  "key": "gen.divide.upt11",
+  "zh": "带余除法"
+ },
+ {
+  "key": "gen.fourops.uq0",
+  "zh": "计算：{v1} + {v2} × {v3} = ?"
+ },
+ {
+  "key": "gen.fourops.ue0",
+  "zh": "先算乘法：{v1}×{v2}={v3}，再加：{v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.fourops.upt0",
+  "zh": "先乘后加"
+ },
+ {
+  "key": "gen.fourops.uq1",
+  "zh": "计算：{v1} − {v2} × {v3} = ?"
+ },
+ {
+  "key": "gen.fourops.ue1",
+  "zh": "先算乘法：{v1}×{v2}={v3}，再减：{v4}−{v5}={v6}。"
+ },
+ {
+  "key": "gen.fourops.upt1",
+  "zh": "先乘后减"
+ },
+ {
+  "key": "gen.fourops.uq2",
+  "zh": "计算：({v1} + {v2}) × {v3} = ?"
+ },
+ {
+  "key": "gen.fourops.ue2",
+  "zh": "先算小括号：{v1}+{v2}={v3}，再乘：{v4}×{v5}={v6}。"
+ },
+ {
+  "key": "gen.fourops.upt2",
+  "zh": "小括号优先"
+ },
+ {
+  "key": "gen.fourops.uq3",
+  "zh": "计算：{v1} × ({v2} − {v3}) = ?"
+ },
+ {
+  "key": "gen.fourops.ue3",
+  "zh": "先算括号：{v1}−{v2}={v3}，再乘：{v4}×{v5}={v6}。"
+ },
+ {
+  "key": "gen.fourops.upt3",
+  "zh": "小括号优先"
+ },
+ {
+  "key": "gen.fourops.uq4",
+  "zh": "计算：[ ({v1} + {v2}) × {v3} ] ÷ {v4} = ?"
+ },
+ {
+  "key": "gen.fourops.ue4",
+  "zh": "先小括号：{v1}+{v2}={v3}；再中括号内乘：{v4}×{v5}={v6}；最后 {v7}÷{v8}={v9}。"
+ },
+ {
+  "key": "gen.fourops.upt4",
+  "zh": "中括号"
+ },
+ {
+  "key": "gen.fourops.uq5",
+  "zh": "计算：{v1} × {v2} + {v3} × {v4} = ?"
+ },
+ {
+  "key": "gen.fourops.ue5",
+  "zh": "两个乘法分别算：{v1}×{v2}={v3}，{v4}×{v5}={v6}，再相加 {v7}+{v8}={v9}。"
+ },
+ {
+  "key": "gen.fourops.upt5",
+  "zh": "递等式"
+ },
+ {
+  "key": "gen.fourops.uq6",
+  "zh": "计算：{v1} ÷ {v2} + {v3} × {v4} = ?"
+ },
+ {
+  "key": "gen.fourops.ue6",
+  "zh": "同级先算乘除：{v1}÷{v2}={v3}，{v4}×{v5}={v6}，再相加：{v7}+{v8}={v9}。"
+ },
+ {
+  "key": "gen.fourops.upt6",
+  "zh": "乘除优先"
+ },
+ {
+  "key": "gen.fourops.uq7",
+  "zh": "小明计算 {v1} + {v2} 时，把 {v3} 看成了 {v4}，得到的结果是 {v5}。正确的结果应是多少？"
+ },
+ {
+  "key": "gen.fourops.ue7",
+  "zh": "他把加数看错，多算/少算了 {v1}。正确结果={v2}+{v3}={v4}（错误结果 {v5} {v6} {v7} 也得 {v8}）。"
+ },
+ {
+  "key": "gen.fourops.upt7",
+  "zh": "错中求解"
+ },
+ {
+  "key": "gen.fourops.uq8",
+  "zh": "在 {v1} + {v2} × {v3} 中添上小括号，使得先算加法，结果是多少？"
+ },
+ {
+  "key": "gen.fourops.ue8",
+  "zh": "添括号后是 ({v1}+{v2})×{v3}={v4}×{v5}={v6}。"
+ },
+ {
+  "key": "gen.fourops.upt8",
+  "zh": "添括号"
+ },
+ {
+  "key": "gen.fourops.uq9",
+  "zh": "比较 ({v1}+{v2})×{v3} 与 {v4}+{v5}×{v6} 的大小，较大算式的结果是多少？"
+ },
+ {
+  "key": "gen.fourops.ue9",
+  "zh": "({v1}+{v2})×{v3}={v4}，{v5}+{v6}×{v7}={v8}，{v9} 更大，是 {v10}。"
+ },
+ {
+  "key": "gen.fourops.upt9",
+  "zh": "比较大小"
+ },
+ {
+  "key": "gen.fourops.uq10",
+  "zh": "计算：{v1} × {v2} − {v3} ÷ {v4} = ?"
+ },
+ {
+  "key": "gen.fourops.ue10",
+  "zh": "先算乘除：{v1}×{v2}={v3}，{v4}÷{v5}={v6}，再相减：{v7}−{v8}={v9}。"
+ },
+ {
+  "key": "gen.fourops.upt10",
+  "zh": "递等式"
+ },
+ {
+  "key": "gen.fourops.uq11",
+  "zh": "计算：({v1} − {v2}) × {v3} + {v4} = ?"
+ },
+ {
+  "key": "gen.fourops.ue11",
+  "zh": "先括号：{v1}−{v2}={v3}；再乘：{v4}×{v5}={v6}；最后加：{v7}+{v8}={v9}。"
+ },
+ {
+  "key": "gen.fourops.upt11",
+  "zh": "混合运算"
+ },
+ {
+  "key": "gen.fraction.uq0",
+  "zh": "把一根绳子平均分成 {v1} 段，取出其中的 {v2} 段。取出的部分占全长的几分之几？"
+ },
+ {
+  "key": "gen.fraction.ue0",
+  "zh": "平均分成 {v1} 份，每份是 1/{v2}，取 {v3} 份就是 {v4}/{v5}。"
+ },
+ {
+  "key": "gen.fraction.upt0",
+  "zh": "分数意义"
+ },
+ {
+  "key": "gen.fraction.uq1",
+  "zh": "把假分数 {v1}/{v2} 化成带分数，整数部分是多少？"
+ },
+ {
+  "key": "gen.fraction.ue1",
+  "zh": "{v1}÷{v2}={v3}……{v4}，所以 {v5}/{v6} = {v7} 又 {v8}/{v9}，整数部分是 {v10}。"
+ },
+ {
+  "key": "gen.fraction.upt1",
+  "zh": "假分数化带"
+ },
+ {
+  "key": "gen.fraction.uq2",
+  "zh": "把带分数 {v1} 又 {v2}/{v3} 化成假分数，分子是多少？"
+ },
+ {
+  "key": "gen.fraction.ue2",
+  "zh": "分子=整数部分×分母+原分子={v1}×{v2}+{v3}={v4}+{v5}={v6}，即 {v7}/{v8}。"
+ },
+ {
+  "key": "gen.fraction.upt2",
+  "zh": "带化假分数"
+ },
+ {
+  "key": "gen.fraction.uq3",
+  "zh": "把 {v1} 和 {v2} 通分，最小公分母是多少？"
+ },
+ {
+  "key": "gen.fraction.ue3",
+  "zh": "最小公分母就是 {v1} 和 {v2} 的最小公倍数：[{v3},{v4}]={v5}。"
+ },
+ {
+  "key": "gen.fraction.upt3",
+  "zh": "最小公分母"
+ },
+ {
+  "key": "gen.fraction.uq4",
+  "zh": "比较大小：{v1} 和 {v2}，较大的是哪一个？"
+ },
+ {
+  "key": "gen.fraction.ue4",
+  "zh": "通分比较：{v1}={v2}/{v3}，{v4}={v5}/{v6}，{v7}{v8}{v9}，所以 {v10} 大。"
+ },
+ {
+  "key": "gen.fraction.upt4",
+  "zh": "比较分数"
+ },
+ {
+  "key": "gen.fraction.uq5",
+  "zh": "计算 {v1} + {v2}，结果（不约分）的分子是多少？"
+ },
+ {
+  "key": "gen.fraction.ue5",
+  "zh": "同分母分数相加，分母不变、分子相加：{v1}+{v2}={v3}，得 {v4}/{v5}。"
+ },
+ {
+  "key": "gen.fraction.upt5",
+  "zh": "同分母加法"
+ },
+ {
+  "key": "gen.fraction.uq6",
+  "zh": "把 {v1} 约成最简分数，分母是多少？"
+ },
+ {
+  "key": "gen.fraction.ue6",
+  "zh": "{v1} 和 {v2} 的最大公因数是 {v3}，{v4}÷{v5}={v6}，{v7}÷{v8}={v9}，最简分数是 {v10}。"
+ },
+ {
+  "key": "gen.fraction.upt6",
+  "zh": "约分"
+ },
+ {
+  "key": "gen.fraction.uq7",
+  "zh": "一根 {v1} 米长的钢管，平均截成 {v2} 段，每段长多少米？"
+ },
+ {
+  "key": "gen.fraction.ue7",
+  "zh": "每段长=总长÷段数={v1}÷{v2}={v3}（米）；每段占全长的 1/{v4}。"
+ },
+ {
+  "key": "gen.fraction.upt7",
+  "zh": "单位1"
+ },
+ {
+  "key": "gen.fraction.uq8",
+  "zh": "把分数 {v1} 化成小数是多少？"
+ },
+ {
+  "key": "gen.fraction.ue8",
+  "zh": "{v1} 就是 {v2}÷{v3}={v4}。"
+ },
+ {
+  "key": "gen.fraction.upt8",
+  "zh": "分数化小数"
+ },
+ {
+  "key": "gen.fraction.uq9",
+  "zh": "把小数 0.{v1} 化成最简分数，分母是多少？"
+ },
+ {
+  "key": "gen.fraction.ue9",
+  "zh": "0.{v1}={v2}/100，{v3} 与 100 的最大公因数是 {v4}，约分后是 {v5}，分母是 {v6}。"
+ },
+ {
+  "key": "gen.fraction.upt9",
+  "zh": "小数化分数"
+ },
+ {
+  "key": "gen.fraction.uq10",
+  "zh": "分母是 {v1} 的所有真分数中，最大的那个分数的分子是多少？"
+ },
+ {
+  "key": "gen.fraction.ue10",
+  "zh": "真分数的分子要比分母小，分子最大取 {v1}−1={v2}，即 {v3}。"
+ },
+ {
+  "key": "gen.fraction.upt10",
+  "zh": "真分数"
+ },
+ {
+  "key": "gen.fraction.uq11",
+  "zh": "{v1} 的分数单位是 1/{v2}，再添上几个这样的分数单位就等于 1？"
+ },
+ {
+  "key": "gen.fraction.ue11",
+  "zh": "1={v1}，{v2}−{v3}={v4}，也就是再添 {v5} 个 1/{v6}。"
+ },
+ {
+  "key": "gen.fraction.upt11",
+  "zh": "分数单位"
+ },
+ {
+  "key": "gen.decimal.uq0",
+  "zh": "计算：{v1} + {v2} = ?"
+ },
+ {
+  "key": "gen.decimal.ue0",
+  "zh": "小数加法把小数点对齐：{v1}+{v2}={v3}。"
+ },
+ {
+  "key": "gen.decimal.upt0",
+  "zh": "小数加法"
+ },
+ {
+  "key": "gen.decimal.uq1",
+  "zh": "计算：{v1} − {v2} = ?"
+ },
+ {
+  "key": "gen.decimal.ue1",
+  "zh": "小数减法小数点对齐，按整数法则相减：{v1}−{v2}={v3}。"
+ },
+ {
+  "key": "gen.decimal.upt1",
+  "zh": "小数减法"
+ },
+ {
+  "key": "gen.decimal.uq2",
+  "zh": "计算：{v1} × {v2} = ?"
+ },
+ {
+  "key": "gen.decimal.ue2",
+  "zh": "先按整数算 {v1}×{v2}={v3}，再把积缩小到原来的 1/10：{v4}。"
+ },
+ {
+  "key": "gen.decimal.upt2",
+  "zh": "小数乘整数"
+ },
+ {
+  "key": "gen.decimal.uq3",
+  "zh": "计算：{v1} ÷ {v2} = ?"
+ },
+ {
+  "key": "gen.decimal.ue3",
+  "zh": "按整数除法算，商的小数点与被除数对齐：{v1}÷{v2}={v3}（验算 {v4}×{v5}={v6}）。"
+ },
+ {
+  "key": "gen.decimal.upt3",
+  "zh": "小数除法"
+ },
+ {
+  "key": "gen.decimal.uq4",
+  "zh": "把 {v1} 扩大到原来的 {v2} 倍，结果是多少？"
+ },
+ {
+  "key": "gen.decimal.ue4",
+  "zh": "扩大 {v1} 倍就是小数点向右移动 {v2} 位：{v3} → {v4}。"
+ },
+ {
+  "key": "gen.decimal.upt4",
+  "zh": "小数点移动"
+ },
+ {
+  "key": "gen.decimal.uq5",
+  "zh": "单位换算：{v1} {v2} = ? {v3}"
+ },
+ {
+  "key": "gen.decimal.ue5",
+  "zh": "1 {v1}={v2} {v3}，所以 {v4}×{v5}={v6}（{v7}）。"
+ },
+ {
+  "key": "gen.decimal.upt5",
+  "zh": "单位换算"
+ },
+ {
+  "key": "gen.decimal.uq6",
+  "zh": "比较大小：{v1} 和 {v2}，较大的数是多少？"
+ },
+ {
+  "key": "gen.decimal.ue6",
+  "zh": "先比整数部分，再依次比十分位、百分位：{v1} > {v2}，较大的是 {v3}。"
+ },
+ {
+  "key": "gen.decimal.upt6",
+  "zh": "小数比大小"
+ },
+ {
+  "key": "gen.decimal.uq7",
+  "zh": "把 {v1} 保留一位小数，近似数是多少？"
+ },
+ {
+  "key": "gen.decimal.ue7",
+  "zh": "看百分位上的数字：{v1} 的百分位是 {v2}，{v3}，得 {v4}。"
+ },
+ {
+  "key": "gen.decimal.upt7",
+  "zh": "四舍五入"
+ },
+ {
+  "key": "gen.decimal.uq8",
+  "zh": "每支笔 {v1} 元，买 {v2} 支一共要多少元？"
+ },
+ {
+  "key": "gen.decimal.ue8",
+  "zh": "总价=单价×数量={v1}×{v2}={v3}（元）。"
+ },
+ {
+  "key": "gen.decimal.upt8",
+  "zh": "小数应用"
+ },
+ {
+  "key": "gen.decimal.uq9",
+  "zh": "计算：{v1} × {v2} = ?"
+ },
+ {
+  "key": "gen.decimal.ue9",
+  "zh": "先算 {v1}×{v2}={v3}，两个因数共有 2 位小数，积也点 2 位：{v4}。"
+ },
+ {
+  "key": "gen.decimal.upt9",
+  "zh": "小数乘小数"
+ },
+ {
+  "key": "gen.decimal.uq10",
+  "zh": "{v1} ÷ {v2} 的商，小数点后第一位数字是几？"
+ },
+ {
+  "key": "gen.decimal.ue10",
+  "zh": "{v1}÷{v2}={v3}…，把余数补 0 继续除：{v4}0÷{v5} 的整数部分是 {v6}，所以第一位是 {v7}。"
+ },
+ {
+  "key": "gen.decimal.upt10",
+  "zh": "循环小数"
+ },
+ {
+  "key": "gen.decimal.uq11",
+  "zh": "把 {v1} 保留整数，近似数是多少？"
+ },
+ {
+  "key": "gen.decimal.ue11",
+  "zh": "看十分位：{v1} 的十分位是 {v2}，{v3}，得 {v4}。"
+ },
+ {
+  "key": "gen.decimal.upt11",
+  "zh": "求近似数"
+ },
+ {
+  "key": "gen.percent.uq0",
+  "zh": "{v1} 是 {v2} 的百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.percent.ue0",
+  "zh": "{v1}÷{v2}={v3}={v4}%，所以是 {v5}%。"
+ },
+ {
+  "key": "gen.percent.upt0",
+  "zh": "求百分率"
+ },
+ {
+  "key": "gen.percent.uq1",
+  "zh": "商店“打 {v1} 折”出售，售价是原价的百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.percent.ue1",
+  "zh": "打 {v1} 折就是按原价的 {v2}/10 卖，即 {v3}%。"
+ },
+ {
+  "key": "gen.percent.upt1",
+  "zh": "折扣含义"
+ },
+ {
+  "key": "gen.percent.uq2",
+  "zh": "一件衣服原价 {v1} 元，现在打 {v2} 折出售，现价是多少元？"
+ },
+ {
+  "key": "gen.percent.ue2",
+  "zh": "现价=原价×{v1}0%={v2}×{v3}={v4}（元）。"
+ },
+ {
+  "key": "gen.percent.upt2",
+  "zh": "求折后价"
+ },
+ {
+  "key": "gen.percent.uq3",
+  "zh": "一本书打 {v1} 折后卖 {v2} 元，原价是多少元？"
+ },
+ {
+  "key": "gen.percent.ue3",
+  "zh": "原价=现价÷{v1}0%={v2}÷{v3}={v4}（元）。"
+ },
+ {
+  "key": "gen.percent.upt3",
+  "zh": "求原价"
+ },
+ {
+  "key": "gen.percent.uq4",
+  "zh": "去年产粮 {v1} 吨，今年比去年增产 {v2} 成。今年产粮多少吨？"
+ },
+ {
+  "key": "gen.percent.ue4",
+  "zh": "{v1} 成就是 {v2}%，增产 {v3}×{v4}%={v5}（吨），今年 {v6}+{v7}={v8}（吨）。"
+ },
+ {
+  "key": "gen.percent.upt4",
+  "zh": "成数"
+ },
+ {
+  "key": "gen.percent.uq5",
+  "zh": "某饭店营业额是 {v1} 元，按 {v2}% 的税率缴纳营业税，应缴税款多少元？"
+ },
+ {
+  "key": "gen.percent.ue5",
+  "zh": "税款=营业额×税率={v1}×{v2}%={v3}（元）。"
+ },
+ {
+  "key": "gen.percent.upt5",
+  "zh": "税率"
+ },
+ {
+  "key": "gen.percent.uq6",
+  "zh": "把 {v1} 元存入银行，年利率 {v2}%，存 {v3} 年到期的利息是多少元？"
+ },
+ {
+  "key": "gen.percent.ue6",
+  "zh": "利息=本金×年利率×年数={v1}×{v2}%×{v3}={v4}（元）。"
+ },
+ {
+  "key": "gen.percent.upt6",
+  "zh": "利率"
+ },
+ {
+  "key": "gen.percent.uq7",
+  "zh": "学校应到 {v1} 人，实到 {v2} 人，出勤率是百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.percent.ue7",
+  "zh": "出勤率=实到÷应到={v1}÷{v2}={v3}%。"
+ },
+ {
+  "key": "gen.percent.upt7",
+  "zh": "出勤率"
+ },
+ {
+  "key": "gen.percent.uq8",
+  "zh": "某商品原价 {v1} 元，提价 {v2}% 后的价格是多少元？"
+ },
+ {
+  "key": "gen.percent.ue8",
+  "zh": "提价部分={v1}×{v2}%={v3}（元），现价={v4}+{v5}={v6}（元）。"
+ },
+ {
+  "key": "gen.percent.upt8",
+  "zh": "百分数增加"
+ },
+ {
+  "key": "gen.percent.uq9",
+  "zh": "某商品原价 {v1} 元，降价 {v2}% 后的价格是多少元？"
+ },
+ {
+  "key": "gen.percent.ue9",
+  "zh": "降价部分={v1}×{v2}%={v3}（元），现价={v4}−{v5}={v6}（元）。"
+ },
+ {
+  "key": "gen.percent.upt9",
+  "zh": "百分数减少"
+ },
+ {
+  "key": "gen.percent.uq10",
+  "zh": "一个数的 {v1}% 是 {v2}，这个数是多少？"
+ },
+ {
+  "key": "gen.percent.ue10",
+  "zh": "这个数={v1}÷{v2}%={v3}÷{v4}={v5}。"
+ },
+ {
+  "key": "gen.percent.upt10",
+  "zh": "已知部分求整体"
+ },
+ {
+  "key": "gen.percent.uq11",
+  "zh": "工厂生产 {v1} 个零件，其中合格的有 {v2} 个。不合格率是百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.percent.ue11",
+  "zh": "不合格 {v1}−{v2}={v3}（个），不合格率={v4}÷{v5}={v6}%。"
+ },
+ {
+  "key": "gen.percent.upt11",
+  "zh": "合格率"
+ },
+ {
+  "key": "gen.ratio.uq0",
+  "zh": "把比 {v1} : {v2} 化成最简整数比，前项是多少？"
+ },
+ {
+  "key": "gen.ratio.ue0",
+  "zh": "{v1} 与 {v2} 的最大公因数是 {v3}，前后项都除以 {v4}：{v5}÷{v6}={v7}，{v8}÷{v9}={v10}，最简比是 {v11} : {v12}。"
+ },
+ {
+  "key": "gen.ratio.upt0",
+  "zh": "化简比"
+ },
+ {
+  "key": "gen.ratio.uq1",
+  "zh": "求比值：{v1} : {v2} = ?"
+ },
+ {
+  "key": "gen.ratio.ue1",
+  "zh": "比值=前项÷后项={v1}÷{v2}={v3}。"
+ },
+ {
+  "key": "gen.ratio.upt1",
+  "zh": "求比值"
+ },
+ {
+  "key": "gen.ratio.uq2",
+  "zh": "把 {v1} 个苹果按 {v2} : {v3} 分给甲、乙两班，{v4}班分得多少个？"
+ },
+ {
+  "key": "gen.ratio.ue2",
+  "zh": "总份数={v1}+{v2}={v3}（份），每份 {v4}÷{v5}={v6}（个），{v7}班 {v8}×{v9}={v10}（个）。"
+ },
+ {
+  "key": "gen.ratio.upt2",
+  "zh": "按比分配"
+ },
+ {
+  "key": "gen.ratio.uq3",
+  "zh": "在比例尺是 1 : {v1} 的图上，量得两地相距 {v2} 厘米，实际相距多少米？"
+ },
+ {
+  "key": "gen.ratio.ue3",
+  "zh": "实际距离={v1}×{v2}={v3}（厘米）={v4}（米）。"
+ },
+ {
+  "key": "gen.ratio.upt3",
+  "zh": "比例尺"
+ },
+ {
+  "key": "gen.ratio.uq4",
+  "zh": "解比例：{v1} : {v2} = {v3} : ( )，括号里是多少？"
+ },
+ {
+  "key": "gen.ratio.ue4",
+  "zh": "{v1}÷{v2}={v3}，前项扩大 {v4} 倍，后项也扩大 {v5} 倍：{v6}×{v7}={v8}。"
+ },
+ {
+  "key": "gen.ratio.upt4",
+  "zh": "解比例"
+ },
+ {
+  "key": "gen.ratio.uq5",
+  "zh": "甲 : 乙 = {v1} : {v2}，乙 : 丙 = {v3} : {v4}。若丙是 {v5}，那么甲是多少？"
+ },
+ {
+  "key": "gen.ratio.ue5",
+  "zh": "甲 : 丙 = {v1} : {v2}，丙={v3} 是 {v4} 的 {v5} 倍，所以甲={v6}×{v7}={v8}。"
+ },
+ {
+  "key": "gen.ratio.upt5",
+  "zh": "连比"
+ },
+ {
+  "key": "gen.ratio.uq6",
+  "zh": "六年级有男生 {v1} 人，女生 {v2} 人。男生人数是女生人数的多少倍？"
+ },
+ {
+  "key": "gen.ratio.ue6",
+  "zh": "{v1}÷{v2}={v3}，所以男生是女生的 {v4} 倍，男女人数比是 {v5} : 1。"
+ },
+ {
+  "key": "gen.ratio.upt6",
+  "zh": "比的意义"
+ },
+ {
+  "key": "gen.ratio.uq7",
+  "zh": "解比例：( ) : {v1} = {v2} : {v3}，括号里是多少？"
+ },
+ {
+  "key": "gen.ratio.ue7",
+  "zh": "{v1}÷{v2}={v3}，所以括号={v4}×{v5}={v6}（可验算 {v7}×{v8}={v9}×{v10}）。"
+ },
+ {
+  "key": "gen.ratio.upt7",
+  "zh": "解比例"
+ },
+ {
+  "key": "gen.ratio.uq8",
+  "zh": "已知 x 与 y 成反比例，x={v1} 时 y={v2}。当 x={v3} 时，y 是多少？"
+ },
+ {
+  "key": "gen.ratio.ue8",
+  "zh": "成反比例说明 x×y 的积不变：{v1}×{v2}={v3}，所以 y={v4}÷{v5}={v6}。"
+ },
+ {
+  "key": "gen.ratio.upt8",
+  "zh": "反比例"
+ },
+ {
+  "key": "gen.ratio.uq9",
+  "zh": "把 {v1} 元按 {v2} : {v3} : {v4} 分给三人，分得最多的人得多少元？"
+ },
+ {
+  "key": "gen.ratio.ue9",
+  "zh": "总份数 {v1}+{v2}+{v3}={v4}，每份 {v5}÷{v6}={v7}（元），最多的人 {v8}×{v9}={v10}（元）。"
+ },
+ {
+  "key": "gen.ratio.upt9",
+  "zh": "三项分配"
+ },
+ {
+  "key": "gen.ratio.uq10",
+  "zh": "一个比的比值是 {v1}，后项是 {v2}，前项是多少？"
+ },
+ {
+  "key": "gen.ratio.ue10",
+  "zh": "前项=比值×后项={v1}×{v2}={v3}。"
+ },
+ {
+  "key": "gen.ratio.upt10",
+  "zh": "比值与前项"
+ },
+ {
+  "key": "gen.ratio.uq11",
+  "zh": "实际距离 {v1} 米，画在比例尺 1 : {v2} 的图上，图上距离是多少厘米？"
+ },
+ {
+  "key": "gen.ratio.ue11",
+  "zh": "{v1} 米={v2} 厘米，图上距离={v3}÷{v4}={v5}（厘米）。"
+ },
+ {
+  "key": "gen.ratio.upt11",
+  "zh": "比例尺应用"
+ },
+ {
+  "key": "gen.trip.uq0",
+  "zh": "甲、乙两地相距 {v1} 千米，两车同时从两地相对开出，速度分别是每小时 {v2} 千米和 {v3} 千米。几小时后相遇？"
+ },
+ {
+  "key": "gen.trip.ue0",
+  "zh": "速度和={v1}+{v2}={v3}（千米/时），相遇时间=路程和÷速度和={v4}÷{v5}={v6}（小时）。"
+ },
+ {
+  "key": "gen.trip.upt0",
+  "zh": "相遇求时间"
+ },
+ {
+  "key": "gen.trip.uq1",
+  "zh": "两人分别以每小时 {v1} 千米、{v2} 千米的速度相向而行，{v3} 小时后相遇。两地相距多少千米？"
+ },
+ {
+  "key": "gen.trip.ue1",
+  "zh": "路程和=速度和×时间=({v1}+{v2})×{v3}={v4}×{v5}={v6}（千米）。"
+ },
+ {
+  "key": "gen.trip.upt1",
+  "zh": "相遇求路程"
+ },
+ {
+  "key": "gen.trip.uq2",
+  "zh": "两地相距 {v1} 千米，甲以每小时 {v2} 千米的速度出发，同时乙从另一地出发，{v3} 小时后两人相遇。乙每小时行多少千米？"
+ },
+ {
+  "key": "gen.trip.ue2",
+  "zh": "速度和={v1}÷{v2}={v3}（千米/时），乙的速度={v4}−{v5}={v6}（千米/时）。"
+ },
+ {
+  "key": "gen.trip.upt2",
+  "zh": "相遇求速度"
+ },
+ {
+  "key": "gen.trip.uq3",
+  "zh": "乙先走了 {v1} 千米后，甲开始追。甲每小时行 {v2} 千米，乙每小时行 {v3} 千米。甲几小时能追上乙？"
+ },
+ {
+  "key": "gen.trip.ue3",
+  "zh": "速度差={v1}−{v2}={v3}（千米/时），追及时间=路程差÷速度差={v4}÷{v5}={v6}（小时）。"
+ },
+ {
+  "key": "gen.trip.upt3",
+  "zh": "追及求时间"
+ },
+ {
+  "key": "gen.trip.uq4",
+  "zh": "甲每小时行 {v1} 千米，乙每小时行 {v2} 千米，同向而行 {v3} 小时后甲比乙多行多少千米？"
+ },
+ {
+  "key": "gen.trip.ue4",
+  "zh": "每小时甲比乙多行 {v1}−{v2}={v3}（千米），{v4} 小时多行 {v5}×{v6}={v7}（千米）。"
+ },
+ {
+  "key": "gen.trip.upt4",
+  "zh": "追及求路程差"
+ },
+ {
+  "key": "gen.trip.uq5",
+  "zh": "乙以每小时 {v1} 千米先行 {v2} 千米，甲出发后 {v3} 小时追上乙。甲每小时行多少千米？"
+ },
+ {
+  "key": "gen.trip.ue5",
+  "zh": "速度差={v1}÷{v2}={v3}（千米/时），甲的速度={v4}+{v5}={v6}（千米/时）。"
+ },
+ {
+  "key": "gen.trip.upt5",
+  "zh": "追及求速度"
+ },
+ {
+  "key": "gen.trip.uq6",
+  "zh": "一辆汽车每小时行 {v1} 千米，行了 {v2} 小时，一共行了多少千米？"
+ },
+ {
+  "key": "gen.trip.ue6",
+  "zh": "路程=速度×时间={v1}×{v2}={v3}（千米）。"
+ },
+ {
+  "key": "gen.trip.upt6",
+  "zh": "求路程"
+ },
+ {
+  "key": "gen.trip.uq7",
+  "zh": "一辆车 {v1} 小时行了 {v2} 千米，平均每小时行多少千米？"
+ },
+ {
+  "key": "gen.trip.ue7",
+  "zh": "速度=路程÷时间={v1}÷{v2}={v3}（千米/时）。"
+ },
+ {
+  "key": "gen.trip.upt7",
+  "zh": "求速度"
+ },
+ {
+  "key": "gen.trip.uq8",
+  "zh": "一辆车每小时行 {v1} 千米，行 {v2} 千米需要多少小时？"
+ },
+ {
+  "key": "gen.trip.ue8",
+  "zh": "时间=路程÷速度={v1}÷{v2}={v3}（小时）。"
+ },
+ {
+  "key": "gen.trip.upt8",
+  "zh": "求时间"
+ },
+ {
+  "key": "gen.trip.uq9",
+  "zh": "小明从家到学校 {v1} 千米，去时每小时 {v2} 千米，回来每小时 {v3} 千米。往返的平均速度是每小时多少千米？"
+ },
+ {
+  "key": "gen.trip.ue9",
+  "zh": "去用 {v1} 小时，回用 {v2} 小时，总路程 {v3} 千米；平均速度=总路程÷总时间={v4}÷{v5}={v6}（千米/时）。"
+ },
+ {
+  "key": "gen.trip.upt9",
+  "zh": "平均速度"
+ },
+ {
+  "key": "gen.trip.uq10",
+  "zh": "两车在相距 {v1} 千米的两地同时相对开出，速度分别是每小时 {v2} 千米和 {v3} 千米，到站后立即返回。第 {v4} 次相遇时共用了多少小时？"
+ },
+ {
+  "key": "gen.trip.ue10",
+  "zh": "第 1 次相遇合走 1 个全程用 {v1}÷{v2}={v3}（小时）；第 {v4} 次相遇合走 {v5} 个全程，用 {v6}×{v7}={v8}（小时）。"
+ },
+ {
+  "key": "gen.trip.upt10",
+  "zh": "多次相遇"
+ },
+ {
+  "key": "gen.trip.uq11",
+  "zh": "两地相距 {v1} 千米，甲、乙两车同时相对开出，速度分别是每小时 {v2} 千米、{v3} 千米。相遇时甲车行了多少千米？"
+ },
+ {
+  "key": "gen.trip.ue11",
+  "zh": "相遇时间={v1}÷({v2}+{v3})={v4}（小时），甲行 {v5}×{v6}={v7}（千米）。"
+ },
+ {
+  "key": "gen.trip.upt11",
+  "zh": "相遇分路程"
+ },
+ {
+  "key": "gen.profit.uq0",
+  "zh": "一件商品成本 {v1} 元，售价 {v2} 元，每件的利润是多少元？"
+ },
+ {
+  "key": "gen.profit.ue0",
+  "zh": "利润=售价−成本={v1}−{v2}={v3}（元）。"
+ },
+ {
+  "key": "gen.profit.upt0",
+  "zh": "求利润"
+ },
+ {
+  "key": "gen.profit.uq1",
+  "zh": "成本 {v1} 元的商品卖 {v2} 元，利润率是百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.profit.ue1",
+  "zh": "利润={v1}−{v2}={v3}（元），利润率=利润÷成本={v4}÷{v5}={v6}%。"
+ },
+ {
+  "key": "gen.profit.upt1",
+  "zh": "利润率"
+ },
+ {
+  "key": "gen.profit.uq2",
+  "zh": "某商品成本 {v1} 元，要获得 {v2}% 的利润，售价应定为多少元？"
+ },
+ {
+  "key": "gen.profit.ue2",
+  "zh": "利润={v1}×{v2}%={v3}（元），售价={v4}+{v5}={v6}（元）。"
+ },
+ {
+  "key": "gen.profit.upt2",
+  "zh": "求售价"
+ },
+ {
+  "key": "gen.profit.uq3",
+  "zh": "一件商品按 {v1}% 的利润率定价，售价是 {v2} 元，成本是多少元？"
+ },
+ {
+  "key": "gen.profit.ue3",
+  "zh": "售价是成本的 (100%+{v1}%)={v2}%，成本={v3}÷{v4}={v5}（元）。"
+ },
+ {
+  "key": "gen.profit.upt3",
+  "zh": "求成本"
+ },
+ {
+  "key": "gen.profit.uq4",
+  "zh": "标价 {v1} 元的商品打 {v2} 折出售，售价是多少元？"
+ },
+ {
+  "key": "gen.profit.ue4",
+  "zh": "售价=标价×{v1}0%={v2}×{v3}={v4}（元）。"
+ },
+ {
+  "key": "gen.profit.upt4",
+  "zh": "折后售价"
+ },
+ {
+  "key": "gen.profit.uq5",
+  "zh": "标价 {v1} 元的商品打 {v2} 折卖出，成本是 {v3} 元，每件赚多少元？"
+ },
+ {
+  "key": "gen.profit.ue5",
+  "zh": "售价={v1}×{v2}={v3}（元），利润={v4}−{v5}={v6}（元）。"
+ },
+ {
+  "key": "gen.profit.upt5",
+  "zh": "折后利润"
+ },
+ {
+  "key": "gen.profit.uq6",
+  "zh": "某公司营业额 {v1} 元，按 {v2}% 缴纳营业税，应缴多少元税款？"
+ },
+ {
+  "key": "gen.profit.ue6",
+  "zh": "税款=营业额×税率={v1}×{v2}%={v3}（元）。"
+ },
+ {
+  "key": "gen.profit.upt6",
+  "zh": "税款"
+ },
+ {
+  "key": "gen.profit.uq7",
+  "zh": "收入 {v1} 元，按 {v2}% 缴税后，实际得到多少元？"
+ },
+ {
+  "key": "gen.profit.ue7",
+  "zh": "税款={v1}×{v2}%={v3}（元），实得={v4}−{v5}={v6}（元）。"
+ },
+ {
+  "key": "gen.profit.upt7",
+  "zh": "税后所得"
+ },
+ {
+  "key": "gen.profit.uq8",
+  "zh": "一件商品成本 {v1} 元，只卖了 {v2} 元，亏了多少元？"
+ },
+ {
+  "key": "gen.profit.ue8",
+  "zh": "售价低于成本就是亏损：{v1}−{v2}={v3}（元）。"
+ },
+ {
+  "key": "gen.profit.upt8",
+  "zh": "亏损"
+ },
+ {
+  "key": "gen.profit.uq9",
+  "zh": "成本 {v1} 元的商品，利润率是 {v2}%，每件利润是多少元？"
+ },
+ {
+  "key": "gen.profit.ue9",
+  "zh": "利润=成本×利润率={v1}×{v2}%={v3}（元）。"
+ },
+ {
+  "key": "gen.profit.upt9",
+  "zh": "利润率求利润"
+ },
+ {
+  "key": "gen.profit.uq10",
+  "zh": "每件商品利润 {v1} 元，卖出 {v2} 件，一共赚了多少元？"
+ },
+ {
+  "key": "gen.profit.ue10",
+  "zh": "总利润=每件利润×件数={v1}×{v2}={v3}（元）。"
+ },
+ {
+  "key": "gen.profit.upt10",
+  "zh": "总利润"
+ },
+ {
+  "key": "gen.profit.uq11",
+  "zh": "一件成本 {v1} 元的商品，打 {v2} 折出售后仍能获利 {v3}%。它的标价是多少元？"
+ },
+ {
+  "key": "gen.profit.ue11",
+  "zh": "打折后的售价={v1}×(1+{v2}%)={v3}（元），标价=售价÷{v4}0%={v5}÷{v6}={v7}（元）。"
+ },
+ {
+  "key": "gen.profit.upt11",
+  "zh": "标价与折扣"
+ },
+ {
+  "key": "gen.circle.uq0",
+  "zh": "一个圆的半径是 {v1} 厘米，它的周长是多少厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue0",
+  "zh": "C=2πr=2×3.14×{v1}={v2}（厘米）。"
+ },
+ {
+  "key": "gen.circle.upt0",
+  "zh": "圆的周长"
+ },
+ {
+  "key": "gen.circle.uq1",
+  "zh": "一个圆的半径是 {v1} 厘米，它的面积是多少平方厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue1",
+  "zh": "S=πr²=3.14×{v1}²=3.14×{v2}={v3}（平方厘米）。"
+ },
+ {
+  "key": "gen.circle.upt1",
+  "zh": "圆的面积"
+ },
+ {
+  "key": "gen.circle.uq2",
+  "zh": "一个圆的直径是 {v1} 米，它的周长是多少米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue2",
+  "zh": "C=πd=3.14×{v1}={v2}（米）。"
+ },
+ {
+  "key": "gen.circle.upt2",
+  "zh": "直径求周长"
+ },
+ {
+  "key": "gen.circle.uq3",
+  "zh": "一个圆的直径是 {v1} 分米，它的面积是多少平方分米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue3",
+  "zh": "半径 r={v1}÷2={v2}（分米），S=πr²=3.14×{v3}={v4}（平方分米）。"
+ },
+ {
+  "key": "gen.circle.upt3",
+  "zh": "直径求面积"
+ },
+ {
+  "key": "gen.circle.uq4",
+  "zh": "一个圆的周长是 {v1} 厘米，半径是多少厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue4",
+  "zh": "r=C÷(2π)={v1}÷6.28={v2}（厘米）。"
+ },
+ {
+  "key": "gen.circle.upt4",
+  "zh": "周长求半径"
+ },
+ {
+  "key": "gen.circle.uq5",
+  "zh": "一个半圆的半径是 {v1} 厘米，这个半圆的周长是多少厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue5",
+  "zh": "半圆周长=半个圆周+一条直径=3.14×{v1}+2×{v2}={v3}+{v4}={v5}（厘米）。"
+ },
+ {
+  "key": "gen.circle.upt5",
+  "zh": "半圆周长"
+ },
+ {
+  "key": "gen.circle.uq6",
+  "zh": "一个半圆的半径是 {v1} 分米，它的面积是多少平方分米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue6",
+  "zh": "半圆面积=πr²÷2=3.14×{v1}÷2={v2}÷2={v3}（平方分米）。"
+ },
+ {
+  "key": "gen.circle.upt6",
+  "zh": "半圆面积"
+ },
+ {
+  "key": "gen.circle.uq7",
+  "zh": "一个圆环，外圆半径 {v1} 厘米，内圆半径 {v2} 厘米，圆环的面积是多少平方厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue7",
+  "zh": "S环=π(R²−r²)=3.14×({v1}−{v2})=3.14×{v3}={v4}（平方厘米）。"
+ },
+ {
+  "key": "gen.circle.upt7",
+  "zh": "圆环面积"
+ },
+ {
+  "key": "gen.circle.uq8",
+  "zh": "一个圆心角是 {v1}° 的扇形，所在圆的半径是 {v2} 厘米，扇形面积是多少平方厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue8",
+  "zh": "扇形面积=πr²×{v1}/360=3.14×{v2}×{v3}={v4}（平方厘米）。"
+ },
+ {
+  "key": "gen.circle.upt8",
+  "zh": "扇形面积"
+ },
+ {
+  "key": "gen.circle.uq9",
+  "zh": "圆心角 {v1}°、半径 {v2} 厘米的扇形，弧长是多少厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.circle.ue9",
+  "zh": "弧长=2πr×{v1}/360=6.28×{v2}×{v3}={v4}（厘米）。"
+ },
+ {
+  "key": "gen.circle.upt9",
+  "zh": "弧长"
+ },
+ {
+  "key": "gen.circle.uq10",
+  "zh": "一个圆的半径是 {v1} 厘米，如果把半径扩大到原来的 {v2} 倍，面积扩大到原来的多少倍？"
+ },
+ {
+  "key": "gen.circle.ue10",
+  "zh": "原面积 πr²=3.14×{v1}，新半径 {v2}，新面积 3.14×{v3}；{v4}÷{v5}={v6}，面积扩大 {v7}²={v8} 倍。"
+ },
+ {
+  "key": "gen.circle.upt10",
+  "zh": "面积倍数"
+ },
+ {
+  "key": "gen.cylinder.uq0",
+  "zh": "一个圆柱底面半径 {v1} 厘米，高 {v2} 厘米，它的侧面积是多少平方厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.cylinder.ue0",
+  "zh": "侧面积=底面周长×高=2×3.14×{v1}×{v2}={v3}×{v4}={v5}（平方厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt0",
+  "zh": "圆柱侧面积"
+ },
+ {
+  "key": "gen.cylinder.uq1",
+  "zh": "一个圆柱底面半径 {v1} 分米，高 {v2} 分米，它的表面积是多少平方分米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.cylinder.ue1",
+  "zh": "侧面积=6.28×{v1}×{v2}={v3}，两个底面=2×3.14×{v4}={v5}，表面积={v6}+{v7}={v8}（平方分米）。"
+ },
+ {
+  "key": "gen.cylinder.upt1",
+  "zh": "圆柱表面积"
+ },
+ {
+  "key": "gen.cylinder.uq2",
+  "zh": "一个圆柱底面半径 {v1} 厘米，高 {v2} 厘米，体积是多少立方厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.cylinder.ue2",
+  "zh": "V=πr²h=3.14×{v1}×{v2}={v3}×{v4}={v5}（立方厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt2",
+  "zh": "圆柱体积"
+ },
+ {
+  "key": "gen.cylinder.uq3",
+  "zh": "一个圆锥底面半径 {v1} 厘米，高 {v2} 厘米，体积是多少立方厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.cylinder.ue3",
+  "zh": "V锥=1/3×πr²h=1/3×3.14×{v1}×{v2}={v3}（立方厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt3",
+  "zh": "圆锥体积"
+ },
+ {
+  "key": "gen.cylinder.uq4",
+  "zh": "一个圆柱和一个圆锥等底等高，圆柱的体积是 {v1} 立方分米，圆锥的体积是多少立方分米？"
+ },
+ {
+  "key": "gen.cylinder.ue4",
+  "zh": "等底等高时圆锥体积是圆柱的 1/3：{v1}÷3={v2}（立方分米）。"
+ },
+ {
+  "key": "gen.cylinder.upt4",
+  "zh": "等底等高"
+ },
+ {
+  "key": "gen.cylinder.uq5",
+  "zh": "一个圆锥与一个圆柱等底等高，圆锥体积是 {v1} 立方厘米，圆柱体积是多少立方厘米？"
+ },
+ {
+  "key": "gen.cylinder.ue5",
+  "zh": "圆柱体积是等底等高圆锥的 3 倍：{v1}×3={v2}（立方厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt5",
+  "zh": "等底等高"
+ },
+ {
+  "key": "gen.cylinder.uq6",
+  "zh": "一个圆柱形水桶，底面直径 {v1} 分米，高 {v2} 分米，它的容积是多少立方分米？（π 取 3.14，桶壁厚度不计）"
+ },
+ {
+  "key": "gen.cylinder.ue6",
+  "zh": "半径={v1}÷2={v2}（分米），V=πr²h=3.14×{v3}×{v4}={v5}（立方分米）。"
+ },
+ {
+  "key": "gen.cylinder.upt6",
+  "zh": "容积"
+ },
+ {
+  "key": "gen.cylinder.uq7",
+  "zh": "把一个圆柱的侧面展开得到一个长方形，圆柱底面直径是 {v1} 厘米，这个长方形的长是多少厘米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.cylinder.ue7",
+  "zh": "侧面展开后长方形的长等于底面周长：C=πd=3.14×{v1}={v2}（厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt7",
+  "zh": "侧面展开"
+ },
+ {
+  "key": "gen.cylinder.uq8",
+  "zh": "一个圆锥形沙堆，底面半径 {v1} 米，高 {v2} 米，沙堆的体积是多少立方米？（π 取 3.14）"
+ },
+ {
+  "key": "gen.cylinder.ue8",
+  "zh": "V=1/3πr²h=1/3×3.14×{v1}×{v2}={v3}（立方米）。"
+ },
+ {
+  "key": "gen.cylinder.upt8",
+  "zh": "沙堆问题"
+ },
+ {
+  "key": "gen.cylinder.uq9",
+  "zh": "一个圆柱的底面积是 {v1} 平方厘米，高 {v2} 厘米，体积是多少立方厘米？"
+ },
+ {
+  "key": "gen.cylinder.ue9",
+  "zh": "V=Sh={v1}×{v2}={v3}（立方厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt9",
+  "zh": "底面积求体积"
+ },
+ {
+  "key": "gen.cylinder.uq10",
+  "zh": "一个圆柱的体积是 {v1} 立方分米，底面积是 {v2} 平方分米，它的高是多少分米？"
+ },
+ {
+  "key": "gen.cylinder.ue10",
+  "zh": "h=V÷S={v1}÷{v2}={v3}（分米）。"
+ },
+ {
+  "key": "gen.cylinder.upt10",
+  "zh": "求圆柱高"
+ },
+ {
+  "key": "gen.cylinder.uq11",
+  "zh": "一个圆锥的体积是 {v1} 立方厘米，底面积是 {v2} 平方厘米，它的高是多少厘米？"
+ },
+ {
+  "key": "gen.cylinder.ue11",
+  "zh": "圆锥 V=1/3Sh，所以 h=3V÷S=3×{v1}÷{v2}={v3}÷{v4}={v5}（厘米）。"
+ },
+ {
+  "key": "gen.cylinder.upt11",
+  "zh": "求圆锥高"
+ },
+ {
+  "key": "gen.equation.uq0",
+  "zh": "甲、乙两数的和是 {v1}，甲是乙的 {v2} 倍。{v3}是多少？"
+ },
+ {
+  "key": "gen.equation.ue0",
+  "zh": "设乙为 x，则甲为 {v1}x，{v2}x+x={v3}，{v4}x={v5}，x={v6}；甲={v7}。所以{v8}是 {v9}。"
+ },
+ {
+  "key": "gen.equation.upt0",
+  "zh": "和倍问题"
+ },
+ {
+  "key": "gen.equation.uq1",
+  "zh": "甲比乙多 {v1}，甲是乙的 {v2} 倍。{v3}是多少？"
+ },
+ {
+  "key": "gen.equation.ue1",
+  "zh": "设乙为 x，则甲为 {v1}x，{v2}x−x={v3}，{v4}x={v5}，x={v6}；甲={v7}。所以{v8}是 {v9}。"
+ },
+ {
+  "key": "gen.equation.upt1",
+  "zh": "差倍问题"
+ },
+ {
+  "key": "gen.equation.uq2",
+  "zh": "今年爸爸 {v1} 岁，儿子 {v2} 岁。几年后爸爸的年龄是儿子的 {v3} 倍？"
+ },
+ {
+  "key": "gen.equation.ue2",
+  "zh": "设 x 年后，{v1}+x={v2}({v3}+x)，{v4}+x={v5}+{v6}x，{v7}x={v8}，x={v9}（年）。"
+ },
+ {
+  "key": "gen.equation.upt2",
+  "zh": "年龄问题"
+ },
+ {
+  "key": "gen.equation.uq3",
+  "zh": "一个数的 {v1} 倍加上 {v2} 等于 {v3}，这个数是多少？"
+ },
+ {
+  "key": "gen.equation.ue3",
+  "zh": "设这个数为 x：{v1}x+{v2}={v3}，{v4}x={v5}，x={v6}÷{v7}={v8}。"
+ },
+ {
+  "key": "gen.equation.upt3",
+  "zh": "数字问题"
+ },
+ {
+  "key": "gen.equation.uq4",
+  "zh": "把一些糖分给同学：每人 {v1} 块多 {v2} 块，每人 {v3} 块少 {v4} 块。一共有多少个同学？"
+ },
+ {
+  "key": "gen.equation.ue4",
+  "zh": "两次分配相差 {v1}+{v2}={v3}（块），每人相差 {v4}−{v5}={v6}（块），人数={v7}÷{v8}={v9}（人）。"
+ },
+ {
+  "key": "gen.equation.upt4",
+  "zh": "盈亏问题"
+ },
+ {
+  "key": "gen.equation.uq5",
+  "zh": "把一些糖分给 {v1} 个同学，每人 {v2} 块还多 {v3} 块。一共有多少块糖？"
+ },
+ {
+  "key": "gen.equation.ue5",
+  "zh": "总数=每人块数×人数+多余={v1}×{v2}+{v3}={v4}（块）。"
+ },
+ {
+  "key": "gen.equation.upt5",
+  "zh": "盈亏问题"
+ },
+ {
+  "key": "gen.equation.uq6",
+  "zh": "两地相距 {v1} 千米，甲车每小时 {v2} 千米，乙车每小时 {v3} 千米，两车相对开出，几小时相遇？（列方程解）"
+ },
+ {
+  "key": "gen.equation.ue6",
+  "zh": "设 x 小时相遇：({v1}+{v2})x={v3}，{v4}x={v5}，x={v6}（小时）。"
+ },
+ {
+  "key": "gen.equation.upt6",
+  "zh": "行程列方程"
+ },
+ {
+  "key": "gen.equation.uq7",
+  "zh": "一个数减去 {v1} 后，再乘 {v2}，结果是 {v3}。这个数是多少？"
+ },
+ {
+  "key": "gen.equation.ue7",
+  "zh": "设这个数为 x：(x−{v1})×{v2}={v3}，x−{v4}={v5}÷{v6}={v7}，x={v8}+{v9}={v10}。"
+ },
+ {
+  "key": "gen.equation.upt7",
+  "zh": "逆推列方程"
+ },
+ {
+  "key": "gen.equation.uq8",
+  "zh": "甲、乙两人共有 {v1} 元，甲比乙多 {v2} 元。甲有多少元？"
+ },
+ {
+  "key": "gen.equation.ue8",
+  "zh": "设乙为 x 元，甲为 x+{v1}：x+x+{v2}={v3}，2x={v4}，x={v5}，甲={v6}+{v7}={v8}（元）。"
+ },
+ {
+  "key": "gen.equation.upt8",
+  "zh": "和差问题"
+ },
+ {
+  "key": "gen.equation.uq9",
+  "zh": "笼子里有鸡和兔共 {v1} 只，共有 {v2} 条腿。{v3}有多少只？（列方程解）"
+ },
+ {
+  "key": "gen.equation.ue9",
+  "zh": "设兔 x 只，鸡 ({v1}−x) 只：4x+2({v2}−x)={v3}，2x={v4}，x={v5}（兔），鸡={v6}−{v7}={v8}。答案是 {v9}。"
+ },
+ {
+  "key": "gen.equation.upt9",
+  "zh": "鸡兔同笼"
+ },
+ {
+  "key": "gen.equation.uq10",
+  "zh": "一项工程，甲队单独做 {v1} 天完成，乙队单独做 {v2} 天完成。两队合做多少天完成？"
+ },
+ {
+  "key": "gen.equation.ue10",
+  "zh": "设合做 x 天：x(1/{v1}+1/{v2})=1，1/{v3}+1/{v4}={v5}，x={v6}（天）。"
+ },
+ {
+  "key": "gen.equation.upt10",
+  "zh": "工程列方程"
+ },
+ {
+  "key": "gen.equation.uq11",
+  "zh": "三个连续自然数的和是 {v1}，其中{v2}的一个数是多少？"
+ },
+ {
+  "key": "gen.equation.ue11",
+  "zh": "设中间数为 x：(x−1)+x+(x+1)={v1}，3x={v2}，x={v3}，三个数是 {v4}、{v5}、{v6}，{v7}的是 {v8}。"
+ },
+ {
+  "key": "gen.equation.upt11",
+  "zh": "连续数问题"
+ },
+ {
+  "key": "gen.equation.uq12",
+  "zh": "一件衣服打 {v1} 折后卖 {v2} 元，原价是多少元？（列方程解）"
+ },
+ {
+  "key": "gen.equation.ue12",
+  "zh": "设原价 x 元：{v1}x={v2}，x={v3}÷{v4}={v5}（元）。"
+ },
+ {
+  "key": "gen.equation.upt12",
+  "zh": "打折列方程"
+ },
+ {
+  "key": "gen.speedcalc.uq0",
+  "zh": "用简便方法计算：{v1} + {v2} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue0",
+  "zh": "把 {v1} 看成 {v2} 先加，再减去多加的 {v3}：{v4}+{v5}−{v6}={v7}−{v8}={v9}。"
+ },
+ {
+  "key": "gen.speedcalc.upt0",
+  "zh": "凑整法"
+ },
+ {
+  "key": "gen.speedcalc.uq1",
+  "zh": "用简便方法计算：{v1} + {v2} + {v3} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue1",
+  "zh": "先算能凑整的：{v1}+{v2}=100，再 {v3}+100={v4}。这是加法交换律和结合律。"
+ },
+ {
+  "key": "gen.speedcalc.upt1",
+  "zh": "交换结合"
+ },
+ {
+  "key": "gen.speedcalc.uq2",
+  "zh": "用简便方法计算：{v1} × {v2} + {v3} × {v4} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue2",
+  "zh": "提取公因数 {v1}：({v2}+{v3})×{v4}=100×{v5}={v6}。"
+ },
+ {
+  "key": "gen.speedcalc.upt2",
+  "zh": "提公因数"
+ },
+ {
+  "key": "gen.speedcalc.uq3",
+  "zh": "用简便方法计算：{v1} × {v2} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue3",
+  "zh": "{v1}×{v2}={v3}×100+{v4}×{v5}={v6}+{v7}={v8}（乘法分配律）。"
+ },
+ {
+  "key": "gen.speedcalc.upt3",
+  "zh": "乘法分配律"
+ },
+ {
+  "key": "gen.speedcalc.uq4",
+  "zh": "计算：1 + 2 + 3 + … + {v1} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue4",
+  "zh": "高斯求和：(首+末)×项数÷2=(1+{v1})×{v2}÷2={v3}÷2={v4}。"
+ },
+ {
+  "key": "gen.speedcalc.upt4",
+  "zh": "等差求和"
+ },
+ {
+  "key": "gen.speedcalc.uq5",
+  "zh": "用基准数法计算：{v1} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue5",
+  "zh": "以 {v1} 为基准：{v2}×5={v3}，各数与基准的差之和是 {v4}，所以和={v5}{v6}{v7}={v8}。"
+ },
+ {
+  "key": "gen.speedcalc.upt5",
+  "zh": "基准数法"
+ },
+ {
+  "key": "gen.speedcalc.uq6",
+  "zh": "用简便方法计算：{v1} − {v2} − {v3} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue6",
+  "zh": "连减可以减去两个数的和：{v1}+{v2}=100，{v3}−100={v4}。"
+ },
+ {
+  "key": "gen.speedcalc.upt6",
+  "zh": "减法性质"
+ },
+ {
+  "key": "gen.speedcalc.uq7",
+  "zh": "{v1} 个 {v2} 连乘…… 即 {v3} 的 {v4} 次方（{v5}×{v6}×…×{v7}，共 {v8} 个 {v9}）的个位数字是几？"
+ },
+ {
+  "key": "gen.speedcalc.ue7",
+  "zh": "{v1} 的乘方个位有周期性，逐次取个位可得周期；{v2} 次方时个位是 {v3}。"
+ },
+ {
+  "key": "gen.speedcalc.upt7",
+  "zh": "个位规律"
+ },
+ {
+  "key": "gen.speedcalc.uq8",
+  "zh": "用简便方法计算：{v1} × 11 = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue8",
+  "zh": "{v1}×11={v2}×10+{v3}={v4}+{v5}={v6}（“两头一拉，中间相加”）。"
+ },
+ {
+  "key": "gen.speedcalc.upt8",
+  "zh": "乘11速算"
+ },
+ {
+  "key": "gen.speedcalc.uq9",
+  "zh": "用简便方法计算：{v1} × 25 = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue9",
+  "zh": "25×4=100，{v1}÷4={v2}，所以 {v3}×25={v4}×100={v5}。"
+ },
+ {
+  "key": "gen.speedcalc.upt9",
+  "zh": "乘25速算"
+ },
+ {
+  "key": "gen.speedcalc.uq10",
+  "zh": "用简便方法计算：{v1} × {v2} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue10",
+  "zh": "十位相同、个位和为 10：积=十位×(十位+1)×100+个位之积={v1}×{v2}×100+{v3}×{v4}={v5}+{v6}={v7}。"
+ },
+ {
+  "key": "gen.speedcalc.upt10",
+  "zh": "头同尾合十"
+ },
+ {
+  "key": "gen.speedcalc.uq11",
+  "zh": "计算：1 + 3 + 5 + … + {v1} = ?"
+ },
+ {
+  "key": "gen.speedcalc.ue11",
+  "zh": "从 1 开始的连续奇数和等于个数的平方：共 {v1} 个数，和={v2}×{v3}={v4}。"
+ },
+ {
+  "key": "gen.speedcalc.upt11",
+  "zh": "奇数和"
+ },
+ {
+  "key": "gen.arithseq.uq0",
+  "zh": "一个等差数列首项是 {v1}，公差是 {v2}，第 {v3} 项是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue0",
+  "zh": "末项=首项+(项数−1)×公差={v1}+({v2}−1)×{v3}={v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.arithseq.upt0",
+  "zh": "求第n项"
+ },
+ {
+  "key": "gen.arithseq.uq1",
+  "zh": "等差数列 {v1}, {v2}, {v3}, …, {v4}，一共有多少项？"
+ },
+ {
+  "key": "gen.arithseq.ue1",
+  "zh": "项数=(末项−首项)÷公差+1=({v1}−{v2})÷{v3}+1={v4}÷{v5}+1={v6}（项）。"
+ },
+ {
+  "key": "gen.arithseq.upt1",
+  "zh": "求项数"
+ },
+ {
+  "key": "gen.arithseq.uq2",
+  "zh": "求和：{v1} + {v2} + {v3} + … + {v4}（共 {v5} 项）= ?"
+ },
+ {
+  "key": "gen.arithseq.ue2",
+  "zh": "和=(首项+末项)×项数÷2=({v1}+{v2})×{v3}÷2={v4}×{v5}÷2={v6}。"
+ },
+ {
+  "key": "gen.arithseq.upt2",
+  "zh": "等差求和"
+ },
+ {
+  "key": "gen.arithseq.uq3",
+  "zh": "一个等差数列共 {v1} 项，首项是 {v2}，末项是 {v3}，公差是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue3",
+  "zh": "公差=(末项−首项)÷(项数−1)=({v1}−{v2})÷{v3}={v4}÷{v5}={v6}。"
+ },
+ {
+  "key": "gen.arithseq.upt3",
+  "zh": "求公差"
+ },
+ {
+  "key": "gen.arithseq.uq4",
+  "zh": "一个等差数列有 {v1} 项（项数是奇数），所有项的和是 {v2}，中间那一项是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue4",
+  "zh": "项数是奇数时，和=中间项×项数，所以中间项={v1}÷{v2}={v3}。"
+ },
+ {
+  "key": "gen.arithseq.upt4",
+  "zh": "中项定理"
+ },
+ {
+  "key": "gen.arithseq.uq5",
+  "zh": "1 + 3 + 5 + 7 + … + {v1} 的和是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue5",
+  "zh": "共有 ({v1}+1)÷2={v2} 个数，连续奇数和=项数的平方={v3}²={v4}。"
+ },
+ {
+  "key": "gen.arithseq.upt5",
+  "zh": "奇数列求和"
+ },
+ {
+  "key": "gen.arithseq.uq6",
+  "zh": "一个等差数列公差是 {v1}，第 {v2} 项是 {v3}，首项是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue6",
+  "zh": "首项=末项−(项数−1)×公差={v1}−{v2}×{v3}={v4}−{v5}={v6}。"
+ },
+ {
+  "key": "gen.arithseq.upt6",
+  "zh": "求首项"
+ },
+ {
+  "key": "gen.arithseq.uq7",
+  "zh": "剧院第一排有 {v1} 个座位，后面每排都比前一排多 {v2} 个座位。第 {v3} 排有多少个座位？"
+ },
+ {
+  "key": "gen.arithseq.ue7",
+  "zh": "第 {v1} 排={v2}+({v3}−1)×{v4}={v5}+{v6}={v7}（个）。"
+ },
+ {
+  "key": "gen.arithseq.upt7",
+  "zh": "座位问题"
+ },
+ {
+  "key": "gen.arithseq.uq8",
+  "zh": "电影院共 {v1} 排，第一排 {v2} 个座位，每排比前一排多 {v3} 个。这个电影院一共有多少个座位？"
+ },
+ {
+  "key": "gen.arithseq.ue8",
+  "zh": "末排={v1}+{v2}×{v3}={v4}（个），总数=({v5}+{v6})×{v7}÷2={v8}（个）。"
+ },
+ {
+  "key": "gen.arithseq.upt8",
+  "zh": "总座位数"
+ },
+ {
+  "key": "gen.arithseq.uq9",
+  "zh": "2 + 4 + 6 + 8 + … + {v1} 的和是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue9",
+  "zh": "共 {v1} 个数，和=(2+{v2})×{v3}÷2={v4}×{v5}÷2={v6}。"
+ },
+ {
+  "key": "gen.arithseq.upt9",
+  "zh": "偶数列求和"
+ },
+ {
+  "key": "gen.arithseq.uq10",
+  "zh": "数列 {v1}, {v2}, {v3}, {v4}, … 的第 {v5} 项是多少？"
+ },
+ {
+  "key": "gen.arithseq.ue10",
+  "zh": "公差是 {v1}，第 {v2} 项={v3}+({v4}−1)×{v5}={v6}。"
+ },
+ {
+  "key": "gen.arithseq.upt10",
+  "zh": "通项"
+ },
+ {
+  "key": "gen.arithseq.uq11",
+  "zh": "从 {v1} 到 {v2}，每隔 {v3} 取一个数（包括 {v4} 和 {v5}），一共能取多少个数？"
+ },
+ {
+  "key": "gen.arithseq.ue11",
+  "zh": "个数=({v1}−{v2})÷{v3}+1={v4}÷{v5}+1={v6}（个）。"
+ },
+ {
+  "key": "gen.arithseq.upt11",
+  "zh": "求项数"
+ },
+ {
+  "key": "gen.parity.uq0",
+  "zh": "在 1 ~ {v1} 这些自然数中，奇数一共有多少个？"
+ },
+ {
+  "key": "gen.parity.ue0",
+  "zh": "1~{v1} 中奇数是 1,3,5,…，共 {v2} 个。"
+ },
+ {
+  "key": "gen.parity.upt0",
+  "zh": "数奇数"
+ },
+ {
+  "key": "gen.parity.uq1",
+  "zh": "在 1 ~ {v1} 这些自然数中，偶数一共有多少个？"
+ },
+ {
+  "key": "gen.parity.ue1",
+  "zh": "偶数是 2,4,6,…，最大不超过 {v1}，共 {v2}÷2 取整={v3} 个。"
+ },
+ {
+  "key": "gen.parity.upt1",
+  "zh": "数偶数"
+ },
+ {
+  "key": "gen.parity.uq2",
+  "zh": "{v1} + {v2} 的和是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue2",
+  "zh": "{v1} 是{v2}数，{v3} 是{v4}数；{v5}，{v6}+{v7}={v8} 是{v9}。"
+ },
+ {
+  "key": "gen.parity.upt2",
+  "zh": "加法奇偶"
+ },
+ {
+  "key": "gen.parity.uq3",
+  "zh": "{v1} × {v2} 的积是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue3",
+  "zh": "只要有一个因数是偶数，积就是偶数；只有两个都是奇数时积才是奇数。{v1}×{v2}={v3}，是{v4}。"
+ },
+ {
+  "key": "gen.parity.upt3",
+  "zh": "乘法奇偶"
+ },
+ {
+  "key": "gen.parity.uq4",
+  "zh": "从 {v1} 开始的 {v2} 个连续自然数（{v3}, {v4}, …, {v5}）的和是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue4",
+  "zh": "这 {v1} 个数的和=({v2}+{v3})×{v4}÷2={v5}，是{v6}。"
+ },
+ {
+  "key": "gen.parity.upt4",
+  "zh": "连续数奇偶"
+ },
+ {
+  "key": "gen.parity.uq5",
+  "zh": "从 1 ~ {v1} 中任取两个数，要使它们的和是奇数，一共有多少种不同的取法？"
+ },
+ {
+  "key": "gen.parity.ue5",
+  "zh": "和是奇数必须一奇一偶：奇数 {v1} 个，偶数 {v2} 个，取法 {v3}×{v4}={v5}（种）。"
+ },
+ {
+  "key": "gen.parity.upt5",
+  "zh": "奇偶配对"
+ },
+ {
+  "key": "gen.parity.uq6",
+  "zh": "有 {v1} 个数，其中有 {v2} 个奇数，其余都是偶数。这 {v3} 个数的和是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue6",
+  "zh": "偶数不影响和的奇偶；{v1} 个奇数相加，{v2}，所以总和是{v3}。"
+ },
+ {
+  "key": "gen.parity.upt6",
+  "zh": "奇数个数定奇偶"
+ },
+ {
+  "key": "gen.parity.uq7",
+  "zh": "某年{v1}有 {v2} 天，这个月中日期是奇数的一共有多少天？"
+ },
+ {
+  "key": "gen.parity.ue7",
+  "zh": "1、3、5…是奇数日，共 {v1} 天。"
+ },
+ {
+  "key": "gen.parity.upt7",
+  "zh": "日期奇偶"
+ },
+ {
+  "key": "gen.parity.uq8",
+  "zh": "1 + 2 + 3 + … + {v1} 的和是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue8",
+  "zh": "和={v1}×{v2}÷2={v3}，{v4} 是{v5}。"
+ },
+ {
+  "key": "gen.parity.upt8",
+  "zh": "求和奇偶"
+ },
+ {
+  "key": "gen.parity.uq9",
+  "zh": "两个连续自然数 {v1} 和 {v2} 的和是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue9",
+  "zh": "连续两个自然数一定是一奇一偶，和 {v1}+{v2}={v3} 一定是奇数。"
+ },
+ {
+  "key": "gen.parity.upt9",
+  "zh": "连续数"
+ },
+ {
+  "key": "gen.parity.uq10",
+  "zh": "{v1} − {v2} 的差是奇数还是偶数？"
+ },
+ {
+  "key": "gen.parity.ue10",
+  "zh": "{v1} 是{v2}数，{v3} 是{v4}数，差 {v5}−{v6}={v7}，是{v8}。"
+ },
+ {
+  "key": "gen.parity.upt10",
+  "zh": "减法奇偶"
+ },
+ {
+  "key": "gen.parity.uq11",
+  "zh": "在 1 ~ {v1} 中，奇数的个数比偶数的个数多多少个？"
+ },
+ {
+  "key": "gen.parity.ue11",
+  "zh": "奇数 {v1} 个，偶数 {v2} 个，相差 {v3} 个。"
+ },
+ {
+  "key": "gen.parity.upt11",
+  "zh": "奇偶个数"
+ },
+ {
+  "key": "gen.divisibility.uq0",
+  "zh": "{v1} 的各个数位上的数字之和是多少？"
+ },
+ {
+  "key": "gen.divisibility.ue0",
+  "zh": "{v1}+{v2}+{v3}={v4}。判断能否被 3 或 9 整除，就看这个数字和。"
+ },
+ {
+  "key": "gen.divisibility.upt0",
+  "zh": "数字和"
+ },
+ {
+  "key": "gen.divisibility.uq1",
+  "zh": "下面哪个数能被 {v1} 整除？"
+ },
+ {
+  "key": "gen.divisibility.ue1",
+  "zh": "{v1}÷{v2}={v3}，能整除；{v4}。"
+ },
+ {
+  "key": "gen.divisibility.upt1",
+  "zh": "整除判断"
+ },
+ {
+  "key": "gen.divisibility.uq2",
+  "zh": "判断一个数能否被 4 整除，只要看它的末两位。四位数 {v1} 的末两位组成的数是多少？"
+ },
+ {
+  "key": "gen.divisibility.ue2",
+  "zh": "{v1} 的末两位是 {v2}；{v3}。"
+ },
+ {
+  "key": "gen.divisibility.upt2",
+  "zh": "末两位特征"
+ },
+ {
+  "key": "gen.divisibility.uq3",
+  "zh": "在 {v1}□{v2} 的 □ 里填一个数字，使这个三位数能被 3 整除，□ 里最小填几？"
+ },
+ {
+  "key": "gen.divisibility.ue3",
+  "zh": "数字和={v1}+□+{v2}={v3}+□，要是 3 的倍数；□ 最小取 {v4}（此时和为 {v5}）。"
+ },
+ {
+  "key": "gen.divisibility.upt3",
+  "zh": "能被3整除"
+ },
+ {
+  "key": "gen.divisibility.uq4",
+  "zh": "在 {v1}□{v2} 的 □ 里填一个数字，使这个三位数能被 9 整除，□ 里填几？"
+ },
+ {
+  "key": "gen.divisibility.ue4",
+  "zh": "数字和={v1}+□ 必须是 9 的倍数，所以 □={v2}（和为 {v3}）。"
+ },
+ {
+  "key": "gen.divisibility.upt4",
+  "zh": "能被9整除"
+ },
+ {
+  "key": "gen.divisibility.uq5",
+  "zh": "四位数 {v1} 的各位数字之和是多少？"
+ },
+ {
+  "key": "gen.divisibility.ue5",
+  "zh": "{v1}={v2}。"
+ },
+ {
+  "key": "gen.divisibility.upt5",
+  "zh": "数字和"
+ },
+ {
+  "key": "gen.divisibility.uq6",
+  "zh": "比 {v1} 大的、既能被 2 整除又能被 5 整除的最小整数是多少？"
+ },
+ {
+  "key": "gen.divisibility.ue6",
+  "zh": "同时能被 2 和 5 整除，就是能被 10 整除，个位必须是 0；比 {v1} 大的最小的整十数是 {v2}。"
+ },
+ {
+  "key": "gen.divisibility.upt6",
+  "zh": "末位特征"
+ },
+ {
+  "key": "gen.divisibility.uq7",
+  "zh": "{v1} 除以 {v2} 的余数是多少？"
+ },
+ {
+  "key": "gen.divisibility.ue7",
+  "zh": "{v1}÷{v2}={v3}……{v4}（因为 {v5}×{v6}={v7}，{v8}−{v9}={v10}）。"
+ },
+ {
+  "key": "gen.divisibility.upt7",
+  "zh": "求余数"
+ },
+ {
+  "key": "gen.divisibility.uq8",
+  "zh": "在 1 ~ {v1} 中，能被 {v2} 整除的数一共有多少个？"
+ },
+ {
+  "key": "gen.divisibility.ue8",
+  "zh": "最大的倍数是 {v1}×{v2}={v3}，所以共有 {v4}÷{v5} 取整={v6} 个。"
+ },
+ {
+  "key": "gen.divisibility.upt8",
+  "zh": "倍数个数"
+ },
+ {
+  "key": "gen.divisibility.uq9",
+  "zh": "{v1} 至少加上多少才能被 {v2} 整除？"
+ },
+ {
+  "key": "gen.divisibility.ue9",
+  "zh": "{v1}÷{v2} 余 {v3}，还差 {v4} 就满一个 {v5}，所以至少加 {v6}。"
+ },
+ {
+  "key": "gen.divisibility.upt9",
+  "zh": "补足整除"
+ },
+ {
+  "key": "gen.divisibility.uq10",
+  "zh": "{v1} 至少减去多少才能被 {v2} 整除？"
+ },
+ {
+  "key": "gen.divisibility.ue10",
+  "zh": "{v1}÷{v2}={v3}……{v4}，减去余数 {v5} 后是 {v6}={v7}×{v8}，正好整除。"
+ },
+ {
+  "key": "gen.divisibility.upt10",
+  "zh": "去余整除"
+ },
+ {
+  "key": "gen.divisibility.uq11",
+  "zh": "一个数既是 {v1} 的倍数，又是 {v2} 的倍数，这个数最小是多少？（不为 0）"
+ },
+ {
+  "key": "gen.divisibility.ue11",
+  "zh": "就是求 {v1} 和 {v2} 的最小公倍数：[{v3},{v4}]={v5}。"
+ },
+ {
+  "key": "gen.divisibility.upt11",
+  "zh": "最小公倍数"
+ },
+ {
+  "key": "gen.remainder.uq0",
+  "zh": "{v1} ÷ {v2} 的余数是多少？"
+ },
+ {
+  "key": "gen.remainder.ue0",
+  "zh": "{v1}×{v2}={v3}，{v4}−{v5}={v6}，且 {v7}<{v8}，所以余数是 {v9}。"
+ },
+ {
+  "key": "gen.remainder.upt0",
+  "zh": "带余除法"
+ },
+ {
+  "key": "gen.remainder.uq1",
+  "zh": "一串彩珠按“{v1}”的顺序不断重复排列，第 {v2} 颗珠子是什么颜色？"
+ },
+ {
+  "key": "gen.remainder.ue1",
+  "zh": "周期是 {v1}：{v2}÷{v3}={v4}……{v5}，{v6}。"
+ },
+ {
+  "key": "gen.remainder.upt1",
+  "zh": "周期问题"
+ },
+ {
+  "key": "gen.remainder.uq2",
+  "zh": "今天是{v1}，再过 {v2} 天是星期几？"
+ },
+ {
+  "key": "gen.remainder.ue2",
+  "zh": "一周 7 天一个周期：{v1}÷7={v2}……{v3}，从{v4}往后数 {v5} 天，是{v6}。"
+ },
+ {
+  "key": "gen.remainder.upt2",
+  "zh": "日期周期"
+ },
+ {
+  "key": "gen.remainder.uq3",
+  "zh": "{v1} 个 {v2} 相乘（即 {v3} 的 {v4} 次方），积的个位数字是几？"
+ },
+ {
+  "key": "gen.remainder.ue3",
+  "zh": "个位数字按周期循环，{v1} 的乘方个位周期最长 4 位；{v2} 次方时个位是 {v3}。"
+ },
+ {
+  "key": "gen.remainder.upt3",
+  "zh": "个位周期"
+ },
+ {
+  "key": "gen.remainder.uq4",
+  "zh": "{v1} 的 {v2} 次方除以 {v3}，余数是多少？"
+ },
+ {
+  "key": "gen.remainder.ue4",
+  "zh": "边乘边取余：每乘一次 {v1} 就对 {v2} 取一次余数，{v3} 次后余数是 {v4}。"
+ },
+ {
+  "key": "gen.remainder.upt4",
+  "zh": "同余取余"
+ },
+ {
+  "key": "gen.remainder.uq5",
+  "zh": "一个数除以 {v1} 余 {v2}，除以 {v3} 余 {v4}。这个数最小是多少？"
+ },
+ {
+  "key": "gen.remainder.ue5",
+  "zh": "从小到大逐个检验：{v1}÷{v2}={v3}……{v4}，{v5}÷{v6}={v7}……{v8}，都符合，所以最小是 {v9}。"
+ },
+ {
+  "key": "gen.remainder.upt5",
+  "zh": "同余问题"
+ },
+ {
+  "key": "gen.remainder.uq6",
+  "zh": "比 {v1} 大的整数中，除以 {v2} 余 {v3} 的最小的数是多少？"
+ },
+ {
+  "key": "gen.remainder.ue6",
+  "zh": "{v1}÷{v2}={v3}……{v4}，且 {v5}>{v6}，再小的就不满足了。"
+ },
+ {
+  "key": "gen.remainder.upt6",
+  "zh": "余数应用"
+ },
+ {
+  "key": "gen.remainder.uq7",
+  "zh": "数列 {v1}, {v2}, … 按这 {v3} 个数不断重复。前 {v4} 项的和是多少？"
+ },
+ {
+  "key": "gen.remainder.ue7",
+  "zh": "一个周期的和是 {v1}，{v2}÷{v3}={v4}……{v5}，前 {v6} 项和={v7}×{v8}{v9}={v10}。"
+ },
+ {
+  "key": "gen.remainder.upt7",
+  "zh": "周期求和"
+ },
+ {
+  "key": "gen.remainder.uq8",
+  "zh": "除以 {v1} 余 {v2} 的最小两位数是多少？"
+ },
+ {
+  "key": "gen.remainder.ue8",
+  "zh": "从 10 开始找：{v1}÷{v2}={v3}……{v4}，所以最小两位数是 {v5}。"
+ },
+ {
+  "key": "gen.remainder.upt8",
+  "zh": "最小两位数"
+ },
+ {
+  "key": "gen.remainder.uq9",
+  "zh": "一个数除以 {v1}，商是 {v2}，余数是 {v3}，这个数是多少？"
+ },
+ {
+  "key": "gen.remainder.ue9",
+  "zh": "被除数=除数×商+余数={v1}×{v2}+{v3}={v4}+{v5}={v6}。"
+ },
+ {
+  "key": "gen.remainder.upt9",
+  "zh": "还原被除数"
+ },
+ {
+  "key": "gen.remainder.uq10",
+  "zh": "{v1} × {v2} 的积除以 {v3}，余数是多少？"
+ },
+ {
+  "key": "gen.remainder.ue10",
+  "zh": "{v1}×{v2}={v3}，{v4}÷{v5}={v6}……{v7}。也可以先分别取余再相乘取余：{v8}×{v9}={v10}，再对 {v11} 取余得 {v12}。"
+ },
+ {
+  "key": "gen.remainder.upt10",
+  "zh": "积的余数"
+ },
+ {
+  "key": "gen.remainder.uq11",
+  "zh": "把 {v1} ÷ {v2} 化成小数，小数点后第 {v3} 位数字是几？"
+ },
+ {
+  "key": "gen.remainder.ue11",
+  "zh": "{v1}÷{v2}={v3}…，是循环小数；按竖式一位一位除下去，第 {v4} 位是 {v5}。"
+ },
+ {
+  "key": "gen.remainder.upt11",
+  "zh": "循环小数"
+ },
+ {
+  "key": "gen.prime.uq0",
+  "zh": "下面哪个数是质数？"
+ },
+ {
+  "key": "gen.prime.ue0",
+  "zh": "{v1} 除了 1 和它本身以外没有别的因数，所以是质数；其余各数都能分解成两个比 1 大的数相乘，是合数。"
+ },
+ {
+  "key": "gen.prime.upt0",
+  "zh": "质数判断"
+ },
+ {
+  "key": "gen.prime.uq1",
+  "zh": "{v1} 的最小质因数是多少？"
+ },
+ {
+  "key": "gen.prime.ue1",
+  "zh": "从最小的质数开始试除：{v1}÷{v2}={v3}，所以最小质因数是 {v4}。"
+ },
+ {
+  "key": "gen.prime.upt1",
+  "zh": "最小质因数"
+ },
+ {
+  "key": "gen.prime.uq2",
+  "zh": "{v1} 的最大质因数是多少？"
+ },
+ {
+  "key": "gen.prime.ue2",
+  "zh": "把 {v1} 分解质因数后，最大的那个质因数是 {v2}（{v3}÷{v4}={v5}）。"
+ },
+ {
+  "key": "gen.prime.upt2",
+  "zh": "最大质因数"
+ },
+ {
+  "key": "gen.prime.uq3",
+  "zh": "把 {v1} 分解质因数，它一共有多少个不同的质因数？"
+ },
+ {
+  "key": "gen.prime.ue3",
+  "zh": "{v1}={v2}，不同的质因数是 {v3}，共 {v4} 个。"
+ },
+ {
+  "key": "gen.prime.upt3",
+  "zh": "分解质因数"
+ },
+ {
+  "key": "gen.prime.uq4",
+  "zh": "在 1 ~ {v1} 中，一共有多少个质数？"
+ },
+ {
+  "key": "gen.prime.ue4",
+  "zh": "{v1} 以内的质数是 {v2}，共 {v3} 个。"
+ },
+ {
+  "key": "gen.prime.upt4",
+  "zh": "质数个数"
+ },
+ {
+  "key": "gen.prime.uq5",
+  "zh": "比 {v1} 大的最小质数是多少？"
+ },
+ {
+  "key": "gen.prime.ue5",
+  "zh": "从 {v1} 开始逐个检验，{v2} 只有 1 和它本身两个因数，是质数。"
+ },
+ {
+  "key": "gen.prime.upt5",
+  "zh": "找质数"
+ },
+ {
+  "key": "gen.prime.uq6",
+  "zh": "在 1 ~ {v1} 中，既是奇数又是质数的数有多少个？"
+ },
+ {
+  "key": "gen.prime.ue6",
+  "zh": "{v1} 以内的质数中只有 2 是偶数，其余都是奇数，所以是 {v2}−1={v3} 个。"
+ },
+ {
+  "key": "gen.prime.upt6",
+  "zh": "奇质数"
+ },
+ {
+  "key": "gen.prime.uq7",
+  "zh": "{v1} 和 {v2} 的最大公因数是多少？（如果是 1，说明它们互质）"
+ },
+ {
+  "key": "gen.prime.ue7",
+  "zh": "{v1} 与 {v2} 的公有质因数相乘得最大公因数：({v3},{v4})={v5}{v6}。"
+ },
+ {
+  "key": "gen.prime.upt7",
+  "zh": "互质与公因数"
+ },
+ {
+  "key": "gen.prime.uq8",
+  "zh": "两个质数相乘的积是 {v1}，其中一个质数是 {v2}，另一个质数是多少？"
+ },
+ {
+  "key": "gen.prime.ue8",
+  "zh": "{v1}÷{v2}={v3}，{v4} 是质数，所以另一个质数是 {v5}。"
+ },
+ {
+  "key": "gen.prime.upt8",
+  "zh": "质因数还原"
+ },
+ {
+  "key": "gen.prime.uq9",
+  "zh": "{v1} 是质数还是合数？"
+ },
+ {
+  "key": "gen.prime.upt9",
+  "zh": "质合判断"
+ },
+ {
+  "key": "gen.prime.uq10",
+  "zh": "{v1} 一共有多少个因数？"
+ },
+ {
+  "key": "gen.prime.ue9",
+  "zh": "{v1} 的因数有 {v2}，共 {v3} 个。"
+ },
+ {
+  "key": "gen.prime.upt10",
+  "zh": "因数个数"
+ },
+ {
+  "key": "gen.prime.uq11",
+  "zh": "小于 {v1} 的最大质数是多少？"
+ },
+ {
+  "key": "gen.prime.ue10",
+  "zh": "从 {v1} 往下找，{v2} 是质数，所以小于 {v3} 的最大质数是 {v4}。"
+ },
+ {
+  "key": "gen.prime.upt11",
+  "zh": "找质数"
+ },
+ {
+  "key": "gen.boat.uq0",
+  "zh": "一条船在静水中的速度是每小时 {v1} 千米，水流速度是每小时 {v2} 千米。顺水航行的速度是每小时多少千米？"
+ },
+ {
+  "key": "gen.boat.ue0",
+  "zh": "顺水速度=船速+水速={v1}+{v2}={v3}（千米/时）。"
+ },
+ {
+  "key": "gen.boat.upt0",
+  "zh": "顺水速度"
+ },
+ {
+  "key": "gen.boat.uq1",
+  "zh": "船在静水中每小时行 {v1} 千米，水速每小时 {v2} 千米。逆水航行的速度是每小时多少千米？"
+ },
+ {
+  "key": "gen.boat.ue1",
+  "zh": "逆水速度=船速−水速={v1}−{v2}={v3}（千米/时）。"
+ },
+ {
+  "key": "gen.boat.upt1",
+  "zh": "逆水速度"
+ },
+ {
+  "key": "gen.boat.uq2",
+  "zh": "船速每小时 {v1} 千米，水速每小时 {v2} 千米，顺水航行 {v3} 小时，行了多少千米？"
+ },
+ {
+  "key": "gen.boat.ue2",
+  "zh": "顺水速度={v1}+{v2}={v3}（千米/时），路程={v4}×{v5}={v6}（千米）。"
+ },
+ {
+  "key": "gen.boat.upt2",
+  "zh": "顺水路程"
+ },
+ {
+  "key": "gen.boat.uq3",
+  "zh": "船速每小时 {v1} 千米，水速每小时 {v2} 千米，逆水行 {v3} 千米需要多少小时？"
+ },
+ {
+  "key": "gen.boat.ue3",
+  "zh": "逆水速度={v1}−{v2}={v3}（千米/时），时间={v4}÷{v5}={v6}（小时）。"
+ },
+ {
+  "key": "gen.boat.upt3",
+  "zh": "逆水时间"
+ },
+ {
+  "key": "gen.boat.uq4",
+  "zh": "一条船顺水速度是每小时 {v1} 千米，水流速度是每小时 {v2} 千米。这条船在静水中的速度是每小时多少千米？"
+ },
+ {
+  "key": "gen.boat.ue4",
+  "zh": "船速=顺水速度−水速={v1}−{v2}={v3}（千米/时）。"
+ },
+ {
+  "key": "gen.boat.upt4",
+  "zh": "求船速"
+ },
+ {
+  "key": "gen.boat.uq5",
+  "zh": "一条船顺水每小时行 {v1} 千米，逆水每小时行 {v2} 千米。这条船在静水中的速度是每小时多少千米？"
+ },
+ {
+  "key": "gen.boat.ue5",
+  "zh": "船速=(顺水+逆水)÷2=({v1}+{v2})÷2={v3}÷2={v4}（千米/时）。"
+ },
+ {
+  "key": "gen.boat.upt5",
+  "zh": "和差求船速"
+ },
+ {
+  "key": "gen.boat.uq6",
+  "zh": "一条船顺水每小时行 {v1} 千米，逆水每小时行 {v2} 千米。水流速度是每小时多少千米？"
+ },
+ {
+  "key": "gen.boat.ue6",
+  "zh": "水速=(顺水−逆水)÷2=({v1}−{v2})÷2={v3}÷2={v4}（千米/时）。"
+ },
+ {
+  "key": "gen.boat.upt6",
+  "zh": "和差求水速"
+ },
+ {
+  "key": "gen.boat.uq7",
+  "zh": "一条船在静水中每小时行 {v1} 千米，水速每小时 {v2} 千米。从甲港到乙港（相距 {v3} 千米）顺水去、逆水返回，往返共需多少小时？"
+ },
+ {
+  "key": "gen.boat.ue7",
+  "zh": "顺水 {v1} 千米/时，用 {v2}÷{v3}={v4}（小时）；逆水 {v5} 千米/时，用 {v6}÷{v7}={v8}（小时）；共 {v9}+{v10}={v11}（小时）。"
+ },
+ {
+  "key": "gen.boat.upt7",
+  "zh": "往返时间"
+ },
+ {
+  "key": "gen.boat.uq8",
+  "zh": "船速每小时 {v1} 千米，水速每小时 {v2} 千米，顺水行 {v3} 千米需要多少小时？"
+ },
+ {
+  "key": "gen.boat.ue8",
+  "zh": "顺水速度={v1}+{v2}={v3}（千米/时），时间={v4}÷{v5}={v6}（小时）。"
+ },
+ {
+  "key": "gen.boat.upt8",
+  "zh": "顺水时间"
+ },
+ {
+  "key": "gen.boat.uq9",
+  "zh": "船在静水中每小时行 {v1} 千米，水速每小时 {v2} 千米，逆水行 {v3} 小时能行多少千米？"
+ },
+ {
+  "key": "gen.boat.ue9",
+  "zh": "逆水速度={v1}−{v2}={v3}（千米/时），路程={v4}×{v5}={v6}（千米）。"
+ },
+ {
+  "key": "gen.boat.upt9",
+  "zh": "逆水路程"
+ },
+ {
+  "key": "gen.boat.uq10",
+  "zh": "同一条河上，甲船静水速度每小时 {v1} 千米，乙船静水速度每小时 {v2} 千米，水速每小时 {v3} 千米。两船从相距 {v4} 千米的两地相对开出，几小时相遇？"
+ },
+ {
+  "key": "gen.boat.ue10",
+  "zh": "一船顺水加 {v1}、另一船逆水减 {v2}，速度和仍是 {v3}+{v4}={v5}（千米/时），相遇时间={v6}÷{v7}={v8}（小时）。"
+ },
+ {
+  "key": "gen.boat.upt10",
+  "zh": "水中相遇"
+ },
+ {
+  "key": "gen.boat.uq11",
+  "zh": "一根木头从甲地漂到乙地，两地相距 {v1} 千米，水流速度是每小时 {v2} 千米。木头漂流需要多少小时？"
+ },
+ {
+  "key": "gen.boat.ue11",
+  "zh": "漂流物只随水流走，速度就是水速：{v1}÷{v2}={v3}（小时）。"
+ },
+ {
+  "key": "gen.boat.upt11",
+  "zh": "漂流时间"
+ },
+ {
+  "key": "gen.circle_track.uq0",
+  "zh": "环形跑道一圈 {v1} 米，甲、乙两人从同一点同时反向出发，速度分别是每秒 {v2} 米、{v3} 米。多少秒后两人第一次相遇？"
+ },
+ {
+  "key": "gen.circle_track.ue0",
+  "zh": "反向而行，两人合跑一圈就相遇：速度和={v1}+{v2}={v3}（米/秒），时间={v4}÷{v5}={v6}（秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt0",
+  "zh": "反向相遇"
+ },
+ {
+  "key": "gen.circle_track.uq1",
+  "zh": "环形跑道一圈 {v1} 米，甲、乙从同一点同时同向出发，速度分别是每秒 {v2} 米、{v3} 米。多少秒后甲第一次追上乙？"
+ },
+ {
+  "key": "gen.circle_track.ue1",
+  "zh": "同向追及，快的要比慢的多跑一圈：速度差={v1}−{v2}={v3}（米/秒），时间={v4}÷{v5}={v6}（秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt1",
+  "zh": "同向追及"
+ },
+ {
+  "key": "gen.circle_track.uq2",
+  "zh": "一条环形跑道长 {v1} 米，小明每秒跑 {v2} 米，他跑一圈需要多少秒？"
+ },
+ {
+  "key": "gen.circle_track.ue2",
+  "zh": "一圈时间=跑道长÷速度={v1}÷{v2}={v3}（秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt2",
+  "zh": "每圈时间"
+ },
+ {
+  "key": "gen.circle_track.uq3",
+  "zh": "环形跑道一圈 {v1} 米，两人从同一点反向出发，速度分别是每秒 {v2} 米、{v3} 米。第 {v4} 次相遇是在出发后多少秒？"
+ },
+ {
+  "key": "gen.circle_track.ue3",
+  "zh": "每合跑一圈相遇一次，第一次用 {v1}÷{v2}={v3}（秒），第 {v4} 次用 {v5}×{v6}={v7}（秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt3",
+  "zh": "多次相遇"
+ },
+ {
+  "key": "gen.circle_track.uq4",
+  "zh": "环形跑道一圈 {v1} 米，两人从同一点同向出发，速度分别是每秒 {v2} 米、{v3} 米。甲第 {v4} 次追上乙是在出发后多少秒？"
+ },
+ {
+  "key": "gen.circle_track.ue4",
+  "zh": "每多跑一圈追上一次，第一次用 {v1}÷{v2}={v3}（秒），第 {v4} 次追上用 {v5}×{v6}={v7}（秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt4",
+  "zh": "多次追及"
+ },
+ {
+  "key": "gen.circle_track.uq5",
+  "zh": "甲每秒跑 {v1} 米，乙每秒跑 {v2} 米，两人在环形跑道上反向跑。两人接近的速度（速度和）是每秒多少米？"
+ },
+ {
+  "key": "gen.circle_track.ue5",
+  "zh": "反向而行时按速度和计算：{v1}+{v2}={v3}（米/秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt5",
+  "zh": "相对速度"
+ },
+ {
+  "key": "gen.circle_track.uq6",
+  "zh": "甲每秒跑 {v1} 米，乙每秒跑 {v2} 米，两人同向跑。甲每秒比乙多跑多少米？"
+ },
+ {
+  "key": "gen.circle_track.ue6",
+  "zh": "同向而行时按速度差计算：{v1}−{v2}={v3}（米/秒）。"
+ },
+ {
+  "key": "gen.circle_track.upt6",
+  "zh": "速度差"
+ },
+ {
+  "key": "gen.circle_track.uq7",
+  "zh": "环形跑道一圈 {v1} 米，甲每秒 {v2} 米、乙每秒 {v3} 米同向出发，甲追上乙时甲一共跑了多少米？"
+ },
+ {
+  "key": "gen.circle_track.ue7",
+  "zh": "追及时间={v1}÷{v2}={v3}（秒），甲跑 {v4}×{v5}={v6}（米）。"
+ },
+ {
+  "key": "gen.circle_track.upt7",
+  "zh": "追上路程"
+ },
+ {
+  "key": "gen.circle_track.uq8",
+  "zh": "甲、乙在环形跑道上从同一点反向出发，速度分别是每秒 {v1} 米、{v2} 米，{v3} 秒后第一次相遇。跑道一圈有多少米？"
+ },
+ {
+  "key": "gen.circle_track.ue8",
+  "zh": "第一次相遇时两人合跑一圈：一圈=({v1}+{v2})×{v3}={v4}×{v5}={v6}（米）。"
+ },
+ {
+  "key": "gen.circle_track.upt8",
+  "zh": "求跑道长"
+ },
+ {
+  "key": "gen.circle_track.uq9",
+  "zh": "甲、乙在环形跑道上同向出发，速度分别是每秒 {v1} 米、{v2} 米，{v3} 秒后甲第一次追上乙。跑道一圈有多少米？"
+ },
+ {
+  "key": "gen.circle_track.ue9",
+  "zh": "第一次追上时甲比乙多跑一圈：一圈=({v1}−{v2})×{v3}={v4}×{v5}={v6}（米）。"
+ },
+ {
+  "key": "gen.circle_track.upt9",
+  "zh": "求跑道长"
+ },
+ {
+  "key": "gen.circle_track.uq10",
+  "zh": "甲跑一圈用 {v1} 分钟，乙跑一圈用 {v2} 分钟（跑道一圈 {v3} 米）。两人从同一点同向出发，多少分钟后甲第一次追上乙？"
+ },
+ {
+  "key": "gen.circle_track.ue10",
+  "zh": "甲每分钟跑 {v1}÷{v2}={v3}（米），乙每分钟跑 {v4}÷{v5}={v6}（米）；追上需多跑一圈：{v7}÷({v8}−{v9})={v10}（分钟）。"
+ },
+ {
+  "key": "gen.circle_track.upt10",
+  "zh": "圈时追及"
+ },
+ {
+  "key": "gen.circle_track.uq11",
+  "zh": "甲跑一圈用 {v1} 分钟，乙跑一圈用 {v2} 分钟（一圈 {v3} 米）。两人从同一点同时反向出发，多少分钟后第一次相遇？"
+ },
+ {
+  "key": "gen.circle_track.ue11",
+  "zh": "甲每分钟 {v1} 米，乙每分钟 {v2} 米，合跑一圈相遇：{v3}÷({v4}+{v5})={v6}（分钟）。"
+ },
+ {
+  "key": "gen.circle_track.upt11",
+  "zh": "圈时相遇"
+ },
+ {
+  "key": "gen.perim.uq0",
+  "zh": "一个长方形长 {v1} 厘米，宽 {v2} 厘米，它的周长是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue0",
+  "zh": "周长=(长+宽)×2=({v1}+{v2})×2={v3}×2={v4}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt0",
+  "zh": "长方形周长"
+ },
+ {
+  "key": "gen.perim.uq1",
+  "zh": "一个正方形的边长是 {v1} 分米，它的周长是多少分米？"
+ },
+ {
+  "key": "gen.perim.ue1",
+  "zh": "周长=边长×4={v1}×4={v2}（分米）。"
+ },
+ {
+  "key": "gen.perim.upt1",
+  "zh": "正方形周长"
+ },
+ {
+  "key": "gen.perim.uq2",
+  "zh": "一个长方形的周长是 {v1} 厘米，长是 {v2} 厘米，宽是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue2",
+  "zh": "长+宽={v1}÷2={v2}（厘米），宽={v3}−{v4}={v5}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt2",
+  "zh": "逆求边长"
+ },
+ {
+  "key": "gen.perim.uq3",
+  "zh": "一个台阶形（阶梯形）图形，可以用平移的方法把它的边补成一个长 {v1} 厘米、宽 {v2} 厘米的长方形。这个台阶形的周长是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue3",
+  "zh": "用平移法把凹进去的边平移出去，周长与长方形相等：({v1}+{v2})×2={v3}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt3",
+  "zh": "平移法"
+ },
+ {
+  "key": "gen.perim.uq4",
+  "zh": "把两个边长 {v1} 厘米的正方形拼成一个长方形，这个长方形的周长是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue4",
+  "zh": "拼成的长方形长 {v1} 厘米、宽 {v2} 厘米，周长=({v3}+{v4})×2={v5}（厘米）；比两个正方形周长和 {v6} 少了拼接的 2 条边 {v7}。"
+ },
+ {
+  "key": "gen.perim.upt4",
+  "zh": "拼接周长"
+ },
+ {
+  "key": "gen.perim.uq5",
+  "zh": "把 {v1} 个边长 {v2} 厘米的正方形排成一行拼成长方形，周长是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue5",
+  "zh": "长={v1}×{v2}={v3}（厘米），宽={v4} 厘米，周长=({v5}+{v6})×2={v7}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt5",
+  "zh": "排列拼接"
+ },
+ {
+  "key": "gen.perim.uq6",
+  "zh": "一个长 {v1} 厘米、宽 {v2} 厘米的长方形，从一个角上剪去一个小正方形后，剩下图形的周长是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue6",
+  "zh": "剪去角上的小正方形后，用平移法可知周长不变，仍是 ({v1}+{v2})×2={v3}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt6",
+  "zh": "割补法"
+ },
+ {
+  "key": "gen.perim.uq7",
+  "zh": "用篱笆靠墙围一个长方形羊圈，靠墙的一面不用篱笆。长方形长 {v1} 米（靠墙的一面），宽 {v2} 米，需要篱笆多少米？"
+ },
+ {
+  "key": "gen.perim.ue7",
+  "zh": "只围三面：两条宽加一条长={v1}×2+{v2}={v3}+{v4}={v5}（米）。"
+ },
+ {
+  "key": "gen.perim.upt7",
+  "zh": "少一边"
+ },
+ {
+  "key": "gen.perim.uq8",
+  "zh": "一个正方形的周长是 {v1} 厘米，它的边长是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue8",
+  "zh": "边长=周长÷4={v1}÷4={v2}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt8",
+  "zh": "求边长"
+ },
+ {
+  "key": "gen.perim.uq9",
+  "zh": "一个长方形的长是宽的 {v1} 倍，周长是 {v2} 厘米，宽是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue9",
+  "zh": "长+宽={v1}÷2={v2}（厘米），相当于 {v3} 个宽，宽={v4}÷{v5}={v6}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt9",
+  "zh": "倍数关系"
+ },
+ {
+  "key": "gen.perim.uq10",
+  "zh": "把一个长 {v1} 厘米、宽 {v2} 厘米的长方形剪成两个小长方形（沿平行于宽的方向剪一刀），两个小长方形的周长之和是多少厘米？"
+ },
+ {
+  "key": "gen.perim.ue10",
+  "zh": "原周长 ({v1}+{v2})×2={v3}（厘米），剪一刀多出 2 条宽：{v4}+{v5}×2={v6}（厘米）。"
+ },
+ {
+  "key": "gen.perim.upt10",
+  "zh": "剪拼周长"
+ },
+ {
+  "key": "gen.perim.uq11",
+  "zh": "一根绳子在边长 {v1} 分米的正方形木框上绕 {v2} 圈，正好用完（不计接头）。这根绳子有多长（分米）？"
+ },
+ {
+  "key": "gen.perim.ue11",
+  "zh": "绕一圈是正方形周长 {v1}×4={v2}（分米），绕 {v3} 圈：{v4}×{v5}={v6}（分米）。"
+ },
+ {
+  "key": "gen.perim.upt11",
+  "zh": "绳长问题"
+ },
+ {
+  "key": "gen.area_equal.uq0",
+  "zh": "一个长方形长 {v1} 厘米，宽 {v2} 厘米，面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue0",
+  "zh": "S=长×宽={v1}×{v2}={v3}（平方厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt0",
+  "zh": "长方形面积"
+ },
+ {
+  "key": "gen.area_equal.uq1",
+  "zh": "一个平行四边形的底是 {v1} 厘米，高是 {v2} 厘米，面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue1",
+  "zh": "S=底×高={v1}×{v2}={v3}（平方厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt1",
+  "zh": "平行四边形"
+ },
+ {
+  "key": "gen.area_equal.uq2",
+  "zh": "一个三角形的底是 {v1} 分米，高是 {v2} 分米，面积是多少平方分米？"
+ },
+ {
+  "key": "gen.area_equal.ue2",
+  "zh": "S=底×高÷2={v1}×{v2}÷2={v3}÷2={v4}（平方分米）。"
+ },
+ {
+  "key": "gen.area_equal.upt2",
+  "zh": "三角形面积"
+ },
+ {
+  "key": "gen.area_equal.uq3",
+  "zh": "一个梯形的上底 {v1} 厘米，下底 {v2} 厘米，高 {v3} 厘米，面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue3",
+  "zh": "S=(上底+下底)×高÷2=({v1}+{v2})×{v3}÷2={v4}×{v5}÷2={v6}（平方厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt3",
+  "zh": "梯形面积"
+ },
+ {
+  "key": "gen.area_equal.uq4",
+  "zh": "一个三角形和一个平行四边形等底等高，平行四边形的面积是 {v1} 平方厘米，三角形的面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue4",
+  "zh": "等底等高时，三角形面积是平行四边形的一半：{v1}÷2={v2}（平方厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt4",
+  "zh": "等底等高"
+ },
+ {
+  "key": "gen.area_equal.uq5",
+  "zh": "一个三角形的面积是 {v1} 平方厘米，底是 {v2} 厘米，它的高是多少厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue5",
+  "zh": "h=2S÷底=2×{v1}÷{v2}={v3}÷{v4}={v5}（厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt5",
+  "zh": "逆求高"
+ },
+ {
+  "key": "gen.area_equal.uq6",
+  "zh": "一个平行四边形的面积是 {v1} 平方分米，底是 {v2} 分米，高是多少分米？"
+ },
+ {
+  "key": "gen.area_equal.ue6",
+  "zh": "h=S÷底={v1}÷{v2}={v3}（分米）。"
+ },
+ {
+  "key": "gen.area_equal.upt6",
+  "zh": "逆求高"
+ },
+ {
+  "key": "gen.area_equal.uq7",
+  "zh": "一个梯形的面积是 {v1} 平方厘米，上底 {v2} 厘米，下底 {v3} 厘米，高是多少厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue7",
+  "zh": "h=2S÷(上底+下底)=2×{v1}÷{v2}={v3}÷{v4}={v5}（厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt7",
+  "zh": "梯形求高"
+ },
+ {
+  "key": "gen.area_equal.uq8",
+  "zh": "一个长 {v1} 厘米、宽 {v2} 厘米的长方形，如果长扩大到原来的 {v3} 倍、宽缩小到原来的 1/{v4}，那么新图形的面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue8",
+  "zh": "新长 {v1} 厘米，新宽 {v2}；面积={v3}×{v4}×{v5}÷{v6}={v7}×{v8}={v9}（平方厘米），面积不变。"
+ },
+ {
+  "key": "gen.area_equal.upt8",
+  "zh": "等积变形"
+ },
+ {
+  "key": "gen.area_equal.uq9",
+  "zh": "在方格纸上，一个图形占了 {v1} 个小方格，每个小方格的面积是 {v2} 平方厘米。这个图形的面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue9",
+  "zh": "面积=方格数×每格面积={v1}×{v2}={v3}（平方厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt9",
+  "zh": "方格计面积"
+ },
+ {
+  "key": "gen.area_equal.uq10",
+  "zh": "两个三角形的高相等，底分别是 {v1} 厘米和 {v2} 厘米。已知底是 {v3} 厘米的三角形面积是 {v4} 平方厘米，另一个三角形的面积是多少平方厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue10",
+  "zh": "等高时面积比等于底之比：{v1} : {v2}，所以面积={v3}÷{v4}×{v5}={v6}×{v7}={v8}（平方厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt10",
+  "zh": "等高模型"
+ },
+ {
+  "key": "gen.area_equal.uq11",
+  "zh": "一个长 {v1} 厘米、宽 {v2} 厘米的长方形，与一个底是 {v3} 厘米的三角形面积相等。这个三角形的高是多少厘米？"
+ },
+ {
+  "key": "gen.area_equal.ue11",
+  "zh": "长方形面积={v1}×{v2}={v3}（平方厘米），三角形高=2S÷底={v4}÷{v5}={v6}（厘米）。"
+ },
+ {
+  "key": "gen.area_equal.upt11",
+  "zh": "等积变形"
+ },
+ {
+  "key": "gen.pigeon.uq0",
+  "zh": "把一些苹果放进 {v1} 个抽屉里，至少要放多少个苹果，才能保证有一个抽屉里至少有 2 个苹果？"
+ },
+ {
+  "key": "gen.pigeon.ue0",
+  "zh": "最不利情况是每个抽屉先放 1 个，共 {v1} 个；再放 1 个必然有抽屉里有 2 个，所以至少 {v2}+1={v3} 个。"
+ },
+ {
+  "key": "gen.pigeon.upt0",
+  "zh": "n+1原理"
+ },
+ {
+  "key": "gen.pigeon.uq1",
+  "zh": "箱子里有 {v1} 种颜色的球（每种都很多），至少摸出多少个球，才能保证有 2 个颜色相同？"
+ },
+ {
+  "key": "gen.pigeon.ue1",
+  "zh": "把颜色看成 {v1} 个抽屉，最坏情况每种各摸 1 个（{v2} 个都不同），再摸 1 个必有同色：{v3}+1={v4}（个）。"
+ },
+ {
+  "key": "gen.pigeon.upt1",
+  "zh": "抽屉原理"
+ },
+ {
+  "key": "gen.pigeon.uq2",
+  "zh": "箱子里有 {v1} 种颜色的球（每种都足够多），至少摸出多少个，才能保证有 {v2} 个颜色相同？"
+ },
+ {
+  "key": "gen.pigeon.ue2",
+  "zh": "最坏情况每种颜色都摸 {v1} 个，共 {v2}×{v3}={v4} 个仍没有 {v5} 个同色；再摸 1 个即可：{v6}+1={v7}（个）。"
+ },
+ {
+  "key": "gen.pigeon.upt2",
+  "zh": "最不利原则"
+ },
+ {
+  "key": "gen.pigeon.uq3",
+  "zh": "袋子里有 {v1} 个红球和 {v2} 个蓝球，闭眼摸球，至少摸出多少个才能保证一定有红球？"
+ },
+ {
+  "key": "gen.pigeon.ue3",
+  "zh": "最坏情况先把 {v1} 个蓝球全摸出来，再摸 1 个必是红球：{v2}+1={v3}（个）。"
+ },
+ {
+  "key": "gen.pigeon.upt3",
+  "zh": "最不利原则"
+ },
+ {
+  "key": "gen.pigeon.uq4",
+  "zh": "袋子里有 {v1} 个红球和 {v2} 个白球，至少摸出多少个才能保证摸到两种颜色都有？"
+ },
+ {
+  "key": "gen.pigeon.ue4",
+  "zh": "最坏情况先摸出较多的那种颜色全部（{v1} 个），再摸 1 个就是另一种颜色：{v2}+1={v3}（个）。"
+ },
+ {
+  "key": "gen.pigeon.upt4",
+  "zh": "最不利原则"
+ },
+ {
+  "key": "gen.pigeon.uq5",
+  "zh": "一个班（或一个团体）共有 {v1} 人，那么至少有多少人的生日在同一个月？"
+ },
+ {
+  "key": "gen.pigeon.ue5",
+  "zh": "一年 12 个月看作 12 个抽屉：{v1}÷12={v2}{v3}，所以至少有 {v4} 人生日在同一个月。"
+ },
+ {
+  "key": "gen.pigeon.upt5",
+  "zh": "平均分配"
+ },
+ {
+  "key": "gen.pigeon.uq6",
+  "zh": "{v1} 个人中，至少有多少人是在同一个星期几出生的？"
+ },
+ {
+  "key": "gen.pigeon.ue6",
+  "zh": "一周 7 天是 7 个抽屉：{v1}÷7={v2}{v3}，至少有 {v4} 人在同一个星期几。"
+ },
+ {
+  "key": "gen.pigeon.upt6",
+  "zh": "平均分配"
+ },
+ {
+  "key": "gen.pigeon.uq7",
+  "zh": "把 {v1} 本书分给 {v2} 个同学，至少有一个同学分到多少本？"
+ },
+ {
+  "key": "gen.pigeon.ue7",
+  "zh": "{v1}÷{v2}={v3}{v4}，最平均分也会有人不少于 {v5} 本。"
+ },
+ {
+  "key": "gen.pigeon.upt7",
+  "zh": "平均数思想"
+ },
+ {
+  "key": "gen.pigeon.uq8",
+  "zh": "袋子里有红球 {v1} 个、黄球 {v2} 个、蓝球 {v3} 个，至少摸出多少个才能保证三种颜色的球都摸到？"
+ },
+ {
+  "key": "gen.pigeon.ue8",
+  "zh": "最坏情况是把数量最少的那种（{v1} 个）留在最后：先摸出其余 {v2}−{v3}={v4} 个，再摸 1 个：{v5}+1={v6}（个）。"
+ },
+ {
+  "key": "gen.pigeon.upt8",
+  "zh": "最不利原则"
+ },
+ {
+  "key": "gen.pigeon.uq9",
+  "zh": "袋中有 {v1} 个红球和 {v2} 个白球，至少摸出多少个才能保证有 {v3} 个颜色相同的球？"
+ },
+ {
+  "key": "gen.pigeon.ue9",
+  "zh": "两种颜色是 2 个抽屉，最坏情况每种摸 {v1} 个共 {v2} 个，再摸 1 个必有 {v3} 个同色：{v4}（个）。"
+ },
+ {
+  "key": "gen.pigeon.upt9",
+  "zh": "抽屉原理"
+ },
+ {
+  "key": "gen.pigeon.uq10",
+  "zh": "至少取多少个自然数，才能保证其中一定有两个数除以 {v1} 的余数相同？"
+ },
+ {
+  "key": "gen.pigeon.ue10",
+  "zh": "除以 {v1} 的余数只有 0,1,…,{v2} 共 {v3} 种（{v4} 个抽屉），取 {v5}+1={v6} 个数就一定有两个余数相同。"
+ },
+ {
+  "key": "gen.pigeon.upt10",
+  "zh": "余数抽屉"
+ },
+ {
+  "key": "gen.pigeon.uq11",
+  "zh": "一副扑克牌去掉大小王后有 52 张，共 4 种花色。至少抽出多少张，才能保证有 {v1} 张花色相同？"
+ },
+ {
+  "key": "gen.pigeon.ue11",
+  "zh": "4 种花色是 4 个抽屉，最坏情况每种抽 {v1} 张共 {v2} 张，再抽 1 张必有 {v3} 张同花色：{v4}（张）。"
+ },
+ {
+  "key": "gen.pigeon.upt11",
+  "zh": "构造抽屉"
+ },
+ {
+  "key": "gen.inclusion.uq0",
+  "zh": "参加数学小组的有 {v1} 人，参加英语小组的有 {v2} 人，两个小组都参加的有 {v3} 人。至少参加一个小组的共有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue0",
+  "zh": "容斥原理：{v1}+{v2}−{v3}={v4}−{v5}={v6}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt0",
+  "zh": "两集合容斥"
+ },
+ {
+  "key": "gen.inclusion.uq1",
+  "zh": "喜欢足球的有 {v1} 人，喜欢篮球的有 {v2} 人，两种都喜欢的人数未知，至少喜欢一种的共 {v3} 人。两种都喜欢的有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue1",
+  "zh": "两者都喜欢={v1}+{v2}−{v3}={v4}−{v5}={v6}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt1",
+  "zh": "求交集"
+ },
+ {
+  "key": "gen.inclusion.uq2",
+  "zh": "参加书法组的有 {v1} 人，参加绘画组的有 {v2} 人，其中 {v3} 人两个组都参加。只参加书法组的有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue2",
+  "zh": "只参加书法={v1}−{v2}={v3}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt2",
+  "zh": "只参加一项"
+ },
+ {
+  "key": "gen.inclusion.uq3",
+  "zh": "全班 {v1} 人，参加语文竞赛的 {v2} 人，参加数学竞赛的 {v3} 人，两项都参加的 {v4} 人。两项都没参加的有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue3",
+  "zh": "至少参加一项={v1}+{v2}−{v3}={v4}（人），都没参加={v5}−{v6}={v7}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt3",
+  "zh": "求都不"
+ },
+ {
+  "key": "gen.inclusion.uq4",
+  "zh": "三个兴趣小组：参加甲组 {v1} 人，乙组 {v2} 人，丙组 {v3} 人；甲乙都参加 {v4} 人，甲丙都参加 {v5} 人，乙丙都参加 {v6} 人，三组都参加 {v7} 人。至少参加一个组的共有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue4",
+  "zh": "三集合容斥：{v1}+{v2}+{v3}−{v4}−{v5}−{v6}+{v7}={v8}−{v9}+{v10}={v11}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt4",
+  "zh": "三集合容斥"
+ },
+ {
+  "key": "gen.inclusion.uq5",
+  "zh": "全班 {v1} 人，只参加合唱队的 {v2} 人，只参加舞蹈队的 {v3} 人，两队都参加的 {v4} 人。两队都不参加的有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue5",
+  "zh": "参加过的共 {v1}+{v2}+{v3}={v4}（人），都不参加={v5}−{v6}={v7}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt5",
+  "zh": "韦恩图"
+ },
+ {
+  "key": "gen.inclusion.uq6",
+  "zh": "参加数学组的 {v1} 人，参加科技组的 {v2} 人，两组都参加的 {v3} 人。只参加一个组的一共有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue6",
+  "zh": "只参加数学 {v1}−{v2}={v3}（人），只参加科技 {v4}−{v5}={v6}（人），共 {v7}+{v8}={v9}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt6",
+  "zh": "只参加一项"
+ },
+ {
+  "key": "gen.inclusion.uq7",
+  "zh": "某班至少参加一项活动的有 {v1} 人，两项都没参加的有 {v2} 人。这个班一共有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue7",
+  "zh": "总人数=至少参加一项的人数+都没参加的人数={v1}+{v2}={v3}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt7",
+  "zh": "求总数"
+ },
+ {
+  "key": "gen.inclusion.uq8",
+  "zh": "订《少年报》的有 {v1} 人，订《数学报》的有 {v2} 人，两种都订的有 {v3} 人。只订《数学报》的有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue8",
+  "zh": "只订《数学报》={v1}−{v2}={v3}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt8",
+  "zh": "韦恩图填空"
+ },
+ {
+  "key": "gen.inclusion.uq9",
+  "zh": "三项调查中：甲 {v1} 人，乙 {v2} 人，丙 {v3} 人；甲乙 {v4} 人，甲丙 {v5} 人，乙丙 {v6} 人，至少参加一项的 {v7} 人。三项都参加的有多少人？"
+ },
+ {
+  "key": "gen.inclusion.ue9",
+  "zh": "由容斥：三项都参加={v1}−({v2}+{v3}+{v4})+({v5}+{v6}+{v7})={v8}−{v9}+{v10}={v11}（人）。"
+ },
+ {
+  "key": "gen.inclusion.upt9",
+  "zh": "反用容斥"
+ },
+ {
+  "key": "gen.inclusion.uq10",
+  "zh": "在 1 ~ {v1} 中，能被 {v2} 整除或能被 {v3} 整除的数一共有多少个？"
+ },
+ {
+  "key": "gen.inclusion.ue10",
+  "zh": "能被 {v1} 整除的 {v2} 个，能被 {v3} 整除的 {v4} 个，都能被整除（即 {v5} 的倍数）的 {v6} 个；{v7}+{v8}−{v9}={v10}（个）。"
+ },
+ {
+  "key": "gen.inclusion.upt10",
+  "zh": "整除容斥"
+ },
+ {
+  "key": "gen.inclusion.uq11",
+  "zh": "在 1 ~ {v1} 中，既不能被 {v2} 整除又不能被 {v3} 整除的数有多少个？"
+ },
+ {
+  "key": "gen.inclusion.ue11",
+  "zh": "能被 {v1} 或 {v2} 整除的有 {v3}+{v4}−{v5}={v6}（个），所以都不能整除的有 {v7}−{v8}={v9}（个）。"
+ },
+ {
+  "key": "gen.inclusion.upt11",
+  "zh": "容斥求补"
+ },
+ {
+  "key": "gen.cowgrass.uq0",
+  "zh": "一片牧场的草匀速生长。原有草量相当于 {v1} 头牛吃 1 天的量，每天新长的草相当于 {v2} 头牛 1 天吃的量。要在 {v3} 天吃完，需要多少头牛？"
+ },
+ {
+  "key": "gen.cowgrass.ue0",
+  "zh": "{v1} 天里新长草 {v2}×{v3}={v4}（份），总草量 {v5}+{v6}={v7}（份），牛数={v8}÷{v9}={v10}（头）。"
+ },
+ {
+  "key": "gen.cowgrass.upt0",
+  "zh": "牛吃草"
+ },
+ {
+  "key": "gen.cowgrass.uq1",
+  "zh": "一片牧场上的草匀速生长，{v1}。那么 {v2} 头牛可以吃多少天？"
+ },
+ {
+  "key": "gen.cowgrass.ue1",
+  "zh": "{v1} {v2} 头牛中有 {v3} 头“吃掉”新长的草，剩下 {v4}−{v5}={v6} 头吃原有草：{v7}÷{v8}={v9}（天）。"
+ },
+ {
+  "key": "gen.cowgrass.upt1",
+  "zh": "牛吃草"
+ },
+ {
+  "key": "gen.cowgrass.uq2",
+  "zh": "一片牧场上的草匀速生长，{v1}。如果要在 {v2} 天里把草吃完，需要多少头牛？"
+ },
+ {
+  "key": "gen.cowgrass.ue2",
+  "zh": "{v1} {v2} 天共有草 {v3}+{v4}×{v5}={v6}（份），需要 {v7}÷{v8}={v9}（头）。"
+ },
+ {
+  "key": "gen.cowgrass.upt2",
+  "zh": "牛吃草"
+ },
+ {
+  "key": "gen.cowgrass.uq3",
+  "zh": "一片牧场上的草匀速生长，{v1}。这片牧场每天新长的草相当于多少头牛一天吃的草量？"
+ },
+ {
+  "key": "gen.cowgrass.upt3",
+  "zh": "求生长量"
+ },
+ {
+  "key": "gen.cowgrass.uq4",
+  "zh": "一片牧场上的草匀速生长，{v1}。牧场原有的草相当于多少头牛吃 1 天的草量？"
+ },
+ {
+  "key": "gen.cowgrass.upt4",
+  "zh": "求原有量"
+ },
+ {
+  "key": "gen.cowgrass.uq5",
+  "zh": "一片牧场上的草匀速生长，{v1}。最多放多少头牛，才能使草永远吃不完？"
+ },
+ {
+  "key": "gen.cowgrass.upt5",
+  "zh": "永远吃不完"
+ },
+ {
+  "key": "gen.cowgrass.uq6",
+  "zh": "一个水池有进水管匀速进水（水池原有水量固定）。{v1} 台抽水机 {v2} 小时可以抽干，{v3} 台抽水机 {v4} 小时可以抽干。{v5} 台抽水机需要多少小时抽干？"
+ },
+ {
+  "key": "gen.cowgrass.ue3",
+  "zh": "与牛吃草同理。{v1} {v2}−{v3}={v4} 台用于抽原有水：{v5}÷{v6}={v7}（小时）。"
+ },
+ {
+  "key": "gen.cowgrass.upt6",
+  "zh": "抽水机模型"
+ },
+ {
+  "key": "gen.cowgrass.uq7",
+  "zh": "一个水池不断有水流入。用 {v1} 台抽水机 {v2} 小时抽干，用 {v3} 台抽水机 {v4} 小时抽干。若要在 {v5} 小时内抽干，需要多少台抽水机？"
+ },
+ {
+  "key": "gen.cowgrass.ue4",
+  "zh": "每小时流入的水相当于 {v1} 台抽水机 1 小时的抽水量，原有水量相当于 {v2} 台抽 1 小时；{v3} 小时共 {v4}+{v5}×{v6}={v7}，需要 {v8}÷{v9}={v10}（台）。"
+ },
+ {
+  "key": "gen.cowgrass.upt7",
+  "zh": "抽水机模型"
+ },
+ {
+  "key": "gen.cowgrass.uq8",
+  "zh": "商场里的顾客不断增加（增加速度不变）。开 {v1} 个收银台 {v2} 分钟没有排队顾客，开 {v3} 个收银台 {v4} 分钟没有排队顾客。开 {v5} 个收银台需要多少分钟？"
+ },
+ {
+  "key": "gen.cowgrass.ue5",
+  "zh": "原有排队人数相当于 {v1} 份，每分钟新来的相当于 {v2} 份；{v3} 个收银台中 {v4} 个应付新来的，其余 {v5} 个处理原有的：{v6}÷{v7}={v8}（分钟）。"
+ },
+ {
+  "key": "gen.cowgrass.upt8",
+  "zh": "收银台模型"
+ },
+ {
+  "key": "gen.cowgrass.uq9",
+  "zh": "一个水池边不断有水流入。{v1} 台抽水机 {v2} 小时抽干，{v3} 台抽水机 {v4} 小时抽干。每小时流入的水相当于多少台抽水机 1 小时的抽水量？"
+ },
+ {
+  "key": "gen.cowgrass.ue6",
+  "zh": "总量：{v1}×{v2}={v3}，{v4}×{v5}={v6}；每小时流入=({v7}−{v8})÷({v9}−{v10})={v11}。"
+ },
+ {
+  "key": "gen.cowgrass.upt9",
+  "zh": "求流入速度"
+ },
+ {
+  "key": "gen.cowgrass.uq10",
+  "zh": "一片草地匀速长草，{v1}。如果把牛的数量增加到 {v2} 头，能吃多少天？（草被吃完为止）"
+ },
+ {
+  "key": "gen.cowgrass.ue7",
+  "zh": "{v1} {v2} 头牛里 {v3} 头正好吃掉每天新长的草，其余 {v4} 头吃原有的 {v5} 份：{v6}÷{v7}={v8}（天）。"
+ },
+ {
+  "key": "gen.cowgrass.upt10",
+  "zh": "牛吃草"
+ },
+ {
+  "key": "gen.concentration.uq0",
+  "zh": "把 {v1} 克盐溶解在 {v2} 克水中，配成的盐水浓度是百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.concentration.ue0",
+  "zh": "盐水总重={v1}+{v2}={v3}（克），浓度=溶质÷溶液={v4}÷{v5}={v6}%。"
+ },
+ {
+  "key": "gen.concentration.upt0",
+  "zh": "浓度公式"
+ },
+ {
+  "key": "gen.concentration.uq1",
+  "zh": "{v1} 克浓度为 {v2}% 的盐水中，含盐多少克？"
+ },
+ {
+  "key": "gen.concentration.ue1",
+  "zh": "溶质=溶液×浓度={v1}×{v2}%={v3}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt1",
+  "zh": "求溶质"
+ },
+ {
+  "key": "gen.concentration.uq2",
+  "zh": "一杯盐水中含盐 {v1} 克，浓度是 {v2}%。这杯盐水一共有多少克？"
+ },
+ {
+  "key": "gen.concentration.ue2",
+  "zh": "溶液=溶质÷浓度={v1}÷{v2}%={v3}÷{v4}={v5}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt2",
+  "zh": "求溶液"
+ },
+ {
+  "key": "gen.concentration.uq3",
+  "zh": "{v1} 克浓度 {v2}% 的糖水中含糖多少克？"
+ },
+ {
+  "key": "gen.concentration.ue3",
+  "zh": "含糖={v1}×{v2}%={v3}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt3",
+  "zh": "求溶质"
+ },
+ {
+  "key": "gen.concentration.uq4",
+  "zh": "{v1} 克浓度为 {v2}% 的盐水，加入 {v3} 克水后，浓度变成百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.concentration.ue4",
+  "zh": "加水盐不变：盐 {v1} 克，新盐水 {v2}+{v3}={v4}（克），浓度={v5}÷{v6}={v7}%。"
+ },
+ {
+  "key": "gen.concentration.upt4",
+  "zh": "稀释"
+ },
+ {
+  "key": "gen.concentration.uq5",
+  "zh": "{v1} 克浓度 {v2}% 的盐水中，水有多少克？"
+ },
+ {
+  "key": "gen.concentration.ue5",
+  "zh": "盐={v1}×{v2}%={v3}（克），水={v4}−{v5}={v6}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt5",
+  "zh": "求溶剂"
+ },
+ {
+  "key": "gen.concentration.uq6",
+  "zh": "{v1} 克浓度为 {v2}% 的盐水，要把浓度稀释到 {v3}%，需要加入多少克水？"
+ },
+ {
+  "key": "gen.concentration.ue6",
+  "zh": "盐不变={v1} 克；要达到 {v2}%，盐水应有 {v3}÷{v4}%={v5}（克），需加水 {v6}−{v7}={v8}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt6",
+  "zh": "求加水量"
+ },
+ {
+  "key": "gen.concentration.uq7",
+  "zh": "{v1} 克浓度为 {v2}% 的盐水中，再加入 {v3} 克盐并全部溶解，新盐水的浓度是百分之几？（填百分号前的数，保留一位小数）"
+ },
+ {
+  "key": "gen.concentration.ue7",
+  "zh": "原有盐 {v1} 克，加盐后盐 {v2}+{v3}={v4}（克），盐水 {v5}+{v6}={v7}（克），浓度={v8}÷{v9}≈{v10}%。"
+ },
+ {
+  "key": "gen.concentration.upt7",
+  "zh": "加溶质"
+ },
+ {
+  "key": "gen.concentration.uq8",
+  "zh": "{v1} 克浓度 {v2}% 的盐水与等量的清水混合后，浓度是百分之几？（填百分号前的数）"
+ },
+ {
+  "key": "gen.concentration.ue8",
+  "zh": "盐 {v1} 克不变，盐水变成 {v2} 克，浓度={v3}÷{v4}={v5}%。"
+ },
+ {
+  "key": "gen.concentration.upt8",
+  "zh": "稀释"
+ },
+ {
+  "key": "gen.concentration.uq9",
+  "zh": "{v1} 克浓度为 {v2}% 的盐水，蒸发掉一些水后浓度变为 {v3}%。蒸发掉多少克水？"
+ },
+ {
+  "key": "gen.concentration.ue9",
+  "zh": "盐不变={v1} 克；浓度 {v2}% 时盐水重 {v3}÷{v4}%={v5}（克），蒸发水 {v6}−{v7}={v8}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt9",
+  "zh": "蒸发"
+ },
+ {
+  "key": "gen.concentration.uq10",
+  "zh": "把 {v1} 克浓度 {v2}% 的盐水与 {v3} 克浓度 {v4}% 的盐水混合，混合后浓度是百分之几？（填百分号前的数，保留一位小数）"
+ },
+ {
+  "key": "gen.concentration.ue10",
+  "zh": "总盐={v1}×{v2}%+{v3}×{v4}%={v5}+{v6}={v7}（克），总重 {v8} 克，浓度≈{v9}%。"
+ },
+ {
+  "key": "gen.concentration.upt10",
+  "zh": "混合浓度"
+ },
+ {
+  "key": "gen.concentration.uq11",
+  "zh": "要配制 {v1} 克浓度为 {v2}% 的盐水，需要{v3}多少克？"
+ },
+ {
+  "key": "gen.concentration.ue11",
+  "zh": "需要盐 {v1}×{v2}%={v3}（克），需要水 {v4}−{v5}={v6}（克）。所以答案是 {v7} 克。"
+ },
+ {
+  "key": "gen.concentration.upt11",
+  "zh": "配制溶液"
+ },
+ {
+  "key": "gen.concentration.uq12",
+  "zh": "{v1} 克浓度为 {v2}% 的盐水，要使浓度提高到 50%，需要再加入多少克盐？"
+ },
+ {
+  "key": "gen.concentration.ue12",
+  "zh": "设加盐 x 克：({v1}+x)÷({v2}+x)=50%，{v3}+x=0.5×({v4}+x)，0.5x={v5}，x={v6}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt12",
+  "zh": "求加盐量"
+ },
+ {
+  "key": "gen.concentration.uq13",
+  "zh": "{v1} 克浓度为 {v2}% 的糖水，要使浓度变成 50%，需要蒸发掉多少克水？"
+ },
+ {
+  "key": "gen.concentration.ue13",
+  "zh": "糖 {v1} 克不变，浓度 50% 时糖水重 {v2}÷50%={v3}（克），需蒸发水 {v4}−{v5}={v6}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt13",
+  "zh": "蒸发浓缩"
+ },
+ {
+  "key": "gen.concentration.uq14",
+  "zh": "要配制浓度为 {v1}% 的盐水，现有 {v2} 克浓度为 {v3}% 的盐水，需要加入浓度为 {v4}% 的盐水多少克？"
+ },
+ {
+  "key": "gen.concentration.ue14",
+  "zh": "设加入 x 克：{v1}%x+{v2}%×{v3}={v4}%(x+{v5})，({v6}−{v7})x=({v8}−{v9})×{v10}，{v11}x={v12}，x={v13}（克）。"
+ },
+ {
+  "key": "gen.concentration.upt14",
+  "zh": "十字交叉"
+ }
+]

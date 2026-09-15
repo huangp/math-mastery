@@ -17,7 +17,8 @@
     return `<svg viewBox="0 0 ${w} ${h}" width="100%" style="max-width:${maxw || w}px;height:auto;display:block" xmlns="${NS}">${inner}</svg>`;
   }
 
-  const Fig = {};
+  const G = window.G;
+const Fig = {};
 
   /* ---------------- 数轴 ---------------- */
   Fig.numline = function (p) {
@@ -68,7 +69,7 @@
     if (bis) {
       const am = (a1 + a2) / 2;
       s += `<line x1="${vx}" y1="${vy}" x2="${vx + (r + 6) * Math.cos(am)}" y2="${vy + (r + 6) * Math.sin(am)}" stroke="${K.ok}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-      s += `<text x="${vx + (r + 18) * Math.cos(am)}" y="${vy + (r + 18) * Math.sin(am)}" font-size="11" fill="${K.ok}" text-anchor="middle" font-family="inherit">平分线</text>`;
+      s += `<text x="${vx + (r + 18) * Math.cos(am)}" y="${vy + (r + 18) * Math.sin(am)}" font-size="11" fill="${K.ok}" text-anchor="middle" font-family="inherit">${G("fig.t0", null, `平分线`)}</text>`;
     }
     s += `<circle cx="${vx}" cy="${vy}" r="3.5" fill="${K.ink}"/>`;
     return s;
@@ -84,7 +85,7 @@
     s += `<path d="M ${vx + 30} ${vy} A 30 30 0 0 0 ${vx + 30 * Math.cos(-deg)} ${vy + 30 * Math.sin(-deg)}" fill="none" stroke="${K.warn}" stroke-width="1.5"/>`;
     s += `<text x="${vx + 16}" y="${vy - 8}" font-size="12" fill="${K.warn}" font-family="inherit">α</text>`;
     s += `<text x="${vx - 22}" y="${vy - 8}" font-size="12" fill="${K.pri}" font-family="inherit">β</text>`;
-    s += `<text x="${vx}" y="${vy + 26}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">α + β = 180°（互补）</text>`;
+    s += `<text x="${vx}" y="${vy + 26}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t1", null, `α + β = 180°（互补）`)}</text>`;
     s += `<circle cx="${vx}" cy="${vy}" r="3.5" fill="${K.ink}"/>`;
     return S(320, 140, s, 320);
   };
@@ -123,8 +124,8 @@
   }
   Fig.tri = function () { return S(320, 160, drawTri("acute"), 320); };
   Fig.triSide = function () { return S(320, 160, drawTri("acute", { base: "4", l: "3", r: "5" }), 320); };
-  Fig.triIso = function () { return S(320, 160, drawTri("iso", { base: "腰" }), 320); };
-  Fig.triRight = function () { return S(320, 160, drawTri("right", { base: "直角边", l: "直角边" }), 320); };
+  Fig.triIso = function () { return S(320, 160, drawTri("iso", { base: G("fig.side.leg", null, "腰") }), 320); };
+  Fig.triRight = function () { return S(320, 160, drawTri("right", { base: G("fig.side.rightLeg", null, "直角边"), l: G("fig.side.rightLeg", null, "直角边") }), 320); };
 
   /* ---------------- 全等 / 相似 两三角形 ---------------- */
   function twoTri(mode) {
@@ -152,9 +153,9 @@
     const r = mode === "similar" ? 0.66 : 1;
     s += tri(200, 135, r, "#e7f6ee", ["D", "E", "F"], K.purple);
     if (mode === "similar") {
-      s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">相似：对应边成比例</text>`;
+      s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t2", null, `相似：对应边成比例`)}</text>`;
     } else {
-      s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">全等：△ABC ≌ △DEF</text>`;
+      s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t3", null, `全等：△ABC ≌ △DEF`)}</text>`;
     }
     return S(320, 160, s, 320);
   }
@@ -185,7 +186,7 @@
     else if (type === "trap") pts = "70,140 250,140 210,60 110,60";
     else pts = "70,60 260,50 270,150 60,140"; // parallelogram
     let s = `<polygon points="${pts}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
-    const labels = { rect: "矩形", rhombus: "菱形", trap: "梯形", para: "平行四边形" };
+    const labels = { rect: G("fig.quad.rect", null, "矩形"), rhombus: G("fig.quad.rhombus", null, "菱形"), trap: G("fig.quad.trap", null, "梯形"), para: G("fig.quad.para", null, "平行四边形") };
     s += `<text x="160" y="175" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${labels[type]}</text>`;
     return s;
   }
@@ -221,14 +222,14 @@
     s += `<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="${K.red}" stroke-width="2.5"/>`;
     s += `<circle cx="${A.x}" cy="${A.y}" r="3.5" fill="${K.pri}"/><text x="${A.x - 6}" y="${A.y + 16}" font-size="12" fill="${K.pri}" font-family="inherit">A</text>`;
     s += `<circle cx="${B.x}" cy="${B.y}" r="3.5" fill="${K.pri}"/><text x="${B.x + 6}" y="${B.y + 16}" font-size="12" fill="${K.pri}" font-family="inherit">B</text>`;
-    s += `<text x="${cx}" y="${cy - r - 6}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">弦 AB 与所对弧</text>`;
+    s += `<text x="${cx}" y="${cy - r - 6}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t4", null, `弦 AB 与所对弧`)}</text>`;
     return S(320, 180, s, 320);
   };
   Fig.chordDia = function () {
     const cx = 160, cy = 95, r = 62;
     let s = circleBase(cx, cy, r);
     s += `<line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${K.red}" stroke-width="2.5"/>`;
-    s += `<text x="${cx}" y="${cy - 10}" font-size="12" fill="${K.red}" font-family="inherit">直径（最长弦）</text>`;
+    s += `<text x="${cx}" y="${cy - 10}" font-size="12" fill="${K.red}" font-family="inherit">${G("fig.t5", null, `直径（最长弦）`)}</text>`;
     return S(320, 180, s, 320);
   };
   Fig.tangent = function () {
@@ -239,8 +240,8 @@
     s += `<circle cx="${P.x}" cy="${P.y}" r="4" fill="${K.ok}"/>`;
     // 直角标记
     s += `<path d="M ${P.x - 14} ${P.y} L ${P.x - 14} ${P.y - 14} L ${P.x} ${P.y - 14}" fill="none" stroke="${K.warn}" stroke-width="1.5"/>`;
-    s += `<text x="${cx + r + 18}" y="${cy - 10}" font-size="12" fill="${K.ok}" font-family="inherit">切线</text>`;
-    s += `<text x="${cx}" y="${cy - r - 6}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">切线 ⊥ 过切点的半径</text>`;
+    s += `<text x="${cx + r + 18}" y="${cy - 10}" font-size="12" fill="${K.ok}" font-family="inherit">${G("fig.t6", null, `切线`)}</text>`;
+    s += `<text x="${cx}" y="${cy - r - 6}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t7", null, `切线 ⊥ 过切点的半径`)}</text>`;
     return S(320, 180, s, 320);
   };
   Fig.central = function () {
@@ -251,7 +252,7 @@
     s += `<line x1="${cx}" y1="${cy}" x2="${B.x}" y2="${B.y}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<path d="M ${cx + 26} ${cy} A 26 26 0 0 0 ${cx + 26 * Math.cos(-55 * Math.PI / 180)} ${cy + 26 * Math.sin(-55 * Math.PI / 180)}" fill="none" stroke="${K.warn}" stroke-width="1.5"/>`;
     s += `<text x="${cx + 40}" y="${cy - 14}" font-size="12" fill="${K.warn}" font-family="inherit">60°</text>`;
-    s += `<text x="${cx}" y="${cy - r - 6}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">弧的度数 = 圆心角</text>`;
+    s += `<text x="${cx}" y="${cy - r - 6}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t8", null, `弧的度数 = 圆心角`)}</text>`;
     return S(320, 180, s, 320);
   };
 
@@ -261,14 +262,14 @@
     let s = `<ellipse cx="${cx}" cy="${top}" rx="${w}" ry="${k}" fill="#dbeafe" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<path d="M ${cx - w} ${top} L ${cx - w} ${bot} A ${w} ${k} 0 0 0 ${cx + w} ${bot} L ${cx + w} ${top}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<ellipse cx="${cx}" cy="${bot}" rx="${w}" ry="${k}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
-    s += `<text x="${cx}" y="${bot + 22}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">圆柱 V = πr²h</text>`;
+    s += `<text x="${cx}" y="${bot + 22}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t9", null, `圆柱 V = πr²h`)}</text>`;
     return S(320, 190, s, 320);
   };
   Fig.cone3d = function () {
     const cx = 160, top = 45, bot = 150, w = 56, k = 16;
     let s = `<path d="M ${cx} ${top} L ${cx - w} ${bot} A ${w} ${k} 0 0 0 ${cx + w} ${bot} Z" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<ellipse cx="${cx}" cy="${bot}" rx="${w}" ry="${k}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
-    s += `<text x="${cx}" y="${bot + 22}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">圆锥 V = ⅓πr²h</text>`;
+    s += `<text x="${cx}" y="${bot + 22}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t10", null, `圆锥 V = ⅓πr²h`)}</text>`;
     return S(320, 190, s, 320);
   };
 
@@ -285,7 +286,7 @@
     let s = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<path d="M ${cx} ${cy} L ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1} Z" fill="${K.pri}" stroke="${K.ink}" stroke-width="1"/>`;
     s += `<text x="${cx}" y="${cy + 4}" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" font-family="inherit">${Math.round(frac * 100)}%</text>`;
-    s += `<text x="230" y="80" font-size="13" fill="${K.ink}" font-family="inherit">阴影部分</text>`;
+    s += `<text x="230" y="80" font-size="13" fill="${K.ink}" font-family="inherit">${G("fig.t11", null, `阴影部分`)}</text>`;
     s += `<text x="230" y="100" font-size="13" fill="${K.pri}" font-weight="700" font-family="inherit">=${frac}</text>`;
     return S(320, 180, s, 320);
   };
@@ -315,7 +316,7 @@
     let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${K.soft}" stroke="${K.line}" stroke-width="1.5"/>`;
     s += `<rect x="${x}" y="${y}" width="${w * pct / 100}" height="${h}" rx="6" fill="${K.pri}"/>`;
     s += `<text x="${x + w * pct / 100 / 2}" y="${y + 23}" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" font-family="inherit">${pct}%</text>`;
-    s += `<text x="${x}" y="${y - 12}" font-size="12" fill="${K.ink}" font-family="inherit">占整体的比例</text>`;
+    s += `<text x="${x}" y="${y - 12}" font-size="12" fill="${K.ink}" font-family="inherit">${G("fig.t12", null, `占整体的比例`)}</text>`;
     return S(320, 130, s, 320);
   };
   Fig.barModel = function (p) {
@@ -326,7 +327,7 @@
     s += `<text x="${x + a * uw / 2}" y="${y + h / 2 + 5}" font-size="14" fill="${K.ink}" font-weight="700" text-anchor="middle" font-family="inherit">${a}</text>`;
     s += `<rect x="${x + a * uw + 24}" y="${y}" width="${b * uw}" height="${h}" rx="4" fill="${K.pri}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<text x="${x + a * uw + 24 + b * uw / 2}" y="${y + h / 2 + 5}" font-size="14" fill="#fff" font-weight="700" text-anchor="middle" font-family="inherit">${b}</text>`;
-    s += `<text x="${x}" y="${y - 12}" font-size="12" fill="${K.ink}" font-family="inherit">比 ${a}:${b}（前:后）</text>`;
+    s += `<text x="${x}" y="${y - 12}" font-size="12" fill="${K.ink}" font-family="inherit">${G("fig.t13", { v1: a, v2: b }, `比 ${a}:${b}（前:后）`)}</text>`;
     return S(320, 150, s, 320);
   };
 
@@ -342,7 +343,7 @@
       s += `<circle cx="${x}" cy="${y - 18}" r="9" fill="${K.ok}" stroke="${K.ink}" stroke-width="1.5"/>`;
       s += `<rect x="${x - 1.5}" y="${y - 9}" width="3" height="9" fill="${K.ink}"/>`;
     }
-    const cap = mode === "one" ? "只栽一端：棵数 = 间隔数" : mode === "none" ? "两端不栽：棵数 = 间隔数 − 1" : "两端都栽：棵数 = 间隔数 + 1";
+    const cap = mode === "one" ? G("fig.plant.one", null, "只栽一端：棵数 = 间隔数") : mode === "none" ? G("fig.plant.none", null, "两端不栽：棵数 = 间隔数 − 1") : G("fig.plant.both", null, "两端都栽：棵数 = 间隔数 + 1");
     s += `<text x="160" y="${y + 30}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${cap}</text>`;
     return S(320, 150, s, 320);
   };
@@ -354,19 +355,20 @@
     let s = `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="${K.ink}" stroke-width="3"/>`;
     s += `<text x="${x0}" y="${y - 16}" font-size="14" fill="${K.pri}" font-weight="700" text-anchor="middle" font-family="inherit">A</text>`;
     s += `<text x="${x1}" y="${y - 16}" font-size="14" fill="${K.pri}" font-weight="700" text-anchor="middle" font-family="inherit">B</text>`;
-    (p.pts || [{ pos: 0.35, label: "甲", color: K.blue }, { pos: 0.65, label: "乙", color: K.red }]).forEach(pt => {
+    (p.pts || [{ pos: 0.35, label: G("gen.actor.a", null, "甲"), color: K.blue }, { pos: 0.65, label: G("gen.actor.b", null, "乙"), color: K.red }]).forEach(pt => {
       const x = x0 + (x1 - x0) * pt.pos;
       s += `<circle cx="${x}" cy="${y}" r="9" fill="${pt.color}" stroke="#fff" stroke-width="2"/>`;
       s += `<text x="${x}" y="${y + 26}" font-size="12" fill="${pt.color}" font-weight="700" text-anchor="middle" font-family="inherit">${pt.label}</text>`;
     });
+    if (p.capKey) p = Object.assign({}, p, { cap: G(p.capKey, null, p.capZh || p.capKey) });
     if (p.cap) s += `<text x="160" y="${y + 44}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${p.cap}</text>`;
     return S(320, 150, s, 320);
   };
   Fig.trackRiver = function () {
     let s = `<line x1="40" y1="70" x2="280" y2="70" stroke="${K.blue}" stroke-width="3"/>`;
     s += `<line x1="40" y1="110" x2="280" y2="110" stroke="${K.blue}" stroke-width="3"/>`;
-    s += `<text x="40" y="58" font-size="12" fill="${K.blue}" font-family="inherit">顺流</text>`;
-    s += `<text x="40" y="128" font-size="12" fill="${K.blue}" font-family="inherit">逆流</text>`;
+    s += `<text x="40" y="58" font-size="12" fill="${K.blue}" font-family="inherit">${G("fig.t14", null, `顺流`)}</text>`;
+    s += `<text x="40" y="128" font-size="12" fill="${K.blue}" font-family="inherit">${G("fig.t15", null, `逆流`)}</text>`;
     s += `<circle cx="120" cy="70" r="7" fill="${K.pri}"/><circle cx="200" cy="110" r="7" fill="${K.red}"/>`;
     return S(320, 150, s, 320);
   };
@@ -375,7 +377,7 @@
     let s = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${K.ink}" stroke-width="3"/>`;
     s += `<circle cx="${cx + r}" cy="${cy}" r="8" fill="${K.pri}"/>`;
     s += `<circle cx="${cx - r}" cy="${cy}" r="8" fill="${K.red}"/>`;
-    s += `<text x="${cx}" y="${cy - r - 8}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">环形跑道</text>`;
+    s += `<text x="${cx}" y="${cy - r - 8}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t16", null, `环形跑道`)}</text>`;
     return S(320, 180, s, 320);
   };
 
@@ -389,7 +391,7 @@
     s += `<path d="M 104 78 l 12 -3 l -10 6 z" fill="${K.warn}"/>`;
     s += `<line x1="78" y1="128" x2="78" y2="142" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<line x1="102" y1="128" x2="102" y2="142" stroke="${K.ink}" stroke-width="2"/>`;
-    s += `<text x="90" y="160" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">鸡：2 脚</text>`;
+    s += `<text x="90" y="160" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t17", null, `鸡：2 脚`)}</text>`;
     // 兔
     s += `<ellipse cx="220" cy="110" rx="28" ry="20" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<circle cx="220" cy="74" r="14" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
@@ -399,7 +401,7 @@
     s += `<line x1="216" y1="128" x2="216" y2="142" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<line x1="232" y1="128" x2="232" y2="142" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<line x1="240" y1="128" x2="240" y2="142" stroke="${K.ink}" stroke-width="2"/>`;
-    s += `<text x="220" y="160" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">兔：4 脚</text>`;
+    s += `<text x="220" y="160" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t18", null, `兔：4 脚`)}</text>`;
     return S(320, 175, s, 320);
   };
 
@@ -443,7 +445,7 @@
       path += " L " + x.toFixed(1) + " " + y.toFixed(1);
     }
     s += `<path d="${path}" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
-    s += `<text x="${cx}" y="${cy - h - 10}" font-size="12" fill="${K.pri}" text-anchor="middle" font-family="inherit">正态分布</text>`;
+    s += `<text x="${cx}" y="${cy - h - 10}" font-size="12" fill="${K.pri}" text-anchor="middle" font-family="inherit">${G("fig.t19", null, `正态分布`)}</text>`;
     return S(320, 160, s, 320);
   };
 
@@ -454,10 +456,10 @@
     let s = `<circle cx="160" cy="90" r="58" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
     if (side === "heads") {
       s += `<text x="160" y="100" font-size="30" fill="${K.warn}" text-anchor="middle" font-family="inherit">￥</text>`;
-      s += `<text x="160" y="158" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">正面（字面）</text>`;
+      s += `<text x="160" y="158" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t20", null, `正面（字面）`)}</text>`;
     } else {
-      s += `<text x="160" y="100" font-size="16" fill="${K.pri}" text-anchor="middle" font-family="inherit">字</text>`;
-      s += `<text x="160" y="158" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">反面（花面）</text>`;
+      s += `<text x="160" y="100" font-size="16" fill="${K.pri}" text-anchor="middle" font-family="inherit">${G("fig.t21", null, `字`)}</text>`;
+      s += `<text x="160" y="158" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t22", null, `反面（花面）`)}</text>`;
     }
     return S(320, 180, s, 320);
   };
@@ -472,18 +474,18 @@
       const py = cy - r + cell / 2 + gy * cell;
       s += `<circle cx="${px}" cy="${py}" r="6" fill="${K.ink}"/>`;
     });
-    s += `<text x="160" y="162" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">点数 ${v}</text>`;
+    s += `<text x="160" y="162" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t23", { v1: v }, `点数 ${v}`)}</text>`;
     return S(320, 180, s, 320);
   };
   Fig.eventCertain = function () {
     let s = `<rect x="60" y="40" width="200" height="80" rx="8" fill="${K.ok}" stroke="${K.ink}" stroke-width="2.5"/>`;
-    s += `<text x="160" y="90" font-size="16" fill="#fff" font-weight="700" text-anchor="middle" font-family="inherit">必然事件</text>`;
+    s += `<text x="160" y="90" font-size="16" fill="#fff" font-weight="700" text-anchor="middle" font-family="inherit">${G("fig.t24", null, `必然事件`)}</text>`;
     s += `<text x="160" y="150" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">P = 1</text>`;
     return S(320, 170, s, 320);
   };
   Fig.eventImpossible = function () {
     let s = `<rect x="60" y="40" width="200" height="80" rx="8" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5" stroke-dasharray="6 4"/>`;
-    s += `<text x="160" y="90" font-size="16" fill="${K.sub}" font-weight="700" text-anchor="middle" font-family="inherit">不可能事件</text>`;
+    s += `<text x="160" y="90" font-size="16" fill="${K.sub}" font-weight="700" text-anchor="middle" font-family="inherit">${G("fig.t25", null, `不可能事件`)}</text>`;
     s += `<text x="160" y="150" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">P = 0</text>`;
     return S(320, 170, s, 320);
   };
@@ -498,7 +500,7 @@
       s += `<circle cx="190" cy="90" r="55" fill="rgba(22,163,74,.18)" stroke="${K.ok}" stroke-width="2"/>`;
       s += `<text x="110" y="96" font-size="13" fill="${K.pri}" text-anchor="middle" font-family="inherit">A</text>`;
       s += `<text x="210" y="96" font-size="13" fill="${K.ok}" text-anchor="middle" font-family="inherit">B</text>`;
-      s += `<text x="160" y="170" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">A∩B 公共部分</text>`;
+      s += `<text x="160" y="170" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t26", null, `A∩B 公共部分`)}</text>`;
     }
     if (n === 3) {
       s += `<circle cx="160" cy="55" r="42" fill="rgba(217,119,6,.15)" stroke="${K.warn}" stroke-width="2"/>`;
@@ -627,7 +629,7 @@
     g += `<line x1="${f[1][0]}" y1="${f[1][1]}" x2="${b[1][0]}" y2="${b[1][1]}" stroke="${K.ink}" stroke-width="2"/>`;
     g += `<line x1="${f[2][0]}" y1="${f[2][1]}" x2="${b[2][0]}" y2="${b[2][1]}" stroke="${K.ink}" stroke-width="2"/>`;
     g += `<line x1="${f[3][0]}" y1="${f[3][1]}" x2="${b[3][0]}" y2="${b[3][1]}" stroke="${K.ink}" stroke-width="2"/>`;
-    g += `<text x="${cx}" y="${cy + s + d + 24}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">正方体（长方体）</text>`;
+    g += `<text x="${cx}" y="${cy + s + d + 24}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t27", null, `正方体（长方体）`)}</text>`;
     return S(320, 180, g, 320);
   };
   Fig.rectSolid = function () { return Fig.cube3d(); };
@@ -646,7 +648,7 @@
     const tx = 3, px = x0 + tx * 30, py = y0 - (tx * tx * 4 - tx * 2) * 1.4;
     s += `<circle cx="${px}" cy="${py}" r="5" fill="${K.red}"/>`;
     s += `<line x1="${px - 36}" y1="${py - 22}" x2="${px + 36}" y2="${py + 22}" stroke="${K.red}" stroke-width="2" stroke-dasharray="4 3"/>`;
-    s += `<text x="${px + 30}" y="${py - 26}" font-size="11" fill="${K.red}" font-family="inherit">切线（斜率=导数）</text>`;
+    s += `<text x="${px + 30}" y="${py - 26}" font-size="11" fill="${K.red}" font-family="inherit">${G("fig.t28", null, `切线（斜率=导数）`)}</text>`;
     return S(w, h, s, 320);
   };
 
@@ -710,7 +712,7 @@
       [x + 1.5 * u, y + 16, "3+3+3=9"]
     ];
     lbl.forEach(([lx, ly, t]) => { s += `<text x="${lx}" y="${ly}" font-size="12" fill="${K.ink}" font-family="inherit">${t}</text>`; });
-    s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">平移凹角 → 周长 = 各段之和</text>`;
+    s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t29", null, `平移凹角 → 周长 = 各段之和`)}</text>`;
     return S(320, 175, s, 320);
   };
 
@@ -719,8 +721,8 @@
     const cx = 160, cy = 110, r = 60;
     let s = `<path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
     s += `<line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${K.ink}" stroke-width="2.5"/>`;
-    s += `<text x="${cx}" y="${cy + 22}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">直径 2r｜弧长 πr</text>`;
-    s += `<text x="${cx}" y="${cy - r - 10}" font-size="13" fill="${K.red}" font-weight="700" text-anchor="middle" font-family="inherit">半圆周长 = πr + 2r</text>`;
+    s += `<text x="${cx}" y="${cy + 22}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t30", null, `直径 2r｜弧长 πr`)}</text>`;
+    s += `<text x="${cx}" y="${cy - r - 10}" font-size="13" fill="${K.red}" font-weight="700" text-anchor="middle" font-family="inherit">${G("fig.t31", null, `半圆周长 = πr + 2r`)}</text>`;
     return S(320, 180, s, 320);
   };
   Fig.twoCircle = function () {
@@ -729,7 +731,7 @@
     s += `<text x="${cx}" y="${cy + 4}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">r</text>`;
     s += `<circle cx="${cx}" cy="${cy}" r="80" fill="rgba(47,111,237,.10)" stroke="${K.pri}" stroke-width="2" stroke-dasharray="4 3"/>`;
     s += `<text x="${cx + 56}" y="${cy + 4}" font-size="12" fill="${K.pri}" font-family="inherit">2r</text>`;
-    s += `<text x="${cx}" y="${cy - 96}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">半径扩 2 倍 → 面积扩 4 倍</text>`;
+    s += `<text x="${cx}" y="${cy - 96}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t32", null, `半径扩 2 倍 → 面积扩 4 倍`)}</text>`;
     return S(320, 195, s, 320);
   };
 
@@ -746,7 +748,7 @@
     s += `<text x="${A.x - 8}" y="${A.y + 16}" font-size="12" fill="${K.ink}" font-family="inherit">A</text>`;
     s += `<text x="${B.x + 6}" y="${B.y + 14}" font-size="12" fill="${K.ink}" font-family="inherit">B</text>`;
     s += `<text x="${P.x - 8}" y="${P.y - 8}" font-size="12" fill="${K.pri}" font-weight="700" font-family="inherit">P</text>`;
-    s += `<text x="${cx}" y="${cy - r - 8}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">同弧所对圆周角 ∠APB 都相等</text>`;
+    s += `<text x="${cx}" y="${cy - r - 8}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t33", null, `同弧所对圆周角 ∠APB 都相等`)}</text>`;
     return S(320, 185, s, 320);
   };
   Fig.thales = function () {
@@ -761,7 +763,7 @@
     s += `<text x="${A.x - 8}" y="${A.y + 16}" font-size="12" fill="${K.ink}" font-family="inherit">A</text>`;
     s += `<text x="${B.x + 6}" y="${B.y + 16}" font-size="12" fill="${K.ink}" font-family="inherit">B</text>`;
     s += `<text x="${P.x + 8}" y="${P.y - 4}" font-size="12" fill="${K.pri}" font-weight="700" font-family="inherit">P</text>`;
-    s += `<text x="${cx}" y="${cy - r - 8}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">直径 AB 所对圆周角 ∠APB = 90°</text>`;
+    s += `<text x="${cx}" y="${cy - r - 8}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t34", null, `直径 AB 所对圆周角 ∠APB = 90°`)}</text>`;
     return S(320, 185, s, 320);
   };
 
@@ -771,8 +773,8 @@
     let s = axes(w, h, x0, y0);
     s += `<line x1="50" y1="120" x2="290" y2="60" stroke="${K.red}" stroke-width="2.5"/>`;
     s += `<line x1="50" y1="90" x2="290" y2="30" stroke="${K.pri}" stroke-width="2.5"/>`;
-    s += `<text x="244" y="56" font-size="12" fill="${K.red}" font-family="inherit">k 相等</text>`;
-    s += `<text x="244" y="26" font-size="12" fill="${K.pri}" font-family="inherit">两直线平行</text>`;
+    s += `<text x="244" y="56" font-size="12" fill="${K.red}" font-family="inherit">${G("fig.t35", null, `k 相等`)}</text>`;
+    s += `<text x="244" y="26" font-size="12" fill="${K.pri}" font-family="inherit">${G("fig.t36", null, `两直线平行`)}</text>`;
     return S(w, h, s, 320);
   };
 
@@ -785,9 +787,9 @@
     s += `<text x="${A.x - 10}" y="${A.y + 4}" font-size="13" fill="${K.pri}" font-weight="700" font-family="inherit">A</text>`;
     s += `<text x="${B.x + 8}" y="${B.y + 4}" font-size="13" fill="${K.pri}" font-weight="700" font-family="inherit">B</text>`;
     s += `<text x="${C.x - 6}" y="${C.y - 8}" font-size="13" fill="${K.pri}" font-weight="700" font-family="inherit">C</text>`;
-    s += `<text x="${(B.x + C.x) / 2 + 12}" y="${(B.y + C.y) / 2}" font-size="12" fill="${K.red}" font-weight="700" font-family="inherit">对边</text>`;
-    s += `<text x="${(A.x + B.x) / 2}" y="${(A.y + B.y) / 2 + 20}" font-size="12" fill="${K.blue}" font-weight="700" font-family="inherit">斜边</text>`;
-    s += `<text x="160" y="36" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">sin A = 对边 / 斜边</text>`;
+    s += `<text x="${(B.x + C.x) / 2 + 12}" y="${(B.y + C.y) / 2}" font-size="12" fill="${K.red}" font-weight="700" font-family="inherit">${G("fig.t37", null, `对边`)}</text>`;
+    s += `<text x="${(A.x + B.x) / 2}" y="${(A.y + B.y) / 2 + 20}" font-size="12" fill="${K.blue}" font-weight="700" font-family="inherit">${G("fig.t38", null, `斜边`)}</text>`;
+    s += `<text x="160" y="36" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t39", null, `sin A = 对边 / 斜边`)}</text>`;
     return S(320, 170, s, 320);
   };
 
@@ -798,8 +800,8 @@
     s += `<line x1="${A.x}" y1="${A.y}" x2="${B1.x}" y2="${B1.y}" stroke="${K.pri}" stroke-width="2"/>`;
     s += `<line x1="${A.x}" y1="${A.y}" x2="${B2.x}" y2="${B2.y}" stroke="${K.pri}" stroke-width="2"/>`;
     s += `<line x1="${A.x}" y1="${A.y}" x2="${B3.x}" y2="${B3.y}" stroke="${K.ink}" stroke-width="2"/>`;
-    s += `<text x="${A.x + 8}" y="${A.y + 4}" font-size="12" fill="${K.ink}" font-family="inherit">顶点</text>`;
-    s += `<text x="160" y="172" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">三棱锥 V = ⅓ × 底面积 × 高</text>`;
+    s += `<text x="${A.x + 8}" y="${A.y + 4}" font-size="12" fill="${K.ink}" font-family="inherit">${G("fig.t40", null, `顶点`)}</text>`;
+    s += `<text x="160" y="172" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t41", null, `三棱锥 V = ⅓ × 底面积 × 高`)}</text>`;
     return S(320, 190, s, 320);
   };
   Fig.sphere = function () {
@@ -807,7 +809,7 @@
     let s = `<defs><radialGradient id="sg" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#eaf1ff"/><stop offset="100%" stop-color="${K.soft}"/></radialGradient></defs>`;
     s += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#sg)" stroke="${K.ink}" stroke-width="2.5"/>`;
     s += `<ellipse cx="${cx}" cy="${cy}" rx="${r}" ry="${r * 0.32}" fill="none" stroke="${K.sub}" stroke-width="1.2"/>`;
-    s += `<text x="${cx}" y="${cy + r + 22}" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">球表面积 = 4πr²</text>`;
+    s += `<text x="${cx}" y="${cy + r + 22}" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t42", null, `球表面积 = 4πr²`)}</text>`;
     return S(320, 185, s, 320);
   };
 
@@ -816,16 +818,16 @@
     p = p || {}; const sd = p.side || 5;
     const x = 70, y = 45, W = 160;
     let g = `<rect x="${x}" y="${y}" width="${W}" height="${W}" rx="4" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
-    g += `<text x="${x + W / 2}" y="${y + W + 22}" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">边长 ${sd}｜周长 4×${sd}=${4 * sd}</text>`;
+    g += `<text x="${x + W / 2}" y="${y + W + 22}" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t43", { v1: sd, v2: sd, v3: 4 * sd }, `边长 ${sd}｜周长 4×${sd}=${4 * sd}`)}</text>`;
     return S(320, 240, g, 320);
   };
   Fig.rectDim = function (p) {
     p = p || {}; const w = p.w || 6, h = p.h || 4;
     const x = 60, y = 50, W = 200, H = 110;
     let g = `<rect x="${x}" y="${y}" width="${W}" height="${H}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
-    g += `<text x="${x + W / 2}" y="${y + H + 22}" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">长 ${w}</text>`;
-    g += `<text x="${x - 16}" y="${y + H / 2 + 4}" font-size="13" fill="${K.ink}" font-family="inherit">宽 ${h}</text>`;
-    g += `<text x="160" y="38" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">周长 = 2×(长+宽) = ${2 * (w + h)}</text>`;
+    g += `<text x="${x + W / 2}" y="${y + H + 22}" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t44", { v1: w }, `长 ${w}`)}</text>`;
+    g += `<text x="${x - 16}" y="${y + H / 2 + 4}" font-size="13" fill="${K.ink}" font-family="inherit">${G("fig.t45", { v1: h }, `宽 ${h}`)}</text>`;
+    g += `<text x="160" y="38" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t46", { v1: 2 * (w + h) }, `周长 = 2×(长+宽) = ${2 * (w + h)}`)}</text>`;
     return S(320, 195, g, 320);
   };
 
@@ -834,10 +836,10 @@
     const A = { x: 60, y: 140 }, B = { x: 260, y: 140 }, C = { x: 150, y: 50 };
     let s = `<polygon points="${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
     s += `<line x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke="${K.red}" stroke-width="2"/>`;
-    s += `<text x="${(A.x + B.x) / 2}" y="${A.y + 20}" font-size="13" fill="${K.red}" font-weight="700" font-family="inherit">底 8</text>`;
+    s += `<text x="${(A.x + B.x) / 2}" y="${A.y + 20}" font-size="13" fill="${K.red}" font-weight="700" font-family="inherit">${G("fig.t47", null, `底 8`)}</text>`;
     s += `<line x1="${C.x}" y1="${C.y}" x2="${C.x}" y2="${A.y}" stroke="${K.pri}" stroke-width="2" stroke-dasharray="4 3"/>`;
-    s += `<text x="${C.x + 6}" y="${(C.y + A.y) / 2}" font-size="13" fill="${K.pri}" font-weight="700" font-family="inherit">高 5</text>`;
-    s += `<text x="160" y="36" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">面积 = ½ × 8 × 5 = 20</text>`;
+    s += `<text x="${C.x + 6}" y="${(C.y + A.y) / 2}" font-size="13" fill="${K.pri}" font-weight="700" font-family="inherit">${G("fig.t48", null, `高 5`)}</text>`;
+    s += `<text x="160" y="36" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t49", null, `面积 = ½ × 8 × 5 = 20`)}</text>`;
     return S(320, 170, s, 320);
   };
   Fig.triPara = function () {
@@ -847,7 +849,7 @@
     s += `<polygon points="${px},${y} ${px + base},${y} ${px + base + 22},${y - h} ${px + 22},${y - h}" fill="#e7f6ee" stroke="${K.ink}" stroke-width="2.5"/>`;
     s += `<text x="${x + base / 2}" y="${y + 20}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">△</text>`;
     s += `<text x="${px + base / 2 + 11}" y="${y + 20}" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">▱ = 2×△</text>`;
-    s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">等底等高：平行四边形面积 = 三角形 × 2</text>`;
+    s += `<text x="160" y="40" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t50", null, `等底等高：平行四边形面积 = 三角形 × 2`)}</text>`;
     return S(320, 175, s, 320);
   };
   Fig.triSameBase = function () {
@@ -858,7 +860,7 @@
     const P1 = { x: 130, y: yBot }, P2 = { x: 200, y: yBot };
     s += `<polygon points="${A.x},${A.y} ${B.x},${B.y} ${P1.x},${P1.y}" fill="${K.soft}" stroke="${K.ink}" stroke-width="2"/>`;
     s += `<polygon points="${A.x},${A.y} ${B.x},${B.y} ${P2.x},${P2.y}" fill="#e7f6ee" stroke="${K.pri}" stroke-width="2"/>`;
-    s += `<text x="160" y="172" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">同底、平行线间：任意顶点 → 面积都相等</text>`;
+    s += `<text x="160" y="172" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t51", null, `同底、平行线间：任意顶点 → 面积都相等`)}</text>`;
     return S(320, 188, s, 320);
   };
 
@@ -869,7 +871,7 @@
     s += `<ellipse cx="160" cy="90" rx="78" ry="46" fill="none" stroke="${K.red}" stroke-width="2.5"/>`;
     s += `<line x1="60" y1="130" x2="270" y2="50" stroke="${K.ink}" stroke-width="2.5"/>`;
     s += `<circle cx="110" cy="111" r="3.5" fill="${K.ink}"/><circle cx="225" cy="71" r="3.5" fill="${K.ink}"/>`;
-    s += `<text x="160" y="166" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">直线与二次曲线联立 → 一元二次方程</text>`;
+    s += `<text x="160" y="166" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t52", null, `直线与二次曲线联立 → 一元二次方程`)}</text>`;
     return S(w, h, s, 320);
   };
   Fig.scatter = function () {
@@ -879,17 +881,17 @@
     const pts = [[20, 30], [60, 55], [100, 60], [140, 80], [180, 95], [220, 110], [255, 120]];
     pts.forEach(([dx, dy]) => { const px = x0 + dx, py = y0 - dy; s += `<circle cx="${px}" cy="${py}" r="4" fill="${K.pri}"/>`; });
     s += `<line x1="${x0 + 10}" y1="${y0 - 15}" x2="${w - 30}" y2="${y0 - 130}" stroke="${K.red}" stroke-width="2" stroke-dasharray="5 4"/>`;
-    s += `<text x="205" y="34" font-size="12" fill="${K.red}" font-family="inherit">趋势线（回归）</text>`;
+    s += `<text x="205" y="34" font-size="12" fill="${K.red}" font-family="inherit">${G("fig.t53", null, `趋势线（回归）`)}</text>`;
     return S(w, h, s, 320);
   };
 
   /* ---------------- 比例尺 / 分数比较条 / 分数条 / 锯木 / 矩形动点 ---------------- */
   Fig.scaleFig = function () {
     let s = `<line x1="50" y1="70" x2="90" y2="70" stroke="${K.ink}" stroke-width="3"/>`;
-    s += `<text x="70" y="58" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">图上 2 cm</text>`;
+    s += `<text x="70" y="58" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t54", null, `图上 2 cm`)}</text>`;
     s += `<line x1="50" y1="120" x2="290" y2="120" stroke="${K.ink}" stroke-width="3"/>`;
-    s += `<text x="170" y="108" font-size="12" fill="${K.pri}" text-anchor="middle" font-family="inherit">实际 20 m</text>`;
-    s += `<text x="160" y="155" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">比例尺 1:1000 → 图上1cm代表实际10m</text>`;
+    s += `<text x="170" y="108" font-size="12" fill="${K.pri}" text-anchor="middle" font-family="inherit">${G("fig.t55", null, `实际 20 m`)}</text>`;
+    s += `<text x="160" y="155" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t56", null, `比例尺 1:1000 → 图上1cm代表实际10m`)}</text>`;
     return S(320, 175, s, 320);
   };
   Fig.fracCmp = function () {
@@ -911,15 +913,15 @@
       if (i < 2) s += `<rect x="${x + i * uw}" y="${y}" width="${uw}" height="${h}" fill="${K.pri}"/>`;
     }
     s += `<text x="${x + w / 4}" y="${y + h / 2 + 5}" font-size="13" fill="#fff" font-weight="700" text-anchor="middle" font-family="inherit">2/5</text>`;
-    s += `<text x="160" y="40" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">1 米分 5 段，取 2 段 = 2/5 米</text>`;
+    s += `<text x="160" y="40" font-size="13" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t57", null, `1 米分 5 段，取 2 段 = 2/5 米`)}</text>`;
     return S(320, 150, s, 320);
   };
   Fig.cutbar = function () {
     const x = 40, y = 80, w = 240, h = 34, n = 5, uw = w / (n - 1);
     let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${K.soft}" stroke="${K.ink}" stroke-width="2.5"/>`;
     for (let i = 1; i < n; i++) { const cx = x + i * uw; s += `<line x1="${cx}" y1="${y - 8}" x2="${cx}" y2="${y + h + 8}" stroke="${K.red}" stroke-width="2"/>`; }
-    s += `<text x="160" y="50" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">锯成 5 段 → 锯 4 次</text>`;
-    s += `<text x="160" y="150" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">段数 = 锯次数 + 1</text>`;
+    s += `<text x="160" y="50" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t58", null, `锯成 5 段 → 锯 4 次`)}</text>`;
+    s += `<text x="160" y="150" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t59", null, `段数 = 锯次数 + 1`)}</text>`;
     return S(320, 170, s, 320);
   };
   Fig.rectMove = function () {
@@ -928,7 +930,7 @@
     s += `<circle cx="${x}" cy="${y}" r="4" fill="${K.ink}"/><text x="${x - 6}" y="${y - 6}" font-size="12" fill="${K.ink}" font-family="inherit">A</text>`;
     const P = { x: x + W * 0.6, y: y + H * 0.5 };
     s += `<circle cx="${P.x}" cy="${P.y}" r="6" fill="${K.red}"/><text x="${P.x + 10}" y="${P.y + 4}" font-size="12" fill="${K.red}" font-weight="700" font-family="inherit">P</text>`;
-    s += `<text x="160" y="200" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">动点 P 沿边移到 C，AP 长度随位置变化</text>`;
+    s += `<text x="160" y="200" font-size="12" fill="${K.ink}" text-anchor="middle" font-family="inherit">${G("fig.t60", null, `动点 P 沿边移到 C，AP 长度随位置变化`)}</text>`;
     return S(320, 215, s, 320);
   };
 
@@ -957,8 +959,8 @@
     /* 鸡兔同笼 */
     "chicken::0": "crt", "chicken::1": "crt", "chicken::2": "crt", "chicken::3": "crt",
     /* 行程：相遇/追及/速度/环形 各异 */
-    "trip::0": { name: "trackAB", cap: "相遇：速度和 × 时间" },
-    "trip::1": { name: "trackAB", cap: "同向追及" },
+    "trip::0": { name: "trackAB", capKey: "fig.track.meet", capZh: "相遇：速度和 × 时间" },
+    "trip::1": { name: "trackAB", capKey: "fig.track.chase", capZh: "同向追及" },
     "trip::3": "ring",
     /* 圆（认识/周长面积） */
     "circle::0": "circleR",
@@ -1019,8 +1021,8 @@
     "conic::2": { name: "conicFig", type: "parabola" },
     "conic::3": { name: "conicFig", type: "ellipse" },
     /* 相遇/追及/流水/环形 */
-    "meet::0": { name: "trackAB", cap: "相向而行" }, "meet::1": { name: "trackAB", cap: "相向而行" }, "meet::2": { name: "trackAB", cap: "相向而行" },
-    "chase::0": { name: "trackAB", cap: "同向追及" }, "chase::1": { name: "trackAB", cap: "同向追及" }, "chase::2": { name: "trackAB", cap: "同向追及" },
+    "meet::0": { name: "trackAB", capKey: "fig.track.towards", capZh: "相向而行" }, "meet::1": { name: "trackAB", capKey: "fig.track.towards", capZh: "相向而行" }, "meet::2": { name: "trackAB", capKey: "fig.track.towards", capZh: "相向而行" },
+    "chase::0": { name: "trackAB", capKey: "fig.track.chase", capZh: "同向追及" }, "chase::1": { name: "trackAB", capKey: "fig.track.chase", capZh: "同向追及" }, "chase::2": { name: "trackAB", capKey: "fig.track.chase", capZh: "同向追及" },
     "boat::0": "trackRiver", "boat::1": "trackRiver", "boat::2": "trackRiver",
     "circle_track::0": "ring", "circle_track::1": "ring", "circle_track::2": "ring",
     /* 巧求周长 */
@@ -1098,7 +1100,7 @@
     s += `<text x="${x + 8}" y="${y - 8}" fill="${K.ink}" font-size="13">e^(iθ)</text>`;
     s += `<text x="${cx + R / 2 - 10}" y="${cy + 20}" fill="${K.red}" font-size="12">cosθ</text>`;
     s += `<text x="${x + 8}" y="${cy - 4}" fill="${K.green}" font-size="12">sinθ</text>`;
-    s += `<text x="24" y="22" fill="${K.sub}" font-size="12">欧拉公式 e^(iθ)=cosθ+i·sinθ</text>`;
+    s += `<text x="24" y="22" fill="${K.sub}" font-size="12">${G("fig.t61", null, `欧拉公式 e^(iθ)=cosθ+i·sinθ`)}</text>`;
     return S(300, 300, s);
   };
 
@@ -1115,7 +1117,7 @@
     }
     curve(Math.exp, K.pri, 2.5);
     curve(x => 1 + x + x * x / 2 + x * x * x / 6, K.warn, 2.5);
-    s += `<text x="20" y="22" fill="${K.sub}" font-size="12">蓝：e^x　橙：1+x+x²/2+x³/6</text>`;
+    s += `<text x="20" y="22" fill="${K.sub}" font-size="12">${G("fig.t62", null, `蓝：e^x　橙：1+x+x²/2+x³/6`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1124,10 +1126,10 @@
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.5"/>`;
     s += `<line x1="${cx}" y1="20" x2="${cx}" y2="280" stroke="${K.ink}" stroke-width="1.5"/>`;
     s += `<rect x="20" y="20" width="${cx - 20}" height="${cy - 20}" fill="${K.soft}"/>`;
-    s += `<text x="40" y="42" fill="${K.pri}" font-size="13">第二象限</text>`;
-    s += `<text x="${cx + 8}" y="42" fill="${K.sub}" font-size="13">第一象限</text>`;
-    s += `<text x="40" y="272" fill="${K.sub}" font-size="13">第三象限</text>`;
-    s += `<text x="${cx + 8}" y="272" fill="${K.sub}" font-size="13">第四象限</text>`;
+    s += `<text x="40" y="42" fill="${K.pri}" font-size="13">${G("fig.t63", null, `第二象限`)}</text>`;
+    s += `<text x="${cx + 8}" y="42" fill="${K.sub}" font-size="13">${G("fig.t64", null, `第一象限`)}</text>`;
+    s += `<text x="40" y="272" fill="${K.sub}" font-size="13">${G("fig.t65", null, `第三象限`)}</text>`;
+    s += `<text x="${cx + 8}" y="272" fill="${K.sub}" font-size="13">${G("fig.t66", null, `第四象限`)}</text>`;
     const px = cx - 50, py = cy - 60;
     s += `<circle cx="${px}" cy="${py}" r="5" fill="${K.warn}"/>`;
     s += `<text x="${px + 8}" y="${py - 8}" fill="${K.ink}" font-size="13">(−2, 3)</text>`;
@@ -1136,13 +1138,13 @@
 
   Fig.induction_steps = function () {
     let s = `<rect x="20" y="30" width="250" height="44" rx="8" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
-    s += `<text x="40" y="58" fill="${K.ink}" font-size="14">① 奠基：验证 n=1 成立</text>`;
+    s += `<text x="40" y="58" fill="${K.ink}" font-size="14">${G("fig.t67", null, `① 奠基：验证 n=1 成立`)}</text>`;
     s += `<text x="150" y="108" fill="${K.sub}" font-size="20" text-anchor="middle">↓</text>`;
     s += `<rect x="20" y="120" width="250" height="44" rx="8" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
-    s += `<text x="40" y="148" fill="${K.ink}" font-size="14">② 假设 n=k 成立</text>`;
+    s += `<text x="40" y="148" fill="${K.ink}" font-size="14">${G("fig.t68", null, `② 假设 n=k 成立`)}</text>`;
     s += `<text x="150" y="198" fill="${K.sub}" font-size="20" text-anchor="middle">↓</text>`;
     s += `<rect x="20" y="210" width="250" height="44" rx="8" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/>`;
-    s += `<text x="40" y="238" fill="${K.ink}" font-size="14">③ 推出 n=k+1 成立</text>`;
+    s += `<text x="40" y="238" fill="${K.ink}" font-size="14">${G("fig.t69", null, `③ 推出 n=k+1 成立`)}</text>`;
     return S(290, 270, s);
   };
 
@@ -1153,7 +1155,7 @@
     s += `<line x1="40" y1="165" x2="280" y2="165" stroke="${K.ink}" stroke-width="1.5"/>`;
     s += `<rect x="40" y="165" width="200" height="14" fill="${K.warn}" opacity="0.45"/>`;
     s += `<text x="40" y="205" fill="${K.ink}" font-size="14">a + b ≥ 2√(ab)</text>`;
-    s += `<text x="40" y="40" fill="${K.sub}" font-size="13">周长固定时，正方形面积最大</text>`;
+    s += `<text x="40" y="40" fill="${K.sub}" font-size="13">${G("fig.t70", null, `周长固定时，正方形面积最大`)}</text>`;
     return S(300, 220, s);
   };
 
@@ -1168,7 +1170,7 @@
         s += `<text x="${x - 6}" y="${y + 5}" fill="${K.ink}" font-size="13" text-anchor="middle">${v}</text>`;
       });
     });
-    s += `<text x="55" y="224" fill="${K.sub}" font-size="12">(a+b)^4 系数：1 4 6 4 1</text>`;
+    s += `<text x="55" y="224" fill="${K.sub}" font-size="12">${G("fig.t71", null, `(a+b)^4 系数：1 4 6 4 1`)}</text>`;
     return S(300, 240, s);
   };
 
@@ -1189,13 +1191,13 @@
     s += `<circle cx="230" cy="110" r="16" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="222" y="115" font-size="13" fill="${K.ink}" text-anchor="middle">a₃</text>`;
     s += `<circle cx="230" cy="190" r="16" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="222" y="195" font-size="13" fill="${K.ink}" text-anchor="middle">a₃</text>`;
     s += `<line x1="156" y1="110" x2="214" y2="110" stroke="${K.line}"/><line x1="156" y1="190" x2="214" y2="190" stroke="${K.line}"/>`;
-    s += `<text x="40" y="42" fill="${K.sub}" font-size="12">递推：aₙ₊₁ = f(aₙ)</text>`;
+    s += `<text x="40" y="42" fill="${K.sub}" font-size="12">${G("fig.t72", null, `递推：aₙ₊₁ = f(aₙ)`)}</text>`;
     return S(300, 260, s);
   };
 
   /* ---------------- 第二批拓展配图 ---------------- */
   Fig.tree_diagram = function () {
-    let s = `<text x="20" y="28" fill="${K.sub}" font-size="12">树状图：逐层分支</text>`;
+    let s = `<text x="20" y="28" fill="${K.sub}" font-size="12">${G("fig.t73", null, `树状图：逐层分支`)}</text>`;
     s += `<circle cx="40" cy="80" r="14" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
     s += `<line x1="54" y1="80" x2="110" y2="50" stroke="${K.line}"/><line x1="54" y1="80" x2="110" y2="110" stroke="${K.line}"/>`;
     s += `<circle cx="130" cy="50" r="13" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="121" y="54" font-size="11" fill="${K.ink}">A</text>`;
@@ -1204,11 +1206,11 @@
     s += `<line x1="143" y1="110" x2="200" y2="95" stroke="${K.line}"/><line x1="143" y1="110" x2="200" y2="125" stroke="${K.line}"/>`;
     s += `<circle cx="215" cy="35" r="11" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.5"/><circle cx="215" cy="65" r="11" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.5"/>`;
     s += `<circle cx="215" cy="95" r="11" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.5"/><circle cx="215" cy="125" r="11" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.5"/>`;
-    s += `<text x="118" y="152" fill="${K.sub}" font-size="11">分支数相乘：2 × 2 = 4 种结果</text>`;
+    s += `<text x="118" y="152" fill="${K.sub}" font-size="11">${G("fig.t74", null, `分支数相乘：2 × 2 = 4 种结果`)}</text>`;
     return S(300, 170, s);
   };
   Fig.counting_tree = function () {
-    let s = `<text x="20" y="26" fill="${K.sub}" font-size="12">排列 A(n,2)：有顺序</text>`;
+    let s = `<text x="20" y="26" fill="${K.sub}" font-size="12">${G("fig.t75", null, `排列 A(n,2)：有顺序`)}</text>`;
     s += `<circle cx="40" cy="80" r="14" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
     s += `<line x1="54" y1="80" x2="120" y2="55" stroke="${K.line}"/><line x1="54" y1="80" x2="120" y2="105" stroke="${K.line}"/>`;
     s += `<circle cx="135" cy="55" r="13" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="127" y="59" font-size="11" fill="${K.ink}">①</text>`;
@@ -1217,26 +1219,26 @@
     s += `<line x1="148" y1="105" x2="210" y2="90" stroke="${K.line}"/><line x1="148" y1="105" x2="210" y2="120" stroke="${K.line}"/>`;
     s += `<text x="216" y="44" font-size="11" fill="${K.ink}">①②</text><text x="216" y="74" font-size="11" fill="${K.ink}">②①</text>`;
     s += `<text x="216" y="94" font-size="11" fill="${K.ink}">②①</text><text x="216" y="124" font-size="11" fill="${K.ink}">①②</text>`;
-    s += `<text x="64" y="152" fill="${K.sub}" font-size="11">顺序不同算不同：A(2,2)=2</text>`;
+    s += `<text x="64" y="152" fill="${K.sub}" font-size="11">${G("fig.t76", null, `顺序不同算不同：A(2,2)=2`)}</text>`;
     return S(300, 170, s);
   };
   Fig.cauchy_rect = function () {
-    let s = `<text x="20" y="26" fill="${K.sub}" font-size="12">柯西：|u·v| ≤ |u||v|</text>`;
+    let s = `<text x="20" y="26" fill="${K.sub}" font-size="12">${G("fig.t77", null, `柯西：|u·v| ≤ |u||v|`)}</text>`;
     s += `<line x1="60" y1="150" x2="60" y2="40" stroke="${K.line}"/><line x1="40" y1="150" x2="210" y2="150" stroke="${K.line}"/>`;
     s += `<line x1="60" y1="150" x2="160" y2="80" stroke="${K.pri}" stroke-width="3"/>`;
     s += `<line x1="60" y1="150" x2="140" y2="120" stroke="${K.ok}" stroke-width="3"/>`;
     s += `<text x="112" y="72" font-size="12" fill="${K.ink}">u</text><text x="100" y="135" font-size="12" fill="${K.ink}">v</text>`;
     s += `<path d="M60 150 L160 80 L205 80 L105 150 Z" fill="${K.soft}" opacity="0.5"/>`;
-    s += `<text x="96" y="178" fill="${K.sub}" font-size="11">夹角越小投影越大 → 等号在共线</text>`;
+    s += `<text x="96" y="178" fill="${K.sub}" font-size="11">${G("fig.t78", null, `夹角越小投影越大 → 等号在共线`)}</text>`;
     return S(300, 195, s);
   };
   Fig.lprog_region = function () {
-    let s = `<text x="16" y="24" fill="${K.sub}" font-size="12">可行域（阴影）+ 目标线</text>`;
+    let s = `<text x="16" y="24" fill="${K.sub}" font-size="12">${G("fig.t79", null, `可行域（阴影）+ 目标线`)}</text>`;
     s += `<polygon points="50,160 50,90 150,50 200,90 200,160" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
     s += `<line x1="60" y1="170" x2="210" y2="40" stroke="${K.warn}" stroke-width="2" stroke-dasharray="5 4"/>`;
     s += `<circle cx="50" cy="160" r="4" fill="${K.red}"/><circle cx="50" cy="90" r="4" fill="${K.red}"/><circle cx="150" cy="50" r="4" fill="${K.red}"/><circle cx="200" cy="90" r="4" fill="${K.red}"/><circle cx="200" cy="160" r="4" fill="${K.red}"/>`;
-    s += `<text x="150" y="44" font-size="11" fill="${K.ink}">顶点取最值</text>`;
-    s += `<text x="78" y="188" fill="${K.sub}" font-size="11">目标线平移，截距最大处即最优</text>`;
+    s += `<text x="150" y="44" font-size="11" fill="${K.ink}">${G("fig.t80", null, `顶点取最值`)}</text>`;
+    s += `<text x="78" y="188" fill="${K.sub}" font-size="11">${G("fig.t81", null, `目标线平移，截距最大处即最优`)}</text>`;
     return S(300, 200, s);
   };
   Fig.matrix_det = function () {
@@ -1246,39 +1248,39 @@
     s += `<text x="98" y="135" font-size="24" fill="${K.ok}">c</text><text x="150" y="135" font-size="24" fill="${K.ok}">d</text>`;
     s += `<line x1="88" y1="63" x2="172" y2="127" stroke="${K.red}" stroke-width="2"/>`;
     s += `<line x1="172" y1="63" x2="88" y2="127" stroke="${K.warn}" stroke-width="2" stroke-dasharray="4 3"/>`;
-    s += `<text x="62" y="178" fill="${K.sub}" font-size="11">主对角积 − 副对角积</text>`;
+    s += `<text x="62" y="178" fill="${K.sub}" font-size="11">${G("fig.t82", null, `主对角积 − 副对角积`)}</text>`;
     return S(300, 195, s);
   };
   Fig.lhopital_graph = function () {
-    let s = `<text x="20" y="24" fill="${K.sub}" font-size="12">lim sinx/x = 1（x→0）</text>`;
+    let s = `<text x="20" y="24" fill="${K.sub}" font-size="12">${G("fig.t83", null, `lim sinx/x = 1（x→0）`)}</text>`;
     s += `<line x1="50" y1="150" x2="260" y2="150" stroke="${K.line}"/><line x1="155" y1="30" x2="155" y2="170" stroke="${K.line}"/>`;
     s += `<path d="M60 118 Q155 150 250 118" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<line x1="60" y1="150" x2="250" y2="150" stroke="${K.warn}" stroke-width="1.5" stroke-dasharray="5 4"/>`;
     s += `<circle cx="155" cy="150" r="5" fill="${K.red}"/>`;
-    s += `<text x="160" y="44" font-size="11" fill="${K.ink}">曲线趋于 1</text>`;
+    s += `<text x="160" y="44" font-size="11" fill="${K.ink}">${G("fig.t84", null, `曲线趋于 1`)}</text>`;
     return S(300, 180, s);
   };
   Fig.mvt_tangent = function () {
-    let s = `<text x="20" y="24" fill="${K.sub}" font-size="12">切线 ∥ 弦（中值定理）</text>`;
+    let s = `<text x="20" y="24" fill="${K.sub}" font-size="12">${G("fig.t85", null, `切线 ∥ 弦（中值定理）`)}</text>`;
     s += `<path d="M50 150 Q150 60 260 150" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<line x1="70" y1="135" x2="240" y2="135" stroke="${K.warn}" stroke-width="2"/>`;
     s += `<line x1="120" y1="105" x2="190" y2="105" stroke="${K.ok}" stroke-width="2"/>`;
     s += `<circle cx="95" cy="120" r="4" fill="${K.red}"/><circle cx="215" cy="120" r="4" fill="${K.red}"/>`;
-    s += `<text x="78" y="172" font-size="11" fill="${K.ink}">端点连线(弦)</text>`;
-    s += `<text x="92" y="186" fill="${K.sub}" font-size="11">中间存在切线与之平行</text>`;
+    s += `<text x="78" y="172" font-size="11" fill="${K.ink}">${G("fig.t86", null, `端点连线(弦)`)}</text>`;
+    s += `<text x="92" y="186" fill="${K.sub}" font-size="11">${G("fig.t87", null, `中间存在切线与之平行`)}</text>`;
     return S(300, 195, s);
   };
   Fig.bayes_tree = function () {
-    let s = `<text x="20" y="24" fill="${K.sub}" font-size="12">贝叶斯：由果溯因（逆概率）</text>`;
+    let s = `<text x="20" y="24" fill="${K.sub}" font-size="12">${G("fig.t88", null, `贝叶斯：由果溯因（逆概率）`)}</text>`;
     s += `<circle cx="40" cy="100" r="14" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
     s += `<line x1="54" y1="100" x2="120" y2="70" stroke="${K.line}"/><line x1="54" y1="100" x2="120" y2="130" stroke="${K.line}"/>`;
-    s += `<circle cx="135" cy="70" r="13" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="123" y="74" font-size="11" fill="${K.ink}">因A</text>`;
-    s += `<circle cx="135" cy="130" r="13" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="123" y="134" font-size="11" fill="${K.ink}">因B</text>`;
+    s += `<circle cx="135" cy="70" r="13" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="123" y="74" font-size="11" fill="${K.ink}">${G("fig.t89", null, `因A`)}</text>`;
+    s += `<circle cx="135" cy="130" r="13" fill="${K.soft}" stroke="${K.ok}" stroke-width="1.5"/><text x="123" y="134" font-size="11" fill="${K.ink}">${G("fig.t90", null, `因B`)}</text>`;
     s += `<line x1="148" y1="70" x2="220" y2="55" stroke="${K.line}"/><line x1="148" y1="70" x2="220" y2="85" stroke="${K.line}"/>`;
     s += `<line x1="148" y1="130" x2="220" y2="115" stroke="${K.line}"/><line x1="148" y1="130" x2="220" y2="145" stroke="${K.line}"/>`;
     s += `<circle cx="235" cy="55" r="10" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.3"/><circle cx="235" cy="85" r="10" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.3"/>`;
     s += `<circle cx="235" cy="115" r="10" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.3"/><circle cx="235" cy="145" r="10" fill="${K.soft}" stroke="${K.warn}" stroke-width="1.3"/>`;
-    s += `<text x="96" y="172" fill="${K.sub}" font-size="11">观测“结果”后，反推各原因概率</text>`;
+    s += `<text x="96" y="172" fill="${K.sub}" font-size="11">${G("fig.t91", null, `观测“结果”后，反推各原因概率`)}</text>`;
     return S(300, 185, s);
   };
 
@@ -1286,7 +1288,7 @@
     const W = 300, H = 200;
     let s = `<line x1="40" y1="40" x2="40" y2="170" stroke="${K.ink}" stroke-width="1.5"/>`;
     s += `<circle cx="40" cy="40" r="5" fill="${K.pri}"/>`;
-    s += `<text x="48" y="44" fill="${K.ink}" font-size="12">样本空间</text>`;
+    s += `<text x="48" y="44" fill="${K.ink}" font-size="12">${G("fig.t92", null, `样本空间`)}</text>`;
     s += `<line x1="40" y1="60" x2="130" y2="110" stroke="${K.sub}" stroke-width="1.2"/>`;
     s += `<line x1="40" y1="60" x2="130" y2="60" stroke="${K.sub}" stroke-width="1.2"/>`;
     s += `<circle cx="130" cy="110" r="4" fill="${K.ok}"/>`;
@@ -1296,7 +1298,7 @@
     s += `<line x1="130" y1="110" x2="220" y2="150" stroke="${K.warn}" stroke-width="1.2"/>`;
     s += `<line x1="130" y1="60" x2="220" y2="150" stroke="${K.warn}" stroke-width="1.2"/>`;
     s += `<circle cx="220" cy="150" r="5" fill="${K.warn}"/>`;
-    s += `<text x="228" y="154" fill="${K.ink}" font-size="12">B（汇总 P）</text>`;
+    s += `<text x="228" y="154" fill="${K.ink}" font-size="12">${G("fig.t93", null, `B（汇总 P）`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1325,7 +1327,7 @@
     for (let i = 0; i <= 4.0001; i += 0.1) pts.push([X(i), Y(i * i / 4)]);
     s += `<polyline points="${pts.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ")}" fill="none" stroke="${K.pri}" stroke-width="2"/>`;
     s += `<polygon points="${cx},${cy} ${X(4)},${cy} ${pts.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ")}" fill="${K.soft}" opacity="0.6"/>`;
-    s += `<text x="${cx+10}" y="30" fill="${K.sub}" font-size="12">∫_a^b f(x)dx = 面积</text>`;
+    s += `<text x="${cx+10}" y="30" fill="${K.sub}" font-size="12">${G("fig.t94", null, `∫_a^b f(x)dx = 面积`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1339,7 +1341,7 @@
       s += `<circle cx="${px}" cy="${py}" r="1.5" fill="${K.pri}"/>`;
     }
     s += `<path d="M ${cx+30} ${cy-30} Q ${cx+120} ${cy-90} ${cx+220} ${cy-160}" fill="none" stroke="${K.warn}" stroke-width="2.5"/>`;
-    s += `<text x="${cx+10}" y="30" fill="${K.sub}" font-size="12">方向场 + 积分曲线</text>`;
+    s += `<text x="${cx+10}" y="30" fill="${K.sub}" font-size="12">${G("fig.t95", null, `方向场 + 积分曲线`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1347,10 +1349,10 @@
     const W = 300, H = 160;
     let s = `<line x1="20" y1="80" x2="280" y2="80" stroke="${K.ink}" stroke-width="1.5"/>`;
     s += `<rect x="40" y="64" width="200" height="32" rx="6" fill="${K.soft}" stroke="${K.pri}" stroke-width="1.5"/>`;
-    s += `<text x="120" y="85" fill="${K.ink}" font-size="13">目标式（难求）</text>`;
+    s += `<text x="120" y="85" fill="${K.ink}" font-size="13">${G("fig.t96", null, `目标式（难求）`)}</text>`;
     s += `<rect x="20" y="110" width="240" height="30" rx="6" fill="${K.ok}" opacity="0.18" stroke="${K.ok}" stroke-width="1.5"/>`;
-    s += `<text x="40" y="130" fill="${K.ok}" font-size="12">放缩到易求和/比较的范围</text>`;
-    s += `<text x="150" y="58" fill="${K.sub}" font-size="20" text-anchor="middle">↓ 放缩</text>`;
+    s += `<text x="40" y="130" fill="${K.ok}" font-size="12">${G("fig.t97", null, `放缩到易求和/比较的范围`)}</text>`;
+    s += `<text x="150" y="58" fill="${K.sub}" font-size="20" text-anchor="middle">${G("fig.t98", null, `↓ 放缩`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1364,7 +1366,7 @@
       if (i > 0) s += `<line x1="${x-34}" y1="${ys[i-1]}" x2="${x}" y2="${ys[i]}" stroke="${K.sub}" stroke-width="1.2"/>`;
     }
     s += `<line x1="20" y1="60" x2="280" y2="60" stroke="${K.ok}" stroke-dasharray="4 3" stroke-width="1.5"/>`;
-    s += `<text x="200" y="55" fill="${K.ok}" font-size="12">上界 M（单调有界）</text>`;
+    s += `<text x="200" y="55" fill="${K.ok}" font-size="12">${G("fig.t99", null, `上界 M（单调有界）`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1372,8 +1374,8 @@
     const W = 300, H = 220, cx = 150, cy = 110;
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.5"/>`;
     s += `<line x1="${cx}" y1="20" x2="${cx}" y2="200" stroke="${K.ink}" stroke-width="1.5"/>`;
-    s += `<text x="270" y="${cy-6}" fill="${K.sub}" font-size="11">实轴</text>`;
-    s += `<text x="${cx+6}" y="30" fill="${K.sub}" font-size="11">虚轴</text>`;
+    s += `<text x="270" y="${cy-6}" fill="${K.sub}" font-size="11">${G("fig.t100", null, `实轴`)}</text>`;
+    s += `<text x="${cx+6}" y="30" fill="${K.sub}" font-size="11">${G("fig.t101", null, `虚轴`)}</text>`;
     const px = cx + 60, py = cy - 50;
     s += `<line x1="${cx}" y1="${cy}" x2="${px}" y2="${py}" stroke="${K.pri}" stroke-width="2"/>`;
     s += `<circle cx="${px}" cy="${py}" r="5" fill="${K.pri}"/>`;
@@ -1396,7 +1398,7 @@
       px = nx; py = ny;
     });
     s += `<line x1="${cx}" y1="${cy-120}" x2="280" y2="${cy-120}" stroke="${K.ok}" stroke-dasharray="4 3" stroke-width="1.5"/>`;
-    s += `<text x="190" y="${cy-126}" fill="${K.ok}" font-size="11">极限和 S</text>`;
+    s += `<text x="190" y="${cy-126}" fill="${K.ok}" font-size="11">${G("fig.t102", null, `极限和 S`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1425,7 +1427,7 @@
     let s = `<line x1="20" y1="180" x2="280" y2="180" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<line x1="20" y1="20" x2="280" y2="20" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<line x1="40" y1="160" x2="250" y2="50" stroke="${K.pri}" stroke-width="2.5"/>`;
-    s += `<text x="120" y="105" fill="${K.pri}" font-size="11">k>0 上升</text>`;
+    s += `<text x="120" y="105" fill="${K.pri}" font-size="11">${G("fig.t103", null, `k>0 上升`)}</text>`;
     return S(W, H, s);
   };
   Fig.coord_circle = function () {
@@ -1434,7 +1436,7 @@
     s += `<line x1="${cx}" y1="15" x2="${cx}" y2="205" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<circle cx="${cx}" cy="${cy}" r="70" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<circle cx="${cx}" cy="${cy}" r="4" fill="${K.ok}"/>`;
-    s += `<text x="${cx+6}" y="${cy-6}" fill="${K.ok}" font-size="11">圆心</text>`;
+    s += `<text x="${cx+6}" y="${cy-6}" fill="${K.ok}" font-size="11">${G("fig.t104", null, `圆心`)}</text>`;
     return S(W, H, s);
   };
   Fig.jensen_conv = function () {
@@ -1443,7 +1445,7 @@
     let d = "M 30 170 Q 150 20 270 170";
     s += `<path d="${d}" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<line x1="30" y1="170" x2="270" y2="170" stroke="${K.sub}" stroke-width="1.5"/>`;
-    s += `<text x="110" y="70" fill="${K.ok}" font-size="11">下凸（弦在上）</text>`;
+    s += `<text x="110" y="70" fill="${K.ok}" font-size="11">${G("fig.t105", null, `下凸（弦在上）`)}</text>`;
     return S(W, H, s);
   };
   Fig.jensen_ineq = function () {
@@ -1452,7 +1454,7 @@
     s += `<path d="M 40 160 Q 150 60 260 160" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<line x1="40" y1="160" x2="260" y2="160" stroke="${K.sub}" stroke-width="1.5"/>`;
     s += `<line x1="150" y1="160" x2="150" y2="118" stroke="${K.ok}" stroke-width="2" stroke-dasharray="4 3"/>`;
-    s += `<text x="155" y="112" fill="${K.ok}" font-size="11">f中点≤均值</text>`;
+    s += `<text x="155" y="112" fill="${K.ok}" font-size="11">${G("fig.t106", null, `f中点≤均值`)}</text>`;
     return S(W, H, s);
   };
   Fig.jensen_means = function () {
@@ -1474,7 +1476,7 @@
     for (let i = 0; i <= 60; i++) { const x = -2.6 + i * 0.087; const px = cx + x * 50; const py = cy - 50 * Math.sin(x) / x; pts.push(px.toFixed(1) + "," + py.toFixed(1)); }
     s += `<polyline points="${pts.join(" ")}" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<line x1="10" y1="${cy-50}" x2="290" y2="${cy-50}" stroke="${K.ok}" stroke-dasharray="4 3"/>`;
-    s += `<text x="210" y="${cy-56}" fill="${K.ok}" font-size="11">极限 1</text>`;
+    s += `<text x="210" y="${cy-56}" fill="${K.ok}" font-size="11">${G("fig.t107", null, `极限 1`)}</text>`;
     return S(W, H, s);
   };
   Fig.lim_exp = function () {
@@ -1559,7 +1561,7 @@
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 50 ${cy} L 50 90 Q 150 40 250 ${cy} Z" fill="${K.pri}" opacity="0.3"/>`;
     s += `<path d="M 50 90 Q 150 40 250 ${cy}" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
-    s += `<text x="120" y="120" fill="${K.ok}" font-size="11">面积 S</text>`;
+    s += `<text x="120" y="120" fill="${K.ok}" font-size="11">${G("fig.t108", null, `面积 S`)}</text>`;
     return S(W, H, s);
   };
   Fig.int_volume = function () {
@@ -1574,14 +1576,14 @@
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 50 ${cy} Q 150 40 250 ${cy}" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<line x1="40" y1="${cy-30}" x2="260" y2="${cy-30}" stroke="${K.ok}" stroke-dasharray="4 3"/>`;
-    s += `<text x="190" y="${cy-36}" fill="${K.ok}" font-size="11">平均值</text>`;
+    s += `<text x="190" y="${cy-36}" fill="${K.ok}" font-size="11">${G("fig.t109", null, `平均值`)}</text>`;
     return S(W, H, s);
   };
   Fig.int_arc = function () {
     const W = 300, H = 200, cy = 170;
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 50 ${cy} Q 150 30 250 ${cy}" fill="none" stroke="${K.pri}" stroke-width="3"/>`;
-    s += `<text x="120" y="90" fill="${K.ok}" font-size="11">弧长 L</text>`;
+    s += `<text x="120" y="90" fill="${K.ok}" font-size="11">${G("fig.t110", null, `弧长 L`)}</text>`;
     return S(W, H, s);
   };
   Fig.gtrans_shift = function () {
@@ -1589,7 +1591,7 @@
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 30 130 Q 120 50 210 130" fill="none" stroke="${K.sub}" stroke-width="2"/>`;
     s += `<path d="M 90 130 Q 180 50 270 130" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
-    s += `<text x="150" y="60" fill="${K.pri}" font-size="11">右移 a</text>`;
+    s += `<text x="150" y="60" fill="${K.pri}" font-size="11">${G("fig.t111", null, `右移 a`)}</text>`;
     return S(W, H, s);
   };
   Fig.gtrans_sym = function () {
@@ -1597,7 +1599,7 @@
     let s = `<line x1="150" y1="20" x2="150" y2="190" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 150 60 Q 220 100 150 160" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<path d="M 150 60 Q 80 100 150 160" fill="none" stroke="${K.sub}" stroke-width="2"/>`;
-    s += `<text x="155" y="40" fill="${K.pri}" font-size="11">f(x) 与 f(−x) 对称 y 轴</text>`;
+    s += `<text x="155" y="40" fill="${K.pri}" font-size="11">${G("fig.t112", null, `f(x) 与 f(−x) 对称 y 轴`)}</text>`;
     return S(W, H, s);
   };
   Fig.gtrans_scale = function () {
@@ -1605,7 +1607,7 @@
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 40 150 Q 120 90 200 60" fill="none" stroke="${K.sub}" stroke-width="2"/>`;
     s += `<path d="M 40 150 Q 120 50 200 10" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
-    s += `<text x="120" y="100" fill="${K.pri}" font-size="11">纵向拉伸</text>`;
+    s += `<text x="120" y="100" fill="${K.pri}" font-size="11">${G("fig.t113", null, `纵向拉伸`)}</text>`;
     return S(W, H, s);
   };
   Fig.gtrans_abs = function () {
@@ -1613,7 +1615,7 @@
     let s = `<line x1="20" y1="${cy}" x2="280" y2="${cy}" stroke="${K.ink}" stroke-width="1.2"/>`;
     s += `<path d="M 40 ${cy} Q 110 200 180 ${cy} Q 250 40 270 ${cy}" fill="none" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<path d="M 110 200 L 110 ${cy}" stroke="${K.ok}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-    s += `<text x="90" y="180" fill="${K.ok}" font-size="11">翻折向上</text>`;
+    s += `<text x="90" y="180" fill="${K.ok}" font-size="11">${G("fig.t114", null, `翻折向上`)}</text>`;
     return S(W, H, s);
   };
 
@@ -1664,7 +1666,7 @@
     s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${K.pri}" stroke-width="2.5"/>`;
     s += `<circle cx="${x1}" cy="${y1}" r="3.5" fill="${K.pri}"/>`;
     s += `<circle cx="${x2}" cy="${y2}" r="3.5" fill="${K.warn}"/>`;
-    s += `<text x="${x2-22}" y="${y2-6}" font-size="11" fill="${K.pri}" font-family="inherit">向量</text>`;
+    s += `<text x="${x2-22}" y="${y2-6}" font-size="11" fill="${K.pri}" font-family="inherit">${G("fig.vectorLabel", null, `向量`)}</text>`;
     return S(W, H, s, 240);
   };
 

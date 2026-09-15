@@ -26,6 +26,12 @@
     return { opts: arr, ans: arr.indexOf(String(ans)) };
   }
 
+  const G = window.G;
+  // 甲/乙/合作：题面、解析、配图三处必须同名，否则图与文对不上
+  function ACTOR_A() { return G("gen.actor.a", null, "甲"); }
+  function ACTOR_B() { return G("gen.actor.b", null, "乙"); }
+  function ACTOR_COOP() { return G("gen.actor.coop", null, "合作"); }
+
   function Q(q, optsObj, level, explain, point, fig) {
     return Object.assign({ q, level: level || "基础", explain, point: point || "" }, optsObj, { fig: fig || null });
   }
@@ -41,11 +47,14 @@
     const askRabbit = Math.random() < 0.5;
     const ans = askRabbit ? R : C;
     const o = opts(ans, () => rnd(1, H - 1));
-    const q = `鸡兔同笼：共有 ${H} 个头，${F} 只脚。问${askRabbit ? "兔" : "鸡"}有几只？`;
+    const q = G("gen.chicken.stem", { H, F, ask: askRabbit ? "rabbits" : "chickens" },
+      `鸡兔同笼：共有 ${H} 个头，${F} 只脚。问${askRabbit ? "兔" : "鸡"}有几只？`);
     const explain = askRabbit
-      ? `假设全是鸡，应有 ${2 * H} 只脚，实际多 ${F - 2 * H} 只；每只兔比鸡多 2 脚，兔 = (${F} − ${2 * H}) ÷ 2 = ${R} 只。`
-      : `假设全是兔，应有 ${4 * H} 只脚，实际少 ${4 * H - F} 只；每只鸡比兔少 2 脚，鸡 = (${4 * H} − ${F}) ÷ 2 = ${C} 只。`;
-    return Q(q, o, "基础", explain, "假设法/抬脚法", { name: "gChicken", H, F, C, R });
+      ? G("gen.chicken.expRabbit", { H, F, R, assumed: 2 * H, gap: F - 2 * H },
+        `假设全是鸡，应有 ${2 * H} 只脚，实际多 ${F - 2 * H} 只；每只兔比鸡多 2 脚，兔 = (${F} − ${2 * H}) ÷ 2 = ${R} 只。`)
+      : G("gen.chicken.expChicken", { H, F, C, assumed: 4 * H, gap: 4 * H - F },
+        `假设全是兔，应有 ${4 * H} 只脚，实际少 ${4 * H - F} 只；每只鸡比兔少 2 脚，鸡 = (${4 * H} − ${F}) ÷ 2 = ${C} 只。`);
+    return Q(q, o, "基础", explain, G("gen.chicken.point", null, "假设法/抬脚法"), { name: "gChicken", H, F, C, R });
   }
 
   /* ============================================================
@@ -58,12 +67,12 @@
     const type = rnd(0, 3);
     const base = seg;
     let trees, mode, q, figMode, exp;
-    if (type === 0) { trees = base + 1; mode = "both"; figMode = "both"; q = `一条 ${L} 米长的路，每隔 ${d} 米栽一棵（两端都栽），共需多少棵树？`; exp = `间隔数 = ${L} ÷ ${d} = ${base}；两端都栽：棵数 = 间隔数 + 1 = ${base + 1}。`; }
-    else if (type === 1) { trees = base; mode = "one"; figMode = "one"; q = `一条 ${L} 米长的路，每隔 ${d} 米栽一棵（只栽一端），共需多少棵树？`; exp = `间隔数 = ${L} ÷ ${d} = ${base}；只栽一端：棵数 = 间隔数 = ${base}。`; }
-    else if (type === 2) { trees = base - 1; mode = "none"; figMode = "none"; q = `一条 ${L} 米长的路，每隔 ${d} 米栽一棵（两端都不栽），共需多少棵树？`; exp = `间隔数 = ${L} ÷ ${d} = ${base}；两端不栽：棵数 = 间隔数 − 1 = ${base - 1}。`; }
-    else { trees = base; mode = "ring"; figMode = "ring"; q = `一个周长 ${L} 米的圆形花坛，沿边每隔 ${d} 米栽一棵，共需多少棵树？`; exp = `封闭图形：棵数 = 间隔数 = ${L} ÷ ${d} = ${base}。`; }
+    if (type === 0) { trees = base + 1; mode = "both"; figMode = "both"; q = G("gen.plant.stemBoth", { L, d }, `一条 ${L} 米长的路，每隔 ${d} 米栽一棵（两端都栽），共需多少棵树？`); exp = G("gen.plant.expBoth", { L, d, base, trees }, `间隔数 = ${L} ÷ ${d} = ${base}；两端都栽：棵数 = 间隔数 + 1 = ${base + 1}。`); }
+    else if (type === 1) { trees = base; mode = "one"; figMode = "one"; q = G("gen.plant.stemOne", { L, d }, `一条 ${L} 米长的路，每隔 ${d} 米栽一棵（只栽一端），共需多少棵树？`); exp = G("gen.plant.expOne", { L, d, base, trees }, `间隔数 = ${L} ÷ ${d} = ${base}；只栽一端：棵数 = 间隔数 = ${base}。`); }
+    else if (type === 2) { trees = base - 1; mode = "none"; figMode = "none"; q = G("gen.plant.stemNone", { L, d }, `一条 ${L} 米长的路，每隔 ${d} 米栽一棵（两端都不栽），共需多少棵树？`); exp = G("gen.plant.expNone", { L, d, base, trees }, `间隔数 = ${L} ÷ ${d} = ${base}；两端不栽：棵数 = 间隔数 − 1 = ${base - 1}。`); }
+    else { trees = base; mode = "ring"; figMode = "ring"; q = G("gen.plant.stemRing", { L, d }, `一个周长 ${L} 米的圆形花坛，沿边每隔 ${d} 米栽一棵，共需多少棵树？`); exp = G("gen.plant.expRing", { L, d, base }, `封闭图形：棵数 = 间隔数 = ${L} ÷ ${d} = ${base}。`); }
     const o = opts(trees, () => Math.max(1, base + rnd(-2, 3)));
-    return Q(q, o, "基础", exp, "植树三情形", { name: "gPlant", seg, mode: figMode });
+    return Q(q, o, "基础", exp, G("gen.plant.point", null, "植树三情形"), { name: "gPlant", seg, mode: figMode });
   }
 
   /* ============================================================
@@ -75,23 +84,23 @@
       const D = rnd(4, 30); const big = rnd(D + 2, D + 30); const small = big - D; const Ssum = big + small;
       const askBig = Math.random() < 0.5; const ans = askBig ? big : small;
       const o = opts(ans, () => rnd(small - 5, big + 5));
-      const q = `两数之和是 ${Ssum}，差是 ${D}。问${askBig ? "较大的数" : "较小的数"}是多少？`;
-      const exp = `较大 = (和 + 差) ÷ 2 = (${Ssum} + ${D}) ÷ 2 = ${big}；较小 = (和 − 差) ÷ 2 = (${Ssum} − ${D}) ÷ 2 = ${small}。`;
-      return Q(q, o, "基础", exp, "和差公式", { name: "gSumdiff", big, small, type: "sd" });
+      const q = G("gen.sumdiff.stemSD", { sum: Ssum, D, ask: askBig ? "larger" : "smaller" }, `两数之和是 ${Ssum}，差是 ${D}。问${askBig ? "较大的数" : "较小的数"}是多少？`);
+      const exp = G("gen.sumdiff.expSD", { sum: Ssum, D, big, small }, `较大 = (和 + 差) ÷ 2 = (${Ssum} + ${D}) ÷ 2 = ${big}；较小 = (和 − 差) ÷ 2 = (${Ssum} − ${D}) ÷ 2 = ${small}。`);
+      return Q(q, o, "基础", exp, G("gen.sumdiff.pointSD", null, "和差公式"), { name: "gSumdiff", big, small, type: "sd" });
     } else if (type === 1) {
       const m = rnd(2, 4); const small = rnd(3, 15); const big = small * m; const Ssum = big + small;
       const askBig = Math.random() < 0.5; const ans = askBig ? big : small;
       const o = opts(ans, () => rnd(2, big + 5));
-      const q = `两数之和是 ${Ssum}，大数是小数的 ${m} 倍。问${askBig ? "大数" : "小数"}是多少？`;
-      const exp = `小数 = 和 ÷ (倍数 + 1) = ${Ssum} ÷ (${m} + 1) = ${small}；大数 = ${small} × ${m} = ${big}。`;
-      return Q(q, o, "基础", exp, "和倍公式", { name: "gSumdiff", big, small, type: "sb" });
+      const q = G("gen.sumdiff.stemSB", { sum: Ssum, m, ask: askBig ? "larger" : "smaller" }, `两数之和是 ${Ssum}，大数是小数的 ${m} 倍。问${askBig ? "大数" : "小数"}是多少？`);
+      const exp = G("gen.sumdiff.expSB", { sum: Ssum, m, big, small }, `小数 = 和 ÷ (倍数 + 1) = ${Ssum} ÷ (${m} + 1) = ${small}；大数 = ${small} × ${m} = ${big}。`);
+      return Q(q, o, "基础", exp, G("gen.sumdiff.pointSB", null, "和倍公式"), { name: "gSumdiff", big, small, type: "sb" });
     } else {
       const m = rnd(2, 4); const small = rnd(2, 12); const big = small * m; const D = big - small;
       const askBig = Math.random() < 0.5; const ans = askBig ? big : small;
       const o = opts(ans, () => rnd(1, big + 5));
-      const q = `两数之差是 ${D}，大数是小数的 ${m} 倍。问${askBig ? "大数" : "小数"}是多少？`;
-      const exp = `小数 = 差 ÷ (倍数 − 1) = ${D} ÷ (${m} − 1) = ${small}；大数 = ${small} × ${m} = ${big}。`;
-      return Q(q, o, "基础", exp, "差倍公式", { name: "gSumdiff", big, small, type: "db" });
+      const q = G("gen.sumdiff.stemDB", { D, m, ask: askBig ? "larger" : "smaller" }, `两数之差是 ${D}，大数是小数的 ${m} 倍。问${askBig ? "大数" : "小数"}是多少？`);
+      const exp = G("gen.sumdiff.expDB", { D, m, big, small }, `小数 = 差 ÷ (倍数 − 1) = ${D} ÷ (${m} − 1) = ${small}；大数 = ${small} × ${m} = ${big}。`);
+      return Q(q, o, "基础", exp, G("gen.sumdiff.pointDB", null, "差倍公式"), { name: "gSumdiff", big, small, type: "db" });
     }
   }
 
@@ -108,27 +117,27 @@
       const b = rnd(1, diff - 1), dd = diff - b;
       ans = N; const thing = a * N + b;
       o = opts(ans, () => rnd(2, N + 8));
-      q = `分糖果：如果每人分 ${a} 颗，多出 ${b} 颗；如果每人分 ${c} 颗，反而少 ${dd} 颗。一共有几个小朋友？`;
-      exp = `人数 = (盈 + 亏) ÷ 两次每份差 = (${b} + ${dd}) ÷ (${c} − ${a}) = ${diff} ÷ ${c - a} = ${N} 人。（糖果共 ${thing} 颗）`;
+      q = G("gen.profitloss.stemMix", { a, b, c, d: dd }, `分糖果：如果每人分 ${a} 颗，多出 ${b} 颗；如果每人分 ${c} 颗，反而少 ${dd} 颗。一共有几个小朋友？`);
+      exp = G("gen.profitloss.expMix", { a, b, c, d: dd, diff, per: c - a, N, thing }, `人数 = (盈 + 亏) ÷ 两次每份差 = (${b} + ${dd}) ÷ (${c} − ${a}) = ${diff} ÷ ${c - a} = ${N} 人。（糖果共 ${thing} 颗）`);
       fig = { name: "gProfit", a, c, b, d: dd, N, thing };
     } else if (type === 1) {
       const diff = (c - a) * N;
       const b = rnd(diff + 1, diff + 12); const e = b - diff;
       ans = N; const thing = a * N + b;
       o = opts(ans, () => rnd(2, N + 8));
-      q = `分糖果：每人分 ${a} 颗多 ${b} 颗；每人分 ${c} 颗多 ${e} 颗。一共有几个小朋友？`;
-      exp = `人数 = (大盈 − 小盈) ÷ 两次每份差 = (${b} − ${e}) ÷ (${c} − ${a}) = ${diff} ÷ ${c - a} = ${N} 人。`;
+      q = G("gen.profitloss.stemTwoOver", { a, b, c, e }, `分糖果：每人分 ${a} 颗多 ${b} 颗；每人分 ${c} 颗多 ${e} 颗。一共有几个小朋友？`);
+      exp = G("gen.profitloss.expTwoOver", { a, b, c, e, diff, per: c - a, N }, `人数 = (大盈 − 小盈) ÷ 两次每份差 = (${b} − ${e}) ÷ (${c} − ${a}) = ${diff} ÷ ${c - a} = ${N} 人。`);
       fig = { name: "gProfit", a, c, b, e, N, thing, kind: "双盈" };
     } else {
       const diff = (c - a) * N;
       const f = rnd(diff + 1, diff + 12); const g = f - diff;
       ans = N; const need = a * N + f;
       o = opts(ans, () => rnd(2, N + 8));
-      q = `分糖果：每人分 ${a} 颗少 ${f} 颗；每人分 ${c} 颗少 ${g} 颗。一共有几个小朋友？`;
-      exp = `人数 = (大亏 − 小亏) ÷ 两次每份差 = (${f} − ${g}) ÷ (${c} − ${a}) = ${diff} ÷ ${c - a} = ${N} 人。`;
+      q = G("gen.profitloss.stemTwoShort", { a, c, f, g }, `分糖果：每人分 ${a} 颗少 ${f} 颗；每人分 ${c} 颗少 ${g} 颗。一共有几个小朋友？`);
+      exp = G("gen.profitloss.expTwoShort", { a, c, f, g, diff, per: c - a, N }, `人数 = (大亏 − 小亏) ÷ 两次每份差 = (${f} − ${g}) ÷ (${c} − ${a}) = ${diff} ÷ ${c - a} = ${N} 人。`);
       fig = { name: "gProfit", a, c, f, g, N, thing: need, kind: "双亏" };
     }
-    return Q(q, o, "进阶", exp, "盈亏公式", fig);
+    return Q(q, o, "进阶", exp, G("gen.profitloss.point", null, "盈亏公式"), fig);
   }
 
   /* ============================================================
@@ -143,9 +152,9 @@
       const r = sum % n; if (r !== 0) { vals[n - 1] += (n - r); sum += (n - r); }
       const avg = sum / n;
       const o = opts(avg, () => rnd(50, 99));
-      const q = `某小组 ${n} 次测验成绩分别为 ${vals.join("、")} 分，平均成绩是多少？`;
-      const exp = `总数 = ${sum}，份数 = ${n}，平均数 = ${sum} ÷ ${n} = ${avg} 分。`;
-      return Q(q, o, "基础", exp, "总数 ÷ 份数", { name: "gAvg", vals, avg, showAvg: false });
+      const q = G("gen.average.stemMean", { n, list: vals.join(G("gen.listSep", null, "、")) }, `某小组 ${n} 次测验成绩分别为 ${vals.join("、")} 分，平均成绩是多少？`);
+      const exp = G("gen.average.expMean", { sum, n, avg }, `总数 = ${sum}，份数 = ${n}，平均数 = ${sum} ÷ ${n} = ${avg} 分。`);
+      return Q(q, o, "基础", exp, G("gen.average.pointMean", null, "总数 ÷ 份数"), { name: "gAvg", vals, avg, showAvg: false });
     } else {
       const n = rnd(3, 5);
       const avg = rnd(70, 90);
@@ -155,9 +164,9 @@
       const knownSum = known.reduce((x, y) => x + y, 0);
       const miss = sum - knownSum;
       const o = opts(miss, () => rnd(40, 120));
-      const q = `前 ${n - 1} 次成绩为 ${known.join("、")} 分，要使平均分达到 ${avg} 分，第 ${n} 次至少要考多少分？`;
-      const exp = `总分需 ${avg} × ${n} = ${sum}，已得 ${knownSum} 分，缺 = ${sum} − ${knownSum} = ${miss} 分。`;
-      return Q(q, o, "进阶", exp, "平均数 × 份数", { name: "gAvg", vals: known.concat([miss]), avg, showAvg: true, missIndex: known.length });
+      const q = G("gen.average.stemMissing", { k: n - 1, list: known.join(G("gen.listSep", null, "、")), avg, n }, `前 ${n - 1} 次成绩为 ${known.join("、")} 分，要使平均分达到 ${avg} 分，第 ${n} 次至少要考多少分？`);
+      const exp = G("gen.average.expMissing", { avg, n, sum, knownSum, miss }, `总分需 ${avg} × ${n} = ${sum}，已得 ${knownSum} 分，缺 = ${sum} − ${knownSum} = ${miss} 分。`);
+      return Q(q, o, "进阶", exp, G("gen.average.pointMissing", null, "平均数 × 份数"), { name: "gAvg", vals: known.concat([miss]), avg, showAvg: true, missIndex: known.length });
     }
   }
 
@@ -172,9 +181,9 @@
     const ansSym = letters[pos - 1];
     const optList = shuffle(letters.slice());
     const o = { opts: optList, ans: optList.indexOf(ansSym) };
-    const q = `一串珠子按 ${letters.join("")} 的顺序不断重复排列。第 ${n} 个珠子是什么？`;
-    const exp = `周期长 = ${T}。${n} ÷ ${T} = ${Math.floor(n / T)} …… ${rem === 0 ? T : rem}，余数定位周期里第 ${pos} 个 = ${ansSym}。`;
-    return Q(q, o, "基础", exp, "找周期余数", { name: "gCycle", letters, highlight: pos - 1 });
+    const q = G("gen.cycle.stem", { seq: letters.join(""), n }, `一串珠子按 ${letters.join("")} 的顺序不断重复排列。第 ${n} 个珠子是什么？`);
+    const exp = G("gen.cycle.exp", { T, n, quot: Math.floor(n / T), rem: rem === 0 ? T : rem, pos, sym: ansSym }, `周期长 = ${T}。${n} ÷ ${T} = ${Math.floor(n / T)} …… ${rem === 0 ? T : rem}，余数定位周期里第 ${pos} 个 = ${ansSym}。`);
+    return Q(q, o, "基础", exp, G("gen.cycle.point", null, "找周期余数"), { name: "gCycle", letters, highlight: pos - 1 });
   }
 
   /* ============================================================
@@ -189,18 +198,18 @@
       const p2 = rnd(2, 6), d2 = rnd(2, 6);
       const ans = unit * p2 * d2;
       const o = opts(ans, () => unit * rnd(1, 8) * rnd(1, 7));
-      const q = `${ppl} 个工人 ${days} 天可生产零件 ${total} 个。照这样计算，${p2} 个工人 ${d2} 天可生产多少个？`;
-      const exp = `单一量 = 总数 ÷ 人数 ÷ 天数 = ${total} ÷ ${ppl} ÷ ${days} = ${unit} 个/人天；${p2} 人 ${d2} 天 = ${unit} × ${p2} × ${d2} = ${ans} 个。`;
-      return Q(q, o, "基础", exp, "先求单一量", { name: "gGuiyi", ppl, days, unit, p2, d2, ans });
+      const q = G("gen.guiyi.stemForward", { ppl, days, total, p2, d2 }, `${ppl} 个工人 ${days} 天可生产零件 ${total} 个。照这样计算，${p2} 个工人 ${d2} 天可生产多少个？`);
+      const exp = G("gen.guiyi.expForward", { total, ppl, days, unit, p2, d2, ans }, `单一量 = 总数 ÷ 人数 ÷ 天数 = ${total} ÷ ${ppl} ÷ ${days} = ${unit} 个/人天；${p2} 人 ${d2} 天 = ${unit} × ${p2} × ${d2} = ${ans} 个。`);
+      return Q(q, o, "基础", exp, G("gen.guiyi.pointForward", null, "先求单一量"), { name: "gGuiyi", ppl, days, unit, p2, d2, ans });
     } else {
       const ppl = rnd(2, 5), days = rnd(3, 9);
       const total = ppl * days;
       let p2; do { p2 = rnd(2, 7); } while (total % p2 !== 0);
       const ans = total / p2;
       const o = opts(ans, () => Math.max(1, Math.round(total / rnd(1, 7))));
-      const q = `一批任务，${ppl} 人做需 ${days} 天完成。若改为 ${p2} 人同时做（效率相同），需多少天？`;
-      const exp = `总工作量 = ${ppl} × ${days} = ${total} 人·天；${p2} 人需 ${total} ÷ ${p2} = ${ans} 天。`;
-      return Q(q, o, "进阶", exp, "归总（总量不变）", { name: "gGuiyi", ppl, days, p2, ans, total });
+      const q = G("gen.guiyi.stemBack", { ppl, days, p2 }, `一批任务，${ppl} 人做需 ${days} 天完成。若改为 ${p2} 人同时做（效率相同），需多少天？`);
+      const exp = G("gen.guiyi.expBack", { ppl, days, total, p2, ans }, `总工作量 = ${ppl} × ${days} = ${total} 人·天；${p2} 人需 ${total} ÷ ${p2} = ${ans} 天。`);
+      return Q(q, o, "进阶", exp, G("gen.guiyi.pointBack", null, "归总（总量不变）"), { name: "gGuiyi", ppl, days, p2, ans, total });
     }
   }
 
@@ -214,20 +223,20 @@
     const coop = Math.round(a * b / (a + b));
     if (type === 0) {
       const o = opts(coop, () => rnd(2, Math.max(coop + 3, a, b)));
-      const q = `一项工程，甲单独做需 ${a} 天，乙单独做需 ${b} 天。两人合作需几天完成？`;
-      const exp = `甲效 = 1/${a}，乙效 = 1/${b}；合作效 = 1/${a} + 1/${b} = (${a} + ${b})/${a * b}；时间 = 1 ÷ (${(a + b)}/${a * b}) = ${a * b} ÷ (${a + b}) = ${coop} 天。`;
-      return Q(q, o, "基础", exp, "工程问题（设总量为1）", { name: "gEngineer", bars: [{ l: "甲", v: a }, { l: "乙", v: b }] });
+      const q = G("gen.engineer.stemTogether", { A: ACTOR_A(), B: ACTOR_B(), a, b }, `一项工程，甲单独做需 ${a} 天，乙单独做需 ${b} 天。两人合作需几天完成？`);
+      const exp = G("gen.engineer.expTogether", { A: ACTOR_A(), B: ACTOR_B(), a, b, prod: a * b, sum: a + b, coop }, `甲效 = 1/${a}，乙效 = 1/${b}；合作效 = 1/${a} + 1/${b} = (${a} + ${b})/${a * b}；时间 = 1 ÷ (${(a + b)}/${a * b}) = ${a * b} ÷ (${a + b}) = ${coop} 天。`);
+      return Q(q, o, "基础", exp, G("gen.engineer.pointTogether", null, "工程问题（设总量为1）"), { name: "gEngineer", bars: [{ l: ACTOR_A(), v: a }, { l: ACTOR_B(), v: b }] });
     } else if (type === 1) {
       const o = opts(b, () => rnd(2, a + 10));
-      const q = `一项工程，甲单独做需 ${a} 天，甲乙合作需 ${coop} 天。乙单独做需几天？`;
-      const exp = `1/${a} + 1/乙 = 1/${coop} → 1/乙 = 1/${coop} − 1/${a} = (${a} − ${coop})/(${a * coop}) → 乙 = ${a * coop} ÷ (${a} − ${coop}) = ${b} 天。`;
-      return Q(q, o, "进阶", exp, "合作效率反求", { name: "gEngineer", bars: [{ l: "甲", v: a }, { l: "合作", v: coop }] });
+      const q = G("gen.engineer.stemSolo", { A: ACTOR_A(), B: ACTOR_B(), a, coop }, `一项工程，甲单独做需 ${a} 天，甲乙合作需 ${coop} 天。乙单独做需几天？`);
+      const exp = G("gen.engineer.expSolo", { A: ACTOR_A(), B: ACTOR_B(), a, coop, b, prod: a * coop, gap: a - coop }, `1/${a} + 1/乙 = 1/${coop} → 1/乙 = 1/${coop} − 1/${a} = (${a} − ${coop})/(${a * coop}) → 乙 = ${a * coop} ÷ (${a} − ${coop}) = ${b} 天。`);
+      return Q(q, o, "进阶", exp, G("gen.engineer.pointSolo", null, "合作效率反求"), { name: "gEngineer", bars: [{ l: ACTOR_A(), v: a }, { l: ACTOR_COOP(), v: coop }] });
     } else {
       const save = a - coop;
       const o = opts(save, () => rnd(1, Math.max(save + 3, a)));
-      const q = `甲单独做 ${a} 天，两人合作 ${coop} 天。合作比甲单独少用几天？`;
-      const exp = `甲单独 ${a} 天，合作 ${coop} 天，少用 ${a} − ${coop} = ${save} 天（效率越高用时越短）。`;
-      return Q(q, o, "基础", exp, "效率比较", { name: "gEngineer", bars: [{ l: "甲", v: a }, { l: "合作", v: coop }] });
+      const q = G("gen.engineer.stemSaved", { A: ACTOR_A(), a, coop }, `甲单独做 ${a} 天，两人合作 ${coop} 天。合作比甲单独少用几天？`);
+      const exp = G("gen.engineer.expSaved", { A: ACTOR_A(), a, coop, save }, `甲单独 ${a} 天，合作 ${coop} 天，少用 ${a} − ${coop} = ${save} 天（效率越高用时越短）。`);
+      return Q(q, o, "基础", exp, G("gen.engineer.pointSaved", null, "效率比较"), { name: "gEngineer", bars: [{ l: ACTOR_A(), v: a }, { l: ACTOR_COOP(), v: coop }] });
     }
   }
 
@@ -241,21 +250,21 @@
     if (type === 0) {
       const t = rnd(2, 6); const s = vsum * t;
       const o = opts(t, () => rnd(1, t + 4));
-      const q = `甲、乙从相距 ${s} 千米两地同时相向出发，甲速 ${v1} 千米/时，乙速 ${v2} 千米/时。几小时相遇？`;
-      const exp = `相遇时间 = 路程 ÷ 速度和 = ${s} ÷ (${v1} + ${v2}) = ${s} ÷ ${vsum} = ${t} 小时。`;
-      return Q(q, o, "基础", exp, "相遇：s=(v1+v2)t", { name: "gMeet", s, v1, v2, t, show: { s: 1, v1: 1, v2: 1, t: 0 } });
+      const q = G("gen.meet.stemTime", { A: ACTOR_A(), B: ACTOR_B(), s, v1, v2 }, `甲、乙从相距 ${s} 千米两地同时相向出发，甲速 ${v1} 千米/时，乙速 ${v2} 千米/时。几小时相遇？`);
+      const exp = G("gen.meet.expTime", { s, v1, v2, vsum, t }, `相遇时间 = 路程 ÷ 速度和 = ${s} ÷ (${v1} + ${v2}) = ${s} ÷ ${vsum} = ${t} 小时。`);
+      return Q(q, o, "基础", exp, G("gen.meet.point", null, "相遇：s=(v1+v2)t"), { name: "gMeet", s, v1, v2, t, show: { s: 1, v1: 1, v2: 1, t: 0 } });
     } else if (type === 1) {
       const t = rnd(2, 6); const s = vsum * t;
       const o = opts(s, () => vsum * rnd(1, t + 2));
-      const q = `甲速 ${v1} 千米/时、乙速 ${v2} 千米/时，相向而行 ${t} 小时后相遇。两地相距多少千米？`;
-      const exp = `路程 = 速度和 × 时间 = (${v1} + ${v2}) × ${t} = ${vsum} × ${t} = ${s} 千米。`;
-      return Q(q, o, "基础", exp, "相遇：s=(v1+v2)t", { name: "gMeet", s, v1, v2, t, show: { s: 0, v1: 1, v2: 1, t: 1 } });
+      const q = G("gen.meet.stemDist", { A: ACTOR_A(), B: ACTOR_B(), v1, v2, t }, `甲速 ${v1} 千米/时、乙速 ${v2} 千米/时，相向而行 ${t} 小时后相遇。两地相距多少千米？`);
+      const exp = G("gen.meet.expDist", { v1, v2, vsum, t, s }, `路程 = 速度和 × 时间 = (${v1} + ${v2}) × ${t} = ${vsum} × ${t} = ${s} 千米。`);
+      return Q(q, o, "基础", exp, G("gen.meet.point", null, "相遇：s=(v1+v2)t"), { name: "gMeet", s, v1, v2, t, show: { s: 0, v1: 1, v2: 1, t: 1 } });
     } else {
       const t = rnd(2, 6); const s = vsum * t;
       const o = opts(v2, () => rnd(20, v1 + 40));
-      const q = `两地相距 ${s} 千米，相向而行 ${t} 小时相遇；甲速 ${v1} 千米/时，乙速多少？`;
-      const exp = `速度和 = ${s} ÷ ${t} = ${vsum}；乙速 = 速度和 − 甲速 = ${vsum} − ${v1} = ${v2} 千米/时。`;
-      return Q(q, o, "进阶", exp, "相遇：求速度和", { name: "gMeet", s, v1, v2, t, show: { s: 1, v1: 1, v2: 0, t: 1 } });
+      const q = G("gen.meet.stemSpeed", { A: ACTOR_A(), B: ACTOR_B(), s, t, v1 }, `两地相距 ${s} 千米，相向而行 ${t} 小时相遇；甲速 ${v1} 千米/时，乙速多少？`);
+      const exp = G("gen.meet.expSpeed", { A: ACTOR_A(), B: ACTOR_B(), s, t, vsum, v1, v2 }, `速度和 = ${s} ÷ ${t} = ${vsum}；乙速 = 速度和 − 甲速 = ${vsum} − ${v1} = ${v2} 千米/时。`);
+      return Q(q, o, "进阶", exp, G("gen.meet.pointSpeed", null, "相遇：求速度和"), { name: "gMeet", s, v1, v2, t, show: { s: 1, v1: 1, v2: 0, t: 1 } });
     }
   }
 
@@ -268,21 +277,21 @@
     if (type === 0) {
       const t = rnd(2, 6); const ds = dv * t;
       const o = opts(t, () => rnd(1, t + 4));
-      const q = `甲速 ${v1} 千米/时，乙速 ${v2} 千米/时，乙先走 ${ds} 千米后甲同向追乙。几小时追上？`;
-      const exp = `追及时间 = 路程差 ÷ 速度差 = ${ds} ÷ (${v1} − ${v2}) = ${ds} ÷ ${dv} = ${t} 小时。`;
-      return Q(q, o, "基础", exp, "追及：t=Δs÷(v1−v2)", { name: "gChase", v1, v2, ds, t, show: { v1: 1, v2: 1, ds: 1, t: 0 } });
+      const q = G("gen.chase.stemTime", { A: ACTOR_A(), B: ACTOR_B(), v1, v2, ds }, `甲速 ${v1} 千米/时，乙速 ${v2} 千米/时，乙先走 ${ds} 千米后甲同向追乙。几小时追上？`);
+      const exp = G("gen.chase.expTime", { ds, v1, v2, dv, t }, `追及时间 = 路程差 ÷ 速度差 = ${ds} ÷ (${v1} − ${v2}) = ${ds} ÷ ${dv} = ${t} 小时。`);
+      return Q(q, o, "基础", exp, G("gen.chase.pointTime", null, "追及：t=Δs÷(v1−v2)"), { name: "gChase", v1, v2, ds, t, show: { v1: 1, v2: 1, ds: 1, t: 0 } });
     } else if (type === 1) {
       const t = rnd(2, 6); const ds = dv * t;
       const o = opts(ds, () => dv * rnd(1, t + 3));
-      const q = `甲速 ${v1} 千米/时、乙速 ${v2} 千米/时，同向而行，${t} 小时后甲追上乙。乙先走了多少千米？`;
-      const exp = `路程差 = 速度差 × 时间 = (${v1} − ${v2}) × ${t} = ${dv} × ${t} = ${ds} 千米。`;
-      return Q(q, o, "基础", exp, "追及：Δs=(v1−v2)t", { name: "gChase", v1, v2, ds, t, show: { v1: 1, v2: 1, ds: 0, t: 1 } });
+      const q = G("gen.chase.stemGap", { A: ACTOR_A(), B: ACTOR_B(), v1, v2, t }, `甲速 ${v1} 千米/时、乙速 ${v2} 千米/时，同向而行，${t} 小时后甲追上乙。乙先走了多少千米？`);
+      const exp = G("gen.chase.expGap", { v1, v2, dv, t, ds }, `路程差 = 速度差 × 时间 = (${v1} − ${v2}) × ${t} = ${dv} × ${t} = ${ds} 千米。`);
+      return Q(q, o, "基础", exp, G("gen.chase.pointGap", null, "追及：Δs=(v1−v2)t"), { name: "gChase", v1, v2, ds, t, show: { v1: 1, v2: 1, ds: 0, t: 1 } });
     } else {
       const t = rnd(2, 6); const ds = dv * t;
       const o = opts(v2, () => rnd(20, v1 + 10));
-      const q = `甲速 ${v1} 千米/时，乙先走 ${ds} 千米，${t} 小时后甲追上乙。乙速多少？`;
-      const exp = `速度差 = 路程差 ÷ 时间 = ${ds} ÷ ${t} = ${dv}；乙速 = 甲速 − 速度差 = ${v1} − ${dv} = ${v2} 千米/时。`;
-      return Q(q, o, "进阶", exp, "追及：求速度差", { name: "gChase", v1, v2, ds, t, show: { v1: 1, v2: 0, ds: 1, t: 1 } });
+      const q = G("gen.chase.stemSpeed", { A: ACTOR_A(), B: ACTOR_B(), v1, ds, t }, `甲速 ${v1} 千米/时，乙先走 ${ds} 千米，${t} 小时后甲追上乙。乙速多少？`);
+      const exp = G("gen.chase.expSpeed", { A: ACTOR_A(), B: ACTOR_B(), ds, t, dv, v1, v2 }, `速度差 = 路程差 ÷ 时间 = ${ds} ÷ ${t} = ${dv}；乙速 = 甲速 − 速度差 = ${v1} − ${dv} = ${v2} 千米/时。`);
+      return Q(q, o, "进阶", exp, G("gen.chase.pointSpeed", null, "追及：求速度差"), { name: "gChase", v1, v2, ds, t, show: { v1: 1, v2: 0, ds: 1, t: 1 } });
     }
   }
 
@@ -317,11 +326,11 @@
     p = p || {};
     let s = `<rect x="20" y="40" width="280" height="78" rx="8" fill="${K.soft}" stroke="${K.line}" stroke-width="1.5"/>`;
     s += animalChicken(78, 78) + animalRabbit(160, 78);
-    s += `<text x="78" y="112" font-size="11" text-anchor="middle" fill="${K.sub}">鸡（2脚）</text>`;
-    s += `<text x="160" y="112" font-size="11" text-anchor="middle" fill="${K.sub}">兔（4脚）</text>`;
-    s += `<text x="248" y="64" font-size="13" text-anchor="middle" fill="${K.pri}">头 ${p.H}</text>`;
-    s += `<text x="248" y="86" font-size="13" text-anchor="middle" fill="${K.pri}">脚 ${p.F}</text>`;
-    s += `<text x="248" y="104" font-size="10" text-anchor="middle" fill="${K.sub}">（仅示意）</text>`;
+    s += `<text x="78" y="112" font-size="11" text-anchor="middle" fill="${K.sub}">${G("figq.t0", null, `鸡（2脚）`)}</text>`;
+    s += `<text x="160" y="112" font-size="11" text-anchor="middle" fill="${K.sub}">${G("figq.t1", null, `兔（4脚）`)}</text>`;
+    s += `<text x="248" y="64" font-size="13" text-anchor="middle" fill="${K.pri}">${G("figq.t2", { v1: p.H }, `头 ${p.H}`)}</text>`;
+    s += `<text x="248" y="86" font-size="13" text-anchor="middle" fill="${K.pri}">${G("figq.t3", { v1: p.F }, `脚 ${p.F}`)}</text>`;
+    s += `<text x="248" y="104" font-size="10" text-anchor="middle" fill="${K.sub}">${G("figq.t4", null, `（仅示意）`)}</text>`;
     return S(320, 128, s, 320);
   };
   window.Fig.gPlant = function (p) {
@@ -330,14 +339,14 @@
       const cx = 160, cy = 64, R = 52;
       let s = `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${K.sub}" stroke-width="2"/>`;
       for (let i = 0; i < seg; i++) { const ang = -Math.PI / 2 + i * 2 * Math.PI / seg; const x = cx + R * Math.cos(ang), y = cy + R * Math.sin(ang); s += `<line x1="${x}" y1="${y}" x2="${cx + (R - 12) * Math.cos(ang)}" y2="${cy + (R - 12) * Math.sin(ang)}" stroke="${K.pri}" stroke-width="2"/>`; }
-      s += `<text x="160" y="140" font-size="12" text-anchor="middle" fill="${K.ink}">周长分 ${seg} 段（间隔）</text>`;
+      s += `<text x="160" y="140" font-size="12" text-anchor="middle" fill="${K.ink}">${G("figq.t5", { v1: seg }, `周长分 ${seg} 段（间隔）`)}</text>`;
       return S(320, 152, s, 320);
     }
     const x0 = 20, x1 = 300, y = 70, gap = (x1 - x0) / seg;
     let s = `<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="${K.sub}" stroke-width="2"/>`;
     for (let i = 0; i <= seg; i++) { const x = x0 + i * gap; s += `<line x1="${x}" y1="${y - 9}" x2="${x}" y2="${y + 9}" stroke="${K.pri}" stroke-width="2"/>`; }
-    const label = { both: "两端都栽：棵数 = 间隔 + 1", one: "只栽一端：棵数 = 间隔", none: "两端不栽：棵数 = 间隔 − 1" }[mode] || mode;
-    s += `<text x="160" y="112" font-size="12" text-anchor="middle" fill="${K.ink}">共 ${seg} 段间隔</text>`;
+    const label = { both: G("figq.plantBoth", null, "两端都栽：棵数 = 间隔 + 1"), one: G("figq.plantOne", null, "只栽一端：棵数 = 间隔"), none: G("figq.plantNone", null, "两端不栽：棵数 = 间隔 − 1") }[mode] || mode;
+    s += `<text x="160" y="112" font-size="12" text-anchor="middle" fill="${K.ink}">${G("figq.t6", { v1: seg }, `共 ${seg} 段间隔`)}</text>`;
     s += `<text x="160" y="134" font-size="11" text-anchor="middle" fill="${K.sub}">${label}</text>`;
     return S(320, 148, s, 320);
   };
@@ -350,36 +359,36 @@
     if (type === "sb" || type === "db") {
       const m = big / small;
       s += `<rect x="${x0}" y="${ySmall}" width="${wSmall}" height="${barH}" fill="${K.pri}" opacity="0.85"/>`;
-      s += `<text x="${x0 + wSmall / 2}" y="${ySmall + 22}" font-size="12" text-anchor="middle" fill="#fff">小数</text>`;
+      s += `<text x="${x0 + wSmall / 2}" y="${ySmall + 22}" font-size="12" text-anchor="middle" fill="#fff">${G("figq.t7", null, `小数`)}</text>`;
       s += `<rect x="${x0}" y="${yBig}" width="${wBig}" height="${barH}" fill="${K.ok}" opacity="0.85"/>`;
-      s += `<text x="${x0 + wBig / 2}" y="${yBig + 22}" font-size="12" text-anchor="middle" fill="#fff">大数（${m}倍）</text>`;
+      s += `<text x="${x0 + wBig / 2}" y="${yBig + 22}" font-size="12" text-anchor="middle" fill="#fff">${G("figq.t8", { v1: m }, `大数（${m}倍）`)}</text>`;
       for (let i = 1; i < m; i++) { const x = x0 + i * wSmall; s += `<line x1="${x}" y1="${yBig}" x2="${x}" y2="${yBig + barH}" stroke="#fff" stroke-width="1.5"/>`; }
-      s += bracket(x0, x0 + wBig, ySmall - 14, `和 = ${sum}`);
-      if (type === "db") { const dW = (m - 1) * wSmall; s += `<rect x="${x0 + wSmall}" y="${yBig}" width="${dW}" height="${barH}" fill="none" stroke="${K.warn}" stroke-width="2" stroke-dasharray="4 3"/><text x="${x0 + wSmall + dW / 2}" y="${yBig + barH + 18}" font-size="11" text-anchor="middle" fill="${K.warn}">差 = ${big - small}</text>`; }
+      s += bracket(x0, x0 + wBig, ySmall - 14, G("figq.sum", { v1: sum }, `和 = ${sum}`));
+      if (type === "db") { const dW = (m - 1) * wSmall; s += `<rect x="${x0 + wSmall}" y="${yBig}" width="${dW}" height="${barH}" fill="none" stroke="${K.warn}" stroke-width="2" stroke-dasharray="4 3"/><text x="${x0 + wSmall + dW / 2}" y="${yBig + barH + 18}" font-size="11" text-anchor="middle" fill="${K.warn}">${G("figq.t9", { v1: big - small }, `差 = ${big - small}`)}</text>`; }
       return S(360, yBig + barH + 28, s, 320);
     }
     const D = big - small;
     s += `<rect x="${x0}" y="${ySmall}" width="${wSmall}" height="${barH}" fill="${K.pri}" opacity="0.85"/>`;
-    s += `<text x="${x0 + wSmall / 2}" y="${ySmall + 22}" font-size="12" text-anchor="middle" fill="#fff">小数</text>`;
+    s += `<text x="${x0 + wSmall / 2}" y="${ySmall + 22}" font-size="12" text-anchor="middle" fill="#fff">${G("figq.t10", null, `小数`)}</text>`;
     s += `<rect x="${x0}" y="${yBig}" width="${wBig}" height="${barH}" fill="${K.ok}" opacity="0.85"/>`;
-    s += `<text x="${x0 + wBig / 2}" y="${yBig + 22}" font-size="12" text-anchor="middle" fill="#fff">大数</text>`;
+    s += `<text x="${x0 + wBig / 2}" y="${yBig + 22}" font-size="12" text-anchor="middle" fill="#fff">${G("figq.t11", null, `大数`)}</text>`;
     s += `<rect x="${x0 + wSmall}" y="${yBig}" width="${D * unit}" height="${barH}" fill="none" stroke="${K.warn}" stroke-width="2" stroke-dasharray="4 3"/>`;
-    s += `<text x="${x0 + wSmall + D * unit / 2}" y="${yBig + barH + 18}" font-size="11" text-anchor="middle" fill="${K.warn}">差 = ${D}</text>`;
-    s += bracket(x0, x0 + wBig, ySmall - 14, `和 = ${sum}`);
+    s += `<text x="${x0 + wSmall + D * unit / 2}" y="${yBig + barH + 18}" font-size="11" text-anchor="middle" fill="${K.warn}">${G("figq.t12", { v1: D }, `差 = ${D}`)}</text>`;
+    s += bracket(x0, x0 + wBig, ySmall - 14, G("figq.sum", { v1: sum }, `和 = ${sum}`));
     return S(360, yBig + barH + 28, s, 320);
   };
   // 盈亏：只列两种分法（题目已给），人数由学生用公式算
   window.Fig.gProfit = function (p) {
     p = p || {};
-    let s = `<text x="30" y="34" font-size="13" fill="${K.ink}">方案①：每人 ${p.a} 颗</text>`;
-    s += `<text x="30" y="60" font-size="13" fill="${K.ink}">方案②：每人 ${p.c} 颗</text>`;
+    let s = `<text x="30" y="34" font-size="13" fill="${K.ink}">${G("figq.t13", { v1: p.a }, `方案①：每人 ${p.a} 颗`)}</text>`;
+    s += `<text x="30" y="60" font-size="13" fill="${K.ink}">${G("figq.t14", { v1: p.c }, `方案②：每人 ${p.c} 颗`)}</text>`;
     const tags = [];
-    if (p.b != null) tags.push(`方案①多 ${p.b} 颗（盈）`);
-    if (p.d != null) tags.push(`方案②少 ${p.d} 颗（亏）`);
-    if (p.e != null) tags.push(`方案②多 ${p.e} 颗（盈）`);
-    if (p.g != null) tags.push(`方案②少 ${p.g} 颗（亏）`);
+    if (p.b != null) tags.push(G("figq.over1", { v1: p.b }, `方案①多 ${p.b} 颗（盈）`));
+    if (p.d != null) tags.push(G("figq.short2", { v1: p.d }, `方案②少 ${p.d} 颗（亏）`));
+    if (p.e != null) tags.push(G("figq.over2", { v1: p.e }, `方案②多 ${p.e} 颗（盈）`));
+    if (p.g != null) tags.push(G("figq.short2b", { v1: p.g }, `方案②少 ${p.g} 颗（亏）`));
     tags.forEach((t, i) => s += `<text x="30" y="${92 + i * 20}" font-size="12" fill="${K.pri}">${t}</text>`);
-    s += `<text x="30" y="${92 + tags.length * 20 + 10}" font-size="11" fill="${K.sub}">人数 = ? 用盈亏公式算</text>`;
+    s += `<text x="30" y="${92 + tags.length * 20 + 10}" font-size="11" fill="${K.sub}">${G("figq.t15", null, `人数 = ? 用盈亏公式算`)}</text>`;
     return S(320, 92 + tags.length * 20 + 26, s, 320);
   };
   // 平均数：只画已知分数；答案(平均)仅在题目已给时才画线
@@ -388,7 +397,7 @@
     const n = vals.length, max = Math.max.apply(null, vals.concat(showAvg ? [avg] : [])), H = 90, yb = 120, uw = Math.min(40, 240 / n), gap = 14;
     let s = ""; const totalW = n * (uw + gap), x0 = (320 - totalW) / 2;
     vals.forEach((v, i) => { const x = x0 + i * (uw + gap), h = v / max * H; const miss = (p.missIndex != null && i === p.missIndex); s += `<rect x="${x}" y="${yb - h}" width="${uw}" height="${h}" fill="${miss ? K.line : K.pri}"/><text x="${x + uw / 2}" y="${yb - h - 5}" font-size="11" text-anchor="middle" fill="${K.ink}">${miss ? "?" : v}</text>`; });
-    if (showAvg && avg != null) { const avgY = yb - avg / max * H; s += `<line x1="${x0 - 6}" y1="${avgY}" x2="${x0 + totalW + 6}" y2="${avgY}" stroke="${K.warn}" stroke-width="2" stroke-dasharray="5 3"/><text x="${x0 + totalW + 10}" y="${avgY + 4}" font-size="11" fill="${K.warn}">平均${avg}</text>`; }
+    if (showAvg && avg != null) { const avgY = yb - avg / max * H; s += `<line x1="${x0 - 6}" y1="${avgY}" x2="${x0 + totalW + 6}" y2="${avgY}" stroke="${K.warn}" stroke-width="2" stroke-dasharray="5 3"/><text x="${x0 + totalW + 10}" y="${avgY + 4}" font-size="11" fill="${K.warn}">${G("figq.t16", { v1: avg }, `平均${avg}`)}</text>`; }
     return S(320, 140, s, 320);
   };
   // 周期：只展示循环规律，不标答案位置
@@ -397,8 +406,8 @@
     const n = letters.length, gap = Math.min(48, 260 / n), x0 = (320 - n * gap) / 2 + gap / 2;
     let s = "";
     letters.forEach((L, i) => { const x = x0 + i * gap; s += `<circle cx="${x}" cy="56" r="18" fill="${K.soft}" stroke="${K.ink}" stroke-width="1.5"/><text x="${x}" y="61" font-size="14" text-anchor="middle" fill="${K.ink}">${L}</text>`; if (i < n - 1) s += `<text x="${x + gap / 2}" y="61" font-size="14" fill="${K.sub}">→</text>`; });
-    s += `<text x="160" y="104" font-size="12" text-anchor="middle" fill="${K.ink}">周期 ${n}：按此顺序不断重复</text>`;
-    s += `<text x="160" y="124" font-size="11" text-anchor="middle" fill="${K.sub}">第 ${p.n} 个 = ?（用余数定位）</text>`;
+    s += `<text x="160" y="104" font-size="12" text-anchor="middle" fill="${K.ink}">${G("figq.t17", { v1: n }, `周期 ${n}：按此顺序不断重复`)}</text>`;
+    s += `<text x="160" y="124" font-size="11" text-anchor="middle" fill="${K.sub}">${G("figq.t18", { v1: p.n }, `第 ${p.n} 个 = ?（用余数定位）`)}</text>`;
     return S(320, 138, s, 320);
   };
   // 归一：只画"人数×天数"网格（题目已给），不标单一量
@@ -407,8 +416,8 @@
     const cols = ppl, rows = Math.min(days, 8), cw = 26, ch = 20, x0 = 30, y0 = 30;
     let s = "";
     for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) s += `<rect x="${x0 + c * cw}" y="${y0 + r * ch}" width="${cw - 3}" height="${ch - 3}" fill="${K.soft}" stroke="${K.line}" stroke-width="1"/>`;
-    s += `<text x="30" y="${y0 + rows * ch + 18}" font-size="12" fill="${K.ink}">${ppl} 人 × ${days} 天 = ${ppl * days} 人·天</text>`;
-    if (total != null) s += `<text x="30" y="${y0 + rows * ch + 36}" font-size="12" fill="${K.pri}">共生产 ${total} 个</text>`;
+    s += `<text x="30" y="${y0 + rows * ch + 18}" font-size="12" fill="${K.ink}">${G("figq.t19", { v1: ppl, v2: days, v3: ppl * days }, `${ppl} 人 × ${days} 天 = ${ppl * days} 人·天`)}</text>`;
+    if (total != null) s += `<text x="30" y="${y0 + rows * ch + 36}" font-size="12" fill="${K.pri}">${G("figq.t20", { v1: total }, `共生产 ${total} 个`)}</text>`;
     return S(320, y0 + rows * ch + 46, s, 320);
   };
   // 工程：只画"题目已给"的效率条，绝不含答案条
@@ -423,22 +432,22 @@
   window.Fig.gMeet = function (p) {
     p = p || {}; const show = p.show || {}, s = p.s, v1 = p.v1, v2 = p.v2, t = p.t;
     let svg = `<line x1="30" y1="70" x2="290" y2="70" stroke="${K.sub}" stroke-width="2"/>`;
-    if (show.v1) svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/><text x="40" y="94" font-size="11" text-anchor="middle" fill="${K.pri}">甲${v1}</text>`; else svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/>`;
-    if (show.v2) svg += `<circle cx="280" cy="70" r="8" fill="${K.ok}"/><text x="280" y="94" font-size="11" text-anchor="middle" fill="${K.ok}">乙${v2}</text>`; else svg += `<circle cx="280" cy="70" r="8" fill="${K.ok}"/>`;
-    if (show.s) svg += `<text x="160" y="116" font-size="12" text-anchor="middle" fill="${K.ink}">相距 ${s} 千米</text>`;
-    if (show.t) svg += `<text x="160" y="58" font-size="12" text-anchor="middle" fill="${K.warn}">行 ${t} 小时</text>`;
-    svg += `<text x="160" y="50" font-size="11" text-anchor="middle" fill="${K.sub}">相向而行</text>`;
+    if (show.v1) svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/><text x="40" y="94" font-size="11" text-anchor="middle" fill="${K.pri}">${G("figq.t21", { v1: v1 }, `甲${v1}`)}</text>`; else svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/>`;
+    if (show.v2) svg += `<circle cx="280" cy="70" r="8" fill="${K.ok}"/><text x="280" y="94" font-size="11" text-anchor="middle" fill="${K.ok}">${G("figq.t22", { v1: v2 }, `乙${v2}`)}</text>`; else svg += `<circle cx="280" cy="70" r="8" fill="${K.ok}"/>`;
+    if (show.s) svg += `<text x="160" y="116" font-size="12" text-anchor="middle" fill="${K.ink}">${G("figq.t23", { v1: s }, `相距 ${s} 千米`)}</text>`;
+    if (show.t) svg += `<text x="160" y="58" font-size="12" text-anchor="middle" fill="${K.warn}">${G("figq.t24", { v1: t }, `行 ${t} 小时`)}</text>`;
+    svg += `<text x="160" y="50" font-size="11" text-anchor="middle" fill="${K.sub}">${G("figq.t25", null, `相向而行`)}</text>`;
     return S(320, 132, svg, 320);
   };
   // 追及：只标"题目已给"的量
   window.Fig.gChase = function (p) {
     p = p || {}; const show = p.show || {}, v1 = p.v1, v2 = p.v2, ds = p.ds, t = p.t;
     let svg = `<line x1="30" y1="70" x2="290" y2="70" stroke="${K.sub}" stroke-width="2"/>`;
-    if (show.v2) svg += `<circle cx="120" cy="70" r="8" fill="${K.ok}"/><text x="120" y="94" font-size="11" text-anchor="middle" fill="${K.ok}">乙${v2}</text>`; else svg += `<circle cx="120" cy="70" r="8" fill="${K.ok}"/>`;
-    if (show.v1) svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/><text x="40" y="50" font-size="11" text-anchor="middle" fill="${K.pri}">甲${v1}</text>`; else svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/>`;
-    if (show.ds) svg += `<text x="205" y="116" font-size="12" text-anchor="middle" fill="${K.ink}">乙先走 ${ds} 千米</text>`;
-    if (show.t) svg += `<text x="200" y="58" font-size="12" fill="${K.warn}">追及 ${t} 小时</text>`;
-    svg += `<text x="160" y="50" font-size="11" text-anchor="middle" fill="${K.sub}">同向而行</text>`;
+    if (show.v2) svg += `<circle cx="120" cy="70" r="8" fill="${K.ok}"/><text x="120" y="94" font-size="11" text-anchor="middle" fill="${K.ok}">${G("figq.t26", { v1: v2 }, `乙${v2}`)}</text>`; else svg += `<circle cx="120" cy="70" r="8" fill="${K.ok}"/>`;
+    if (show.v1) svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/><text x="40" y="50" font-size="11" text-anchor="middle" fill="${K.pri}">${G("figq.t27", { v1: v1 }, `甲${v1}`)}</text>`; else svg += `<circle cx="40" cy="70" r="8" fill="${K.pri}"/>`;
+    if (show.ds) svg += `<text x="205" y="116" font-size="12" text-anchor="middle" fill="${K.ink}">${G("figq.t28", { v1: ds }, `乙先走 ${ds} 千米`)}</text>`;
+    if (show.t) svg += `<text x="200" y="58" font-size="12" fill="${K.warn}">${G("figq.t29", { v1: t }, `追及 ${t} 小时`)}</text>`;
+    svg += `<text x="160" y="50" font-size="11" text-anchor="middle" fill="${K.sub}">${G("figq.t30", null, `同向而行`)}</text>`;
     return S(320, 132, svg, 320);
   };
 

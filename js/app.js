@@ -6,9 +6,158 @@
   const KEY = "mathMastery.v1";
   const $ = sel => document.querySelector(sel);
   const view = () => document.getElementById("view");
+  // 译文取用别名用 T：本文件里 t 已被「技巧对象」占用
+  const T = window.I18N.t;
 
-  function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
-  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  /* ---------------- 学员档案（同一台设备多人共用） ----------------
+   * mathMastery.profiles   {active, list:[{id,name,created}]}
+   * mathMastery.v1.<id>    该学员的进度（结构与旧版逐字一致）
+   * mathMastery.v1         旧的单人进度键：迁移时读一次，之后原样留着以便回退
+   * 语言仍是 mathMastery.lang，按设备存，不随学员切换。
+   */
+  const PROFILES_KEY = "mathMastery.profiles";
+  function progressKey(id) { return KEY + "." + id; }
+  function newId() { return "p" + Date.now().toString(36) + Math.floor(Math.random() * 1296).toString(36); }
+  function defaultName(n) { return T("profile.default", { n }); }
+  function writeProfiles(p) { try { localStorage.setItem(PROFILES_KEY, JSON.stringify(p)); } catch (e) { } }
+
+  // 首次运行：把旧的单人进度收进第一个档案。旧键只复制不删除，回退时数据还在。
+  function migrateOrCreate() {
+    const id = newId();
+    let legacy = null;
+    try { legacy = localStorage.getItem(KEY); } catch (e) { }
+    if (legacy) { try { localStorage.setItem(progressKey(id), legacy); } catch (e) { } }
+    const p = { active: id, list: [{ id, name: defaultName(1), created: Date.now() }] };
+    writeProfiles(p);
+    return p;
+  }
+
+  // 读档案表；内容损坏或为空时自愈重建，绝不抛错（与 load() 的容错风格一致）
+  function readProfiles() {
+    let p = null;
+    try { p = JSON.parse(localStorage.getItem(PROFILES_KEY)); } catch (e) { p = null; }
+    if (!p || !Array.isArray(p.list) || !p.list.length || p.list.some(x => !x || !x.id)) p = migrateOrCreate();
+    if (!p.list.some(x => x.id === p.active)) { p.active = p.list[0].id; writeProfiles(p); }
+    return p;
+  }
+  function activeId() { return readProfiles().active; }
+  function activeProfile() { const p = readProfiles(); return p.list.find(x => x.id === p.active) || p.list[0]; }
+
+  function addProfile(name) {
+    const p = readProfiles();
+    const id = newId();
+    p.list.push({ id, name: name || defaultName(p.list.length + 1), created: Date.now() });
+    p.active = id; writeProfiles(p);
+  }
+  function renameProfile(id, name) {
+    const p = readProfiles();
+    const row = p.list.find(x => x.id === id);
+    if (row && name) { row.name = name; writeProfiles(p); }
+  }
+  function deleteProfile(id) {
+    const p = readProfiles();
+    p.list = p.list.filter(x => x.id !== id);
+    try { localStorage.removeItem(progressKey(id)); } catch (e) { }   // 真正把数据删掉
+    if (!p.list.length) {                                             // 删到一个不剩就补一个空档案
+      const nid = newId();
+      p.list.push({ id: nid, name: defaultName(1), created: Date.now() });
+      p.active = nid;
+    } else if (p.active === id) p.active = p.list[0].id;
+    writeProfiles(p);
+  }
+
+  function load() { try { return JSON.parse(localStorage.getItem(progressKey(activeId()))) || {}; } catch (e) { return {}; } }
+  function save(s) { try { localStorage.setItem(progressKey(activeId()), JSON.stringify(s)); } catch (e) { } }
+
+  /* ---------------- 进度导出 / 导入 ----------------
+   * localStorage 按 origin 隔离：换域名、换设备都带不走数据。这里给学员一个
+   * 自己保管的 JSON 文件当桥梁——是「搬家 + 备份」，不是同步。
+   */
+  const IO_APP = "math-mastery";
+  const IO_FORMAT = 1;
+  const IO_MAX = 1024 * 1024;      // 114 个技巧的进度只有几 KB，1MB 已经很宽松
+
+  function readProgress(id) {
+    try { return JSON.parse(localStorage.getItem(progressKey(id))) || {}; } catch (e) { return {}; }
+  }
+
+  // 重建而不是信任：只照着已知技巧 id 抄一遍。
+  // 未知/过期技巧、__proto__ 之类的构造、脏值，都会在这里被丢掉。
+  function sanitizeProgress(raw) {
+    const out = {};
+    if (!raw || typeof raw !== "object") return out;
+    TECHNIQUES.forEach(t => {
+      const src = raw[t.id];
+      if (!src || typeof src !== "object") return;
+      const srcWeak = (src.weak && typeof src.weak === "object") ? src.weak : {};
+      const weak = {};
+      Object.keys(srcWeak).forEach(k => {
+        // 薄弱点键有两制：参数化题用技巧 id，静态题用题号
+        const ok = k === t.id || (/^\d+$/.test(k) && +k < t.questions.length);
+        const w = srcWeak[k];
+        if (!ok || !w || typeof w !== "object") return;
+        // 上游把薄弱点改成「连对 2 道才消除」，多了 passes/lastTime/attempts；
+        // 这里必须一并保留，否则导入会把复习进度悄悄抹平
+        weak[k] = {
+          fails: Number(w.fails) || 0,
+          cleared: !!w.cleared,
+          passes: Number(w.passes) || 0,
+          lastTime: Number(w.lastTime) || 0,
+          attempts: Number(w.attempts) || 0
+        };
+      });
+      out[t.id] = { mastered: !!src.mastered, weak: weak };
+    });
+    return out;
+  }
+
+  function buildExport(ids) {
+    const p = readProfiles();
+    const learners = ids.map(id => {
+      const row = p.list.find(x => x.id === id);
+      return row ? { name: row.name, progress: readProgress(id) } : null;
+    }).filter(Boolean);
+    return JSON.stringify({ app: IO_APP, format: IO_FORMAT, exported: new Date().toISOString(), learners }, null, 1);
+  }
+
+  function uniqueName(name) {
+    const taken = readProfiles().list.map(x => x.name);
+    if (taken.indexOf(name) < 0) return name;
+    const base = T("io.nameSuffix", { name });
+    let n = base, k = 2;
+    while (taken.indexOf(n) >= 0) n = base + " " + (k++);
+    return n;
+  }
+
+  // 导入一律「新建学员」，绝不覆盖现有的人——学生的进度不值得用破坏性默认值去赌
+  function applyImport(text) {
+    if (typeof text !== "string" || text.length > IO_MAX) return { ok: false, error: T("io.tooBig") };
+    let doc = null;
+    try { doc = JSON.parse(text); } catch (e) { return { ok: false, error: T("io.badFile") }; }
+    if (!doc || doc.app !== IO_APP || !Array.isArray(doc.learners)) return { ok: false, error: T("io.badFile") };
+    if (doc.format !== IO_FORMAT) return { ok: false, error: T("io.badVersion", { v: doc.format }) };
+    const rows = doc.learners.filter(x => x && typeof x === "object");
+    if (!rows.length) return { ok: false, error: T("io.badFile") };
+    let first = null;
+    rows.forEach(row => {
+      const raw = String(row.name == null ? "" : row.name).trim();
+      addProfile(uniqueName(raw || defaultName(readProfiles().list.length + 1)));
+      const id = readProfiles().active;        // addProfile 建完就把它设为当前
+      if (!first) first = id;
+      try { localStorage.setItem(progressKey(id), JSON.stringify(sanitizeProgress(row.progress))); } catch (e) { }
+    });
+    if (first) { const p = readProfiles(); p.active = first; writeProfiles(p); }
+    return { ok: true, count: rows.length };
+  }
+
+  function downloadExport(ids, label) {
+    const safe = String(label || "").replace(/[\\/:*?"<>|\s]+/g, "-").replace(/^-+|-+$/g, "") || "progress";
+    const a = document.createElement("a");
+    const url = URL.createObjectURL(new Blob([buildExport(ids)], { type: "application/json" }));
+    a.href = url; a.download = "math-mastery-" + safe + "-" + new Date().toISOString().slice(0, 10) + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+  }
   let state = load(); // { [id]: { mastered:bool, weak:{ [qidx]:{fails,clear} } } }
   let pendingScrollTech = null; // 返回路径时，定位并高亮到此技巧节点
   const STAGES = ["小学", "中学", "高中"];
@@ -134,6 +283,25 @@
     renderPathMain(layout.querySelector("#pathMain"));
     bindSidebar(layout);
   }
+  const TX = window.I18N.tx;
+  // 技巧文案：中文原文在 data.js，英文在目录里；缺译文自动回落中文
+  function techName(t) { return TX("tech." + t.id + ".name", t.name); }
+  function techSummary(t) { return TX("tech." + t.id + ".summary", t.summary); }
+  function techKou(t) { return TX("tech." + t.id + ".kou", t.kou); }
+  function techSteps(t) { return t.steps.map((s, i) => TX("tech." + t.id + ".step." + i, s)); }
+  // 静态题（无 qgen 的技巧才会用到）：按 技巧id + 题号 取译文，缺则回落中文原题
+  function localizeStatic(t, q, qidx) {
+    if (window.I18N.lang === "zh" || !q) return q;
+    const base = "q." + t.id + "." + qidx;
+    return Object.assign({}, q, {
+      q: TX(base + ".q", q.q),
+      opts: q.opts.map((o, i) => TX(base + ".opt." + i, o)),
+      explain: TX(base + ".explain", q.explain),
+      point: TX(base + ".point", q.point)
+    });
+  }
+  function stageName(s) { return T("stage." + s); }
+  function gradeName(g) { return T("grade." + String(g).replace("+", "")); }
 
   // 侧边栏：学段 → 年级 两级导航
   function buildSidebar() {
@@ -274,7 +442,7 @@
 
     if (t.anim && window.Anim && window.Anim[t.anim]) {
       const aw = document.createElement("div"); aw.className = "card";
-      aw.innerHTML = `<h3>动图演示</h3><div class="anim-wrap" id="animBox"></div>`;
+      aw.innerHTML = `<h3>${esc(T("learn.anim"))}</h3><div class="anim-wrap" id="animBox"></div>`;
       v.appendChild(aw);
       window.Anim[t.anim](aw.querySelector("#animBox"));
     }
@@ -297,17 +465,25 @@
   }
 
   // 判断题识别：仅 2 个选项且语义为「对/错」
+  // 词表跨语言合并，否则切到英文后 True/False 认不出来，✓/✗ 样式会悄悄消失
+  const JUDGE_YES = judgeVocab("ui.judge.yes", ["对", "正确", "✓", "✔"]);
+  const JUDGE_NO = judgeVocab("ui.judge.no", ["错", "错误", "✗", "✘"]);
+  function judgeVocab(key, base) {
+    const set = new Set(base);
+    window.I18N.langs.forEach(l => {
+      const v = (window["I18N_" + l.toUpperCase()] || {})[key];
+      if (typeof v === "string") v.split("|").forEach(x => set.add(x.trim()));
+    });
+    return set;
+  }
   function isJudge(q) {
     if (!q.opts || q.opts.length !== 2) return false;
     const s = q.opts.map(x => String(x).trim());
-    const yes = s.some(x => x === "对" || x === "正确" || x === "✓" || x === "✔");
-    const no = s.some(x => x === "错" || x === "错误" || x === "✗" || x === "✘");
-    return yes && no;
+    return s.some(x => JUDGE_YES.has(x)) && s.some(x => JUDGE_NO.has(x));
   }
   // 判断题标记：✓ 对 / ✗ 错
   function judgeMark(text) {
-    const t = String(text).trim();
-    return (t === "对" || t === "正确" || t === "✓" || t === "✔") ? "✓" : "✗";
+    return JUDGE_YES.has(String(text).trim()) ? "✓" : "✗";
   }
 
   /* ---------------- 跨组去重出题引擎 ----------------
@@ -408,15 +584,15 @@
           st.mastered = true; save(state);
           const nxt = TECHNIQUES.find(x => x.prereq === t.id);
           const freeToEnter = gradeNum(t.grade) >= 9;
-          banner.innerHTML = `<div class="qres" style="color:var(--ok)">🎉 融会贯通！${esc(t.name)} 已掌握</div>
-            ${nxt ? `<div class="muted">下一技巧已解锁：<b>${esc(nxt.name)}</b></div>
-              <a class="btn" href="#/learn/${nxt.id}" style="margin-top:10px">去学习 ${esc(nxt.name)}</a>`
-              : (freeToEnter ? `<div class="muted">本年级所有技巧均可直接进入，按需挑选下一个继续吧。</div>`
-                : `<div class="muted">已是本年级最后一道技巧，全部通关！</div>`)}`;
+          banner.innerHTML = `<div class="qres" style="color:var(--ok)">${esc(T("quiz.pass", { name: techName(t) }))}</div>
+            ${nxt ? `<div class="muted">${T("quiz.nextUnlocked", { name: `<b>${esc(techName(nxt))}</b>` })}</div>
+              <a class="btn" href="#/learn/${nxt.id}" style="margin-top:10px">${esc(T("quiz.goLearn", { name: techName(nxt) }))}</a>`
+              : (freeToEnter ? `<div class="muted">${esc(T("quiz.freeToEnter"))}</div>`
+                : `<div class="muted">${esc(T("quiz.lastOne"))}</div>`)}`;
         } else {
-          banner.innerHTML = `<div class="qres" style="color:var(--warn)">还差一点：本次正确 ${correct}/${total}${weakRemain ? `，还有 ${weakRemain} 个薄弱点没清零` : ""}</div>
-            <div class="muted">去「薄弱点复习」或再练几组，清零后才能通关。</div>
-            <a class="btn soft" href="#/review" style="margin-top:8px">去复习薄弱点</a>`;
+          banner.innerHTML = `<div class="qres" style="color:var(--warn)">${esc(T("quiz.fail", { correct, total, weak: weakRemain ? T("quiz.failWeak", { n: weakRemain }) : "" }))}</div>
+            <div class="muted">${esc(T("quiz.failHint"))}</div>
+            <a class="btn soft" href="#/review" style="margin-top:8px">${esc(T("quiz.goReview"))}</a>`;
         }
       } else {
         banner.innerHTML = `<div class="qres">本轮完成 ${total} 题，正确 ${correct} 题。</div>
@@ -432,7 +608,10 @@
       const judge = isJudge(q);
       const disp = judge ? { opts: q.opts, ans: q.ans } : shuffleOptions(q);
       const card = document.createElement("div"); card.className = "q"; card.dataset.done = "0";
-      const tag = q.level === "易错" ? '<span class="tag w">易错</span>' : (q.level === "进阶" ? '<span class="tag g">进阶</span>' : '<span class="tag">基础</span>');
+      // 中文难度串既是判别键也是 CSS 类的来源，只在展示时取译文
+      const tag = q.level === "易错" ? `<span class="tag w">${esc(T("level.易错"))}</span>`
+        : (q.level === "进阶" ? `<span class="tag g">${esc(T("level.进阶"))}</span>`
+          : `<span class="tag">${esc(T("level.基础"))}</span>`);
       const fig = renderFigOf(q);
       card.innerHTML = `<div class="qtext">${qi + 1}. ${esc(q.q)} ${tag}</div>
         ${fig}
@@ -447,7 +626,7 @@
         const ans = disp.ans;
         opts.forEach((o, i) => { o.style.pointerEvents = "none"; if (i === ans) o.classList.add("correct"); });
         if (chosen === ans) op.classList.add("correct"); else op.classList.add("wrong");
-        const ex = document.createElement("div"); ex.className = "explain"; ex.innerHTML = "解析：" + esc(q.explain); card.appendChild(ex);
+        const ex = document.createElement("div"); ex.className = "explain"; ex.innerHTML = esc(T("quiz.explain")) + esc(q.explain); card.appendChild(ex);
 
         const itT = it.t, itSt = tstate(itT.id), itKey = it.gen ? itT.id : it.key;
         if (chosen === ans) {
@@ -502,7 +681,7 @@
   }
   function renderReview() {
     const v = view(); v.innerHTML = "";
-    const h = document.createElement("h2"); h.className = "section"; h.textContent = "薄弱点复习"; v.appendChild(h);
+    const h = document.createElement("h2"); h.className = "section"; h.textContent = T("review.title"); v.appendChild(h);
     const items = [];
     TECHNIQUES.forEach(t => {
       const st = tstate(t.id);
@@ -515,7 +694,7 @@
       });
     });
     if (!items.length) {
-      v.innerHTML += `<div class="empty">🎉 暂时没有薄弱点，继续保持！</div>`;
+      v.innerHTML += `<div class="empty">${esc(T("review.empty"))}</div>`;
       return;
     }
     const tip = document.createElement("div"); tip.className = "hint";
@@ -745,25 +924,57 @@
 
     const grid = document.createElement("div"); grid.className = "stat-grid";
     grid.innerHTML = `
-      <div class="stat"><div class="n">${mastered}</div><div class="l">已掌握</div></div>
-      <div class="stat"><div class="n">${learning}</div><div class="l">学习中</div></div>
-      <div class="stat"><div class="n">${locked}</div><div class="l">未解锁</div></div>
-      <div class="stat"><div class="n">${wn}</div><div class="l">薄弱点</div></div>`;
+      <div class="stat"><div class="n">${mastered}</div><div class="l">${esc(T("prog.mastered"))}</div></div>
+      <div class="stat"><div class="n">${learning}</div><div class="l">${esc(T("prog.learning"))}</div></div>
+      <div class="stat"><div class="n">${locked}</div><div class="l">${esc(T("prog.locked"))}</div></div>
+      <div class="stat"><div class="n">${wn}</div><div class="l">${esc(T("prog.weak"))}</div></div>`;
     v.appendChild(grid);
 
     const pct = Math.round(mastered / total * 100);
     const bar = document.createElement("div"); bar.className = "card";
-    bar.innerHTML = `<div class="muted">总通关进度 ${pct}%</div><div class="bar"><i style="width:${pct}%"></i></div>`;
+    bar.innerHTML = `<div class="muted">${esc(T("prog.total", { pct }))}</div><div class="bar"><i style="width:${pct}%"></i></div>`;
     v.appendChild(bar);
 
-    const reset = document.createElement("div"); reset.className = "row"; reset.style.marginTop = "8px";
-    reset.innerHTML = `<button class="btn ghost sm" id="resetBtn">重置全部进度</button>`;
-    v.appendChild(reset);
-    $("#resetBtn").addEventListener("click", () => {
-      if (confirm("确定清空所有学习进度与薄弱点记录？")) { state = {}; save(state); toast("已重置"); route(); }
+    // 学员管理：改名 / 删除；进度重置只影响当前学员
+    const cur = activeProfile();
+    const prow = document.createElement("div"); prow.className = "row"; prow.style.marginTop = "8px";
+    prow.innerHTML = `<span class="muted">${esc(T("profile.current", { name: cur.name }))}</span>
+      <button class="btn ghost sm" id="renameBtn">${esc(T("profile.rename"))}</button>
+      <button class="btn ghost sm" id="delBtn">${esc(T("profile.delete"))}</button>`;
+    v.appendChild(prow);
+    $("#renameBtn").addEventListener("click", () => {
+      const name = (prompt(T("profile.renamePrompt"), cur.name) || "").trim();
+      if (!name) return;
+      renameProfile(cur.id, name); paintProfiles(); route();
+    });
+    $("#delBtn").addEventListener("click", () => {
+      if (!confirm(T("profile.deleteConfirm", { name: cur.name }))) return;
+      deleteProfile(cur.id); afterProfileChange();
     });
 
-    const h = document.createElement("h3"); h.textContent = "各技巧状态"; v.appendChild(h);
+    // 导出 / 导入：跨 origin、跨设备搬家用，同时也是一份备份
+    const many = readProfiles().list.length > 1;
+    const io = document.createElement("div"); io.className = "row"; io.style.marginTop = "8px";
+    io.innerHTML = `<button class="btn ghost sm" id="expBtn">${esc(T("io.export"))}</button>
+      ${many ? `<button class="btn ghost sm" id="expAllBtn">${esc(T("io.exportAll"))}</button>` : ""}
+      <button class="btn ghost sm" id="impBtn">${esc(T("io.import"))}</button>`;
+    v.appendChild(io);
+    $("#expBtn").addEventListener("click", () => downloadExport([cur.id], cur.name));
+    if (many) $("#expAllBtn").addEventListener("click", () =>
+      downloadExport(readProfiles().list.map(x => x.id), T("io.allSuffix")));
+    $("#impBtn").addEventListener("click", () => {
+      const f = $("#importFile");
+      if (f) { f.value = ""; f.click(); }        // 清空 value，同一个文件才能再次触发 change
+    });
+
+    const reset = document.createElement("div"); reset.className = "row"; reset.style.marginTop = "8px";
+    reset.innerHTML = `<button class="btn ghost sm" id="resetBtn">${esc(T("prog.reset"))}</button>`;
+    v.appendChild(reset);
+    $("#resetBtn").addEventListener("click", () => {
+      if (confirm(T("prog.resetConfirm", { name: cur.name }))) { state = {}; save(state); toast(T("prog.resetDone")); route(); }
+    });
+
+    const h = document.createElement("h3"); h.textContent = T("prog.techStatus"); v.appendChild(h);
     const tree = document.createElement("div"); tree.className = "tree";
     const groups = {};
     TECHNIQUES.forEach(t => { const k = t.stage + "|" + t.grade; (groups[k] = groups[k] || []).push(t); });
@@ -772,11 +983,11 @@
         .sort((a, b) => gradeNum(a) - gradeNum(b));
       if (!grades.length) return;
       const sb = document.createElement("div"); sb.className = "stage-banner sm";
-      sb.innerHTML = `<span class="stage-name">${stage}</span>`;
+      sb.innerHTML = `<span class="stage-name">${esc(stageName(stage))}</span>`;
       tree.appendChild(sb);
       grades.forEach(g => {
         const sub = document.createElement("div"); sub.className = "grade-sep";
-        sub.innerHTML = `<span class="grade-tag">${g}</span><span class="grade-count">${groups[stage + "|" + g].length} 个技巧</span>`;
+        sub.innerHTML = `<span class="grade-tag">${esc(gradeName(g))}</span><span class="grade-count">${esc(T("prog.gradeCount", { n: groups[stage + "|" + g].length }))}</span>`;
         tree.appendChild(sub);
         sortGroup(groups[stage + "|" + g]).forEach(t => {
           const st = tstate(t.id);
@@ -786,10 +997,10 @@
           const node = document.createElement("div");
           node.className = "node " + (status === "done" ? "mastered" : status === "lock" ? "locked" : "");
           node.innerHTML = `<div class="step">${status === "done" ? "✓" : (open ? "●" : "🔒")}</div>
-            <div class="body"><div class="title">${esc(t.name)}
-              <span class="status-pill ${status === "lock" ? "lock" : status === "done" ? "done" : "learn"}">${status === "lock" ? "未解锁" : status === "done" ? "已掌握" : "学习中"}</span>
-              ${weakN ? `<span class="tag w">薄弱点 ${weakN}</span>` : ""}</div>
-            ${open ? `<div class="acts"><a class="btn sm" href="#/practice/${t.id}">练习</a>${!st.mastered ? `<a class="btn sm soft" href="#/gate/${t.id}">通关</a>` : ""}</div>` : ""}</div>`;
+            <div class="body"><div class="title">${esc(techName(t))}
+              <span class="status-pill ${status === "lock" ? "lock" : status === "done" ? "done" : "learn"}">${esc(T("node.status." + status))}</span>
+              ${weakN ? `<span class="tag w">${esc(T("node.weak", { n: weakN }))}</span>` : ""}</div>
+            ${open ? `<div class="acts"><a class="btn sm" href="#/practice/${t.id}">${esc(T("act.practice"))}</a>${!st.mastered ? `<a class="btn sm soft" href="#/gate/${t.id}">${esc(T("prog.gate"))}</a>` : ""}</div>` : ""}</div>`;
           tree.appendChild(node);
         });
       });
@@ -800,32 +1011,33 @@
   /* ---------------- 相关项目推荐 ---------------- */
   function renderResources() {
     const v = view(); v.innerHTML = "";
-    const h = document.createElement("h2"); h.className = "section"; h.textContent = "相关项目与资源"; v.appendChild(h);
+    const h = document.createElement("h2"); h.className = "section"; h.textContent = T("res.title"); v.appendChild(h);
     const hint = document.createElement("div"); hint.className = "hint";
-    hint.textContent = "这里汇集了和「融会贯通」定位相近的可视化数学学习项目：动画引擎、开源练习平台、商业参考课程、资源清单。点击卡片可访问官网或仓库。";
+    hint.textContent = T("res.hint");
     v.appendChild(hint);
 
     const cats = window.RELATED_PROJECTS || [];
-    cats.forEach(cat => {
+    cats.forEach((cat, ci) => {
       const wrap = document.createElement("div"); wrap.className = "card";
-      wrap.innerHTML = `<h3 class="res-cat">${esc(cat.category)}</h3>
-        <div class="res-desc">${esc(cat.desc)}</div>`;
+      wrap.innerHTML = `<h3 class="res-cat">${esc(TX("res.cat." + ci, cat.category))}</h3>
+        <div class="res-desc">${esc(TX("res.cat." + ci + ".desc", cat.desc))}</div>`;
       const grid = document.createElement("div"); grid.className = "res-grid";
-      (cat.items || []).forEach(it => {
+      (cat.items || []).forEach((it, ii) => {
         const link = it.cnUrl || it.url;
         const card = document.createElement("a");
         card.className = "res-item";
         card.href = link;
         card.target = "_blank";
         card.rel = "noopener noreferrer";
-        const tags = (it.tags || []).map(tg => `<span class="res-tag">${esc(tg)}</span>`).join("");
+        const base = "res.item." + ci + "." + ii;
+        const tags = (it.tags || []).map((tg, ti) => `<span class="res-tag">${esc(TX(base + ".tag." + ti, tg))}</span>`).join("");
         card.innerHTML = `
           <div class="res-head">
-            <span class="res-name">${esc(it.name)}</span>
+            <span class="res-name">${esc(TX(base + ".name", it.name))}</span>
             <span class="res-tags">${tags}</span>
           </div>
-          <div class="res-summary">${esc(it.summary)}</div>
-          <div class="res-why"><b>为什么收录：</b>${esc(it.why)}</div>
+          <div class="res-summary">${esc(TX(base + ".summary", it.summary))}</div>
+          <div class="res-why"><b>${esc(T("res.why"))}</b>${esc(TX(base + ".why", it.why))}</div>
           <div class="res-url">${esc(link)}</div>`;
         grid.appendChild(card);
       });
@@ -834,9 +1046,64 @@
     });
 
     if (!cats.length) {
-      v.innerHTML += `<div class="empty">暂无推荐资源</div>`;
+      v.innerHTML += `<div class="empty">${esc(T("res.empty"))}</div>`;
     }
   }
 
+  /* ---------------- 语言切换 ---------------- */
+  // 外壳（品牌、导航、按钮）不走路由渲染，语言变化时单独刷一遍
+  function paintShell() {
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = T(el.dataset.i18n); });
+    const b = $("#langBtn");
+    if (b) { b.textContent = T("ui.lang.next"); b.title = T("ui.lang.title"); }
+    paintProfiles();
+    window.I18N.applyDocument();
+  }
+  // 学员下拉：现有档案 + 末尾一个「新建」项
+  function paintProfiles() {
+    const sel = $("#profileSel");
+    if (!sel) return;
+    const p = readProfiles();
+    sel.title = T("profile.label");
+    sel.innerHTML = p.list.map(x =>
+      `<option value="${esc(x.id)}"${x.id === p.active ? " selected" : ""}>${esc(x.name)}</option>`
+    ).join("") + `<option value="__new">${esc(T("profile.new"))}</option>`;
+  }
+  // 换人/新建之后：重读进度、重画外壳与角标、重走路由
+  function afterProfileChange() {
+    state = load(); paintProfiles(); updateBadge(); route();
+  }
+  $("#profileSel").addEventListener("change", e => {
+    const v = e.target.value;
+    if (v === "__new") {
+      const p = readProfiles();
+      const name = (prompt(T("profile.newPrompt"), defaultName(p.list.length + 1)) || "").trim();
+      if (!name) { paintProfiles(); return; }        // 取消：把选中项还原成当前学员
+      addProfile(name);
+    } else {
+      const p = readProfiles();
+      if (v === p.active) return;
+      p.active = v; writeProfiles(p);
+    }
+    afterProfileChange();
+  });
+  // 文件选择框常驻在 index.html，监听只挂一次（renderProgress 每次都会重建按钮）
+  $("#importFile").addEventListener("change", e => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    Promise.resolve(f.text()).then(text => {
+      const r = applyImport(text);
+      if (!r.ok) { toast(r.error); return; }
+      toast(T("io.imported", { n: r.count }));
+      afterProfileChange();
+    }).catch(() => toast(T("io.badFile")));
+  });
+  $("#langBtn").addEventListener("click", () => {
+    window.I18N.setLang(window.I18N.lang === "zh" ? "en" : "zh");
+  });
+  // 题目每次渲染都重新生成/取译文，故切换语言只需重画外壳 + 重走路由
+  window.I18N.onChange(() => { paintShell(); route(); });
+
+  paintShell();
   route();
 })();

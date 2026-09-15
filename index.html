@@ -11,16 +11,18 @@
     <div class="brand">
       <span class="logo">∑</span>
       <div>
-        <div class="brand-title">融会贯通</div>
-        <div class="brand-sub">中小学数学技巧教练</div>
+        <div class="brand-title" data-i18n="ui.brand.title">融会贯通</div>
+        <div class="brand-sub" data-i18n="ui.brand.sub">中小学数学技巧教练</div>
       </div>
     </div>
     <nav class="nav">
-      <a href="#/path" class="nav-link" data-route="path">学习路径</a>
-      <a href="#/review" class="nav-link" data-route="review">薄弱点复习<span class="badge" id="weakBadge">0</span></a>
-      <a href="#/progress" class="nav-link" data-route="progress">我的进度</a>
-      <a href="#/ai" class="nav-link" data-route="ai">AI诊断</a>
-      <a href="#/resources" class="nav-link" data-route="resources">相关项目</a>
+      <a href="#/path" class="nav-link" data-route="path"><span data-i18n="ui.nav.path">学习路径</span></a>
+      <a href="#/review" class="nav-link" data-route="review"><span data-i18n="ui.nav.review">薄弱点复习</span><span class="badge" id="weakBadge">0</span></a>
+      <a href="#/progress" class="nav-link" data-route="progress"><span data-i18n="ui.nav.progress">我的进度</span></a>
+      <a href="#/ai" class="nav-link" data-route="ai"><span data-i18n="ui.nav.ai">AI诊断</span></a>
+      <a href="#/resources" class="nav-link" data-route="resources"><span data-i18n="ui.nav.resources">相关项目</span></a>
+      <select class="profile-sel" id="profileSel"></select>
+      <button type="button" class="lang-btn" id="langBtn">EN</button>
     </nav>
   </header>
 
@@ -28,7 +30,16 @@
 
   <footer class="footpad"></footer>
   <div id="toast" class="toast"></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden />
 
+  <script src="js/i18n/zh.js"></script>
+  <script src="js/i18n/en.js"></script>
+  <script src="js/i18n/en.tech.js"></script>
+  <script src="js/i18n/en.q.js"></script>
+  <script src="js/i18n/en.gen.js"></script>
+  <script src="js/i18n/en.fig.js"></script>
+  <script src="js/i18n/en.res.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/data.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/figures.js"></script>

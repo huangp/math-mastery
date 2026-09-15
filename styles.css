@@ -27,6 +27,11 @@ body{
 .nav-link.active{background:rgba(255,255,255,.2);opacity:1;font-weight:600}
 .badge{position:absolute;top:-4px;right:-6px;background:var(--danger);color:#fff;font-size:10px;border-radius:10px;padding:0 5px;min-width:16px;text-align:center;display:none}
 .badge.show{display:inline-block}
+.lang-btn{margin-left:4px;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);font:inherit;font-size:12px;line-height:1;padding:6px 9px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.lang-btn:hover{background:rgba(255,255,255,.24)}
+.profile-sel{margin-left:4px;max-width:130px;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);font:inherit;font-size:12px;line-height:1;padding:6px 8px;border-radius:8px;cursor:pointer}
+.profile-sel:hover{background:rgba(255,255,255,.24)}
+.profile-sel option{color:#0f172a;background:#fff}
 .view{max-width:920px;margin:0 auto;padding:16px}
 .footpad{height:24px}
 

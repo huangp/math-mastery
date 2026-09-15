@@ -4,6 +4,7 @@
  * 每个函数接收一个容器 DOM 节点，自行渲染 SVG 与交互控件。
  * ============================================================ */
 window.Anim = (function () {
+  const G = window.G;
   const NS = "http://www.w3.org/2000/svg";
   function el(tag, attrs) {
     const e = document.createElementNS(NS, tag);
@@ -21,11 +22,11 @@ window.Anim = (function () {
     const svg = el("svg", { viewBox: "0 0 600 230" });
     const cap = document.createElement("div");
     cap.className = "anim-cap";
-    cap.textContent = "点“演示”看假设法：先假设全是鸡（每头2脚），再让所有动物抬起2条腿，地上剩下的脚全是兔子的。";
+    cap.textContent = G("anim.chicken.0", null, "点“演示”看假设法：先假设全是鸡（每头2脚），再让所有动物抬起2条腿，地上剩下的脚全是兔子的。");
     const ctrls = document.createElement("div");
     ctrls.className = "anim-ctrls";
     const btn = document.createElement("button");
-    btn.className = "btn"; btn.textContent = "▶ 演示假设法";
+    btn.className = "btn"; btn.dataset.act = "play"; btn.textContent = G("anim.chicken.1", null, "▶ 演示假设法");
     ctrls.appendChild(btn);
 
     // ground
@@ -75,15 +76,15 @@ window.Anim = (function () {
     btn.onclick = () => {
       step++;
       if (step === 1) {
-        cap.textContent = "第1步：假设全是鸡 → 8头 × 2脚 = 16 脚（地上站着 16 条腿）。";
+        cap.textContent = G("anim.chicken.2", null, "第1步：假设全是鸡 → 8头 × 2脚 = 16 脚（地上站着 16 条腿）。");
       } else if (step === 2) {
-        cap.textContent = "第2步：所有动物抬起 2 条腿（白色腿）→ 鸡已全部抬起；兔还剩 2 条橙色腿站立。";
+        cap.textContent = G("anim.chicken.3", null, "第2步：所有动物抬起 2 条腿（白色腿）→ 鸡已全部抬起；兔还剩 2 条橙色腿站立。");
         let p = 0; const t = setInterval(() => { p += 0.08; liftAll(Math.min(1, p)); if (p >= 1) clearInterval(t); }, 16);
       } else if (step === 3) {
         const remain = L - 2 * H;
-        cap.textContent = `第3步：地上剩 ${remain} 条橙色腿，每只兔站 2 条 → 兔 = ${remain}÷2 = ${rabbit} 只；鸡 = ${H}−${rabbit} = ${chickenN} 只。验算：${chickenN}×2 + ${rabbit}×4 = ${chickenN*2+rabbit*4} = ${L} ✓`;
+        cap.textContent = G("anim.chicken.4", { v1: remain, v2: remain, v3: rabbit, v4: H, v5: rabbit, v6: chickenN, v7: chickenN, v8: rabbit, v9: chickenN*2+rabbit*4, v10: L }, `第3步：地上剩 ${remain} 条橙色腿，每只兔站 2 条 → 兔 = ${remain}÷2 = ${rabbit} 只；鸡 = ${H}−${rabbit} = ${chickenN} 只。验算：${chickenN}×2 + ${rabbit}×4 = ${chickenN*2+rabbit*4} = ${L} ✓`);
         revealRabbits();
-        btn.disabled = true; btn.textContent = "✓ 完成";
+        btn.disabled = true; btn.textContent = G("anim.chicken.5", null, "✓ 完成");
       }
     };
     box.appendChild(svg); box.appendChild(cap); box.appendChild(ctrls);
@@ -104,7 +105,7 @@ window.Anim = (function () {
     svg.appendChild(el("line", { x1: A[0], y1: A[1], x2: Bp[0], y2: Bp[1], stroke: "#facc15", "stroke-width": 1.5, "stroke-dasharray": "6 5", opacity: 0.8 }));
     // B' (reflection)
     svg.appendChild(el("circle", { cx: Bp[0], cy: Bp[1], r: 6, fill: "#94a3b8" }));
-    const lblBp = el("text", { x: Bp[0] + 10, y: Bp[1] + 4, fill: "#cbd5e1", "font-size": 13 }); lblBp.textContent = "B′(对称点)"; svg.appendChild(lblBp);
+    const lblBp = el("text", { x: Bp[0] + 10, y: Bp[1] + 4, fill: "#cbd5e1", "font-size": 13 }); lblBp.textContent = G("anim.general.6", null, "B′(对称点)"); svg.appendChild(lblBp);
     // A, B
     svg.appendChild(el("circle", { cx: A[0], cy: A[1], r: 7, fill: "#22c55e" }));
     const lblA = el("text", { x: A[0] - 8, y: A[1] - 12, fill: "#cbd5e1", "font-size": 13 }); lblA.textContent = "A"; svg.appendChild(lblA);
@@ -128,8 +129,8 @@ window.Anim = (function () {
       const s = dist(A, m) + dist(m, B);
       const best = dist(A, Bp);
       const diff = (s - best);
-      cap.textContent = `当前 PA+PB = ${s.toFixed(0)}，理论最短(AB′) = ${best.toFixed(0)}`;
-      if (diff < 2.5) { info.textContent = "✓ 已落在最短点：作 B 关于河岸的对称点 B′，连 A B′ 与河岸交点即最优。"; cap.style.color = "#86efac"; }
+      cap.textContent = G("anim.general.7", { v1: s.toFixed(0), v2: best.toFixed(0) }, `当前 PA+PB = ${s.toFixed(0)}，理论最短(AB′) = ${best.toFixed(0)}`);
+      if (diff < 2.5) { info.textContent = G("anim.general.8", null, "✓ 已落在最短点：作 B 关于河岸的对称点 B′，连 A B′ 与河岸交点即最优。"); cap.style.color = "#86efac"; }
       else { info.textContent = ""; cap.style.color = "#cbd5e1"; }
     }
     update(Mstar);
@@ -141,7 +142,7 @@ window.Anim = (function () {
     svg.addEventListener("pointerup", () => { drag = false; M.setAttribute("style", "cursor:grab"); });
 
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const b1 = document.createElement("button"); b1.className = "btn"; b1.textContent = "⤴ 跳到最短点";
+    const b1 = document.createElement("button"); b1.className = "btn"; b1.textContent = G("anim.general.9", null, "⤴ 跳到最短点");
     b1.onclick = () => update(Mstar);
     ctrls.appendChild(b1);
     box.appendChild(svg); box.appendChild(cap); box.appendChild(info); box.appendChild(ctrls);
@@ -173,15 +174,15 @@ window.Anim = (function () {
     const P = el("circle", { cx: O[0] + R, cy: O[1], r: 7, fill: "#38bdf8" });
     const Q = el("circle", { cx: O[0] + R * k, cy: O[1], r: 7, fill: "#f472b6" });
     svg.appendChild(P); svg.appendChild(Q);
-    const lblP = el("text", { x: O[0] + R + 8, y: O[1] - 8, fill: "#7dd3fc", "font-size": 13 }); lblP.textContent = "豆 P"; svg.appendChild(lblP);
-    const lblQ = el("text", { x: O[0] + R * k - 6, y: O[1] + 22, fill: "#f9a8d4", "font-size": 13 }); lblQ.textContent = "瓜 Q"; svg.appendChild(lblQ);
+    const lblP = el("text", { x: O[0] + R + 8, y: O[1] - 8, fill: "#7dd3fc", "font-size": 13 }); lblP.textContent = G("anim.melon.10", null, "豆 P"); svg.appendChild(lblP);
+    const lblQ = el("text", { x: O[0] + R * k - 6, y: O[1] + 22, fill: "#f9a8d4", "font-size": 13 }); lblQ.textContent = G("anim.melon.11", null, "瓜 Q"); svg.appendChild(lblQ);
 
     const cap = document.createElement("div"); cap.className = "anim-cap";
-    cap.textContent = "豆 P 绕 O 走圆；瓜 Q 由 P 绕 O 旋转 60° 并放大 1.4 倍得到 → Q 也走一个圆（轨迹同形）。点击暂停/继续。";
+    cap.textContent = G("anim.melon.12", null, "豆 P 绕 O 走圆；瓜 Q 由 P 绕 O 旋转 60° 并放大 1.4 倍得到 → Q 也走一个圆（轨迹同形）。点击暂停/继续。");
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
     let playing = true;
-    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "⏸ 暂停";
-    btn.onclick = () => { playing = !playing; btn.textContent = playing ? "⏸ 暂停" : "▶ 继续"; };
+    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = G("anim.melon.13", null, "⏸ 暂停");
+    btn.onclick = () => { playing = !playing; btn.textContent = playing ? G("anim.melon.14", null, "⏸ 暂停") : G("anim.melon.15", null, "▶ 继续"); };
     ctrls.appendChild(btn);
 
     box.appendChild(svg); box.appendChild(cap); box.appendChild(ctrls);
@@ -247,8 +248,8 @@ window.Anim = (function () {
     const cap = document.createElement("div"); cap.className = "anim-cap";
     const info = document.createElement("div"); info.className = "anim-cap"; info.style.color = "#22d3ee";
     function updateInfo() {
-      if (quad) info.textContent = `当前：y = ${k}x² + ${b}，${k > 0 ? "开口向上" : "开口向下"}`;
-      else info.textContent = `当前：y = ${k}x + ${b}，斜率 k=${k}（${k > 0 ? "上升" : k < 0 ? "下降" : "水平"}），截距 b=${b}`;
+      if (quad) info.textContent = G("anim.func.16", { v1: k, v2: b, v3: k > 0 ? "开口向上" : "开口向下" }, `当前：y = ${k}x² + ${b}，${k > 0 ? "开口向上" : "开口向下"}`);
+      else info.textContent = G("anim.func.17", { v1: k, v2: b, v3: k, v4: k > 0 ? "上升" : k < 0 ? "下降" : "水平", v5: b }, `当前：y = ${k}x + ${b}，斜率 k=${k}（${k > 0 ? "上升" : k < 0 ? "下降" : "水平"}），截距 b=${b}`);
     }
     updateInfo();
 
@@ -257,10 +258,10 @@ window.Anim = (function () {
     const aK = btn2("k +0.5"); aK.onclick = () => { k = Math.round((k + 0.5) * 10) / 10; draw(); updateInfo(); };
     const bB = btn2("b −1"); bB.onclick = () => { b = Math.round((b - 1) * 10) / 10; draw(); updateInfo(); };
     const aB = btn2("b +1"); aB.onclick = () => { b = Math.round((b + 1) * 10) / 10; draw(); updateInfo(); };
-    const togg = btn2("切换 一次/二次"); togg.onclick = () => { quad = !quad; k = quad ? 1 : 1; b = 0; draw(); updateInfo(); };
+    const togg = btn2(G("anim.func.18", null, "切换 一次/二次")); togg.dataset.act = "toggle"; togg.onclick = () => { quad = !quad; k = quad ? 1 : 1; b = 0; draw(); updateInfo(); };
     ctrls.appendChild(bK); ctrls.appendChild(aK); ctrls.appendChild(bB); ctrls.appendChild(aB); ctrls.appendChild(togg);
     box.appendChild(svg); box.appendChild(cap); box.appendChild(info); box.appendChild(ctrls);
-    cap.textContent = "拖动下方按钮调节 斜率 k 与 截距 b（或切换二次函数），观察图像如何随参数变化。";
+    cap.textContent = G("anim.func.19", null, "拖动下方按钮调节 斜率 k 与 截距 b（或切换二次函数），观察图像如何随参数变化。");
 
     function btn2(t) { const b = document.createElement("button"); b.className = "btn sm"; b.textContent = t; return b; }
   }
@@ -296,10 +297,10 @@ window.Anim = (function () {
     const info = document.createElement("div"); info.className = "anim-cap"; info.style.color = "#fbbf24";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
     let t = 0, playing = true;
-    const playBtn = document.createElement("button"); playBtn.className = "btn"; playBtn.textContent = "⏸ 暂停";
-    playBtn.onclick = () => { playing = !playing; playBtn.textContent = playing ? "⏸ 暂停" : "▶ 继续"; };
+    const playBtn = document.createElement("button"); playBtn.className = "btn"; playBtn.textContent = G("anim.move.20", null, "⏸ 暂停");
+    playBtn.onclick = () => { playing = !playing; playBtn.textContent = playing ? G("anim.move.21", null, "⏸ 暂停") : G("anim.move.22", null, "▶ 继续"); };
     const slide = document.createElement("input"); slide.type = "range"; slide.min = "0"; slide.max = "100"; slide.value = "0"; slide.style.width = "180px";
-    slide.oninput = () => { t = +slide.value / 100; playing = false; playBtn.textContent = "▶ 继续"; update(); };
+    slide.oninput = () => { t = +slide.value / 100; playing = false; playBtn.textContent = G("anim.move.23", null, "▶ 继续"); update(); };
     ctrls.appendChild(playBtn); ctrls.appendChild(slide);
 
     function update() {
@@ -312,8 +313,8 @@ window.Anim = (function () {
       let area;
       if (along <= topLen) area = along * (C[1] - A[1]);
       else area = topLen * (C[1] - A[1]) + (along - topLen) * (Bp[0] - A[0]);
-      cap.textContent = `动点 P 已走路程 = ${along.toFixed(0)}；AP 直线距离 = ${ap.toFixed(0)}`;
-      info.textContent = `扫过矩形面积 = ${area.toFixed(0)}（面积在拐点处增长速率发生变化 → 分段函数思想）`;
+      cap.textContent = G("anim.move.24", { v1: along.toFixed(0), v2: ap.toFixed(0) }, `动点 P 已走路程 = ${along.toFixed(0)}；AP 直线距离 = ${ap.toFixed(0)}`);
+      info.textContent = G("anim.move.25", { v1: area.toFixed(0) }, `扫过矩形面积 = ${area.toFixed(0)}（面积在拐点处增长速率发生变化 → 分段函数思想）`);
     }
     update();
     box.appendChild(svg); box.appendChild(cap); box.appendChild(info); box.appendChild(ctrls);
@@ -336,15 +337,15 @@ window.Anim = (function () {
     const svg = el("svg", { viewBox: "0 0 640 260" });
     const cap = document.createElement("div"); cap.className = "anim-cap";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const btnMeet = document.createElement("button"); btnMeet.className = "btn sm"; btnMeet.textContent = "▶ 相遇演示";
-    const btnChase = document.createElement("button"); btnChase.className = "btn sm"; btnChase.textContent = "▶ 追及演示";
+    const btnMeet = document.createElement("button"); btnMeet.className = "btn sm"; btnMeet.dataset.act = "meet"; btnMeet.textContent = G("anim.trip.26", null, "▶ 相遇演示");
+    const btnChase = document.createElement("button"); btnChase.className = "btn sm"; btnChase.dataset.act = "chase"; btnChase.textContent = G("anim.trip.27", null, "▶ 追及演示");
     ctrls.appendChild(btnMeet); ctrls.appendChild(btnChase);
 
     svg.appendChild(el("line", { x1: 30, y1: 200, x2: 610, y2: 200, stroke: "#475569", "stroke-width": 2 }));
     svg.appendChild(el("circle", { cx: 60, cy: 200, r: 6, fill: "#0ea5e9" }));
     svg.appendChild(el("circle", { cx: 580, cy: 200, r: 6, fill: "#f59e0b" }));
-    const aTxt = el("text", { x: 60, y: 226, "text-anchor": "middle", fill: "#0ea5e9", "font-size": 14 }); aTxt.textContent = "A地";
-    const bTxt = el("text", { x: 580, y: 226, "text-anchor": "middle", fill: "#f59e0b", "font-size": 14 }); bTxt.textContent = "B地";
+    const aTxt = el("text", { x: 60, y: 226, "text-anchor": "middle", fill: "#0ea5e9", "font-size": 14 }); aTxt.textContent = G("anim.trip.28", null, "A地");
+    const bTxt = el("text", { x: 580, y: 226, "text-anchor": "middle", fill: "#f59e0b", "font-size": 14 }); bTxt.textContent = G("anim.trip.29", null, "B地");
     svg.appendChild(aTxt); svg.appendChild(bTxt);
     const p1 = el("circle", { cx: 60, cy: 185, r: 9, fill: "#0ea5e9" });
     const p2 = el("circle", { cx: 580, cy: 185, r: 9, fill: "#f59e0b" });
@@ -360,30 +361,30 @@ window.Anim = (function () {
       const A = 60, B = 580, y = 185;
       if (mode === "meet") {
         const v1 = 6, v2 = 4;
-        cap.textContent = "相遇：甲(蓝)从A向右、乙(橙)从B向左，路程和=总距；相遇时间=总距÷(速度和)。";
+        cap.textContent = G("anim.trip.30", null, "相遇：甲(蓝)从A向右、乙(橙)从B向左，路程和=总距；相遇时间=总距÷(速度和)。");
         let t = 0;
         const step = () => {
           t += 0.4; const x1 = A + v1 * t, x2 = B - v2 * t;
           p1.setAttribute("cx", x1); p2.setAttribute("cx", x2);
-          info.textContent = "t=" + t.toFixed(1) + "  甲走" + (v1*t).toFixed(0) + "  乙走" + (v2*t).toFixed(0);
+          info.textContent = "t=" + t.toFixed(1) + G("anim.trip.31", null, "  甲走") + (v1*t).toFixed(0) + G("anim.trip.32", null, "  乙走") + (v2*t).toFixed(0);
           if (x1 >= x2) {
             const mx = (x1 + x2) / 2; p1.setAttribute("cx", mx); p2.setAttribute("cx", mx);
-            info.textContent = "在距A " + (v1*t).toFixed(0) + " 处相遇 ✓"; raf = null; return;
+            info.textContent = G("anim.trip.33", null, "在距A ") + (v1*t).toFixed(0) + G("anim.trip.34", null, " 处相遇 ✓"); raf = null; return;
           }
           raf = requestAnimationFrame(step);
         };
         raf = requestAnimationFrame(step);
       } else {
         const v1 = 8, v2 = 5;
-        cap.textContent = "追及：甲(蓝,快)从A在后追乙(橙,慢)在前，追及时间=路程差÷(速度差)。";
+        cap.textContent = G("anim.trip.35", null, "追及：甲(蓝,快)从A在后追乙(橙,慢)在前，追及时间=路程差÷(速度差)。");
         let t = 0;
         const step = () => {
           t += 0.4; const x1 = A + v1 * t, x2 = B + v2 * t;
           p1.setAttribute("cx", x1); p2.setAttribute("cx", x2);
-          info.textContent = "t=" + t.toFixed(1) + "  甲走" + (v1*t).toFixed(0) + "  乙已走" + ((B-A)+v2*t).toFixed(0);
+          info.textContent = "t=" + t.toFixed(1) + G("anim.trip.36", null, "  甲走") + (v1*t).toFixed(0) + G("anim.trip.37", null, "  乙已走") + ((B-A)+v2*t).toFixed(0);
           if (x1 >= x2) {
             p1.setAttribute("cx", x2); p2.setAttribute("cx", x2);
-            info.textContent = "甲在第 " + (v1*t).toFixed(0) + " 米处追上 ✓"; raf = null; return;
+            info.textContent = G("anim.trip.38", null, "甲在第 ") + (v1*t).toFixed(0) + G("anim.trip.39", null, " 米处追上 ✓"); raf = null; return;
           }
           raf = requestAnimationFrame(step);
         };
@@ -399,7 +400,7 @@ window.Anim = (function () {
     box.innerHTML = "";
     const svg = el("svg", { viewBox: "0 0 640 280" });
     const cap = document.createElement("div"); cap.className = "anim-cap";
-    cap.textContent = "拖动红色顶点（沿灰色虚线平行线移动）：底和高都不变 → 面积恒定。这正是等积变形。";
+    cap.textContent = G("anim.geo.40", null, "拖动红色顶点（沿灰色虚线平行线移动）：底和高都不变 → 面积恒定。这正是等积变形。");
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
     const areaTxt = document.createElement("div"); areaTxt.className = "anim-cap";
     ctrls.appendChild(areaTxt);
@@ -414,7 +415,7 @@ window.Anim = (function () {
     svg.appendChild(v);
     const heightLine = el("line", { x1: vertex.x, y1: vertex.y, x2: vertex.x, y2: baseY, stroke: "#94a3b8", "stroke-width": 1, "stroke-dasharray": "4 4" });
     svg.appendChild(heightLine);
-    const hTxt = el("text", { x: vertex.x + 8, y: (vertex.y + baseY) / 2, fill: "#64748b", "font-size": 13 }); hTxt.textContent = "高h";
+    const hTxt = el("text", { x: vertex.x + 8, y: (vertex.y + baseY) / 2, fill: "#64748b", "font-size": 13 }); hTxt.textContent = G("anim.geo.41", null, "高h");
     svg.appendChild(hTxt);
 
     function area() { return (xR - xL) * (baseY - vertex.y) / 2; }
@@ -422,7 +423,7 @@ window.Anim = (function () {
       tri.setAttribute("points", xL + "," + baseY + " " + xR + "," + baseY + " " + vertex.x + "," + vertex.y);
       heightLine.setAttribute("x1", vertex.x); heightLine.setAttribute("x2", vertex.x);
       hTxt.setAttribute("x", vertex.x + 8);
-      areaTxt.textContent = "底=" + (xR - xL) + "，高=" + (baseY - vertex.y) + " → 面积=" + area();
+      areaTxt.textContent = G("anim.geo.42", null, "底=") + (xR - xL) + G("anim.geo.43", null, "，高=") + (baseY - vertex.y) + G("anim.geo.44", null, " → 面积=") + area();
     }
     update();
 
@@ -448,7 +449,7 @@ window.Anim = (function () {
     box.innerHTML = "";
     const svg = el("svg", { viewBox: "0 0 600 380" });
     const cap = document.createElement("div"); cap.className = "anim-cap";
-    cap.textContent = "拖动滑块改变点 P 的坐标，观察空间直角坐标系与向量 OP 的变化（斜二测示意）。";
+    cap.textContent = G("anim.solid.45", null, "拖动滑块改变点 P 的坐标，观察空间直角坐标系与向量 OP 的变化（斜二测示意）。");
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
     const O = { x: 170, y: 300 };
     const ux = { x: 46, y: -10 }, uy = { x: 22, y: -42 }, uz = { x: 0, y: -46 };
@@ -486,7 +487,7 @@ window.Anim = (function () {
       lab.appendChild(s); sync[name.toLowerCase()] = s; return lab;
     }
     ctrls.appendChild(mkSlider("x", 4)); ctrls.appendChild(mkSlider("y", 3)); ctrls.appendChild(mkSlider("z", 5));
-    const play = document.createElement("button"); play.className = "btn sm"; play.textContent = "▶ 向量 OP 扫过";
+    const play = document.createElement("button"); play.className = "btn sm"; play.dataset.act = "play"; play.textContent = G("anim.solid.46", null, "▶ 向量 OP 扫过");
     play.onclick = () => { let t = 0; const id = setInterval(() => {
       t += 0.06; if (t >= 1) { clearInterval(id); t = 1; }
       st.x = Math.round(8 * t); st.y = Math.round(8 * t); st.z = Math.round(8 * t);
@@ -501,9 +502,9 @@ window.Anim = (function () {
     box.innerHTML = "";
     const svg = el("svg", { viewBox: "0 0 600 380" });
     const cap = document.createElement("div"); cap.className = "anim-cap";
-    cap.textContent = "拖动 a、b 看曲线变化；切换类型观察椭圆 / 双曲线 / 抛物线的焦点、渐近线与准线。";
+    cap.textContent = G("anim.conic.47", null, "拖动 a、b 看曲线变化；切换类型观察椭圆 / 双曲线 / 抛物线的焦点、渐近线与准线。");
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const typeBtn = document.createElement("button"); typeBtn.className = "btn sm"; typeBtn.textContent = "切换：椭圆";
+    const typeBtn = document.createElement("button"); typeBtn.className = "btn sm"; typeBtn.dataset.act = "toggle"; typeBtn.textContent = G("anim.conic.48", null, "切换：椭圆");
     function slider(name, val) {
       const lab = document.createElement("label"); lab.className = "anim-ctrl"; lab.textContent = name + " ";
       const s = document.createElement("input"); s.type = "range"; s.min = 1; s.max = 6; s.step = 1; s.value = val; s.oninput = draw;
@@ -517,7 +518,7 @@ window.Anim = (function () {
     const curveG = el("g", {}); svg.appendChild(curveG);
     const fociG = el("g", {}); svg.appendChild(fociG);
     const info = el("text", { x: 40, y: 60, fill: "#f1f5f9", "font-size": 14, "font-weight": "bold" }); svg.appendChild(info);
-    let type = 0; const types = ["椭圆", "双曲线", "抛物线"];
+    let type = 0; const types = [G("anim.conic.49", null, "椭圆"), G("anim.conic.50", null, "双曲线"), G("anim.conic.51", null, "抛物线")];
     function poly(pts, color) {
       const pl = el("polyline", { fill: "none", stroke: color || "#2563eb", "stroke-width": 2.5 });
       pl.setAttribute("points", pts.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" "));
@@ -532,7 +533,7 @@ window.Anim = (function () {
         poly(pts);
         fociG.appendChild(el("circle", { cx: O.x - c * 40, cy: O.y, r: 4, fill: "#ef4444" }));
         fociG.appendChild(el("circle", { cx: O.x + c * 40, cy: O.y, r: 4, fill: "#ef4444" }));
-        info.textContent = "椭圆  x²/" + a + "² + y²/" + b + "² = 1   焦点(±" + c.toFixed(2) + ",0)   e=" + (c / a).toFixed(2);
+        info.textContent = G("anim.conic.52", null, "椭圆  x²/") + a + "² + y²/" + b + G("anim.conic.53", null, "² = 1   焦点(±") + c.toFixed(2) + ",0)   e=" + (c / a).toFixed(2);
       } else if (type === 1) {
         const c = Math.sqrt(a * a + b * b);
         let p1 = [], p2 = []; for (let i = -70; i <= 70; i++) { const t = i / 22; const x = a * 40 * Math.cosh(t), y = b * 40 * Math.sinh(t); p1.push([O.x + x, O.y - y]); p2.push([O.x - x, O.y - y]); }
@@ -541,17 +542,17 @@ window.Anim = (function () {
         fociG.appendChild(el("circle", { cx: O.x + c * 40, cy: O.y, r: 4, fill: "#ef4444" }));
         fociG.appendChild(el("line", { x1: O.x - a * 40, y1: O.y - b * 40, x2: O.x + a * 40, y2: O.y + b * 40, stroke: "#fca5a5", "stroke-width": 1, "stroke-dasharray": "5 4" }));
         fociG.appendChild(el("line", { x1: O.x - a * 40, y1: O.y + b * 40, x2: O.x + a * 40, y2: O.y - b * 40, stroke: "#fca5a5", "stroke-width": 1, "stroke-dasharray": "5 4" }));
-        info.textContent = "双曲线 x²/" + a + "² − y²/" + b + "² = 1   渐近线 y=±" + (b / a).toFixed(2) + "x";
+        info.textContent = G("anim.conic.54", null, "双曲线 x²/") + a + "² − y²/" + b + G("anim.conic.55", null, "² = 1   渐近线 y=±") + (b / a).toFixed(2) + "x";
       } else {
         const p = 2 * a;
         let pts = []; for (let i = -90; i <= 90; i++) { const y = i; const x = y * y / (2 * p); if (x <= 250) pts.push([O.x + x, O.y - y]); }
         poly(pts, "#16a34a");
         fociG.appendChild(el("circle", { cx: O.x + p / 2 * 40, cy: O.y, r: 4, fill: "#ef4444" }));
         fociG.appendChild(el("line", { x1: O.x - p / 2 * 40, y1: 30, x2: O.x - p / 2 * 40, y2: 370, stroke: "#fca5a5", "stroke-width": 1, "stroke-dasharray": "5 4" }));
-        info.textContent = "抛物线 y² = " + (2 * a) + "x   焦点(" + (p / 2).toFixed(1) + ",0)   准线 x = " + (-p / 2).toFixed(1);
+        info.textContent = G("anim.conic.56", null, "抛物线 y² = ") + (2 * a) + G("anim.conic.57", null, "x   焦点(") + (p / 2).toFixed(1) + G("anim.conic.58", null, ",0)   准线 x = ") + (-p / 2).toFixed(1);
       }
     }
-    typeBtn.onclick = () => { type = (type + 1) % 3; typeBtn.textContent = "切换：" + types[type]; draw(); };
+    typeBtn.onclick = () => { type = (type + 1) % 3; typeBtn.textContent = G("anim.conic.59", null, "切换：") + types[type]; draw(); };
     draw();
     box.appendChild(svg); box.appendChild(cap); box.appendChild(ctrls);
   }
@@ -573,7 +574,7 @@ window.Anim = (function () {
     const cap = document.createElement("div"); cap.className = "anim-cap";
     const info = document.createElement("div"); info.className = "anim-cap";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "▶ 旋转演示";
+    const btn = document.createElement("button"); btn.className = "btn"; btn.dataset.act = "play"; btn.textContent = G("anim.euler.60", null, "▶ 旋转演示");
     function draw(theta) {
       const x = cx + R * Math.cos(theta), y = cy - R * Math.sin(theta);
       radius.setAttribute("x2", x); radius.setAttribute("y2", y);
@@ -582,12 +583,12 @@ window.Anim = (function () {
       dot.setAttribute("cx", x); dot.setAttribute("cy", y);
       label.setAttribute("x", x + 6); label.setAttribute("y", y - 6);
       label.textContent = `θ=${Math.round(theta * 180 / Math.PI)}°`;
-      info.textContent = `e^(iθ)=cosθ+i·sinθ　实部 ${Math.cos(theta).toFixed(2)}，虚部 ${Math.sin(theta).toFixed(2)}`;
+      info.textContent = G("anim.euler.61", { v1: Math.cos(theta).toFixed(2), v2: Math.sin(theta).toFixed(2) }, `e^(iθ)=cosθ+i·sinθ　实部 ${Math.cos(theta).toFixed(2)}，虚部 ${Math.sin(theta).toFixed(2)}`);
     }
     let theta = 0, timer = null;
     btn.onclick = () => {
-      if (timer) { clearInterval(timer); timer = null; btn.textContent = "▶ 旋转演示"; return; }
-      btn.textContent = "⏸ 暂停";
+      if (timer) { clearInterval(timer); timer = null; btn.textContent = G("anim.euler.62", null, "▶ 旋转演示"); return; }
+      btn.textContent = G("anim.euler.63", null, "⏸ 暂停");
       timer = setInterval(() => { theta += 0.06; if (theta > 2 * Math.PI) theta -= 2 * Math.PI; draw(theta); }, 40);
     };
     draw(0);
@@ -622,8 +623,8 @@ window.Anim = (function () {
       ap.setAttribute("points", pts.map(p => p[0] + "," + p[1]).join(" "));
       const terms = [];
       for (let k = 0; k <= order; k++) terms.push(k === 0 ? "1" : (k === 1 ? "x" : "x^" + k + "/" + k + "!"));
-      info.textContent = `P${order}(x) = ` + terms.join(" + ") + "（蓝：e^x，橙：近似）";
-      btn.textContent = "阶数 +1（当前 " + order + "）";
+      info.textContent = `P${order}(x) = ` + terms.join(" + ") + G("anim.taylor.64", null, "（蓝：e^x，橙：近似）");
+      btn.textContent = G("anim.taylor.65", null, "阶数 +1（当前 ") + order + G("anim.taylor.66", null, "）");
     }
     btn.onclick = () => { order = order >= 5 ? 1 : order + 1; draw(); };
     draw();
@@ -641,7 +642,7 @@ window.Anim = (function () {
     const dot = el("circle", { cx: cx - 50, cy: cy - 60, r: 6, fill: "#d97706" });
     const label = el("text", { x: 30, y: 30, fill: "#334155", "font-size": 14 });
     svg.appendChild(dot); svg.appendChild(label);
-    const pts = [[-2, 3, "第二象限"], [2, 3, "第一象限"], [-2, -3, "第三象限"], [2, -2, "第四象限"]];
+    const pts = [[-2, 3, G("anim.numshape.67", null, "第二象限")], [2, 3, G("anim.numshape.68", null, "第一象限")], [-2, -3, G("anim.numshape.69", null, "第三象限")], [2, -2, G("anim.numshape.70", null, "第四象限")]];
     let i = 0;
     const info = document.createElement("div"); info.className = "anim-cap";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
@@ -649,8 +650,8 @@ window.Anim = (function () {
     function draw() {
       const [x, y, name] = pts[i];
       dot.setAttribute("cx", cx + x * 22); dot.setAttribute("cy", cy - y * 22);
-      label.textContent = `点 (${x}, ${y}) 在${name}`;
-      info.textContent = "数形结合：横坐标定左右，纵坐标定上下。";
+      label.textContent = G("anim.numshape.71", { v1: x, v2: y, v3: name }, `点 (${x}, ${y}) 在${name}`);
+      info.textContent = G("anim.numshape.72", null, "数形结合：横坐标定左右，纵坐标定上下。");
     }
     btn.onclick = () => { i = (i + 1) % pts.length; draw(); };
     draw();
@@ -664,13 +665,13 @@ window.Anim = (function () {
     const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, style: "width:100%;max-width:320px;height:auto;display:block" });
     const info = document.createElement("div"); info.className = "anim-cap";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "▶ 逐步生长";
+    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = G("anim.tree.73", null, "▶ 逐步生长");
     const root = { x: 40, y: 110 };
     const L1 = [{ x: 130, y: 66 }, { x: 130, y: 154 }];
     const L2 = [{ x: 226, y: 40 }, { x: 226, y: 92 }, { x: 226, y: 128 }, { x: 226, y: 180 }];
     const edges = [[root, L1[0]], [root, L1[1]], [L1[0], L2[0]], [L1[0], L2[1]], [L1[1], L2[2]], [L1[1], L2[3]]];
     const nodes = [root, ...L1, ...L2];
-    const labels = ["开始", "选①", "选②", "①·A", "①·B", "②·A", "②·B"];
+    const labels = [G("anim.tree.74", null, "开始"), G("anim.tree.75", null, "选①"), G("anim.tree.76", null, "选②"), G("anim.tree.77", null, "①·A"), G("anim.tree.78", null, "①·B"), G("anim.tree.79", null, "②·A"), G("anim.tree.80", null, "②·B")];
     let step = 0, timer = null;
     function render() {
       while (svg.firstChild) svg.removeChild(svg.firstChild);
@@ -688,10 +689,10 @@ window.Anim = (function () {
           svg.appendChild(t);
         }
       });
-      info.textContent = step === 0 ? "根节点" : step === 1 ? "第一层分支：2 种选择" : "第二层展开 → 2 × 2 = 4 种结果";
+      info.textContent = step === 0 ? G("anim.tree.81", null, "根节点") : step === 1 ? G("anim.tree.82", null, "第一层分支：2 种选择") : G("anim.tree.83", null, "第二层展开 → 2 × 2 = 4 种结果");
     }
     function advance() { step = step >= 2 ? 0 : step + 1; render(); }
-    btn.onclick = () => { if (timer) { clearInterval(timer); timer = null; btn.textContent = "▶ 逐步生长"; return; } btn.textContent = "⏸ 自动"; timer = setInterval(advance, 900); };
+    btn.onclick = () => { if (timer) { clearInterval(timer); timer = null; btn.textContent = G("anim.tree.84", null, "▶ 逐步生长"); return; } btn.textContent = G("anim.tree.85", null, "⏸ 自动"); timer = setInterval(advance, 900); };
     render();
     box.appendChild(svg); box.appendChild(info); box.appendChild(ctrls); ctrls.appendChild(btn);
   }
@@ -720,10 +721,10 @@ window.Anim = (function () {
       const cc = Math.min(c, 4);
       line.setAttribute("x1", sx(0)); line.setAttribute("y1", sy(cc));
       line.setAttribute("x2", sx(cc)); line.setAttribute("y2", sy(0));
-      info.textContent = `目标线 x+y = ${cc.toFixed(1)}：z 随高度增大，在顶点 (0,4) 处最大 = 4`;
-      btn.textContent = `▶ 平移目标线（z=${cc.toFixed(1)}）`;
+      info.textContent = G("anim.linearprog.86", { v1: cc.toFixed(1) }, `目标线 x+y = ${cc.toFixed(1)}：z 随高度增大，在顶点 (0,4) 处最大 = 4`);
+      btn.textContent = G("anim.linearprog.87", { v1: cc.toFixed(1) }, `▶ 平移目标线（z=${cc.toFixed(1)}）`);
     }
-    btn.onclick = () => { if (timer) { clearInterval(timer); timer = null; btn.textContent = "▶ 平移"; return; } btn.textContent = "⏸ 暂停"; timer = setInterval(() => { c += 0.4; if (c > 4.3) c = 0; draw(); }, 120); };
+    btn.onclick = () => { if (timer) { clearInterval(timer); timer = null; btn.textContent = G("anim.linearprog.88", null, "▶ 平移"); return; } btn.textContent = G("anim.linearprog.89", null, "⏸ 暂停"); timer = setInterval(() => { c += 0.4; if (c > 4.3) c = 0; draw(); }, 120); };
     draw();
     box.appendChild(svg); box.appendChild(info); box.appendChild(ctrls); ctrls.appendChild(btn);
   }
@@ -747,9 +748,9 @@ window.Anim = (function () {
     function draw() {
       const half = k * sigma;
       shade.setAttribute("x", cx - half); shade.setAttribute("width", half * 2);
-      const map = { 1: "约 68.27%（[μ−σ, μ+σ]）", 2: "约 95.45%（[μ−2σ, μ+2σ]）", 3: "约 99.74%（[μ−3σ, μ+3σ]）" };
-      info.textContent = "3σ 原则：" + map[k];
-      btn.textContent = "切换区间（当前 " + k + "σ）";
+      const map = { 1: G("anim.normal.90", null, "约 68.27%（[μ−σ, μ+σ]）"), 2: G("anim.normal.91", null, "约 95.45%（[μ−2σ, μ+2σ]）"), 3: G("anim.normal.92", null, "约 99.74%（[μ−3σ, μ+3σ]）") };
+      info.textContent = G("anim.normal.93", null, "3σ 原则：") + map[k];
+      btn.textContent = G("anim.normal.94", null, "切换区间（当前 ") + k + G("anim.normal.95", null, "σ）");
     }
     btn.onclick = () => { k = k >= 3 ? 1 : k + 1; draw(); };
     draw();
@@ -770,14 +771,14 @@ window.Anim = (function () {
     svg.appendChild(line); svg.appendChild(dot); svg.appendChild(label);
     const info = document.createElement("div"); info.className = "anim-cap";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "▶ 乘 i（逆时针转 90°）";
+    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = G("anim.cgeo.96", null, "▶ 乘 i（逆时针转 90°）");
     function draw() {
       const x = cx + radius * Math.cos(theta), y = cy - radius * Math.sin(theta);
       dot.setAttribute("cx", x.toFixed(1)); dot.setAttribute("cy", y.toFixed(1));
       line.setAttribute("x2", x.toFixed(1)); line.setAttribute("y2", y.toFixed(1));
       const a = Math.round(radius * Math.cos(theta)), b = Math.round(radius * Math.sin(theta));
       label.textContent = `z = ${a} + ${b}i`;
-      info.textContent = "复数乘 i：辐角 +π/2，即逆时针旋转 90°。";
+      info.textContent = G("anim.cgeo.97", null, "复数乘 i：辐角 +π/2，即逆时针旋转 90°。");
     }
     btn.onclick = () => { theta += Math.PI / 2; draw(); };
     draw();
@@ -797,15 +798,15 @@ window.Anim = (function () {
     svg.appendChild(y1);
     const info = document.createElement("div"); info.className = "anim-cap";
     const ctrls = document.createElement("div"); ctrls.className = "anim-ctrls";
-    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = "▶ 让 x→0";
+    const btn = document.createElement("button"); btn.className = "btn"; btn.textContent = G("anim.lim.98", null, "▶ 让 x→0");
     let k = 1;
     function draw() {
       const span = 2.6 / k;
       let pts = [];
       for (let i = 0; i <= 120; i++) { const x = -span + i * (2 * span / 120); const px = cx + x * 60; let v = x === 0 ? 1 : Math.sin(x) / x; const py = cy - 50 * v; pts.push(px.toFixed(1) + "," + py.toFixed(1)); }
       poly.setAttribute("points", pts.join(" "));
-      info.textContent = "x 区间 ±" + span.toFixed(2) + " 时，曲线在极限值 1（绿线）附近收敛。";
-      btn.textContent = "▶ 让 x→0（当前 ×" + k + "）";
+      info.textContent = G("anim.lim.99", null, "x 区间 ±") + span.toFixed(2) + G("anim.lim.100", null, " 时，曲线在极限值 1（绿线）附近收敛。");
+      btn.textContent = G("anim.lim.101", null, "▶ 让 x→0（当前 ×") + k + G("anim.lim.102", null, "）");
     }
     btn.onclick = () => { k = k >= 6 ? 1 : k + 1; draw(); };
     draw();
@@ -826,9 +827,9 @@ window.Anim = (function () {
     const btn = document.createElement("button"); btn.className = "btn";
     let k = 0;
     const modes = [
-      { name: "右移 a：y=f(x−a)", dx: 60, f: x => cy - 40 * Math.exp(-((x - 150 - 60) * (x - 150 - 60)) / 2000) },
-      { name: "关于 y 轴：y=f(−x)", dx: 0, f: x => cy - 40 * Math.exp(-((150 - x) * (150 - x)) / 2000) },
-      { name: "纵向拉伸 2 倍", dx: 0, f: x => cy - 80 * Math.exp(-((x - 150) * (x - 150)) / 2000) }
+      { name: G("anim.gtrans.103", null, "右移 a：y=f(x−a)"), dx: 60, f: x => cy - 40 * Math.exp(-((x - 150 - 60) * (x - 150 - 60)) / 2000) },
+      { name: G("anim.gtrans.104", null, "关于 y 轴：y=f(−x)"), dx: 0, f: x => cy - 40 * Math.exp(-((150 - x) * (150 - x)) / 2000) },
+      { name: G("anim.gtrans.105", null, "纵向拉伸 2 倍"), dx: 0, f: x => cy - 80 * Math.exp(-((x - 150) * (x - 150)) / 2000) }
     ];
     function draw() {
       const m = modes[k % 3];
@@ -837,7 +838,7 @@ window.Anim = (function () {
       base.setAttribute("d", "M " + b.join(" L "));
       moved.setAttribute("d", "M " + mv.join(" L "));
       info.textContent = m.name;
-      btn.textContent = "▶ 切换变换（" + ((k % 3) + 1) + "/3）";
+      btn.textContent = G("anim.gtrans.106", null, "▶ 切换变换（") + ((k % 3) + 1) + G("anim.gtrans.107", null, "/3）");
     }
     btn.onclick = () => { k = (k + 1) % 3; draw(); };
     draw();

@@ -1,0 +1,7130 @@
+[
+ {
+  "key": "gen.set.uo0",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo1",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo2",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo3",
+  "zh": "0个"
+ },
+ {
+  "key": "gen.set.uq0",
+  "zh": "集合 A 有 {v1} 个元素且 A⊆B，则 A∩B 的元素个数是？"
+ },
+ {
+  "key": "gen.set.ue0",
+  "zh": "A⊆B 时 A∩B = A，故为 {v1} 个。"
+ },
+ {
+  "key": "gen.set.uo4",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo5",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo6",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uq1",
+  "zh": "含有 {v1} 个元素的集合，其子集共有？"
+ },
+ {
+  "key": "gen.set.ue1",
+  "zh": "n 元集合子集个数为 2ⁿ = 2^{v1} = {v2} 个。"
+ },
+ {
+  "key": "gen.set.uo7",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo8",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo9",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo10",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uq2",
+  "zh": "含有 {v1} 个元素的集合，其真子集共有？"
+ },
+ {
+  "key": "gen.set.ue2",
+  "zh": "真子集个数 = 2ⁿ − 1 = {v1} 个。"
+ },
+ {
+  "key": "gen.set.uo11",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo12",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo13",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo14",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uq3",
+  "zh": "集合 A 有 {v1} 个元素，B 有 {v2} 个元素，且 A∩B=∅，则 A∪B 有？"
+ },
+ {
+  "key": "gen.set.ue3",
+  "zh": "不相交时 |A∪B| = |A| + |B| = {v1} + {v2} = {v3} 个。"
+ },
+ {
+  "key": "gen.set.uo15",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo16",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo17",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo18",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uq4",
+  "zh": "全集 U 有 {v1} 个元素，A⊆U 且 |A|={v2}，则补集 ∁_U A 有？"
+ },
+ {
+  "key": "gen.set.ue4",
+  "zh": "补集元素个数 = |U| − |A| = {v1} − {v2} = {v3} 个。"
+ },
+ {
+  "key": "gen.set.uo19",
+  "zh": "充分不必要"
+ },
+ {
+  "key": "gen.set.uo20",
+  "zh": "必要不充分"
+ },
+ {
+  "key": "gen.set.uo21",
+  "zh": "充要"
+ },
+ {
+  "key": "gen.set.uo22",
+  "zh": "既不充分也不必要"
+ },
+ {
+  "key": "gen.set.uq5",
+  "zh": "\"x > {v1}\" 是 \"x > {v2}\" 的什么条件？"
+ },
+ {
+  "key": "gen.set.ue5",
+  "zh": "x>{v1} ⇒ x>{v2}（充分），但 x>{v3} ⇏ x>{v4}（不必要），故充分不必要。"
+ },
+ {
+  "key": "gen.set.uq6",
+  "zh": "命题 \"∃x∈R, x² < {v1}\" 的否定是？"
+ },
+ {
+  "key": "gen.set.ue6",
+  "zh": "存在命题的否定是全称命题：∀x∈R, x² ≥ {v1}。"
+ },
+ {
+  "key": "gen.set.uo23",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo24",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo25",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo26",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uq7",
+  "zh": "集合 A 有 {v1} 个、B 有 {v2} 个元素，A∩B 有 {v3} 个，则 A∪B 有？"
+ },
+ {
+  "key": "gen.set.ue7",
+  "zh": "容斥：|A∪B| = {v1} + {v2} − {v3} = {v4} 个。"
+ },
+ {
+  "key": "gen.set.uo27",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo28",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo29",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo30",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uq8",
+  "zh": "含 {v1} 个元素的集合，其幂集 P(A) 的元素个数是？"
+ },
+ {
+  "key": "gen.set.ue8",
+  "zh": "幂集元素个数 = 2ⁿ = {v1} 个。"
+ },
+ {
+  "key": "gen.set.uo31",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo32",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo33",
+  "zh": "个"
+ },
+ {
+  "key": "gen.set.uo34",
+  "zh": "0个"
+ },
+ {
+  "key": "gen.set.uq9",
+  "zh": "集合 A 有 {v1} 个、B 有 {v2} 个元素，A∩B 的元素个数最多为？"
+ },
+ {
+  "key": "gen.set.ue9",
+  "zh": "交集不超过较小集合，|A∩B| ≤ min({v1},{v2}) = {v3} 个。"
+ },
+ {
+  "key": "gen.funcconcept.uo0",
+  "zh": "全体实数"
+ },
+ {
+  "key": "gen.funcconcept.uq0",
+  "zh": "函数 f(x) = 1/(x − {v1}) 的定义域是？"
+ },
+ {
+  "key": "gen.funcconcept.ue0",
+  "zh": "分母不为 0，x − {v1} ≠ 0，即 x ≠ {v2}。"
+ },
+ {
+  "key": "gen.funcconcept.uo1",
+  "zh": "全体实数"
+ },
+ {
+  "key": "gen.funcconcept.uq1",
+  "zh": "函数 f(x) = (x − 1)² + {v1} 的值域是？"
+ },
+ {
+  "key": "gen.funcconcept.ue1",
+  "zh": "平方项 ≥ 0，故 f(x) ≥ {v1}，值域为 y ≥ {v2}。"
+ },
+ {
+  "key": "gen.funcconcept.uo2",
+  "zh": "奇函数"
+ },
+ {
+  "key": "gen.funcconcept.uo3",
+  "zh": "偶函数"
+ },
+ {
+  "key": "gen.funcconcept.uo4",
+  "zh": "既奇又偶"
+ },
+ {
+  "key": "gen.funcconcept.uo5",
+  "zh": "非奇非偶"
+ },
+ {
+  "key": "gen.funcconcept.uq2",
+  "zh": "函数 f(x) = x^{v1} 是？"
+ },
+ {
+  "key": "gen.funcconcept.ue2",
+  "zh": "f(−x) = (−x)^{v1} = −x^{v2} = −f(x)（指数为奇数），为奇函数。"
+ },
+ {
+  "key": "gen.funcconcept.uo6",
+  "zh": "在 R 上递增"
+ },
+ {
+  "key": "gen.funcconcept.uo7",
+  "zh": "在 R 上递减"
+ },
+ {
+  "key": "gen.funcconcept.uo8",
+  "zh": "先减后增"
+ },
+ {
+  "key": "gen.funcconcept.uo9",
+  "zh": "先增后减"
+ },
+ {
+  "key": "gen.funcconcept.uq3",
+  "zh": "函数 f(x) = {v1}x + 1 (a > 0) 的单调性是？"
+ },
+ {
+  "key": "gen.funcconcept.ue3",
+  "zh": "一次函数斜率 a = {v1} > 0，在 R 上单调递增。"
+ },
+ {
+  "key": "gen.funcconcept.uq4",
+  "zh": "函数 f(x) = √(x − {v1}) 的定义域是？"
+ },
+ {
+  "key": "gen.funcconcept.ue4",
+  "zh": "根号内非负：x − {v1} ≥ 0，即 x ≥ {v2}。"
+ },
+ {
+  "key": "gen.funcconcept.uo10",
+  "zh": "全体实数"
+ },
+ {
+  "key": "gen.funcconcept.uq5",
+  "zh": "函数 f(x) = log_2(x − {v1}) 的定义域是？"
+ },
+ {
+  "key": "gen.funcconcept.ue5",
+  "zh": "真数 x − {v1} > 0 ⇒ x > {v2}。"
+ },
+ {
+  "key": "gen.funcconcept.uo11",
+  "zh": "偶函数"
+ },
+ {
+  "key": "gen.funcconcept.uo12",
+  "zh": "奇函数"
+ },
+ {
+  "key": "gen.funcconcept.uo13",
+  "zh": "既奇又偶"
+ },
+ {
+  "key": "gen.funcconcept.uo14",
+  "zh": "非奇非偶"
+ },
+ {
+  "key": "gen.funcconcept.uq6",
+  "zh": "函数 f(x) = x^{v1} 是？"
+ },
+ {
+  "key": "gen.funcconcept.ue6",
+  "zh": "f(−x) = (−x)^{v1} = x^{v2} = f(x)（指数为偶数），为偶函数。"
+ },
+ {
+  "key": "gen.funcconcept.uq7",
+  "zh": "函数 f(x) = sin({v1}x) 的最小正周期是？"
+ },
+ {
+  "key": "gen.funcconcept.ue7",
+  "zh": "正弦最小正周期 T = 2π/|ω| = 2π/{v1}。"
+ },
+ {
+  "key": "gen.funcconcept.uo15",
+  "zh": "全体实数"
+ },
+ {
+  "key": "gen.funcconcept.uq8",
+  "zh": "指数函数 f(x) = {v1}^x (a > 0, a ≠ 1) 的值域是？"
+ },
+ {
+  "key": "gen.funcconcept.ue8",
+  "zh": "a^x 恒正，值域为 y > 0。"
+ },
+ {
+  "key": "gen.funcconcept.uq9",
+  "zh": "函数 f(x) = {v1}x + {v2} 的反函数是？"
+ },
+ {
+  "key": "gen.funcconcept.ue9",
+  "zh": "令 y = {v1}x + {v2}，解 x = (y − {v3})/{v4}，故 f⁻¹(x) = (x − {v5})/{v6}。"
+ },
+ {
+  "key": "gen.explog.uq0",
+  "zh": "a^{v1} · a^{v2} = ？"
+ },
+ {
+  "key": "gen.explog.ue0",
+  "zh": "同底数幂相乘指数相加：a^{v1}·a^{v2} = a^{v3}。"
+ },
+ {
+  "key": "gen.explog.uq1",
+  "zh": "log_{v1}({v2}) = ？"
+ },
+ {
+  "key": "gen.explog.ue1",
+  "zh": "由定义 {v1}^{v2} = {v3}，故 log_{v4}({v5}) = {v6}。"
+ },
+ {
+  "key": "gen.explog.uq2",
+  "zh": "解方程 log_{v1}(x) = {v2}，则 x = ？"
+ },
+ {
+  "key": "gen.explog.ue2",
+  "zh": "x = {v1}^{v2} = {v3}。"
+ },
+ {
+  "key": "gen.explog.uq3",
+  "zh": "解方程 {v1}^x = {v2}，则 x = ？"
+ },
+ {
+  "key": "gen.explog.ue3",
+  "zh": "x = log_{v1}({v2}) = {v3}。"
+ },
+ {
+  "key": "gen.explog.uq4",
+  "zh": "a^{v1} ÷ a^{v2} = ？"
+ },
+ {
+  "key": "gen.explog.ue4",
+  "zh": "同底数幂相除指数相减：a^{v1} ÷ a^{v2} = a^{v3}。"
+ },
+ {
+  "key": "gen.explog.uq5",
+  "zh": "(a^{v1})^{v2} = ？"
+ },
+ {
+  "key": "gen.explog.ue5",
+  "zh": "幂的乘方指数相乘：(a^{v1})^{v2} = a^{v3}。"
+ },
+ {
+  "key": "gen.explog.uo0",
+  "zh": "log_{v1}({v2})·log_{v3}({v4})"
+ },
+ {
+  "key": "gen.explog.uq6",
+  "zh": "对数运算：log_{v1}({v2}·{v3}) = ？"
+ },
+ {
+  "key": "gen.explog.ue6",
+  "zh": "积的对数 = log_{v1}({v2}) + log_{v3}({v4})（真数 {v5}·{v6} = {v7}）。"
+ },
+ {
+  "key": "gen.explog.uq7",
+  "zh": "log_{v1}({v2}) = ？"
+ },
+ {
+  "key": "gen.explog.ue7",
+  "zh": "换底/幂的换元：log_{a²}({v1}) = (1/2)log_{v2}({v3})。"
+ },
+ {
+  "key": "gen.explog.uq8",
+  "zh": "若底数 a > 1，则 a^x > a^{v1} 的解集是？"
+ },
+ {
+  "key": "gen.explog.ue8",
+  "zh": "a>1 时指数函数递增，a^x > a^{v1} ⇔ x > {v2}。"
+ },
+ {
+  "key": "gen.explog.uq9",
+  "zh": "log_{v1}({v2}) = ？"
+ },
+ {
+  "key": "gen.explog.ue9",
+  "zh": "log_a(a^k) = k = {v1}（对数恒等式）。"
+ },
+ {
+  "key": "gen.trig.uq0",
+  "zh": "sin {v1}° = ？"
+ },
+ {
+  "key": "gen.trig.ue0",
+  "zh": "sin {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq1",
+  "zh": "cos {v1}° = ？"
+ },
+ {
+  "key": "gen.trig.ue1",
+  "zh": "cos {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq2",
+  "zh": "对任意角 α = {v1}°，恒成立的三角等式是？"
+ },
+ {
+  "key": "gen.trig.ue2",
+  "zh": "基本三角恒等式：sin²α + cos²α = 1（对 {v1}° 也成立）。"
+ },
+ {
+  "key": "gen.trig.uq3",
+  "zh": "sin(180° − {v1}°) = ？"
+ },
+ {
+  "key": "gen.trig.ue3",
+  "zh": "诱导公式：sin(180°−α) = sinα，故 sin(180°−{v1}°) = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq4",
+  "zh": "sin(2·{v1}°) = ？"
+ },
+ {
+  "key": "gen.trig.ue4",
+  "zh": "倍角公式 sin2α = 2sinαcosα；sin {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq5",
+  "zh": "cos(2·{v1}°) = ？"
+ },
+ {
+  "key": "gen.trig.ue5",
+  "zh": "倍角公式 cos2α = cos²α − sin²α；cos {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq6",
+  "zh": "tan {v1}° = ？"
+ },
+ {
+  "key": "gen.trig.ue6",
+  "zh": "tanα = sinα/cosα；tan {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq7",
+  "zh": "cos(90° − {v1}°) = ？"
+ },
+ {
+  "key": "gen.trig.ue7",
+  "zh": "诱导公式 cos(90°−α) = sinα，故 cos(90°−{v1}°) = {v2}。"
+ },
+ {
+  "key": "gen.trig.uq8",
+  "zh": "函数 y = sin({v1}x) 的最小正周期是？"
+ },
+ {
+  "key": "gen.trig.ue8",
+  "zh": "T = 2π/|ω| = 2π/{v1}。"
+ },
+ {
+  "key": "gen.trig.uq9",
+  "zh": "tan {v1}° 的值是？"
+ },
+ {
+  "key": "gen.trig.ue9",
+  "zh": "tan {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.trig_id.uq0",
+  "zh": "已知 sinα={v1}/{v2}, cosα={v3}/{v4}，则 sin2α = ？"
+ },
+ {
+  "key": "gen.trig_id.ue0",
+  "zh": "sin2α = 2sinαcosα = 2·({v1}/{v2})·({v3}/{v4}) = {v5}/{v6} ≈ {v7}。"
+ },
+ {
+  "key": "gen.trig_id.uq1",
+  "zh": "已知 sinα={v1}/{v2}, cosα={v3}/{v4}，则 cos2α = ？"
+ },
+ {
+  "key": "gen.trig_id.ue1",
+  "zh": "cos2α = cos²α − sin²α = ({v1}−{v2})/{v3} = {v4}。"
+ },
+ {
+  "key": "gen.trig_id.uq2",
+  "zh": "已知 tanα = {v1}/{v2}，则 sin2α = 2tanα/(1+tan²α) 的值约为？"
+ },
+ {
+  "key": "gen.trig_id.ue2",
+  "zh": "sin2α = 2·({v1}/{v2})/(1+({v3}/{v4})²) ≈ {v5}。"
+ },
+ {
+  "key": "gen.trig_id.uq3",
+  "zh": "已知 cosα = {v1}/{v2} (>0)，则 sin(α/2) = ±√((1−cosα)/2) 的值约为？"
+ },
+ {
+  "key": "gen.trig_id.ue3",
+  "zh": "sin(α/2) = ±√((1−{v1}/{v2})/2) = ±√{v3}。"
+ },
+ {
+  "key": "gen.trig_id.uq4",
+  "zh": "已知 sinα={v1}/{v2}, cosα={v3}/{v4}，则 sinα·cosα = ？"
+ },
+ {
+  "key": "gen.trig_id.ue4",
+  "zh": "sinαcosα = ({v1}/{v2})·({v3}/{v4}) = {v5}/{v6} ≈ {v7}。"
+ },
+ {
+  "key": "gen.trig_id.uq5",
+  "zh": "已知 tanα = {v1}/{v2}，则 tan2α = 2tanα/(1−tan²α) 的值约为？"
+ },
+ {
+  "key": "gen.trig_id.ue5",
+  "zh": "tan2α = 2·({v1}/{v2})/(1−({v3}/{v4})²) ≈ {v5}。"
+ },
+ {
+  "key": "gen.trig_id.uq6",
+  "zh": "已知 sinα = {v1}/{v2}，且 α 为锐角，则 cosα = ？"
+ },
+ {
+  "key": "gen.trig_id.ue6",
+  "zh": "cosα = √(1−sin²α) = √(1−{v1}/{v2}) = {v3}/{v4} = {v5}。"
+ },
+ {
+  "key": "gen.trig_id.uq7",
+  "zh": "已知 cosα = {v1}/{v2}，则 cos2α = 2cos²α − 1 的值约为？"
+ },
+ {
+  "key": "gen.trig_id.ue7",
+  "zh": "cos2α = 2·({v1}/{v2})² − 1 = 2·{v3}/{v4} − 1 ≈ {v5}。"
+ },
+ {
+  "key": "gen.trig_id.uq8",
+  "zh": "已知 sinα={v1}/{v2}, cosα={v3}/{v4}，则 sin²α + cos²α = ？"
+ },
+ {
+  "key": "gen.trig_id.ue8",
+  "zh": "sin²α+cos²α = {v1}/{v2} + {v3}/{v4} = {v5}/{v6} = 1（即 {v7}）。"
+ },
+ {
+  "key": "gen.trig_id.uq9",
+  "zh": "已知 tanα = {v1}/{v2}，则 tan2α = ？"
+ },
+ {
+  "key": "gen.trig_id.ue9",
+  "zh": "tan2α = 2tanα/(1−tan²α) = 2({v1}/{v2})/(1−({v3}/{v4})²) = {v5}/({v6}−{v7})。"
+ },
+ {
+  "key": "gen.seqsum.uq0",
+  "zh": "求和：1/(1×2) + 1/(2×3) + ... + 1/({v1}×({v2}+1)) = ？"
+ },
+ {
+  "key": "gen.seqsum.ue0",
+  "zh": "裂项：1/(k(k+1)) = 1/k − 1/(k+1)，相消后得 {v1}/{v2}。"
+ },
+ {
+  "key": "gen.seqsum.uq1",
+  "zh": "求和：1 + 2 + 4 + ... + 2^{v1} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue1",
+  "zh": "等比求和：S = (2^{v1} − 1)/(2 − 1) = {v2}。"
+ },
+ {
+  "key": "gen.seqsum.uq2",
+  "zh": "数列 a_n = 2n + 1，第 {v1} 项 a_{v2} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue2",
+  "zh": "a_{v1} = 2×{v2} + 1 = {v3}。"
+ },
+ {
+  "key": "gen.seqsum.uq3",
+  "zh": "求和：1 + 2 − 3 + 4 − 5 + ... + {v1} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue3",
+  "zh": "分组：(1+2)+(−3+4)+... 共 {v1} 组，每组 1，和为 {v2}。"
+ },
+ {
+  "key": "gen.seqsum.uq4",
+  "zh": "等差数列首项 {v1}，公差 {v2}，第 {v3} 项 a_{v4} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue4",
+  "zh": "a_n = a₁ + (n−1)d = {v1} + ({v2}−1)×{v3} = {v4}。"
+ },
+ {
+  "key": "gen.seqsum.uq5",
+  "zh": "等比数列首项 {v1}，公比 {v2}，第 {v3} 项 a_{v4} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue5",
+  "zh": "a_n = a₁q^(n−1) = {v1}×{v2}^{v3} = {v4}。"
+ },
+ {
+  "key": "gen.seqsum.uq6",
+  "zh": "求和：1/(1×3) + 1/(2×4) + ... + 1/({v1}×({v2}+2)) = ？"
+ },
+ {
+  "key": "gen.seqsum.ue6",
+  "zh": "裂项：1/(k(k+2)) = (1/2)(1/k − 1/(k+2))，相消得 {v1}。"
+ },
+ {
+  "key": "gen.seqsum.uq7",
+  "zh": "等差数列首项 {v1}，公差 {v2}，前 {v3} 项和 S_{v4} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue7",
+  "zh": "S_n = na₁ + n(n−1)d/2 = {v1}。"
+ },
+ {
+  "key": "gen.seqsum.uq8",
+  "zh": "等比数列首项 {v1}，公比 {v2}，前 {v3} 项和 S_{v4} = ？"
+ },
+ {
+  "key": "gen.seqsum.ue8",
+  "zh": "S_n = a₁(q^n − 1)/(q − 1) = {v1}。"
+ },
+ {
+  "key": "gen.seqsum.uq9",
+  "zh": "平方和：1² + 2² + ... + {v1}² = ？"
+ },
+ {
+  "key": "gen.seqsum.ue9",
+  "zh": "平方和公式 n(n+1)(2n+1)/6 = {v1}×{v2}×{v3}/6 = {v4}。"
+ },
+ {
+  "key": "gen.solid.uo0",
+  "zh": "个"
+ },
+ {
+  "key": "gen.solid.uo1",
+  "zh": "个"
+ },
+ {
+  "key": "gen.solid.uo2",
+  "zh": "个"
+ },
+ {
+  "key": "gen.solid.uo3",
+  "zh": "8个"
+ },
+ {
+  "key": "gen.solid.uq0",
+  "zh": "{v1} 棱柱（底面为 {v2} 边形）的顶点个数是？"
+ },
+ {
+  "key": "gen.solid.ue0",
+  "zh": "棱柱上下底各 {v1} 个顶点，共 2{v2} = {v3} 个。"
+ },
+ {
+  "key": "gen.solid.uo4",
+  "zh": "个"
+ },
+ {
+  "key": "gen.solid.uo5",
+  "zh": "个"
+ },
+ {
+  "key": "gen.solid.uo6",
+  "zh": "个"
+ },
+ {
+  "key": "gen.solid.uo7",
+  "zh": "3个"
+ },
+ {
+  "key": "gen.solid.uq1",
+  "zh": "{v1} 棱锥（底面为 {v2} 边形）的侧面个数是？"
+ },
+ {
+  "key": "gen.solid.ue1",
+  "zh": "{v1} 棱锥有 {v2} 个侧面（每个底边对应一个）。"
+ },
+ {
+  "key": "gen.solid.uo8",
+  "zh": "条"
+ },
+ {
+  "key": "gen.solid.uo9",
+  "zh": "条"
+ },
+ {
+  "key": "gen.solid.uo10",
+  "zh": "条"
+ },
+ {
+  "key": "gen.solid.uo11",
+  "zh": "12条"
+ },
+ {
+  "key": "gen.solid.uq2",
+  "zh": "{v1} 棱柱的棱的条数是？"
+ },
+ {
+  "key": "gen.solid.ue2",
+  "zh": "棱柱有 3{v1} 条棱（侧棱 {v2} + 上下底各 {v3}）。"
+ },
+ {
+  "key": "gen.solid.uq3",
+  "zh": "棱长为 {v1} 的正方体的表面积是？"
+ },
+ {
+  "key": "gen.solid.ue3",
+  "zh": "正方体 6 个面，表面积 = 6a² = 6×{v1}² = {v2}。"
+ },
+ {
+  "key": "gen.solid.uq4",
+  "zh": "棱长为 {v1} 的正方体的体积是？"
+ },
+ {
+  "key": "gen.solid.ue4",
+  "zh": "正方体体积 = a³ = {v1}。"
+ },
+ {
+  "key": "gen.solid.uq5",
+  "zh": "底面半径 {v1}、高 {v2} 的圆柱体积是？"
+ },
+ {
+  "key": "gen.solid.ue5",
+  "zh": "圆柱体积 V = πr²h = π×{v1}²×{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.solid.uq6",
+  "zh": "半径 r = {v1} 的球的表面积是？"
+ },
+ {
+  "key": "gen.solid.ue6",
+  "zh": "球表面积 S = 4πr² = 4π·{v1}² = {v2}。"
+ },
+ {
+  "key": "gen.solid.uq7",
+  "zh": "半径 r = {v1} 的球的体积是？"
+ },
+ {
+  "key": "gen.solid.ue7",
+  "zh": "球体积 V = 4πr³/3 ≈ {v1}。"
+ },
+ {
+  "key": "gen.solid.uq8",
+  "zh": "底面半径 {v1}、高 {v2} 的圆柱侧面积是？"
+ },
+ {
+  "key": "gen.solid.ue8",
+  "zh": "圆柱侧面积 S_侧 = 2πrh = 2π·{v1}·{v2} = {v3}。"
+ },
+ {
+  "key": "gen.solid.uq9",
+  "zh": "底面积 {v1}、高 {v2} 的棱锥体积是？"
+ },
+ {
+  "key": "gen.solid.ue9",
+  "zh": "棱锥体积 V = 1/3·Sh = {v1}×{v2}/3 = {v3}。"
+ },
+ {
+  "key": "gen.solid_angle.uo0",
+  "zh": "锐角或直角（(0°,90°]）"
+ },
+ {
+  "key": "gen.solid_angle.uo1",
+  "zh": "钝角"
+ },
+ {
+  "key": "gen.solid_angle.uo2",
+  "zh": "平角"
+ },
+ {
+  "key": "gen.solid_angle.uo3",
+  "zh": "无法确定"
+ },
+ {
+  "key": "gen.solid_angle.uq0",
+  "zh": "（情形 {v1}）空间中异面直线所成角的范围是？"
+ },
+ {
+  "key": "gen.solid_angle.ue0",
+  "zh": "异面直线所成角范围：(0°, 90°]，即锐角或直角。"
+ },
+ {
+  "key": "gen.solid_angle.uo4",
+  "zh": "直线与其在平面内投影的夹角"
+ },
+ {
+  "key": "gen.solid_angle.uo5",
+  "zh": "直线与面内任意直线的夹角"
+ },
+ {
+  "key": "gen.solid_angle.uo6",
+  "zh": "两平面的夹角"
+ },
+ {
+  "key": "gen.solid_angle.uo7",
+  "zh": "直线与法向量的夹角"
+ },
+ {
+  "key": "gen.solid_angle.uq1",
+  "zh": "（情形 {v1}）直线与平面所成角是指？"
+ },
+ {
+  "key": "gen.solid_angle.ue1",
+  "zh": "线面角是直线与其在平面内投影的夹角，范围 [0°, 90°]。"
+ },
+ {
+  "key": "gen.solid_angle.uo8",
+  "zh": "两平面交线上一点分别在两平面内作交线垂线所成的角"
+ },
+ {
+  "key": "gen.solid_angle.uo9",
+  "zh": "两平面内任意两直线夹角"
+ },
+ {
+  "key": "gen.solid_angle.uo10",
+  "zh": "两平面法向量夹角"
+ },
+ {
+  "key": "gen.solid_angle.uo11",
+  "zh": "两平面平行线夹角"
+ },
+ {
+  "key": "gen.solid_angle.uq2",
+  "zh": "（情形 {v1}）二面角的平面角是指？"
+ },
+ {
+  "key": "gen.solid_angle.ue2",
+  "zh": "二面角的平面角由交线上一点分别在两平面内作交线的垂线所成的角。"
+ },
+ {
+  "key": "gen.solid_angle.uq3",
+  "zh": "空间向量 u=({v1},0,0)、v=(0,{v2},0) 的夹角是？"
+ },
+ {
+  "key": "gen.solid_angle.ue3",
+  "zh": "u·v=0 → 夹角 90°。"
+ },
+ {
+  "key": "gen.solid_angle.uq4",
+  "zh": "空间向量 u=({v1},{v2},0)、v=({v3},0,0) 的夹角是？"
+ },
+ {
+  "key": "gen.solid_angle.ue4",
+  "zh": "cosθ = {v1}²/(√({v2})·{v3}) = 1/√2 → θ=45°。"
+ },
+ {
+  "key": "gen.solid_angle.uq5",
+  "zh": "空间向量 u=({v1},0,0)、v=(−{v2},0,0) 的夹角是？"
+ },
+ {
+  "key": "gen.solid_angle.ue5",
+  "zh": "反向共线，夹角 180°。"
+ },
+ {
+  "key": "gen.solid_angle.uq6",
+  "zh": "空间向量 u=({v1},{v2},0)、v=({v3},{v4},0) 的夹角是？"
+ },
+ {
+  "key": "gen.solid_angle.ue6",
+  "zh": "两向量相同，夹角 0°。"
+ },
+ {
+  "key": "gen.solid_angle.uo12",
+  "zh": "线面角为 90°（垂直）"
+ },
+ {
+  "key": "gen.solid_angle.uo13",
+  "zh": "线面角为 0°（平行或在平面内）"
+ },
+ {
+  "key": "gen.solid_angle.uq7",
+  "zh": "直线方向向量 s=(0,0,{v1})，平面 xOy（法向量 (0,0,1)），则线面角是？"
+ },
+ {
+  "key": "gen.solid_angle.ue7",
+  "zh": "s 与法向量平行，直线垂直于平面，线面角 90°。"
+ },
+ {
+  "key": "gen.solid_angle.uo14",
+  "zh": "线面角为 0°"
+ },
+ {
+  "key": "gen.solid_angle.uo15",
+  "zh": "线面角 90°"
+ },
+ {
+  "key": "gen.solid_angle.uq8",
+  "zh": "直线方向向量 s=({v1},0,0)，平面 xOy（法向量 (0,0,1)），则线面角是？"
+ },
+ {
+  "key": "gen.solid_angle.ue8",
+  "zh": "s 平行于平面，线面角 0°（直线平行于平面或在平面内）。"
+ },
+ {
+  "key": "gen.solid_angle.uq9",
+  "zh": "平行平面 {v1}x+{v2}y+{v3}z+{v4}=0 与 {v5}x+{v6}y+{v7}z+{v8}=0 的距离是？"
+ },
+ {
+  "key": "gen.solid_angle.ue9",
+  "zh": "距离 = |{v1}−{v2}|/√({v3}²+{v4}²+{v5}²) = {v6}/√{v7} = {v8}。"
+ },
+ {
+  "key": "gen.derivative.uq0",
+  "zh": "f(x) = x^{v1} 的导数 f'(x) = ？"
+ },
+ {
+  "key": "gen.derivative.ue0",
+  "zh": "(x^n)' = n x^(n−1)，故 f'(x) = {v1}x^{v2}。"
+ },
+ {
+  "key": "gen.derivative.uq1",
+  "zh": "函数 f(x) 在区间 ({v1}, {v2}) 上单调递增的充要条件是？"
+ },
+ {
+  "key": "gen.derivative.ue1",
+  "zh": "f 在 ({v1},{v2}) 单调递增 ⇔ f'(x) ≥ 0（在该区间恒成立，且不恒为 0）。"
+ },
+ {
+  "key": "gen.derivative.uo0",
+  "zh": "f(x₀) 最大"
+ },
+ {
+  "key": "gen.derivative.uq2",
+  "zh": "函数 f(x) 在 x={v1} 处取得极值的必要条件是？"
+ },
+ {
+  "key": "gen.derivative.ue2",
+  "zh": "极值点必要条件：f'({v1}) = 0（驻点）。"
+ },
+ {
+  "key": "gen.derivative.uq3",
+  "zh": "曲线 y = {v1}x 在点 ({v2}, {v3}) 处的切线方程是？"
+ },
+ {
+  "key": "gen.derivative.ue3",
+  "zh": "斜率 k = {v1}，切线：y − {v2} = {v3}(x − {v4})。"
+ },
+ {
+  "key": "gen.derivative.uo1",
+  "zh": "{v1}·e^x"
+ },
+ {
+  "key": "gen.derivative.uo2",
+  "zh": "{v1}·x·e^x"
+ },
+ {
+  "key": "gen.derivative.uq4",
+  "zh": "f(x) = {v1}e^x 的导数是？"
+ },
+ {
+  "key": "gen.derivative.ue4",
+  "zh": "(a e^x)' = a e^x。"
+ },
+ {
+  "key": "gen.derivative.uo3",
+  "zh": "{v1}·cos({v2}x)"
+ },
+ {
+  "key": "gen.derivative.uo4",
+  "zh": "{v1}·sin({v2}x)"
+ },
+ {
+  "key": "gen.derivative.uo5",
+  "zh": "−{v1}·sin({v2}x)"
+ },
+ {
+  "key": "gen.derivative.uq5",
+  "zh": "f(x) = sin({v1}x) 的导数是？"
+ },
+ {
+  "key": "gen.derivative.ue5",
+  "zh": "链式法则：f'(x) = cos({v1}x)·{v2} = {v3}cos({v4}x)。"
+ },
+ {
+  "key": "gen.derivative.uq6",
+  "zh": "f(x) = ln({v1}x) 的导数是？"
+ },
+ {
+  "key": "gen.derivative.ue6",
+  "zh": "(ln {v1}x)' = (ln {v2} + ln x)' = 1/x (x>0)。"
+ },
+ {
+  "key": "gen.derivative.uq7",
+  "zh": "f(x) = {v1}x² + {v2}x 的二阶导数 f''(x) = ？"
+ },
+ {
+  "key": "gen.derivative.ue7",
+  "zh": "f' = {v1}x + {v2}，再求导 f'' = {v3}（常数）。"
+ },
+ {
+  "key": "gen.derivative.uq8",
+  "zh": "导数的乘积法则：(uv)' = ？"
+ },
+ {
+  "key": "gen.derivative.ue8",
+  "zh": "(uv)' = u'v + uv'。"
+ },
+ {
+  "key": "gen.derivative.uq9",
+  "zh": "f(x) = ({v1}x + 1)^{v2} 的导数是？"
+ },
+ {
+  "key": "gen.derivative.ue9",
+  "zh": "链式法则：f' = {v1}({v2}x+1)^{v3}·{v4} = {v5}({v6}x+1)^{v7}。"
+ },
+ {
+  "key": "gen.deriv_mon.uq0",
+  "zh": "f(x) = {v1}x^{v2} 的导数 f'(x) = ？"
+ },
+ {
+  "key": "gen.deriv_mon.ue0",
+  "zh": "f'(x) = {v1}·{v2}·x^{v3} = {v4}x^{v5}。"
+ },
+ {
+  "key": "gen.deriv_mon.uo0",
+  "zh": "(-∞, 0) 递减，(0, +∞) 递增"
+ },
+ {
+  "key": "gen.deriv_mon.uo1",
+  "zh": "(-∞, 0) 递增，(0, +∞) 递减"
+ },
+ {
+  "key": "gen.deriv_mon.uo2",
+  "zh": "R 上递增"
+ },
+ {
+  "key": "gen.deriv_mon.uo3",
+  "zh": "R 上递减"
+ },
+ {
+  "key": "gen.deriv_mon.uq1",
+  "zh": "函数 f(x) = {v1}x² (a>0) 的单调区间是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue1",
+  "zh": "f'(x) = 2{v1}x，x<0 递减，x>0 递增。"
+ },
+ {
+  "key": "gen.deriv_mon.uo4",
+  "zh": "x = 0 处取极小值"
+ },
+ {
+  "key": "gen.deriv_mon.uo5",
+  "zh": "x = 0 处取极大值"
+ },
+ {
+  "key": "gen.deriv_mon.uo6",
+  "zh": "x = {v1} 处取极值"
+ },
+ {
+  "key": "gen.deriv_mon.uo7",
+  "zh": "无极值"
+ },
+ {
+  "key": "gen.deriv_mon.uq2",
+  "zh": "函数 f(x) = {v1}x² 在 x = 0 处的极值是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue2",
+  "zh": "f'(x) = 2{v1}x，x=0 驻点，f''=2{v2}>0，取极小值。"
+ },
+ {
+  "key": "gen.deriv_mon.uq3",
+  "zh": "f(x) = {v1}x + {v2} 的导数 f'(x) = ？"
+ },
+ {
+  "key": "gen.deriv_mon.ue3",
+  "zh": "线性函数导数 = 斜率 = {v1}。"
+ },
+ {
+  "key": "gen.deriv_mon.uo8",
+  "zh": "在 R 上递增"
+ },
+ {
+  "key": "gen.deriv_mon.uo9",
+  "zh": "在 R 上递减"
+ },
+ {
+  "key": "gen.deriv_mon.uo10",
+  "zh": "先增后减"
+ },
+ {
+  "key": "gen.deriv_mon.uo11",
+  "zh": "先减后增"
+ },
+ {
+  "key": "gen.deriv_mon.uq4",
+  "zh": "f(x) = x³ {v1}x 的整体单调性？"
+ },
+ {
+  "key": "gen.deriv_mon.ue4",
+  "zh": "f'(x) = 3x² {v1} > 0 恒成立，在 R 上递增。"
+ },
+ {
+  "key": "gen.deriv_mon.uo12",
+  "zh": "x = {v1} 处取极小值"
+ },
+ {
+  "key": "gen.deriv_mon.uo13",
+  "zh": "x = {v1} 处取极大值"
+ },
+ {
+  "key": "gen.deriv_mon.uo14",
+  "zh": "x = 0 处取极值"
+ },
+ {
+  "key": "gen.deriv_mon.uo15",
+  "zh": "无极值"
+ },
+ {
+  "key": "gen.deriv_mon.uq5",
+  "zh": "f(x) = (x − {v1})² 在 x = {v2} 处的极值是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue5",
+  "zh": "f'(x) = 2(x−{v1})，x={v2} 时 f'=0，两侧由负变正，取极小值。"
+ },
+ {
+  "key": "gen.deriv_mon.uq6",
+  "zh": "曲线 y = {v1}x² 在点 ({v2}, {v3}) 处的切线斜率是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue6",
+  "zh": "y' = 2·{v1}x，在 x={v2} 处斜率 = 2·{v3}·{v4} = {v5}。"
+ },
+ {
+  "key": "gen.deriv_mon.uo16",
+  "zh": "(-∞, 0) 递减，(0, +∞) 递增"
+ },
+ {
+  "key": "gen.deriv_mon.uo17",
+  "zh": "(0, +∞) 递减"
+ },
+ {
+  "key": "gen.deriv_mon.uo18",
+  "zh": "R 上递增"
+ },
+ {
+  "key": "gen.deriv_mon.uo19",
+  "zh": "R 上递减"
+ },
+ {
+  "key": "gen.deriv_mon.uq7",
+  "zh": "函数 f(x) = {v1}x² (a>0) 的单调递减区间是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue7",
+  "zh": "f'(x)=2{v1}x，x<0 时 f'<0，递减区间 (-∞,0)。"
+ },
+ {
+  "key": "gen.deriv_mon.uq8",
+  "zh": "f(x) = {v1}x^{v2} 的导数是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue8",
+  "zh": "f'(x) = {v1}·{v2}·x^{v3}。"
+ },
+ {
+  "key": "gen.deriv_mon.uq9",
+  "zh": "函数 f(x) = x² + {v1} 的最小值是？"
+ },
+ {
+  "key": "gen.deriv_mon.ue9",
+  "zh": "x² ≥ 0，f(x) ≥ {v1}，最小值 = {v2}（x=0 处）。"
+ },
+ {
+  "key": "gen.deriv_ineq.uo0",
+  "zh": "对定义域内所有 x 都成立"
+ },
+ {
+  "key": "gen.deriv_ineq.uo1",
+  "zh": "存在某个 x 成立"
+ },
+ {
+  "key": "gen.deriv_ineq.uo2",
+  "zh": "仅 x=0 成立"
+ },
+ {
+  "key": "gen.deriv_ineq.uo3",
+  "zh": "仅 x>0 成立"
+ },
+ {
+  "key": "gen.deriv_ineq.uq0",
+  "zh": "不等式 f(x) ≥ {v1} 在定义域内“恒成立”的含义是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue0",
+  "zh": "恒成立指对定义域内每一个 x 都满足 f(x) ≥ {v1}。"
+ },
+ {
+  "key": "gen.deriv_ineq.uo4",
+  "zh": "最小值 −{v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo5",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo6",
+  "zh": "最大值 −{v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo7",
+  "zh": "最大值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uq1",
+  "zh": "函数 f(x) = x² − {v1} 的最值情况是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue1",
+  "zh": "x² ≥ 0，f(x) ≥ −{v1}，最小值为 −{v2}（无最大值）。"
+ },
+ {
+  "key": "gen.deriv_ineq.uq2",
+  "zh": "函数 f(x) = ax² + {v1}x 在 R 上单调递增，则 a 的取值范围是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue2",
+  "zh": "f'(x) = 2ax + {v1} ≥ 0 恒成立，需 a ≥ 0。"
+ },
+ {
+  "key": "gen.deriv_ineq.uo8",
+  "zh": "最大值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo9",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo10",
+  "zh": "最大值 −{v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo11",
+  "zh": "最小值 −{v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uq3",
+  "zh": "函数 f(x) = −x² + {v1} 的最值情况是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue3",
+  "zh": "−x² ≤ 0，f(x) ≤ {v1}，最大值为 {v2}（无最小值）。"
+ },
+ {
+  "key": "gen.deriv_ineq.uo12",
+  "zh": "最小值 0"
+ },
+ {
+  "key": "gen.deriv_ineq.uo13",
+  "zh": "最大值 0"
+ },
+ {
+  "key": "gen.deriv_ineq.uo14",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo15",
+  "zh": "无最值"
+ },
+ {
+  "key": "gen.deriv_ineq.uq4",
+  "zh": "函数 f(x) = {v1}x² (a > 0) 的最小值是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue4",
+  "zh": "x² ≥ 0 且 a>0，f(x) ≥ 0，最小值 0（x=0 处）。"
+ },
+ {
+  "key": "gen.deriv_ineq.uq5",
+  "zh": "不等式 a x² + {v1} ≥ 0 对一切实数 x 恒成立，则 a 满足？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue5",
+  "zh": "a≥0 时 a x² ≥ 0，整体 ≥ {v1} > 0 恒成立；a<0 时取大 x 不成立，故 a ≥ 0。"
+ },
+ {
+  "key": "gen.deriv_ineq.uo16",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo17",
+  "zh": "最大值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo18",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo19",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uq6",
+  "zh": "函数 f(x) = x² − 2x + {v1} 的最小值是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue6",
+  "zh": "配方 f = (x−1)² + ({v1}−1)，最小值 = {v2}（x=1 处）。"
+ },
+ {
+  "key": "gen.deriv_ineq.uo20",
+  "zh": "最大值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo21",
+  "zh": "最小值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo22",
+  "zh": "最大值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uo23",
+  "zh": "最大值 {v1}"
+ },
+ {
+  "key": "gen.deriv_ineq.uq7",
+  "zh": "函数 f(x) = −2x² + {v1}x 的最大值是？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue7",
+  "zh": "顶点 x = {v1}/4，f_max = −2·({v2}/4)² + {v3}·({v4}/4) = {v5}。"
+ },
+ {
+  "key": "gen.deriv_ineq.uq8",
+  "zh": "由均值不等式，对任意实数 x 有 x² + {v1} ≥ ？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue8",
+  "zh": "x² + {v1} ≥ 2·x·{v2} = 2{v3}x（当且仅当 x={v4} 取等）。"
+ },
+ {
+  "key": "gen.deriv_ineq.uq9",
+  "zh": "若 f(x) = x² + {v1} ≥ m 对一切实数 x 恒成立，则参数 m 满足？"
+ },
+ {
+  "key": "gen.deriv_ineq.ue9",
+  "zh": "f(x) 最小值为 {v1}，故需 m ≤ {v2} 才能保证恒成立。"
+ },
+ {
+  "key": "gen.func_zero.uo0",
+  "zh": "f(x) = 0 的实数根"
+ },
+ {
+  "key": "gen.func_zero.uo1",
+  "zh": "f'(x) = 0 的根"
+ },
+ {
+  "key": "gen.func_zero.uo2",
+  "zh": "f''(x) = 0 的根"
+ },
+ {
+  "key": "gen.func_zero.uo3",
+  "zh": "f(x) 的极值点"
+ },
+ {
+  "key": "gen.func_zero.uq0",
+  "zh": "函数 f(x) 的零点是？"
+ },
+ {
+  "key": "gen.func_zero.ue0",
+  "zh": "零点即方程 f(x) = 0 的实数根，或图像与 x 轴交点横坐标。"
+ },
+ {
+  "key": "gen.func_zero.uo4",
+  "zh": "f(a)·f(b) < 0"
+ },
+ {
+  "key": "gen.func_zero.uo5",
+  "zh": "f(a)·f(b) > 0"
+ },
+ {
+  "key": "gen.func_zero.uq1",
+  "zh": "连续函数 f 在 [a,b] 上有零点的一个充分条件是？"
+ },
+ {
+  "key": "gen.func_zero.ue1",
+  "zh": "零点存在定理：若 f(a)·f(b) < 0，则 (a,b) 内至少有一零点。"
+ },
+ {
+  "key": "gen.func_zero.uo6",
+  "zh": "f'(x₀) = 0 且 f''(x₀) ≠ 0"
+ },
+ {
+  "key": "gen.func_zero.uq2",
+  "zh": "函数 f(x) 在 x₀ 处取得极值的充分条件是？"
+ },
+ {
+  "key": "gen.func_zero.ue2",
+  "zh": "极值充分条件：f'(x₀) = 0 且 f''(x₀) ≠ 0。"
+ },
+ {
+  "key": "gen.func_zero.uo7",
+  "zh": "无实根"
+ },
+ {
+  "key": "gen.func_zero.uq3",
+  "zh": "函数 f(x) = x² − {v1} 的零点是？"
+ },
+ {
+  "key": "gen.func_zero.ue3",
+  "zh": "x² = {v1} ⇒ x = ±{v2}。"
+ },
+ {
+  "key": "gen.func_zero.uo8",
+  "zh": "两个不等实根"
+ },
+ {
+  "key": "gen.func_zero.uo9",
+  "zh": "两个相等实根"
+ },
+ {
+  "key": "gen.func_zero.uo10",
+  "zh": "无实根"
+ },
+ {
+  "key": "gen.func_zero.uo11",
+  "zh": "一个实根"
+ },
+ {
+  "key": "gen.func_zero.uq4",
+  "zh": "方程 x² + {v1}x {v2} = 0（Δ = {v3} > 0）根的情况是？"
+ },
+ {
+  "key": "gen.func_zero.ue4",
+  "zh": "Δ = {v1}² − 4·({v2}) = {v3} > 0，故有两个不等实根。"
+ },
+ {
+  "key": "gen.func_zero.uo12",
+  "zh": "与 x 轴交点个数"
+ },
+ {
+  "key": "gen.func_zero.uo13",
+  "zh": "与 y 轴交点个数"
+ },
+ {
+  "key": "gen.func_zero.uo14",
+  "zh": "极值点个数"
+ },
+ {
+  "key": "gen.func_zero.uo15",
+  "zh": "单调区间个数"
+ },
+ {
+  "key": "gen.func_zero.uq5",
+  "zh": "函数零点的个数等于其图像？"
+ },
+ {
+  "key": "gen.func_zero.ue5",
+  "zh": "零点个数 = 图像与 x 轴交点的个数（重根按重数或按交点计）。"
+ },
+ {
+  "key": "gen.func_zero.uq6",
+  "zh": "函数 f(x) = x³ − {v1} 的零点是？"
+ },
+ {
+  "key": "gen.func_zero.ue6",
+  "zh": "x³ = {v1} ⇒ x = {v2}（实数根）。"
+ },
+ {
+  "key": "gen.func_zero.uo16",
+  "zh": "两个零点"
+ },
+ {
+  "key": "gen.func_zero.uo17",
+  "zh": "一个零点"
+ },
+ {
+  "key": "gen.func_zero.uo18",
+  "zh": "无零点"
+ },
+ {
+  "key": "gen.func_zero.uo19",
+  "zh": "一个零点"
+ },
+ {
+  "key": "gen.func_zero.uo20",
+  "zh": "两个零点"
+ },
+ {
+  "key": "gen.func_zero.uo21",
+  "zh": "无数个"
+ },
+ {
+  "key": "gen.func_zero.uq7",
+  "zh": "二次函数 f(x) = x² − {v1}x + {v2} 的零点个数是？"
+ },
+ {
+  "key": "gen.func_zero.ue7",
+  "zh": "判别式 Δ = {v1}² − 4·{v2} = {v3}，{v4}。"
+ },
+ {
+  "key": "gen.func_zero.uo22",
+  "zh": "方程 f(x)=0 的根"
+ },
+ {
+  "key": "gen.func_zero.uo23",
+  "zh": "f'(x)=0 的根"
+ },
+ {
+  "key": "gen.func_zero.uo24",
+  "zh": "f 的极值点"
+ },
+ {
+  "key": "gen.func_zero.uo25",
+  "zh": "f 的最大值点"
+ },
+ {
+  "key": "gen.func_zero.uq8",
+  "zh": "用二分法求方程 f(x)=0 的近似根，本质上是求 f 的？"
+ },
+ {
+  "key": "gen.func_zero.ue8",
+  "zh": "二分法在符号变化区间内不断缩小含根区间，求解 f(x)=0 的根（即零点）。"
+ },
+ {
+  "key": "gen.func_zero.uq9",
+  "zh": "若 f({v1}) = 0，则 x = {v2} 是 f(x) 的？"
+ },
+ {
+  "key": "gen.func_zero.ue9",
+  "zh": "f({v1})=0 表明 x={v2} 是函数的一个零点（根）。"
+ },
+ {
+  "key": "gen.conic.uq0",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的离心率 e ≈ ？"
+ },
+ {
+  "key": "gen.conic.ue0",
+  "zh": "c = √(a²−b²) = √({v1}−{v2})，e = c/a ≈ {v3}。"
+ },
+ {
+  "key": "gen.conic.uq1",
+  "zh": "双曲线 x²/{v1} − y²/{v2} = 1 的离心率 e ≈ ？"
+ },
+ {
+  "key": "gen.conic.ue1",
+  "zh": "c = √(a²+b²) = √({v1}+{v2})，e = c/a ≈ {v3}。"
+ },
+ {
+  "key": "gen.conic.uq2",
+  "zh": "抛物线 y² = {v1}x 的焦点坐标是？"
+ },
+ {
+  "key": "gen.conic.ue2",
+  "zh": "y² = 2px 焦点为 (p/2, 0) = ({v1}, 0)。"
+ },
+ {
+  "key": "gen.conic.uq3",
+  "zh": "椭圆的离心率 e 的范围是？"
+ },
+ {
+  "key": "gen.conic.ue3",
+  "zh": "椭圆离心率 0 < e < 1。"
+ },
+ {
+  "key": "gen.conic.uq4",
+  "zh": "双曲线的离心率 e 的范围是？"
+ },
+ {
+  "key": "gen.conic.ue4",
+  "zh": "双曲线离心率 e > 1。"
+ },
+ {
+  "key": "gen.conic.uq5",
+  "zh": "抛物线 y² = {v1}x 的准线方程是？"
+ },
+ {
+  "key": "gen.conic.ue5",
+  "zh": "y² = 2px 准线 x = −p/2 = −{v1}。"
+ },
+ {
+  "key": "gen.conic.uq6",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的焦点坐标是？"
+ },
+ {
+  "key": "gen.conic.ue6",
+  "zh": "c = √({v1}−{v2}) = {v3}，焦点在 x 轴：(±{v4}, 0)。"
+ },
+ {
+  "key": "gen.conic.uq7",
+  "zh": "双曲线 x²/{v1} − y²/{v2} = 1 的渐近线方程是？"
+ },
+ {
+  "key": "gen.conic.ue7",
+  "zh": "渐近线 y = ±(b/a)x = ±{v1}x。"
+ },
+ {
+  "key": "gen.conic.uq8",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的长轴长（2a）是？"
+ },
+ {
+  "key": "gen.conic.ue8",
+  "zh": "长半轴 a = {v1}，长轴长 2a = {v2}。"
+ },
+ {
+  "key": "gen.conic.uo0",
+  "zh": "到两定点距离之和为常数"
+ },
+ {
+  "key": "gen.conic.uo1",
+  "zh": "到两定点距离之差为常数"
+ },
+ {
+  "key": "gen.conic.uo2",
+  "zh": "到定点与定直线距离相等"
+ },
+ {
+  "key": "gen.conic.uo3",
+  "zh": "到两定点距离之比为常数"
+ },
+ {
+  "key": "gen.conic.uq9",
+  "zh": "椭圆的定义是？"
+ },
+ {
+  "key": "gen.conic.ue9",
+  "zh": "椭圆：到两定点（焦点）距离之和为常数（大于焦距）的点的轨迹。"
+ },
+ {
+  "key": "gen.conic_chord.uq0",
+  "zh": "方程 x² + {v1}x + {v2} = 0 的两根距离 |x₁−x₂| = ？"
+ },
+ {
+  "key": "gen.conic_chord.ue0",
+  "zh": "|x₁−x₂| = √Δ/|a| = √{v1} / 1 = {v2}。"
+ },
+ {
+  "key": "gen.conic_chord.uo0",
+  "zh": "直线过定点 (0, {v1})"
+ },
+ {
+  "key": "gen.conic_chord.uo1",
+  "zh": "直线过定点 ({v1}, 0)"
+ },
+ {
+  "key": "gen.conic_chord.uo2",
+  "zh": "直线过原点"
+ },
+ {
+  "key": "gen.conic_chord.uo3",
+  "zh": "直线不过定点"
+ },
+ {
+  "key": "gen.conic_chord.uq1",
+  "zh": "直线 y = kx + {v1} (k 为参数) 恒过定点？"
+ },
+ {
+  "key": "gen.conic_chord.ue1",
+  "zh": "当 x = 0 时 y = {v1}，故直线恒过定点 (0, {v2})。"
+ },
+ {
+  "key": "gen.conic_chord.uq2",
+  "zh": "线段 AB（A({v1},{v2})、B({v3},{v4})）的中点坐标是？"
+ },
+ {
+  "key": "gen.conic_chord.ue2",
+  "zh": "中点 = ((x₁+x₂)/2, (y₁+y₂)/2) = ({v1}, {v2})。"
+ },
+ {
+  "key": "gen.conic_chord.uq3",
+  "zh": "方程 x² + {v1}x + {v2} = 0 的两根之和 x₁+x₂ = ？"
+ },
+ {
+  "key": "gen.conic_chord.ue3",
+  "zh": "韦达定理：x₁+x₂ = −b/a = −{v1} = {v2}。"
+ },
+ {
+  "key": "gen.conic_chord.uq4",
+  "zh": "方程 x² + {v1}x + {v2} = 0 的两根之积 x₁x₂ = ？"
+ },
+ {
+  "key": "gen.conic_chord.ue4",
+  "zh": "韦达定理：x₁x₂ = c/a = {v1} = {v2}。"
+ },
+ {
+  "key": "gen.conic_chord.uo4",
+  "zh": "直线过定点 ({v1}, {v2})"
+ },
+ {
+  "key": "gen.conic_chord.uo5",
+  "zh": "直线过定点 (0, {v1})"
+ },
+ {
+  "key": "gen.conic_chord.uo6",
+  "zh": "直线过原点"
+ },
+ {
+  "key": "gen.conic_chord.uo7",
+  "zh": "直线不过定点"
+ },
+ {
+  "key": "gen.conic_chord.uq5",
+  "zh": "直线 y − {v1} = k(x − {v2}) (k 为参数) 恒过定点？"
+ },
+ {
+  "key": "gen.conic_chord.ue5",
+  "zh": "整理 y = k(x−{v1}) + {v2}，当 x={v3} 时 y={v4}，过定点 ({v5}, {v6})。"
+ },
+ {
+  "key": "gen.conic_chord.uq6",
+  "zh": "方程 {v1}x² + {v2}x + {v3} = 0（Δ={v4}）的两根距离 |x₁−x₂| = ？"
+ },
+ {
+  "key": "gen.conic_chord.ue6",
+  "zh": "|x₁−x₂| = √Δ/|a| = √{v1} / {v2} = {v3}。"
+ },
+ {
+  "key": "gen.conic_chord.uq7",
+  "zh": "两点横坐标 {v1} 与 {v2}，它们在 x 轴上的距离是？"
+ },
+ {
+  "key": "gen.conic_chord.ue7",
+  "zh": "距离 = |{v1} − {v2}| = {v3}。"
+ },
+ {
+  "key": "gen.conic_chord.uq8",
+  "zh": "以 {v1} 为两根之和、{v2} 为两根之积的一元二次方程可写为？"
+ },
+ {
+  "key": "gen.conic_chord.ue8",
+  "zh": "由韦达：x² − (和)x + 积 = 0，即 x² − {v1}x + {v2} = 0。"
+ },
+ {
+  "key": "gen.conic_prop.uq0",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的离心率 e ≈ ？"
+ },
+ {
+  "key": "gen.conic_prop.ue0",
+  "zh": "c = √(a²−b²)，e = c/a ≈ {v1}。"
+ },
+ {
+  "key": "gen.conic_prop.uq1",
+  "zh": "双曲线 x²/{v1} − y²/{v2} = 1 的离心率 e ≈ ？"
+ },
+ {
+  "key": "gen.conic_prop.ue1",
+  "zh": "c = √(a²+b²)，e = c/a ≈ {v1}。"
+ },
+ {
+  "key": "gen.conic_prop.uq2",
+  "zh": "抛物线 y² = {v1}x 的焦点到准线的距离是？"
+ },
+ {
+  "key": "gen.conic_prop.ue2",
+  "zh": "焦点 (p/2,0)、准线 x=−p/2，距离 = p = {v1}。"
+ },
+ {
+  "key": "gen.conic_prop.uq3",
+  "zh": "圆 x² + y² = {v1} 在点 (x₀, y₀) 处的切线方程是？"
+ },
+ {
+  "key": "gen.conic_prop.ue3",
+  "zh": "圆切线：xx₀ + yy₀ = r² = {v1}。"
+ },
+ {
+  "key": "gen.conic_prop.uq4",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的焦点坐标是？"
+ },
+ {
+  "key": "gen.conic_prop.ue4",
+  "zh": "c = √({v1}−{v2}) = {v3}，焦点 (±{v4}, 0)。"
+ },
+ {
+  "key": "gen.conic_prop.uq5",
+  "zh": "双曲线 x²/{v1} − y²/{v2} = 1 的渐近线是？"
+ },
+ {
+  "key": "gen.conic_prop.ue5",
+  "zh": "渐近线 y = ±(b/a)x = ±{v1}x。"
+ },
+ {
+  "key": "gen.conic_prop.uq6",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的焦距（两焦点距离）是？"
+ },
+ {
+  "key": "gen.conic_prop.ue6",
+  "zh": "焦距 = 2c = 2×{v1} = {v2}。"
+ },
+ {
+  "key": "gen.conic_prop.uq7",
+  "zh": "抛物线 y² = {v1}x 的焦点坐标是？"
+ },
+ {
+  "key": "gen.conic_prop.ue7",
+  "zh": "y² = 2px 焦点 (p/2, 0) = ({v1}, 0)。"
+ },
+ {
+  "key": "gen.conic_prop.uq8",
+  "zh": "椭圆 x²/{v1} + y²/{v2} = 1 的准线方程是？"
+ },
+ {
+  "key": "gen.conic_prop.ue8",
+  "zh": "准线 x = ±a²/c = ±{v1}/{v2}。"
+ },
+ {
+  "key": "gen.conic_prop.uq9",
+  "zh": "双曲线 x²/{v1} − y²/{v2} = 1 的焦距是？"
+ },
+ {
+  "key": "gen.conic_prop.ue9",
+  "zh": "焦距 = 2c = 2×{v1} = {v2}。"
+ },
+ {
+  "key": "gen.param_eq.uq0",
+  "zh": "参数方程 x = {v1}cosθ, y = {v2}sinθ 消参后是？"
+ },
+ {
+  "key": "gen.param_eq.ue0",
+  "zh": "x² + y² = {v1}²cos²θ + {v2}²sin²θ = {v3}。"
+ },
+ {
+  "key": "gen.param_eq.uq1",
+  "zh": "极坐标 ρ = {v1} 化为直角坐标方程是？"
+ },
+ {
+  "key": "gen.param_eq.ue1",
+  "zh": "ρ = {v1} → x² + y² = {v2}² = {v3}，即圆。"
+ },
+ {
+  "key": "gen.param_eq.uo0",
+  "zh": "t（或 θ）"
+ },
+ {
+  "key": "gen.param_eq.uq2",
+  "zh": "参数方程 x = {v1}t², y = {v2}t 中的参数通常记作？"
+ },
+ {
+  "key": "gen.param_eq.ue2",
+  "zh": "参数方程中的变量 t（或 θ）称为参数。"
+ },
+ {
+  "key": "gen.param_eq.uq3",
+  "zh": "参数方程 x = {v1}cosθ, y = {v2}sinθ 消参后是？"
+ },
+ {
+  "key": "gen.param_eq.ue3",
+  "zh": "cosθ=x/{v1}, sinθ=y/{v2}，平方和得 x²/{v3} + y²/{v4} = 1（椭圆）。"
+ },
+ {
+  "key": "gen.param_eq.uq4",
+  "zh": "参数方程 x = {v1}t, y = t (t 为参数) 消参后是？"
+ },
+ {
+  "key": "gen.param_eq.ue4",
+  "zh": "t = y，代入 x = {v1}y → y = x/{v2}（直线）。"
+ },
+ {
+  "key": "gen.param_eq.uq5",
+  "zh": "极坐标方程 ρcosθ = {v1} 化为直角坐标是？"
+ },
+ {
+  "key": "gen.param_eq.ue5",
+  "zh": "ρcosθ = x，故 x = {v1}（一条竖直线）。"
+ },
+ {
+  "key": "gen.param_eq.uq6",
+  "zh": "极坐标方程 ρsinθ = {v1} 化为直角坐标是？"
+ },
+ {
+  "key": "gen.param_eq.ue6",
+  "zh": "ρsinθ = y，故 y = {v1}（一条水平线）。"
+ },
+ {
+  "key": "gen.param_eq.uo1",
+  "zh": "方向向量 ({v1}, {v2})"
+ },
+ {
+  "key": "gen.param_eq.uo2",
+  "zh": "方向向量 ({v1}, {v2})"
+ },
+ {
+  "key": "gen.param_eq.uo3",
+  "zh": "法向量 ({v1}, {v2})"
+ },
+ {
+  "key": "gen.param_eq.uo4",
+  "zh": "斜率 {v1}"
+ },
+ {
+  "key": "gen.param_eq.uq7",
+  "zh": "参数方程 x = 1 + {v1}t, y = 2 + {v2}t (t 为参数) 表示直线，其方向向量是？"
+ },
+ {
+  "key": "gen.param_eq.ue7",
+  "zh": "参数增加对应 ({v1}, {v2})，方向向量为 ({v3}, {v4})。"
+ },
+ {
+  "key": "gen.param_eq.uq8",
+  "zh": "参数方程 x = cosθ, y = sinθ（θ 为参数）消参后是？"
+ },
+ {
+  "key": "gen.param_eq.ue8",
+  "zh": "cos²θ + sin²θ = 1 → x² + y² = 1（单位圆）。"
+ },
+ {
+  "key": "gen.param_eq.uq9",
+  "zh": "极坐标点 (ρ={v1}, θ={v2}°) 的直角坐标是？"
+ },
+ {
+  "key": "gen.param_eq.ue9",
+  "zh": "x=ρcosθ, y=ρsinθ；θ={v1}° 时得 {v2}。"
+ },
+ {
+  "key": "gen.dist_exp.uq0",
+  "zh": "随机变量 X 的期望 E(X) = {v1}，则 E(2X) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue0",
+  "zh": "E(2X) = 2E(X) = 2 × {v1} = {v2}。"
+ },
+ {
+  "key": "gen.dist_exp.uq1",
+  "zh": "随机变量 X 的方差 D(X) = {v1}，则 D(2X) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue1",
+  "zh": "D(2X) = 4D(X) = 4 × {v1} = {v2}。"
+ },
+ {
+  "key": "gen.dist_exp.uo0",
+  "zh": "所有概率之和为 1"
+ },
+ {
+  "key": "gen.dist_exp.uo1",
+  "zh": "所有概率之和为 0"
+ },
+ {
+  "key": "gen.dist_exp.uo2",
+  "zh": "概率可以为负"
+ },
+ {
+  "key": "gen.dist_exp.uo3",
+  "zh": "概率可以大于 1"
+ },
+ {
+  "key": "gen.dist_exp.uq2",
+  "zh": "离散型随机变量分布列的基本性质是？"
+ },
+ {
+  "key": "gen.dist_exp.ue2",
+  "zh": "分布列性质：所有 P(X=xᵢ) ≥ 0，且 ΣP(X=xᵢ) = 1。"
+ },
+ {
+  "key": "gen.dist_exp.uq3",
+  "zh": "期望的线性性质是？"
+ },
+ {
+  "key": "gen.dist_exp.ue3",
+  "zh": "E(aX + b) = aE(X) + b。"
+ },
+ {
+  "key": "gen.dist_exp.uq4",
+  "zh": "若 E(X) = {v1}，则 E({v2}X + {v3}) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue4",
+  "zh": "E({v1}X+{v2}) = {v3}E(X)+{v4} = {v5}×{v6}+{v7} = {v8}。"
+ },
+ {
+  "key": "gen.dist_exp.uq5",
+  "zh": "若 D(X) = {v1}，则 D({v2}X) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue5",
+  "zh": "D({v1}X) = {v2}²D(X) = {v3}×{v4} = {v5}。"
+ },
+ {
+  "key": "gen.dist_exp.uq6",
+  "zh": "若 E(X)={v1}、E(Y)={v2}，则 E(X+Y) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue6",
+  "zh": "期望可加：E(X+Y) = E(X)+E(Y) = {v1}+{v2} = {v3}。"
+ },
+ {
+  "key": "gen.dist_exp.uq7",
+  "zh": "若 D(X) = {v1}，则常数平移后 D(X + 5) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue7",
+  "zh": "方差平移不变：D(X+5) = D(X) = {v1}。"
+ },
+ {
+  "key": "gen.dist_exp.uq8",
+  "zh": "若 E(X)={v1}、E(X²)={v2}，则 D(X) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue8",
+  "zh": "D(X) = E(X²) − [E(X)]² = {v1} − {v2}² = {v3}。"
+ },
+ {
+  "key": "gen.dist_exp.uq9",
+  "zh": "常数随机变量 X ≡ {v1}，则 E(X) = ？"
+ },
+ {
+  "key": "gen.dist_exp.ue9",
+  "zh": "常数的期望等于自身：E(X) = {v1}。"
+ },
+ {
+  "key": "gen.dist_binom.uq0",
+  "zh": "X ~ B({v1}, 0.5)，E(X) = ？"
+ },
+ {
+  "key": "gen.dist_binom.ue0",
+  "zh": "E(X) = np = {v1} × 0.5 = {v2}。"
+ },
+ {
+  "key": "gen.dist_binom.uq1",
+  "zh": "X ~ B({v1}, 0.5)，D(X) = ？"
+ },
+ {
+  "key": "gen.dist_binom.ue1",
+  "zh": "D(X) = np(1−p) = {v1} × 0.5 × 0.5 = {v2}。"
+ },
+ {
+  "key": "gen.dist_binom.uo0",
+  "zh": "关于 μ 对称"
+ },
+ {
+  "key": "gen.dist_binom.uo1",
+  "zh": "关于 σ 对称"
+ },
+ {
+  "key": "gen.dist_binom.uo2",
+  "zh": "关于 0 对称"
+ },
+ {
+  "key": "gen.dist_binom.uo3",
+  "zh": "无对称性"
+ },
+ {
+  "key": "gen.dist_binom.uq2",
+  "zh": "正态分布 N(μ, σ²) 的图像关于？对称"
+ },
+ {
+  "key": "gen.dist_binom.ue2",
+  "zh": "正态曲线关于 μ 对称。"
+ },
+ {
+  "key": "gen.dist_binom.uq3",
+  "zh": "标准正态分布 N(0,1) 的参数是？"
+ },
+ {
+  "key": "gen.dist_binom.ue3",
+  "zh": "标准正态：μ=0，σ=1。"
+ },
+ {
+  "key": "gen.dist_binom.uq4",
+  "zh": "X ~ B({v1}, {v2})，E(X) = ？"
+ },
+ {
+  "key": "gen.dist_binom.ue4",
+  "zh": "E(X) = np = {v1} × {v2} = {v3}。"
+ },
+ {
+  "key": "gen.dist_binom.uq5",
+  "zh": "X ~ B({v1}, {v2})，D(X) = ？"
+ },
+ {
+  "key": "gen.dist_binom.ue5",
+  "zh": "D(X) = np(1−p) = {v1} × {v2} × {v3} = {v4}。"
+ },
+ {
+  "key": "gen.dist_binom.uo4",
+  "zh": "约 68.27%"
+ },
+ {
+  "key": "gen.dist_binom.uo5",
+  "zh": "约 95.45%"
+ },
+ {
+  "key": "gen.dist_binom.uo6",
+  "zh": "约 99.74%"
+ },
+ {
+  "key": "gen.dist_binom.uo7",
+  "zh": "约 50%"
+ },
+ {
+  "key": "gen.dist_binom.uq6",
+  "zh": "正态分布 N(μ,σ²) 中，落入 [μ−σ, μ+σ] 的概率约为？"
+ },
+ {
+  "key": "gen.dist_binom.ue6",
+  "zh": "3σ 原则：约 68.27%。"
+ },
+ {
+  "key": "gen.dist_binom.uo8",
+  "zh": "约 95.45%"
+ },
+ {
+  "key": "gen.dist_binom.uo9",
+  "zh": "约 68.27%"
+ },
+ {
+  "key": "gen.dist_binom.uo10",
+  "zh": "约 99.74%"
+ },
+ {
+  "key": "gen.dist_binom.uo11",
+  "zh": "约 34.13%"
+ },
+ {
+  "key": "gen.dist_binom.uq7",
+  "zh": "N(μ,σ²) 中，落入 [μ−2σ, μ+2σ] 的概率约为？"
+ },
+ {
+  "key": "gen.dist_binom.ue7",
+  "zh": "约 95.45%。"
+ },
+ {
+  "key": "gen.dist_binom.uq8",
+  "zh": "X ~ B({v1}, {v2})，则 P(X = 0) = ？"
+ },
+ {
+  "key": "gen.dist_binom.ue8",
+  "zh": "P(X=0) = C({v1},0)p⁰(1−p)^{v2} = (1−p)^{v3} = {v4}。"
+ },
+ {
+  "key": "gen.dist_binom.uq9",
+  "zh": "某指标 X~N({v1}, {v2}²)，约 68.27% 的数据落在哪个区间？"
+ },
+ {
+  "key": "gen.dist_binom.ue9",
+  "zh": "[μ−σ, μ+σ] = [{v1}, {v2}]。"
+ },
+ {
+  "key": "gen.euler.uq0",
+  "zh": "欧拉公式 e^(i·{v1}°) 的实部（即 cos {v2}°）是？"
+ },
+ {
+  "key": "gen.euler.ue0",
+  "zh": "e^(iθ)=cosθ+i·sinθ，θ={v1}° 时实部 = cos {v2}° = {v3}。"
+ },
+ {
+  "key": "gen.euler.uq1",
+  "zh": "欧拉公式 e^(i·{v1}°) 的虚部（即 sin {v2}°）是？"
+ },
+ {
+  "key": "gen.euler.ue1",
+  "zh": "虚部 = sin {v1}° = {v2}。"
+ },
+ {
+  "key": "gen.euler.uq2",
+  "zh": "复数 e^(i·{v1}°) 的模长 |e^(i·{v2}°)| 是？"
+ },
+ {
+  "key": "gen.euler.ue2",
+  "zh": "|cosθ+i·sinθ| = √(cos²+sin²) = 1，与 {v1}° 无关。"
+ },
+ {
+  "key": "gen.euler.uo0",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo1",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo2",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo3",
+  "zh": "{v1} − i·{v2}"
+ },
+ {
+  "key": "gen.euler.uq3",
+  "zh": "把 e^(i·{v1}°) 写成 a+bi 形式（实部+虚部 i）？"
+ },
+ {
+  "key": "gen.euler.ue3",
+  "zh": "e^(i·{v1}°) = cos {v2}° + i·sin {v3}° = {v4} + i·{v5}。"
+ },
+ {
+  "key": "gen.euler.uo4",
+  "zh": "{v1} − i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo5",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo6",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo7",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uq4",
+  "zh": "e^(−i·{v1}°) = cos {v2}° − i·sin {v3}° 等于？"
+ },
+ {
+  "key": "gen.euler.ue4",
+  "zh": "取共轭：e^(−iθ)=cosθ−i·sinθ = {v1} − i·{v2}。"
+ },
+ {
+  "key": "gen.euler.uq5",
+  "zh": "若 z = e^(i·{v1}°)，则 z^{v2} 的辐角（角度，模 360）是？"
+ },
+ {
+  "key": "gen.euler.ue5",
+  "zh": "z^k = e^(i·{v1}°·{v2})，辐角为 {v3}° ≡ {v4}°（模 360）。"
+ },
+ {
+  "key": "gen.euler.uq6",
+  "zh": "e^(i·{v1}°) · e^(i·{v2}°) 的辐角（角度，模 360）是？"
+ },
+ {
+  "key": "gen.euler.ue6",
+  "zh": "相乘辐角相加：{v1}° + {v2}° = {v3}° ≡ {v4}°（模 360）。"
+ },
+ {
+  "key": "gen.euler.uq7",
+  "zh": "e^(i·{v1}°) / e^(i·{v2}°) 的辐角（角度，取 [0,360)）是？"
+ },
+ {
+  "key": "gen.euler.ue7",
+  "zh": "相除辐角相减：{v1}° − {v2}° = {v3}°，归一到 [0,360) 为 {v4}°。"
+ },
+ {
+  "key": "gen.euler.uo8",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo9",
+  "zh": "{v1} − i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo10",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uo11",
+  "zh": "{v1} + i·{v2}"
+ },
+ {
+  "key": "gen.euler.uq8",
+  "zh": "e^(i·{v1}°) 的 a+bi 形式是？"
+ },
+ {
+  "key": "gen.euler.ue8",
+  "zh": "e^(i·{v1}°) = cos {v2}° + i·sin {v3}° = {v4} + i·{v5}。"
+ },
+ {
+  "key": "gen.euler.uq9",
+  "zh": "e^(i·{v1}°) 的平方 e^(i·{v2}°) 的实部是？"
+ },
+ {
+  "key": "gen.euler.ue9",
+  "zh": "e^(i·2θ) 实部 = cos(2θ)，θ={v1}° 时为 {v2}。"
+ },
+ {
+  "key": "gen.taylor.uq0",
+  "zh": "e^({v1}x) 的麦克劳林展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue0",
+  "zh": "e^({v1}x)=Σ ({v2}ⁿxⁿ)/n!，x^{v3} 系数 = {v4}^{v5}/{v6}! = {v7}。"
+ },
+ {
+  "key": "gen.taylor.uq1",
+  "zh": "sin({v1}x) 的麦克劳林展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue1",
+  "zh": "sin x 只含奇次幂；sin({v1}x) 中 x^{v2} 系数 = {v3}。"
+ },
+ {
+  "key": "gen.taylor.uq2",
+  "zh": "cos({v1}x) 的麦克劳林展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue2",
+  "zh": "cos x 只含偶次幂；cos({v1}x) 中 x^{v2} 系数 = {v3}。"
+ },
+ {
+  "key": "gen.taylor.uq3",
+  "zh": "ln(1+{v1}x) 的麦克劳林展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue3",
+  "zh": "ln(1+{v1}x) = Σ (−1)^{n−1} ({v2}x)ⁿ/n，x^{v3} 系数 = {v4}。"
+ },
+ {
+  "key": "gen.taylor.uq4",
+  "zh": "把 1/(1−{v1}x) 展开成幂级数，x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue4",
+  "zh": "等比级数 1/(1−{v1}x) = 1 + {v2}x + {v3}²x² + …，x^{v4} 系数 = {v5}^{v6} = {v7}。"
+ },
+ {
+  "key": "gen.taylor.uq5",
+  "zh": "(1+{v1}x)^{v2} 的二项展开中 x^{v3} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue5",
+  "zh": "二项式系数 C({v1},{v2}) · {v3}^{v4} = {v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.taylor.uq6",
+  "zh": "把 1/(1+{v1}x) 展开成幂级数，x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue6",
+  "zh": "1/(1+{v1}x) = Σ (−{v2})ⁿxⁿ，x^{v3} 系数 = (−{v4})^{v5} = {v6}。"
+ },
+ {
+  "key": "gen.taylor.uq7",
+  "zh": "(1−{v1}x)^{v2} 的二项展开中 x^{v3} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue7",
+  "zh": "(1−{v1}x)^{v2} = Σ (−{v3})^k C({v4},k) x^k，x^{v5} 系数 = {v6}。"
+ },
+ {
+  "key": "gen.taylor.uq8",
+  "zh": "函数 f(x)=x^{v1} 的麦克劳林展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue8",
+  "zh": "单项式 x^{v1} 本身就是其自身的展开，x^{v2} 系数 = 1。"
+ },
+ {
+  "key": "gen.taylor.uq9",
+  "zh": "函数 f(x)=x^{v1} 的麦克劳林展开中 x^{v2} 项（{v3}）的系数是？"
+ },
+ {
+  "key": "gen.taylor.ue9",
+  "zh": "x^{v1} 只含一项，当 {v2} = {v3} 时系数为 1，否则为 0，故为 {v4}。"
+ },
+ {
+  "key": "gen.numshape.uo0",
+  "zh": "点 {v1}"
+ },
+ {
+  "key": "gen.numshape.uo1",
+  "zh": "原点"
+ },
+ {
+  "key": "gen.numshape.uo2",
+  "zh": "点 0"
+ },
+ {
+  "key": "gen.numshape.uo3",
+  "zh": "点 x"
+ },
+ {
+  "key": "gen.numshape.uq0",
+  "zh": "|x − {v1}| 的几何意义是数轴上点 x 到哪里的距离？"
+ },
+ {
+  "key": "gen.numshape.ue0",
+  "zh": "|x − a| 表示点 x 到点 a 的距离，故 |x−{v1}| 是到 {v2} 的距离。"
+ },
+ {
+  "key": "gen.numshape.uo4",
+  "zh": "x < −{v1} 或 x > {v2}"
+ },
+ {
+  "key": "gen.numshape.uq1",
+  "zh": "用数形结合解不等式 x² − {v1} > 0，解集是？"
+ },
+ {
+  "key": "gen.numshape.ue1",
+  "zh": "抛物线 y = x² − {v1} 在 x 轴上方时 x² > {v2} = {v3}²，即 x < −{v4} 或 x > {v5}。"
+ },
+ {
+  "key": "gen.numshape.uo5",
+  "zh": "{v1} 和 {v2}"
+ },
+ {
+  "key": "gen.numshape.uo6",
+  "zh": "{v1} 和 −{v2}"
+ },
+ {
+  "key": "gen.numshape.uo7",
+  "zh": "−{v1} 和 {v2}"
+ },
+ {
+  "key": "gen.numshape.uq2",
+  "zh": "函数 f(x) = x² − {v1}x + {v2} 的零点（与 x 轴交点横坐标）是？"
+ },
+ {
+  "key": "gen.numshape.ue2",
+  "zh": "x² − {v1}x + {v2} = (x−{v3})(x−{v4}) = 0 → x = {v5} 或 x = {v6}。"
+ },
+ {
+  "key": "gen.numshape.uo8",
+  "zh": "第一象限"
+ },
+ {
+  "key": "gen.numshape.uo9",
+  "zh": "第二象限"
+ },
+ {
+  "key": "gen.numshape.uo10",
+  "zh": "第三象限"
+ },
+ {
+  "key": "gen.numshape.uo11",
+  "zh": "第四象限"
+ },
+ {
+  "key": "gen.numshape.uq3",
+  "zh": "点 ({v1}, {v2}) 在平面直角坐标系位于？"
+ },
+ {
+  "key": "gen.numshape.ue3",
+  "zh": "x={v1}、y={v2}，属于{v3}。"
+ },
+ {
+  "key": "gen.numshape.uo12",
+  "zh": "不存在"
+ },
+ {
+  "key": "gen.numshape.uq4",
+  "zh": "用数形结合看函数 y = |x − {v1}| 的最小值是？"
+ },
+ {
+  "key": "gen.numshape.ue4",
+  "zh": "V 形图像顶点在 x={v1} 处，最小值为 0。"
+ },
+ {
+  "key": "gen.numshape.uq5",
+  "zh": "数轴上点 {v1} 与点 {v2} 之间的距离是？"
+ },
+ {
+  "key": "gen.numshape.ue5",
+  "zh": "两点距离 = |{v1} − {v2}| = {v3}。"
+ },
+ {
+  "key": "gen.numshape.uo13",
+  "zh": "x < {v1} 或 x > {v2}"
+ },
+ {
+  "key": "gen.numshape.uq6",
+  "zh": "用数形结合解不等式 |x − {v1}| < {v2}，解集是？"
+ },
+ {
+  "key": "gen.numshape.ue6",
+  "zh": "|x−{v1}| < {v2} ⇔ −{v3} < x−{v4} < {v5} ⇔ {v6} < x < {v7}。"
+ },
+ {
+  "key": "gen.numshape.uo14",
+  "zh": "向下"
+ },
+ {
+  "key": "gen.numshape.uo15",
+  "zh": "向上"
+ },
+ {
+  "key": "gen.numshape.uo16",
+  "zh": "向左"
+ },
+ {
+  "key": "gen.numshape.uo17",
+  "zh": "向右"
+ },
+ {
+  "key": "gen.numshape.uq7",
+  "zh": "抛物线 y = {v1}x² {v2} {v3} 的开口朝向是？"
+ },
+ {
+  "key": "gen.numshape.ue7",
+  "zh": "二次项系数 a = {v1} {v2}，抛物线开口{v3}。"
+ },
+ {
+  "key": "gen.numshape.uq8",
+  "zh": "圆 (x − {v1})² + (y − {v2})² = {v3} 的圆心坐标是？"
+ },
+ {
+  "key": "gen.numshape.ue8",
+  "zh": "标准圆方程 (x−a)²+(y−b)²=r² 的圆心为 (a,b) = ({v1}, {v2})。"
+ },
+ {
+  "key": "gen.numshape.uq9",
+  "zh": "直线 y = {v1}x + {v2} 与 y 轴交点的纵坐标是？"
+ },
+ {
+  "key": "gen.numshape.ue9",
+  "zh": "令 x=0，得 y = {v1}，故与 y 轴交点纵坐标为 {v2}。"
+ },
+ {
+  "key": "gen.induction.uo0",
+  "zh": "验证 n = {v1} 时命题成立"
+ },
+ {
+  "key": "gen.induction.uo1",
+  "zh": "令 n → ∞"
+ },
+ {
+  "key": "gen.induction.uo2",
+  "zh": "证明 n = k+1"
+ },
+ {
+  "key": "gen.induction.uo3",
+  "zh": "直接写结论"
+ },
+ {
+  "key": "gen.induction.uq0",
+  "zh": "用数学归纳法证明命题，第一步（奠基）通常先验证 n = {v1} 时命题成立，这步叫？"
+ },
+ {
+  "key": "gen.induction.ue0",
+  "zh": "第一步验证起始值（如 n={v1}）时命题成立，称为奠基步骤。"
+ },
+ {
+  "key": "gen.induction.uo4",
+  "zh": "由 n = {v1} 成立推出 n = {v2} 成立"
+ },
+ {
+  "key": "gen.induction.uo5",
+  "zh": "由 n = 1 推出 n = 2"
+ },
+ {
+  "key": "gen.induction.uo6",
+  "zh": "证明 n = {v1} 成立"
+ },
+ {
+  "key": "gen.induction.uo7",
+  "zh": "令 n → ∞"
+ },
+ {
+  "key": "gen.induction.uq1",
+  "zh": "归纳法第二步（递推）：假设 n = {v1} 时成立，要证明的是？"
+ },
+ {
+  "key": "gen.induction.ue1",
+  "zh": "假设 n={v1} 成立，推出 n={v2} 也成立，形成递推链条。"
+ },
+ {
+  "key": "gen.induction.uq2",
+  "zh": "由归纳法公式 1 + 2 + … + {v1} = ？"
+ },
+ {
+  "key": "gen.induction.ue2",
+  "zh": "公式 n(n+1)/2，{v1}×{v2}/2 = {v3}。"
+ },
+ {
+  "key": "gen.induction.uq3",
+  "zh": "等比数列求和：2⁰ + 2¹ + … + 2^{v1} = ？"
+ },
+ {
+  "key": "gen.induction.ue3",
+  "zh": "首项 1、公比 2 的等比和 = 2^{v1} − 1。"
+ },
+ {
+  "key": "gen.induction.uq4",
+  "zh": "前 {v1} 个正奇数之和 1 + 3 + 5 + … + (2·{v2} − 1) = ？"
+ },
+ {
+  "key": "gen.induction.ue4",
+  "zh": "前 n 个奇数和 = n²，故为 {v1}² = {v2}。"
+ },
+ {
+  "key": "gen.induction.uq5",
+  "zh": "前 {v1} 个正偶数之和 2 + 4 + … + 2·{v2} = ？"
+ },
+ {
+  "key": "gen.induction.ue5",
+  "zh": "前 n 个偶数和 = n(n+1)，故为 {v1}({v2}+1) = {v3}。"
+ },
+ {
+  "key": "gen.induction.uq6",
+  "zh": "平方和公式：1² + 2² + … + {v1}² = ？"
+ },
+ {
+  "key": "gen.induction.ue6",
+  "zh": "平方和 = n(n+1)(2n+1)/6，代入得 {v1}。"
+ },
+ {
+  "key": "gen.induction.uo8",
+  "zh": "n = {v1} 时的命题（归纳假设）"
+ },
+ {
+  "key": "gen.induction.uo9",
+  "zh": "n = 1 时"
+ },
+ {
+  "key": "gen.induction.uo10",
+  "zh": "n = {v1} 时"
+ },
+ {
+  "key": "gen.induction.uo11",
+  "zh": "结论本身"
+ },
+ {
+  "key": "gen.induction.uq7",
+  "zh": "归纳递推中「假设 n = {v1} 时命题成立」这一步中的假设称为？"
+ },
+ {
+  "key": "gen.induction.ue7",
+  "zh": "该假设称为归纳假设，是递推的桥梁。"
+ },
+ {
+  "key": "gen.induction.uo12",
+  "zh": "所有 n ≥ 1 的正整数"
+ },
+ {
+  "key": "gen.induction.uo13",
+  "zh": "仅 n = 1"
+ },
+ {
+  "key": "gen.induction.uo14",
+  "zh": "仅 n ≤ {v1}"
+ },
+ {
+  "key": "gen.induction.uo15",
+  "zh": "所有实数"
+ },
+ {
+  "key": "gen.induction.uq8",
+  "zh": "若 P(1) 成立，且「P(k) 成立 ⇒ P(k+1) 成立」，则可推出命题对？成立"
+ },
+ {
+  "key": "gen.induction.ue8",
+  "zh": "由奠基与递推，归纳法可推出对一切正整数 n ≥ 1 成立。"
+ },
+ {
+  "key": "gen.induction.uq9",
+  "zh": "用归纳法可证 1 + 3 + … + (2·{v1} − 1) = ？"
+ },
+ {
+  "key": "gen.induction.ue9",
+  "zh": "前 {v1} 个奇数和 = {v2}² = {v3}。"
+ },
+ {
+  "key": "gen.amgm.uq0",
+  "zh": "x > 0 时，x + {v1}/x 的最小值（用均值不等式）是？"
+ },
+ {
+  "key": "gen.amgm.ue0",
+  "zh": "x + {v1}/x ≥ 2√(x·{v2}/x) = 2√{v3} ≈ {v4}，当 x = √{v5} 时取等。"
+ },
+ {
+  "key": "gen.amgm.uq1",
+  "zh": "x > 0 时，{v1}x + {v2}/x 的最小值是？"
+ },
+ {
+  "key": "gen.amgm.ue1",
+  "zh": "{v1}x + {v2}/x ≥ 2√({v3}·{v4}) ≈ {v5}。"
+ },
+ {
+  "key": "gen.amgm.uq2",
+  "zh": "正数 x 满足 0 < x < {v1} 时，x({v2} − x) 的最大值是？"
+ },
+ {
+  "key": "gen.amgm.ue2",
+  "zh": "x({v1}−x) ≤ ({v2}/2)² = {v3}，当 x = {v4}/2 时取等。"
+ },
+ {
+  "key": "gen.amgm.uo0",
+  "zh": "算术平均 ≥ 几何平均 ({v1} ≥ {v2})"
+ },
+ {
+  "key": "gen.amgm.uo1",
+  "zh": "算术平均 < 几何平均"
+ },
+ {
+  "key": "gen.amgm.uo2",
+  "zh": "相等"
+ },
+ {
+  "key": "gen.amgm.uo3",
+  "zh": "无法确定"
+ },
+ {
+  "key": "gen.amgm.uq3",
+  "zh": "对正数 a = {v1}, b = {v2}：比较算术平均 (a+b)/2 与几何平均 √(ab)？"
+ },
+ {
+  "key": "gen.amgm.ue3",
+  "zh": "均值不等式：算术平均 ≥ 几何平均，此处 {v1} ≥ {v2}。"
+ },
+ {
+  "key": "gen.amgm.uo4",
+  "zh": "任意正数"
+ },
+ {
+  "key": "gen.amgm.uq4",
+  "zh": "正数 a、b 满足 a + b = {v1}，则 ab 在何时取最大值？"
+ },
+ {
+  "key": "gen.amgm.ue4",
+  "zh": "和定积最大：当 a = b = {v1} 时 ab 最大。"
+ },
+ {
+  "key": "gen.amgm.uq5",
+  "zh": "x > 0 时，x² + {v1}/x² 的最小值是？"
+ },
+ {
+  "key": "gen.amgm.ue5",
+  "zh": "x² + {v1}/x² ≥ 2·{v2} = {v3}（令 t=x²，t + {v4}/t ≥ 2{v5}）。"
+ },
+ {
+  "key": "gen.amgm.uq6",
+  "zh": "a, b > 0 且 a + b = {v1}，则 ab 的最大值是？"
+ },
+ {
+  "key": "gen.amgm.ue6",
+  "zh": "和定积最大：ab ≤ ({v1}/2)² = {v2}。"
+ },
+ {
+  "key": "gen.amgm.uq7",
+  "zh": "a, b > 0 且 ab = {v1}，则 a + b 的最小值是？"
+ },
+ {
+  "key": "gen.amgm.ue7",
+  "zh": "积定和最小：a + b ≥ 2√{v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.amgm.uo5",
+  "zh": "任意正数"
+ },
+ {
+  "key": "gen.amgm.uq8",
+  "zh": "三元均值不等式 a + b + c ≥ 3·³√(abc) 等号成立的条件是？"
+ },
+ {
+  "key": "gen.amgm.ue8",
+  "zh": "三元均值不等式等号当且仅当 a = b = c 时成立。"
+ },
+ {
+  "key": "gen.amgm.uq9",
+  "zh": "x > 0 时，x + {v1}/x + {v2} 的最小值是？"
+ },
+ {
+  "key": "gen.amgm.ue9",
+  "zh": "x + {v1}/x ≥ 2√{v2}，故整体最小值 ≈ 2√{v3} + {v4} = {v5}。"
+ },
+ {
+  "key": "gen.binomial.uq0",
+  "zh": "(a + b)^{v1} 展开后共有多少项？"
+ },
+ {
+  "key": "gen.binomial.ue0",
+  "zh": "从 a^{v1}, a^{v2}b, … 到 b^{v3} 共 {v4} + 1 = {v5} 项。"
+ },
+ {
+  "key": "gen.binomial.uq1",
+  "zh": "(a + b)^{v1} 展开中 a^{v2}b^{v3} 项的系数是？"
+ },
+ {
+  "key": "gen.binomial.ue1",
+  "zh": "该系数为二项式系数 C({v1},{v2}) = {v3}。"
+ },
+ {
+  "key": "gen.binomial.uq2",
+  "zh": "(1 + x)^{v1} 展开式中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.binomial.ue2",
+  "zh": "x^{v1} 系数 = C({v2},{v3}) = {v4}。"
+ },
+ {
+  "key": "gen.binomial.uq3",
+  "zh": "(x + 1)^{v1} 展开式的常数项（x⁰ 项）是？"
+ },
+ {
+  "key": "gen.binomial.ue3",
+  "zh": "取 x⁰ 项：C({v1},{v2})·x⁰·1^{v3} = 1，常数项为 1。"
+ },
+ {
+  "key": "gen.binomial.uq4",
+  "zh": "(a + b)^{v1} 各项二项式系数（即 C({v2},k) 之和）是？"
+ },
+ {
+  "key": "gen.binomial.ue4",
+  "zh": "令 a = b = 1，得系数和 = (1+1)^{v1} = 2^{v2}。"
+ },
+ {
+  "key": "gen.binomial.uq5",
+  "zh": "(a + b)^{v1} 展开中奇数项（第 1,3,5,… 项）二项式系数之和是？"
+ },
+ {
+  "key": "gen.binomial.ue5",
+  "zh": "(1+1)^{v1} 与 (1−1)^{v2} 相减/相加可得奇偶项和均为 2^{v3}。"
+ },
+ {
+  "key": "gen.binomial.uq6",
+  "zh": "(a + b)^{v1} 展开中二项式系数最大的那一项系数是？"
+ },
+ {
+  "key": "gen.binomial.ue6",
+  "zh": "中间项系数最大：C({v1},{v2}) = {v3}。"
+ },
+ {
+  "key": "gen.binomial.uq7",
+  "zh": "(1 − x)^{v1} 展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.binomial.ue7",
+  "zh": "(1−x)^{v1} = Σ (−1)^k C({v2},k) x^k，x^{v3} 系数 = {v4}{v5}。"
+ },
+ {
+  "key": "gen.binomial.uq8",
+  "zh": "(x + 2)^{v1} 展开中 x^{v2} 项的系数是？"
+ },
+ {
+  "key": "gen.binomial.ue8",
+  "zh": "项为 C({v1},{v2})·x^{v3}·2^{v4}，系数 = {v5}·2^{v6} = {v7}。"
+ },
+ {
+  "key": "gen.binomial.uq9",
+  "zh": "(2x + 3)^{v1} 展开中的常数项（x⁰ 项）是？"
+ },
+ {
+  "key": "gen.binomial.ue9",
+  "zh": "x⁰ 项 = C({v1},{v2})·(2x)⁰·3^{v3} = 3^{v4} = {v5}。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq0",
+  "zh": "班中 {v1} 人会英语、{v2} 人会日语，两种都会的 {v3} 人，至少会一种的有几人？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue0",
+  "zh": "{v1} + {v2} − {v3} = {v4}（人）。容斥：会英 + 会日 − 都会。"
+ },
+ {
+  "key": "gen.inclusion_hs.uo0",
+  "zh": "|A|·|B|"
+ },
+ {
+  "key": "gen.inclusion_hs.uq1",
+  "zh": "集合 A 有 {v1} 个元素、B 有 {v2} 个元素，两集合容斥原理 |A∪B| = ？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue1",
+  "zh": "|A∪B| = |A| + |B| − |A∩B|，减去重复计数的交集。"
+ },
+ {
+  "key": "gen.inclusion_hs.uo1",
+  "zh": "|A|·|B|·|C|"
+ },
+ {
+  "key": "gen.inclusion_hs.uq2",
+  "zh": "三集合 A({v1}个)、B({v2}个)、C({v3}个)，|A∪B∪C| = |A|+|B|+|C| − (两两交之和) + ？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue2",
+  "zh": "加回被多减一次的三者交集 |A∩B∩C|。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq3",
+  "zh": "1 到 {v1} 中能被 {v2} 或 {v3} 整除的数共有几个？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue3",
+  "zh": "被{v1}整除 {v2} 个、被{v3}整除 {v4} 个、被{v5}整除 {v6} 个 → 容斥得 {v7}。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq4",
+  "zh": "1 到 {v1} 中既不能被 {v2} 整除也不能被 {v3} 整除的数有几个？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue4",
+  "zh": "总数 {v1} 减去「能被 {v2} 或 {v3} 整除」的 {v4} 个，余 {v5} 个。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq5",
+  "zh": "|A|={v1},|B|={v2},|C|={v3}，两两交 {v4},{v5},{v6}，三者交 {v7}，则 |A∪B∪C| = ？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue5",
+  "zh": "三集合容斥：{v1}+{v2}+{v3}−({v4}+{v5}+{v6})+{v7} = {v8}。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq6",
+  "zh": "班中 {v1} 人会英语、{v2} 人会日语、都会 {v3} 人，则只会英语的有几人？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue6",
+  "zh": "会英语中扣除也会日语的：{v1} − {v2} = {v3} 人。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq7",
+  "zh": "|A|={v1},|B|={v2},|A∪B|={v3}，则由容斥 |A∩B| = ？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue7",
+  "zh": "|A∩B| = |A|+|B|−|A∪B| = {v1}+{v2}−{v3} = {v4}。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq8",
+  "zh": "三集合 |A|={v1},|B|={v2},|C|={v3}，两两交 {v4}/{v5}/{v6}，三者交 {v7}，并集大小是？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue8",
+  "zh": "|A∪B∪C| = {v1}+{v2}+{v3}−{v4}−{v5}−{v6}+{v7} = {v8}。"
+ },
+ {
+  "key": "gen.inclusion_hs.uq9",
+  "zh": "总体 {v1} 人中，会英语 {v2} 人、会日语 {v3} 人、都会 {v4} 人，则两种都不会的有几人？"
+ },
+ {
+  "key": "gen.inclusion_hs.ue9",
+  "zh": "至少会一种 = {v1}+{v2}−{v3} = {v4}，两种都不会 = {v5} − {v6} = {v7} 人。"
+ },
+ {
+  "key": "gen.recurrence.uq0",
+  "zh": "等比数列 a₁ = {v1}，a_{n+1} = {v2}a_n，则 a_{v3} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue0",
+  "zh": "a_n = {v1}·{v2}^{n−1}，a_{v3} = {v4}·{v5}^{{v6}−1} = {v7}。"
+ },
+ {
+  "key": "gen.recurrence.uq1",
+  "zh": "等差数列 a₁ = {v1}，a_{n+1} = a_n + {v2}，则 a_{v3} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue1",
+  "zh": "a_n = {v1} + (n−1)·{v2}，a_{v3} = {v4} + {v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.recurrence.uq2",
+  "zh": "数列 a₁ = {v1}，a_{n+1} = {v2}a_n + {v3}，则 a_{v4} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue2",
+  "zh": "逐项递推 {v1} 次得 a_{v2} = {v3}。"
+ },
+ {
+  "key": "gen.recurrence.uq3",
+  "zh": "等差数列 a₁ = {v1}, a₂ = {v2}（公差 {v3}），则 a_{v4} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue3",
+  "zh": "公差 d = {v1}−{v2} = {v3}，a_{v4} = {v5} + {v6}·{v7} = {v8}。"
+ },
+ {
+  "key": "gen.recurrence.uq4",
+  "zh": "等比数列 a₁ = {v1}，公比 {v2}，则前 {v3} 项和 S_{v4} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue4",
+  "zh": "S_{v1} = {v2}(1−{v3}^{v4})/(1−{v5}) = {v6}。"
+ },
+ {
+  "key": "gen.recurrence.uq5",
+  "zh": "数列 a₁ = {v1}, a₂ = {v2}，且 a_{n+2} = a_{n+1} + a_n（类斐波那契），则 a_{v3} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue5",
+  "zh": "递推得 a_{v1} = {v2}。"
+ },
+ {
+  "key": "gen.recurrence.uq6",
+  "zh": "等差数列中已知 a_{v1} = {v2}，公差 {v3}，则 a_{v4} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue6",
+  "zh": "a_{v1} = a_{v2} + {v3}·{v4} = {v5} + {v6} = {v7}。"
+ },
+ {
+  "key": "gen.recurrence.uq7",
+  "zh": "等差数列 a₁ = {v1}，公差 {v2}，则前 {v3} 项和 S_{v4} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue7",
+  "zh": "S_{v1} = {v2}(2·{v3} + ({v4}−1)·{v5})/2 = {v6}。"
+ },
+ {
+  "key": "gen.recurrence.uq8",
+  "zh": "等比数列公比 {v1}，已知 a_{v2} = {v3}，则首项 a₁ = ？"
+ },
+ {
+  "key": "gen.recurrence.ue8",
+  "zh": "a_{v1} = a₁·{v2}^{{v3}−1} = {v4} ⇒ a₁ = {v5}/{v6} = {v7}。"
+ },
+ {
+  "key": "gen.recurrence.uq9",
+  "zh": "数列 a₁ = {v1}, a₂ = {v2}，a_{n+2} = a_{n+1} + a_n，求 a_{v3} = ？"
+ },
+ {
+  "key": "gen.recurrence.ue9",
+  "zh": "递推得 a_{v1} = {v2}。"
+ },
+ {
+  "key": "gen.tree.uo0",
+  "zh": "{v1} 种"
+ },
+ {
+  "key": "gen.tree.uo1",
+  "zh": "{v1} 种"
+ },
+ {
+  "key": "gen.tree.uo2",
+  "zh": "{v1} 种"
+ },
+ {
+  "key": "gen.tree.uo3",
+  "zh": "{v1} 种"
+ },
+ {
+  "key": "gen.tree.uq0",
+  "zh": "有 {v1} 件上衣、{v2} 条裤子，各选一件共有几种搭配（树状图逐层展开）？"
+ },
+ {
+  "key": "gen.tree.ue0",
+  "zh": "分步乘法原理：{v1} × {v2} = {v3} 种。"
+ },
+ {
+  "key": "gen.tree.uq1",
+  "zh": "硬币抛 {v1} 次，至少出现 1 次正面的概率是？"
+ },
+ {
+  "key": "gen.tree.ue1",
+  "zh": "全反面的概率为 1/2^{v1}，故至少 1 次正面 = 1 − 1/2^{v2}。"
+ },
+ {
+  "key": "gen.tree.uq2",
+  "zh": "同时掷两枚均匀骰子，点数之和为 {v1} 的概率是？"
+ },
+ {
+  "key": "gen.tree.ue2",
+  "zh": "36 种等可能，和为 {v1} 有 {v2} 种，概率 = {v3}/36。"
+ },
+ {
+  "key": "gen.tree.uq3",
+  "zh": "硬币抛 {v1} 次，恰好出现 {v2} 次正面的概率是（用树状图/二项）？"
+ },
+ {
+  "key": "gen.tree.ue3",
+  "zh": "C({v1},{v2}) 种正面位置，概率 = C({v3},{v4})/2^{v5} = {v6}/2^{v7}。"
+ },
+ {
+  "key": "gen.tree.uq4",
+  "zh": "盒中有 {v1} 个红球、{v2} 个蓝球，随机取 1 个，取到红球的概率是？"
+ },
+ {
+  "key": "gen.tree.ue4",
+  "zh": "共 {v1} 个球，红球 {v2} 个，概率 = {v3}/{v4}。"
+ },
+ {
+  "key": "gen.tree.uq5",
+  "zh": "盒中 {v1} 红 {v2} 蓝，不放回依次取 2 个，先红后蓝的概率是？"
+ },
+ {
+  "key": "gen.tree.ue5",
+  "zh": "P = ({v1}/{v2}) × ({v3}/{v4}) ≈ {v5}。"
+ },
+ {
+  "key": "gen.tree.uq6",
+  "zh": "掷一枚均匀骰子，点数大于 {v1} 的概率是？"
+ },
+ {
+  "key": "gen.tree.ue6",
+  "zh": "点数 {v1},…,6 共 {v2} 种，概率 = {v3}/6。"
+ },
+ {
+  "key": "gen.tree.uq7",
+  "zh": "用树状图：第一阶段有 {v1} 种选择，第二阶段各有 {v2} 种，总路径数是？"
+ },
+ {
+  "key": "gen.tree.ue7",
+  "zh": "乘法原理：总路径 = {v1} × {v2} = {v3}。"
+ },
+ {
+  "key": "gen.tree.uq8",
+  "zh": "盒中 {v1} 红 {v2} 蓝，有放回取 2 次，两次都是红球的概率是？"
+ },
+ {
+  "key": "gen.tree.ue8",
+  "zh": "每次红球概率 {v1}/{v2}，放回独立，P = ({v3}/{v4})² ≈ {v5}。"
+ },
+ {
+  "key": "gen.counting.uq0",
+  "zh": "{v1} 个人排成一排照相，有几种排法？"
+ },
+ {
+  "key": "gen.counting.ue0",
+  "zh": "{v1} 个人的全排列 = {v2}! = {v3}。"
+ },
+ {
+  "key": "gen.counting.uq1",
+  "zh": "{v1} 个人两两握手一次，共握手几次？"
+ },
+ {
+  "key": "gen.counting.ue1",
+  "zh": "每两人握一次，C({v1},2) = {v2}({v3}−1)/2 = {v4} 次。"
+ },
+ {
+  "key": "gen.counting.uq2",
+  "zh": "从 {v1} 个不同元素中选 {v2} 个排成一列（排列 A({v3},{v4})），有几种？"
+ },
+ {
+  "key": "gen.counting.ue2",
+  "zh": "A({v1},{v2}) = {v3}×{v4}×…×{v5} = {v6}。"
+ },
+ {
+  "key": "gen.counting.uq3",
+  "zh": "从 {v1} 个不同元素中选 {v2} 个组成一组（组合 C({v3},{v4})），有几种？"
+ },
+ {
+  "key": "gen.counting.ue3",
+  "zh": "C({v1},{v2}) = {v3}!/(({v4}-{v5})!·{v6}!) = {v7}。"
+ },
+ {
+  "key": "gen.counting.uq4",
+  "zh": "在 {v1} × {v2} 的方格网格中，从左上角只向右/下走到右下角，有几种路径？"
+ },
+ {
+  "key": "gen.counting.ue4",
+  "zh": "共走 {v1}+{v2} 步选 {v3} 步向右：C({v4}+{v5},{v6}) = {v7}。"
+ },
+ {
+  "key": "gen.counting.uq5",
+  "zh": "用 {v1} 个不同数字组成两位数（数字不重复）有几种？"
+ },
+ {
+  "key": "gen.counting.ue5",
+  "zh": "十位 {v1} 种、个位 {v2} 种，共 {v3}×({v4}−1) = {v5} 种。"
+ },
+ {
+  "key": "gen.counting.uq6",
+  "zh": "{v1} 个人围圆桌而坐（圆排列），有几种坐法？"
+ },
+ {
+  "key": "gen.counting.ue6",
+  "zh": "圆排列 = ({v1}−1)! = {v2}。"
+ },
+ {
+  "key": "gen.counting.uq7",
+  "zh": "用 2 种颜色给一排 {v1} 个格子涂色（每格一色），共有几种涂法？"
+ },
+ {
+  "key": "gen.counting.ue7",
+  "zh": "每格 2 种选择且独立，共 2^{v1} = {v2} 种。"
+ },
+ {
+  "key": "gen.cauchy.uo0",
+  "zh": "两向量 (a,b) 与 (c,d) 共线（对应分量成比例）"
+ },
+ {
+  "key": "gen.cauchy.uo1",
+  "zh": "两向量垂直"
+ },
+ {
+  "key": "gen.cauchy.uo2",
+  "zh": "任意情况"
+ },
+ {
+  "key": "gen.cauchy.uq0",
+  "zh": "二维柯西 ({v1}²+{v2}²)({v3}²+{v4}²) ≥ ({v5}{v6}+{v7}{v8})² 中等号成立的条件是？"
+ },
+ {
+  "key": "gen.cauchy.ue0",
+  "zh": "等号当且仅当向量 (a,b) 与 (c,d) 共线（对应分量成比例）。"
+ },
+ {
+  "key": "gen.cauchy.uq1",
+  "zh": "已知 a²+b²={v1} 且 c²+d²={v2}，则 ac+bd 的最大值为？"
+ },
+ {
+  "key": "gen.cauchy.ue1",
+  "zh": "柯西：(ac+bd)² ≤ (a²+b²)(c²+d²) = {v1}×{v2} = {v3}，故最大值 = √{v4} ≈ {v5}。"
+ },
+ {
+  "key": "gen.cauchy.uq2",
+  "zh": "要使不等式 (x+y)² ≤ M(x²+y²) 对任意 x,y 成立，M 的最小整数值是（与常数 2 比较，这里验证 M={v1} 时）？"
+ },
+ {
+  "key": "gen.cauchy.ue2",
+  "zh": "由柯西 (1²+1²)(x²+y²) ≥ (x+y)²，即 2(x²+y²) ≥ (x+y)²，故最小 M = 2（{v1} ≥ 2 显然也成立）。"
+ },
+ {
+  "key": "gen.cauchy.uo3",
+  "zh": "任意有限维（n 维）都成立"
+ },
+ {
+  "key": "gen.cauchy.uo4",
+  "zh": "只二维"
+ },
+ {
+  "key": "gen.cauchy.uo5",
+  "zh": "只三维"
+ },
+ {
+  "key": "gen.cauchy.uo6",
+  "zh": "只一维"
+ },
+ {
+  "key": "gen.cauchy.uq3",
+  "zh": "柯西不等式 (Σ_{i=1}^{{v1}} aᵢ²)(Σ_{i=1}^{{v2}} bᵢ²) ≥ (Σ_{i=1}^{{v3}} aᵢbᵢ)² 适用于？"
+ },
+ {
+  "key": "gen.cauchy.ue3",
+  "zh": "柯西不等式对任意有限维（此处 {v1} 维）内积空间都成立。"
+ },
+ {
+  "key": "gen.cauchy.uq4",
+  "zh": "已知 x²+y²={v1}，则 {v2}x + {v3}y 的最大值是？"
+ },
+ {
+  "key": "gen.cauchy.ue4",
+  "zh": "柯西：(({v1}x+{v2}y)²) ≤ ({v3}²+{v4}²)(x²+y²) = ({v5})·{v6}，最大值 ≈ {v7}。"
+ },
+ {
+  "key": "gen.cauchy.uo7",
+  "zh": "向量 (x,y) 与 (a,b) 共线（成比例）"
+ },
+ {
+  "key": "gen.cauchy.uo8",
+  "zh": "两向量垂直"
+ },
+ {
+  "key": "gen.cauchy.uo9",
+  "zh": "任意"
+ },
+ {
+  "key": "gen.cauchy.uq5",
+  "zh": "由柯西 ({v1}x + {v2}y)² ≤ ({v3}²+{v4}²)(x²+y²)，等号成立（取等）的条件是？"
+ },
+ {
+  "key": "gen.cauchy.ue5",
+  "zh": "等号当且仅当 (x,y) 与 ({v1},{v2}) 共线（对应分量成比例）。"
+ },
+ {
+  "key": "gen.cauchy.uq6",
+  "zh": "已知 {v1} 个数 a₁…a_{v2} 满足 Σ aᵢ² = {v3}，则由柯西 Σaᵢ 的最大值是？"
+ },
+ {
+  "key": "gen.cauchy.ue6",
+  "zh": "(Σaᵢ)² ≤ {v1}·Σaᵢ² = {v2}，故 Σaᵢ 最大值 = √({v3}) ≈ {v4}。"
+ },
+ {
+  "key": "gen.cauchy.uq7",
+  "zh": "对任意正数 a = {v1}, b = {v2}，由柯西 (a+b)(1/a+1/b) ≥ (1+1)² = ？"
+ },
+ {
+  "key": "gen.cauchy.ue7",
+  "zh": "(a+b)(1/a+1/b) ≥ (√a·1/√a + √b·1/√b)² = (1+1)² = 4。"
+ },
+ {
+  "key": "gen.cauchy.uq8",
+  "zh": "由柯西 (x+y+z)² ≤ M(x²+y²+z²) 对任意 x,y,z 成立，M 的最小整数值是（验证 M={v1}）？"
+ },
+ {
+  "key": "gen.cauchy.ue8",
+  "zh": "(x+y+z)² = (1·x+1·y+1·z)² ≤ (1²+1²+1²)(x²+y²+z²) = 3(x²+y²+z²)，最小 M = 3。"
+ },
+ {
+  "key": "gen.cauchy.uo10",
+  "zh": "两向量 (a,b,c) 与 (d,e,f) 共线"
+ },
+ {
+  "key": "gen.cauchy.uo11",
+  "zh": "两向量垂直"
+ },
+ {
+  "key": "gen.cauchy.uo12",
+  "zh": "任意"
+ },
+ {
+  "key": "gen.cauchy.uq9",
+  "zh": "三维柯西 ({v1}²+{v2}²+{v3}²)({v4}²+{v5}²+{v6}²) ≥ ({v7}{v8}+{v9}{v10}+{v11}{v12})² 等号条件是？"
+ },
+ {
+  "key": "gen.cauchy.ue9",
+  "zh": "等号当且仅当三维向量 (a,b,c) 与 (d,e,f) 共线。"
+ },
+ {
+  "key": "gen.linearprog.uq0",
+  "zh": "约束 x≥0, y≥0, x+y≤{v1}，目标 z = x+y 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue0",
+  "zh": "在顶点 ({v1},0) 或 (0,{v2}) 处 z = {v3} 达到最大。"
+ },
+ {
+  "key": "gen.linearprog.uq1",
+  "zh": "约束 x≥0, y≥0, 2x+y≤{v1}, x+2y≤{v2}，目标 z = x+y 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue1",
+  "zh": "两约束交于 x=y={v1}/3，z = 2×{v2}/3 = {v3}；比坐标轴上的顶点更大。"
+ },
+ {
+  "key": "gen.linearprog.uo0",
+  "zh": "凸多边形（凸集）"
+ },
+ {
+  "key": "gen.linearprog.uo1",
+  "zh": "任意形状"
+ },
+ {
+  "key": "gen.linearprog.uo2",
+  "zh": "圆形"
+ },
+ {
+  "key": "gen.linearprog.uo3",
+  "zh": "一条直线"
+ },
+ {
+  "key": "gen.linearprog.uq2",
+  "zh": "线性规划中，由 {v1} 个线性不等式围成的有限可行域是？"
+ },
+ {
+  "key": "gen.linearprog.ue2",
+  "zh": "线性约束的交集是凸集，有限情形为凸多边形。"
+ },
+ {
+  "key": "gen.linearprog.uo4",
+  "zh": "可行域的顶点（角点）"
+ },
+ {
+  "key": "gen.linearprog.uo5",
+  "zh": "可行域内部"
+ },
+ {
+  "key": "gen.linearprog.uo6",
+  "zh": "坐标原点"
+ },
+ {
+  "key": "gen.linearprog.uo7",
+  "zh": "任意边界点"
+ },
+ {
+  "key": "gen.linearprog.uq3",
+  "zh": "在约束 x≥0, y≥0, x+y≤{v1} 下，目标函数的最值一定在何处取得？"
+ },
+ {
+  "key": "gen.linearprog.ue3",
+  "zh": "由线性规划基本定理，最值在可行域的某个顶点取得。"
+ },
+ {
+  "key": "gen.linearprog.uq4",
+  "zh": "约束 x≥0, y≥0, {v1}x + {v2}y ≤ {v3}，目标 z = x 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue4",
+  "zh": "让 y=0 得 x ≤ {v1}/{v2}，故 z=x 最大 = {v3}（在 ({v4},0)）。"
+ },
+ {
+  "key": "gen.linearprog.uq5",
+  "zh": "约束 x≥0, y≥0, x+y≤{v1}，目标 z = 2x + 3y 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue5",
+  "zh": "角点 (0,{v1}) 处 z = 3·{v2} = {v3}，大于 ({v4},0) 的 2·{v5}，故最大 {v6}。"
+ },
+ {
+  "key": "gen.linearprog.uq6",
+  "zh": "约束 x≥0, y≥0, x + 2y ≤ {v1}，目标 z = x + 2y 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue6",
+  "zh": "目标恰为左端，沿约束线 z = {v1} 恒定达到，故最大 = {v2}。"
+ },
+ {
+  "key": "gen.linearprog.uq7",
+  "zh": "约束 x≥0, y≥0, 3x + 4y ≤ {v1}，目标 z = x + y 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue7",
+  "zh": "角点 ({v1}/3,0) 处 z = {v2}，大于 (0,{v3}/4) 的 {v4}，故最大 ≈ {v5}。"
+ },
+ {
+  "key": "gen.linearprog.uo8",
+  "zh": "变量非负（x≥0, y≥0 等）"
+ },
+ {
+  "key": "gen.linearprog.uo9",
+  "zh": "变量可任意实数"
+ },
+ {
+  "key": "gen.linearprog.uo10",
+  "zh": "变量为整数"
+ },
+ {
+  "key": "gen.linearprog.uo11",
+  "zh": "变量为正数"
+ },
+ {
+  "key": "gen.linearprog.uq8",
+  "zh": "标准线性规划中，除约束外通常还要求决策变量满足（如本题 x≥0, y≥0, x+y≤{v1}）？"
+ },
+ {
+  "key": "gen.linearprog.ue8",
+  "zh": "线性规划一般要求变量非负，可行域才有界可求最值。"
+ },
+ {
+  "key": "gen.linearprog.uq9",
+  "zh": "约束 x≥0, y≥0, x+y≤{v1}，目标 z = x − y 的最大值是？"
+ },
+ {
+  "key": "gen.linearprog.ue9",
+  "zh": "在角点 ({v1},0) 处 z = {v2} − 0 = {v3}，为最大（(0,{v4}) 给 −{v5}）。"
+ },
+ {
+  "key": "gen.lhopital.uq0",
+  "zh": "极限 lim(x→0) sin({v1}x) / x = ？（0/0 型，可用洛必达）"
+ },
+ {
+  "key": "gen.lhopital.ue0",
+  "zh": "洛必达：分子分母求导 → {v1}cos({v2}x)/1，x→0 得 {v3}。"
+ },
+ {
+  "key": "gen.lhopital.uq1",
+  "zh": "极限 lim(x→0) (e^({v1}x) − 1) / x = ？"
+ },
+ {
+  "key": "gen.lhopital.ue1",
+  "zh": "洛必达：分子分母求导 → {v1}e^({v2}x)/1，x→0 得 {v3}。"
+ },
+ {
+  "key": "gen.lhopital.uq2",
+  "zh": "极限 lim(x→0) ln(1 + {v1}x) / x = ？"
+ },
+ {
+  "key": "gen.lhopital.ue2",
+  "zh": "洛必达：分子分母求导 → ({v1}/(1+{v2}x))/1，x→0 得 {v3}。"
+ },
+ {
+  "key": "gen.lhopital.uq3",
+  "zh": "极限 lim(x→0) (1 − cos({v1}x)) / x² = ？"
+ },
+ {
+  "key": "gen.lhopital.ue3",
+  "zh": "洛必达两次或等价无穷小：1−cos({v1}x) ~ ({v2}²x²)/2，故极限 = {v3}²/2 = {v4}。"
+ },
+ {
+  "key": "gen.lhopital.uq4",
+  "zh": "极限 lim(x→0) tan({v1}x) / x = ？"
+ },
+ {
+  "key": "gen.lhopital.ue4",
+  "zh": "洛必达：分子分母求导 → {v1}sec²({v2}x)/1，x→0 得 {v3}。"
+ },
+ {
+  "key": "gen.lhopital.uq5",
+  "zh": "极限 lim(x→0) (√({v1}x) − 1) / x = ？"
+ },
+ {
+  "key": "gen.lhopital.ue5",
+  "zh": "洛必达：分子求导 ({v1}/(2√({v2}x)))/1，x→0 得 {v3}/2 = {v4}。"
+ },
+ {
+  "key": "gen.lhopital.uq6",
+  "zh": "极限 lim(x→0) arcsin({v1}x) / x = ？"
+ },
+ {
+  "key": "gen.lhopital.ue6",
+  "zh": "洛必达：分子求导 ({v1}/√(1−{v2}²x²))/1，x→0 得 {v3}。"
+ },
+ {
+  "key": "gen.lhopital.uq7",
+  "zh": "极限 lim(x→0) ({v1}^x − 1) / x = ？（提示：答案与 ln {v2} 有关）"
+ },
+ {
+  "key": "gen.lhopital.ue7",
+  "zh": "由导数定义 (a^x)' = a^x ln a，在 x=0 处得 ln {v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.lhopital.uo0",
+  "zh": "0/0 或 ∞/∞ 型未定式"
+ },
+ {
+  "key": "gen.lhopital.uo1",
+  "zh": "0/∞ 型"
+ },
+ {
+  "key": "gen.lhopital.uo2",
+  "zh": "任意分式"
+ },
+ {
+  "key": "gen.lhopital.uo3",
+  "zh": "两数之积"
+ },
+ {
+  "key": "gen.lhopital.uq8",
+  "zh": "极限 lim(x→0) sin({v1}x) / x 属于什么未定式，才可直接用洛必达？"
+ },
+ {
+  "key": "gen.lhopital.ue8",
+  "zh": "分子→0、分母→0，属 0/0 未定式，可直接洛必达。"
+ },
+ {
+  "key": "gen.lhopital.uq9",
+  "zh": "极限 lim(x→∞) (ln x) / x^{v1} = ？（p = {v2} > 0，∞/∞ 型）"
+ },
+ {
+  "key": "gen.lhopital.ue9",
+  "zh": "洛必达：分子求导 (1/x)/({v1}x^{{v2}−1}) = 1/({v3}x^{v4}) → 0（x→∞）。"
+ },
+ {
+  "key": "gen.mvt.uq0",
+  "zh": "拉格朗日中值定理：f 在[{v1},{v2}]连续、({v3},{v4})可导，则 ∃ξ∈({v5},{v6}) 使 f'(ξ) = ？"
+ },
+ {
+  "key": "gen.mvt.ue0",
+  "zh": "存在 ξ 使切线斜率等于割线斜率：f'(ξ) = (f({v1})−f({v2}))/({v3}−{v4})。"
+ },
+ {
+  "key": "gen.mvt.uq1",
+  "zh": "f(x)=x² 在 [0,{v1}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue1",
+  "zh": "({v1}²−0)/{v2} = {v3}，令 2ξ = {v4} → ξ = {v5}/2。"
+ },
+ {
+  "key": "gen.mvt.uo0",
+  "zh": "平行于弦（割线）"
+ },
+ {
+  "key": "gen.mvt.uo1",
+  "zh": "垂直于 x 轴"
+ },
+ {
+  "key": "gen.mvt.uo2",
+  "zh": "过原点"
+ },
+ {
+  "key": "gen.mvt.uo3",
+  "zh": "平行于 y 轴"
+ },
+ {
+  "key": "gen.mvt.uq2",
+  "zh": "中值定理的几何意义：存在一点切线？"
+ },
+ {
+  "key": "gen.mvt.ue2",
+  "zh": "存在 ξ 使该点切线与区间端点的连线（割线）平行。"
+ },
+ {
+  "key": "gen.mvt.uq3",
+  "zh": "f(x)=x³ 在 [0,{v1}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue3",
+  "zh": "(f({v1})−f(0))/{v2} = {v3}²，令 3ξ²={v4}² → ξ={v5}/√3。"
+ },
+ {
+  "key": "gen.mvt.uq4",
+  "zh": "f(x)=x² 在 [{v1},{v2}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue4",
+  "zh": "割线斜率 = ({v1}²−{v2}²)/({v3}−{v4}) = {v5}+{v6}，令 2ξ={v7}+{v8} → ξ={v9}。"
+ },
+ {
+  "key": "gen.mvt.uq5",
+  "zh": "f(x)=1/x 在 [{v1},{v2}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue5",
+  "zh": "割线斜率 = (1/{v1}−1/{v2})/({v3}−{v4}) = −1/({v5}{v6})，令 −1/ξ² = −1/({v7}{v8}) → ξ=√({v9}{v10}) ≈ {v11}。"
+ },
+ {
+  "key": "gen.mvt.uq6",
+  "zh": "f(x)=√x 在 [0,{v1}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue6",
+  "zh": "割线斜率 = √{v1}/{v2} = 1/√{v3}，令 1/(2√ξ)=1/√{v4} → √ξ=√{v5}/2 → ξ={v6}/4。"
+ },
+ {
+  "key": "gen.mvt.uq7",
+  "zh": "f(x)=ln x 在 [1,{v1}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue7",
+  "zh": "割线斜率 = ln {v1}/({v2}−1)，令 1/ξ = ln {v3}/({v4}−1) → ξ = ({v5}−1)/ln {v6} ≈ {v7}。"
+ },
+ {
+  "key": "gen.mvt.uo4",
+  "zh": "f({v1})·f({v2}) = 0"
+ },
+ {
+  "key": "gen.mvt.uq8",
+  "zh": "罗尔定理要求 f 在[{v1},{v2}]连续、({v3},{v4})可导，且还需满足？"
+ },
+ {
+  "key": "gen.mvt.ue8",
+  "zh": "罗尔定理还要端点函数值相等：f({v1}) = f({v2})，则存在 ξ 使 f'(ξ) = 0。"
+ },
+ {
+  "key": "gen.mvt.uq9",
+  "zh": "f(x)=x³ 在 [{v1},{v2}] 上，满足中值定理的 ξ = ？"
+ },
+ {
+  "key": "gen.mvt.ue9",
+  "zh": "割线斜率 = ({v1}³−{v2}³)/({v3}−{v4}) = {v5}²+{v6}{v7}+{v8}²，令 3ξ² = 该值 → ξ ≈ {v9}。"
+ },
+ {
+  "key": "gen.bayes.uq0",
+  "zh": "已知 P(A)={v1}，P(B|A)={v2}，则 P(A∩B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue0",
+  "zh": "乘法公式：P(A∩B) = P(A)·P(B|A) = {v1} × {v2} = {v3}。"
+ },
+ {
+  "key": "gen.bayes.uq1",
+  "zh": "若 A、B 互斥，P(A)={v1}，P(B)={v2}，则 P(A∪B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue1",
+  "zh": "互斥事件无交集，P(A∪B) = P(A)+P(B) = {v1}。"
+ },
+ {
+  "key": "gen.bayes.uo0",
+  "zh": "由结果反推原因（逆概率）"
+ },
+ {
+  "key": "gen.bayes.uo1",
+  "zh": "求独立"
+ },
+ {
+  "key": "gen.bayes.uo2",
+  "zh": "求期望"
+ },
+ {
+  "key": "gen.bayes.uo3",
+  "zh": "求方差"
+ },
+ {
+  "key": "gen.bayes.uq2",
+  "zh": "某检测灵敏度 {v1}，贝叶斯公式主要用于解决哪类问题？"
+ },
+ {
+  "key": "gen.bayes.ue2",
+  "zh": "贝叶斯公式由已观察到的“结果（如阳性）”反推各“原因（如患病）”的概率，即逆概率。"
+ },
+ {
+  "key": "gen.bayes.uq3",
+  "zh": "P(A)={v1}，P(B|A)={v2}，P(B)={v3}，则 P(A|B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue3",
+  "zh": "贝叶斯：P(A|B) = P(A)P(B|A)/P(B) = {v1}×{v2}/{v3} ≈ {v4}。"
+ },
+ {
+  "key": "gen.bayes.uq4",
+  "zh": "A1,A2 完备，P(A1)={v1}，P(B|A1)={v2}，P(B|A2)={v3}，由全概率公式 P(B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue4",
+  "zh": "P(B)=P(A1)P(B|A1)+P(A2)P(B|A2)={v1}×{v2}+{v3}×{v4}≈{v5}。"
+ },
+ {
+  "key": "gen.bayes.uq5",
+  "zh": "某病患病率 {v1}，检测灵敏度 {v2}、特异度 {v3}。随机一人检测呈阳性，则其患病概率（贝叶斯）≈ ？"
+ },
+ {
+  "key": "gen.bayes.ue5",
+  "zh": "P(病|阳)=P(病)P(阳|病)/(P(病)P(阳|病)+P(无病)P(阳|无病))≈{v1}。"
+ },
+ {
+  "key": "gen.bayes.uq6",
+  "zh": "若 A、B 独立，P(A)={v1}，P(B)={v2}，则 P(A∩B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue6",
+  "zh": "独立事件 P(A∩B) = P(A)·P(B) = {v1}×{v2} = {v3}。"
+ },
+ {
+  "key": "gen.bayes.uq7",
+  "zh": "已知 P(A∩B)={v1}，P(B)={v2}，则条件概率 P(A|B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue7",
+  "zh": "P(A|B) = P(A∩B)/P(B) = {v1}/{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.bayes.uq8",
+  "zh": "已知 P(A)={v1}，P(B)={v2}，若 A、B 独立则必满足？"
+ },
+ {
+  "key": "gen.bayes.ue8",
+  "zh": "独立等价于 P(A∩B) = P(A)·P(B)。"
+ },
+ {
+  "key": "gen.bayes.uq9",
+  "zh": "若 A、B 独立，则条件概率 P(A|B) = ？"
+ },
+ {
+  "key": "gen.bayes.ue9",
+  "zh": "独立时 P(A|B) = P(A∩B)/P(B) = P(A)P(B)/P(B) = P(A)。"
+ },
+ {
+  "key": "gen.definite_int.uq0",
+  "zh": "定积分 ∫_{v1}^{v2} f(x) dx = ？"
+ },
+ {
+  "key": "gen.definite_int.ue0",
+  "zh": "上下限相同，积分区间长度为 0，故为 0。"
+ },
+ {
+  "key": "gen.definite_int.uq1",
+  "zh": "∫_0^{v1}π |sin x| dx = ？（每个半周期面积为 2）"
+ },
+ {
+  "key": "gen.definite_int.ue1",
+  "zh": "|sin x| 每 π 面积为 2，共 {v1} 段 → 2×{v2} = {v3}。"
+ },
+ {
+  "key": "gen.definite_int.uo0",
+  "zh": "∫_a^c = ∫_a^b · ∫_b^c"
+ },
+ {
+  "key": "gen.definite_int.uq2",
+  "zh": "定积分的区间可加性（a={v1},b={v2},c={v3}）是？"
+ },
+ {
+  "key": "gen.definite_int.ue2",
+  "zh": "∫_a^c f(x)dx = ∫_a^b f(x)dx + ∫_b^c f(x)dx（b 在 a、c 之间）。"
+ },
+ {
+  "key": "gen.definite_int.uq3",
+  "zh": "∫_0^{v1} x dx = ？"
+ },
+ {
+  "key": "gen.definite_int.ue3",
+  "zh": "原函数 x²/2，代入 0..{v1} 得 {v2}²/2 = {v3}。"
+ },
+ {
+  "key": "gen.definite_int.uq4",
+  "zh": "∫_0^{v1} 3x² dx = ？"
+ },
+ {
+  "key": "gen.definite_int.ue4",
+  "zh": "原函数 x³，代入 0..{v1} 得 {v2}³ = {v3}。"
+ },
+ {
+  "key": "gen.definite_int.uq5",
+  "zh": "∫_0^{v1} e^({v2}x) dx = ？"
+ },
+ {
+  "key": "gen.definite_int.ue5",
+  "zh": "原函数 e^({v1}x)/{v2}，代入得 (e^({v3})−1)/{v4} ≈ {v5}。"
+ },
+ {
+  "key": "gen.definite_int.uq6",
+  "zh": "∫_0^{v1} cos x dx = ？"
+ },
+ {
+  "key": "gen.definite_int.ue6",
+  "zh": "原函数 sin x，代入得 sin {v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.definite_int.uq7",
+  "zh": "∫_0^{v1} {v2} dx = ？（常数积分）"
+ },
+ {
+  "key": "gen.definite_int.ue7",
+  "zh": "常数积分 = {v1} × ({v2}−0) = {v3}。"
+ },
+ {
+  "key": "gen.definite_int.uq8",
+  "zh": "∫_{v1}^{v2} x³ dx = ？（被积函数为奇函数）"
+ },
+ {
+  "key": "gen.definite_int.ue8",
+  "zh": "x³ 为奇函数，对称区间积分 = 0。"
+ },
+ {
+  "key": "gen.diffeq.uo0",
+  "zh": "y = C·e^{{v1}x}"
+ },
+ {
+  "key": "gen.diffeq.uo1",
+  "zh": "y = C·x^{v1}"
+ },
+ {
+  "key": "gen.diffeq.uo2",
+  "zh": "y = C·{v1}x"
+ },
+ {
+  "key": "gen.diffeq.uq0",
+  "zh": "微分方程 dy/dx = {v1}y 的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue0",
+  "zh": "分离变量：dy/y = {v1}dx → ln|y| = {v2}x + C → y = C·e^{{v3}x}。"
+ },
+ {
+  "key": "gen.diffeq.uq1",
+  "zh": "dy/dx = {v1}x 的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue1",
+  "zh": "两边积分：y = ∫{v1}x dx = ({v2}/2)x² + C。"
+ },
+ {
+  "key": "gen.diffeq.uq2",
+  "zh": "由 dy/dx = {v1}x/y（y≠0）分离变量并积分得？"
+ },
+ {
+  "key": "gen.diffeq.ue2",
+  "zh": "y dy = {v1}x dx → y²/2 = {v2}x²/2 + C → y² = {v3}x² + C（C 任意常数）。"
+ },
+ {
+  "key": "gen.diffeq.uo3",
+  "zh": "含未知函数导数的方程"
+ },
+ {
+  "key": "gen.diffeq.uo4",
+  "zh": "代数方程"
+ },
+ {
+  "key": "gen.diffeq.uo5",
+  "zh": "不等式"
+ },
+ {
+  "key": "gen.diffeq.uo6",
+  "zh": "积分方程"
+ },
+ {
+  "key": "gen.diffeq.uq3",
+  "zh": "微分方程 dy/dx = {v1}y 在概念上是指？"
+ },
+ {
+  "key": "gen.diffeq.ue3",
+  "zh": "含有未知函数及其导数（或微分）的方程，称为微分方程。"
+ },
+ {
+  "key": "gen.diffeq.uo7",
+  "zh": "y = C·e^{v1}x"
+ },
+ {
+  "key": "gen.diffeq.uq4",
+  "zh": "dy/dx = {v1}（导数等于常数）的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue4",
+  "zh": "直接积分：y = {v1}x + C（直线族）。"
+ },
+ {
+  "key": "gen.diffeq.uo8",
+  "zh": "y = {v1}x² + C1·x + C2"
+ },
+ {
+  "key": "gen.diffeq.uo9",
+  "zh": "y = C1·x + C2"
+ },
+ {
+  "key": "gen.diffeq.uo10",
+  "zh": "y = C·e^x"
+ },
+ {
+  "key": "gen.diffeq.uq5",
+  "zh": "二阶方程 y'' = {v1}（常数）的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue5",
+  "zh": "两次积分：y' = {v1}x + C1，y = ({v2}/2)x² + C1·x + C2。"
+ },
+ {
+  "key": "gen.diffeq.uo11",
+  "zh": "y = {v1}·e^{{v2}x}"
+ },
+ {
+  "key": "gen.diffeq.uo12",
+  "zh": "y = C·e^({v1}x)"
+ },
+ {
+  "key": "gen.diffeq.uo13",
+  "zh": "y = {v1}·e^({v2}x) + 1"
+ },
+ {
+  "key": "gen.diffeq.uq6",
+  "zh": "初值问题 dy/dx = {v1}y，y(0) = {v2} 的特解是？"
+ },
+ {
+  "key": "gen.diffeq.ue6",
+  "zh": "通解 y = C·e^({v1}x)，代入 x=0 得 C = {v2}，故 y = {v3}·e^({v4}x)。"
+ },
+ {
+  "key": "gen.diffeq.uo14",
+  "zh": "y = C·e^(−{v1}x)"
+ },
+ {
+  "key": "gen.diffeq.uo15",
+  "zh": "y = C·e^({v1}x)"
+ },
+ {
+  "key": "gen.diffeq.uo16",
+  "zh": "y = C·x"
+ },
+ {
+  "key": "gen.diffeq.uo17",
+  "zh": "y = {v1}·e^(−x)"
+ },
+ {
+  "key": "gen.diffeq.uq7",
+  "zh": "dy/dx + {v1}y = 0 的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue7",
+  "zh": "分离变量 dy/y = −{v1}dx → y = C·e^(−{v2}x)。"
+ },
+ {
+  "key": "gen.diffeq.uo18",
+  "zh": "y = C·x"
+ },
+ {
+  "key": "gen.diffeq.uo19",
+  "zh": "y = C·x²"
+ },
+ {
+  "key": "gen.diffeq.uo20",
+  "zh": "y = C·e^x"
+ },
+ {
+  "key": "gen.diffeq.uq8",
+  "zh": "齐次方程 dy/dx = y/x（x≠0）的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue8",
+  "zh": "分离变量 dy/y = dx/x → ln|y| = ln|x| + C → y = C·x。"
+ },
+ {
+  "key": "gen.diffeq.uo21",
+  "zh": "y = {v1} + C·e^({v2}x)"
+ },
+ {
+  "key": "gen.diffeq.uo22",
+  "zh": "y = {v1}·e^({v2}x)"
+ },
+ {
+  "key": "gen.diffeq.uo23",
+  "zh": "y = C·e^({v1}x)"
+ },
+ {
+  "key": "gen.diffeq.uo24",
+  "zh": "y = {v1} + C·x"
+ },
+ {
+  "key": "gen.diffeq.uq9",
+  "zh": "方程 dy/dx = {v1}(y − {v2}) 的通解是？"
+ },
+ {
+  "key": "gen.diffeq.ue9",
+  "zh": "令 u = y − {v1}，则 du/dx = {v2}u → u = C·e^({v3}x)，故 y = {v4} + C·e^({v5}x)。"
+ },
+ {
+  "key": "gen.ineq_scale.uq0",
+  "zh": "放缩技巧：当 n={v1}>0 时，1/(n(n+1)) 与 1/n 的关系是？（裂项放缩基础）"
+ },
+ {
+  "key": "gen.ineq_scale.ue0",
+  "zh": "分母 n(n+1) > n，故 1/(n(n+1)) < 1/n。常用于把级数放缩成易求和形式。"
+ },
+ {
+  "key": "gen.ineq_scale.uq1",
+  "zh": "证明 Σ_{n={v1}}^∞ 1/n² 收敛，可把通项 1/n² 放缩为（便于裂项）？"
+ },
+ {
+  "key": "gen.ineq_scale.ue1",
+  "zh": "对 n≥2，1/n² < 1/((n-1)n) = 1/(n-1) − 1/n，裂项求和得上界。"
+ },
+ {
+  "key": "gen.ineq_scale.uq2",
+  "zh": "已知 0<a_n≤{v1} 且 {a_n} 单调递减，则对任意 n 有 a_n ？"
+ },
+ {
+  "key": "gen.ineq_scale.ue2",
+  "zh": "单调递减且首项 ≤ {v1} ⇒ 之后每项 a_n ≤ a_1 ≤ {v2}。"
+ },
+ {
+  "key": "gen.ineq_scale.uo0",
+  "zh": "把难求的式放缩到易求范围"
+ },
+ {
+  "key": "gen.ineq_scale.uo1",
+  "zh": "精确计算"
+ },
+ {
+  "key": "gen.ineq_scale.uo2",
+  "zh": "求导"
+ },
+ {
+  "key": "gen.ineq_scale.uo3",
+  "zh": "积分"
+ },
+ {
+  "key": "gen.ineq_scale.uq3",
+  "zh": "用放缩法估计 Σ_{k=1}^{{v1}} 1/k 的上界时，主要思路是？"
+ },
+ {
+  "key": "gen.ineq_scale.ue3",
+  "zh": "当精确值难求时，把目标式放缩到容易求和/比较的范围，从而证明不等式或估计大小。"
+ },
+ {
+  "key": "gen.ineq_scale.uq4",
+  "zh": "裂项放缩：1/(n(n+1))（取 n={v1}）可拆成？"
+ },
+ {
+  "key": "gen.ineq_scale.ue4",
+  "zh": "1/(n(n+1)) = 1/n − 1/(n+1)，故 n={v1} 时为 1/{v2} − 1/({v3}+1)。"
+ },
+ {
+  "key": "gen.ineq_scale.uo4",
+  "zh": "也收敛"
+ },
+ {
+  "key": "gen.ineq_scale.uo5",
+  "zh": "必发散"
+ },
+ {
+  "key": "gen.ineq_scale.uo6",
+  "zh": "和为 0"
+ },
+ {
+  "key": "gen.ineq_scale.uo7",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.ineq_scale.uq5",
+  "zh": "比较判别：若对 n≥{v1} 有 0≤a_n≤b_n 且 Σ b_n 收敛，则 Σ a_n ？"
+ },
+ {
+  "key": "gen.ineq_scale.ue5",
+  "zh": "小者被收敛级数控制，由比较判别法 Σ a_n 也收敛。"
+ },
+ {
+  "key": "gen.ineq_scale.uq6",
+  "zh": "根式放缩：比较 1/√n（取 n={v1}）与 2(√(n+1) − √n) 的大小？"
+ },
+ {
+  "key": "gen.ineq_scale.ue6",
+  "zh": "2(√(n+1)−√n) = 2/(√(n+1)+√n) < 2/(2√n) = 1/√n，故 1/√n 更大。"
+ },
+ {
+  "key": "gen.ineq_scale.uo8",
+  "zh": "1/n! ≤ 1/2^{n-1}（n≥{v1}）"
+ },
+ {
+  "key": "gen.ineq_scale.uq7",
+  "zh": "证明 Σ 1/n! 收敛，可放缩（对 n≥{v1}）为？"
+ },
+ {
+  "key": "gen.ineq_scale.ue7",
+  "zh": "n! ≥ 2^{n-1}（n≥1），故 1/n! ≤ 1/2^{n-1}，等比级数收敛 ⇒ 原级数收敛。"
+ },
+ {
+  "key": "gen.ineq_scale.uo9",
+  "zh": "1/({v1}·{v2})"
+ },
+ {
+  "key": "gen.ineq_scale.uq8",
+  "zh": "裂项：1/((n-1)n)（取 n={v1}）等于？"
+ },
+ {
+  "key": "gen.ineq_scale.ue8",
+  "zh": "1/((n-1)n) = 1/(n-1) − 1/n，故 n={v1} 时为 1/({v2}-1) − 1/{v3}。"
+ },
+ {
+  "key": "gen.ineq_scale.uq9",
+  "zh": "若对 n≥{v1} 有 0<a_n<1/n²，则由放缩可知 Σ_{n={v2}}^∞ a_n ？"
+ },
+ {
+  "key": "gen.ineq_scale.ue9",
+  "zh": "Σ 1/n² < 1 + Σ_{n=2}∞ 1/((n-1)n) = 1+1 = 2，故 Σ a_n < 2。"
+ },
+ {
+  "key": "gen.seq_ineq.uo0",
+  "zh": "数学归纳法"
+ },
+ {
+  "key": "gen.seq_ineq.uo1",
+  "zh": "代入法"
+ },
+ {
+  "key": "gen.seq_ineq.uo2",
+  "zh": "配方法"
+ },
+ {
+  "key": "gen.seq_ineq.uo3",
+  "zh": "换元法"
+ },
+ {
+  "key": "gen.seq_ineq.uq0",
+  "zh": "证明对一切 n∈N* 都有 a_n < {v1}，最常用的方法是？"
+ },
+ {
+  "key": "gen.seq_ineq.ue0",
+  "zh": "由 n=1 验证、假设 n=k 再推 n=k+1，即数学归纳法。"
+ },
+ {
+  "key": "gen.seq_ineq.uo4",
+  "zh": "单调有界数列必收敛"
+ },
+ {
+  "key": "gen.seq_ineq.uo5",
+  "zh": "单调必发散"
+ },
+ {
+  "key": "gen.seq_ineq.uo6",
+  "zh": "有界必发散"
+ },
+ {
+  "key": "gen.seq_ineq.uo7",
+  "zh": "无界必收敛"
+ },
+ {
+  "key": "gen.seq_ineq.uq1",
+  "zh": "对前 {v1} 项组成的数列，极限存在准则“单调有界定理”内容是？"
+ },
+ {
+  "key": "gen.seq_ineq.ue1",
+  "zh": "单调递增（减）且有上（下）界的数列必收敛。"
+ },
+ {
+  "key": "gen.seq_ineq.uq2",
+  "zh": "已知 a_1 = {v1} 且数列 {a_n} 单调递减，则对任意 n 有 a_n ？"
+ },
+ {
+  "key": "gen.seq_ineq.ue2",
+  "zh": "单调递减 ⇒ a_n ≤ a_1 = {v1}。"
+ },
+ {
+  "key": "gen.seq_ineq.uo8",
+  "zh": "先放缩再求和"
+ },
+ {
+  "key": "gen.seq_ineq.uo9",
+  "zh": "直接求通项"
+ },
+ {
+  "key": "gen.seq_ineq.uo10",
+  "zh": "求导"
+ },
+ {
+  "key": "gen.seq_ineq.uo11",
+  "zh": "积分"
+ },
+ {
+  "key": "gen.seq_ineq.uq3",
+  "zh": "证明 Σ a_n < {v1}（a_n>0）常用思路？"
+ },
+ {
+  "key": "gen.seq_ineq.ue3",
+  "zh": "先放缩 a_n 到可求和的已知数列（如等比、裂项），再求和得上界。"
+ },
+ {
+  "key": "gen.seq_ineq.uq4",
+  "zh": "已知 a_1 = {v1} 且数列 {a_n} 单调递增，则对任意 n 有 a_n ？"
+ },
+ {
+  "key": "gen.seq_ineq.ue4",
+  "zh": "单调递增 ⇒ a_n ≥ a_1 = {v1}。"
+ },
+ {
+  "key": "gen.seq_ineq.uq5",
+  "zh": "若 a_n → L（极限存在）且对每个 n 有 a_n < {v1}，则极限 L 满足？"
+ },
+ {
+  "key": "gen.seq_ineq.ue5",
+  "zh": "极限保号（保不等式）：由 a_n < {v1} 恒成立，得 L ≤ {v2}。"
+ },
+ {
+  "key": "gen.seq_ineq.uo12",
+  "zh": "a_n 发散"
+ },
+ {
+  "key": "gen.seq_ineq.uq6",
+  "zh": "若 b_n ≤ a_n ≤ c_n 且 b_n → {v1}、c_n → {v2}，则由夹逼定理 a_n ？"
+ },
+ {
+  "key": "gen.seq_ineq.ue6",
+  "zh": "夹逼定理：双边被同极限 {v1} 控制，故 a_n → {v2}。"
+ },
+ {
+  "key": "gen.seq_ineq.uo13",
+  "zh": "也收敛"
+ },
+ {
+  "key": "gen.seq_ineq.uo14",
+  "zh": "必发散"
+ },
+ {
+  "key": "gen.seq_ineq.uo15",
+  "zh": "和为 0"
+ },
+ {
+  "key": "gen.seq_ineq.uo16",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.seq_ineq.uq7",
+  "zh": "比较判别：若对 n≥{v1} 有 0≤a_n≤b_n 且 Σ b_n 收敛，则 Σ a_n ？"
+ },
+ {
+  "key": "gen.seq_ineq.ue7",
+  "zh": "小者被收敛级数控制，由比较判别法 Σ a_n 也收敛。"
+ },
+ {
+  "key": "gen.seq_ineq.uq8",
+  "zh": "数列 a_n = {v1}·({v2}/10)^n（|{v3}/10|<1），则 |a_n| 满足？"
+ },
+ {
+  "key": "gen.seq_ineq.ue8",
+  "zh": "|{v1}/10|<1 ⇒ |a_n| = {v2}·({v3}/10)^n ≤ {v4}，且 a_n → 0。"
+ },
+ {
+  "key": "gen.seq_ineq.uo17",
+  "zh": "收敛"
+ },
+ {
+  "key": "gen.seq_ineq.uo18",
+  "zh": "发散"
+ },
+ {
+  "key": "gen.seq_ineq.uo19",
+  "zh": "趋于 ∞"
+ },
+ {
+  "key": "gen.seq_ineq.uo20",
+  "zh": "无界"
+ },
+ {
+  "key": "gen.seq_ineq.uq9",
+  "zh": "若 a_{n+1} ≤ a_n（递减）且对所有 n 有 a_n ≥ {v1}（有下界），则 {a_n} ？"
+ },
+ {
+  "key": "gen.seq_ineq.ue9",
+  "zh": "单调递减且有下界（≥ {v1}），由单调有界定理知 {a_n} 收敛。"
+ },
+ {
+  "key": "gen.complex_geo.uq0",
+  "zh": "复数 z = {v1} + {v2}i 的模 |z|（几何意义：到原点距离）为？"
+ },
+ {
+  "key": "gen.complex_geo.ue0",
+  "zh": "|z| = √(a²+b²) = √({v1}²+{v2}²) = {v3}。"
+ },
+ {
+  "key": "gen.complex_geo.uo0",
+  "zh": "关于实轴对称"
+ },
+ {
+  "key": "gen.complex_geo.uo1",
+  "zh": "关于原点对称"
+ },
+ {
+  "key": "gen.complex_geo.uo2",
+  "zh": "逆时针转 90°"
+ },
+ {
+  "key": "gen.complex_geo.uo3",
+  "zh": "放大"
+ },
+ {
+  "key": "gen.complex_geo.uq1",
+  "zh": "复数 z = {v1} + {v2}i 与它的共轭 z̄ 在复平面上的位置关系是？"
+ },
+ {
+  "key": "gen.complex_geo.ue1",
+  "zh": "z=a+bi 与 z̄=a−bi 实部相同、虚部相反，关于实轴对称。"
+ },
+ {
+  "key": "gen.complex_geo.uo4",
+  "zh": "辐角 arg(z)"
+ },
+ {
+  "key": "gen.complex_geo.uo5",
+  "zh": "模长"
+ },
+ {
+  "key": "gen.complex_geo.uo6",
+  "zh": "实部"
+ },
+ {
+  "key": "gen.complex_geo.uo7",
+  "zh": "虚部"
+ },
+ {
+  "key": "gen.complex_geo.uq2",
+  "zh": "复数 z = {v1} + {v2}i 对应向量与正实轴的夹角称为？"
+ },
+ {
+  "key": "gen.complex_geo.ue2",
+  "zh": "该夹角称为辐角 arg(z)，由 tanθ = b/a 确定（注意象限）。"
+ },
+ {
+  "key": "gen.complex_geo.uq3",
+  "zh": "复数加法 ({v1}+{v2}i) + ({v3}+{v4}i) = ？"
+ },
+ {
+  "key": "gen.complex_geo.ue3",
+  "zh": "实部相加、虚部相加：({v1}+{v2}) + ({v3}+{v4})i = {v5}。"
+ },
+ {
+  "key": "gen.complex_geo.uq4",
+  "zh": "复数乘法 ({v1}+{v2}i)({v3}+{v4}i) = ？"
+ },
+ {
+  "key": "gen.complex_geo.ue4",
+  "zh": "= ({v1}{v2}−{v3}{v4}) + ({v5}{v6}+{v7}{v8})i = {v9}。"
+ },
+ {
+  "key": "gen.complex_geo.uq5",
+  "zh": "复数 z₁={v1}+{v2}i、z₂={v3}+{v4}i，则 |z₁/z₂| = ？"
+ },
+ {
+  "key": "gen.complex_geo.ue5",
+  "zh": "商的模 = 模的商：|z₁/z₂| = |z₁|/|z₂| = {v1}/{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.complex_geo.uq6",
+  "zh": "复数 z₁ 辐角 {v1}°、z₂ 辐角 {v2}°，则 z₁·z₂ 的辐角是？"
+ },
+ {
+  "key": "gen.complex_geo.ue6",
+  "zh": "乘积辐角 = 辐角之和（模 360）：{v1}°+{v2}° = {v3}°。"
+ },
+ {
+  "key": "gen.complex_geo.uq7",
+  "zh": "求 1/({v1}+{v2}i) = ？"
+ },
+ {
+  "key": "gen.complex_geo.ue7",
+  "zh": "分子分母同乘共轭：{v1}−{v2}i 除以 ({v3})²+({v4})² = {v5}，得 {v6}。"
+ },
+ {
+  "key": "gen.complex_geo.uq8",
+  "zh": "复数 z = {v1}+{v2}i 与共轭乘积 z·z̄ = ？"
+ },
+ {
+  "key": "gen.complex_geo.ue8",
+  "zh": "z·z̄ = ({v1}+{v2}i)({v3}−{v4}i) = {v5}²+{v6}² = {v7} = |z|²。"
+ },
+ {
+  "key": "gen.series.uq0",
+  "zh": "等比级数 Σ_{n=0}^∞ {v1}·rⁿ 收敛的充要条件是（r 为公比）？"
+ },
+ {
+  "key": "gen.series.ue0",
+  "zh": "公比绝对值 |r| < 1 时收敛，否则发散。"
+ },
+ {
+  "key": "gen.series.uq1",
+  "zh": "p 级数 Σ_{n=1}^{v1} 1/n^p（取极限 n→∞）收敛的条件是？"
+ },
+ {
+  "key": "gen.series.ue1",
+  "zh": "p > 1 收敛，p ≤ 1 发散（p=1 为调和级数，发散）。"
+ },
+ {
+  "key": "gen.series.uo0",
+  "zh": "发散"
+ },
+ {
+  "key": "gen.series.uo1",
+  "zh": "收敛于 1"
+ },
+ {
+  "key": "gen.series.uo2",
+  "zh": "收敛于 0"
+ },
+ {
+  "key": "gen.series.uo3",
+  "zh": "收敛于 ln2"
+ },
+ {
+  "key": "gen.series.uq2",
+  "zh": "调和级数 Σ_{n=1}^{v1} 1/n（与无穷级数同敛散）的敛散性是？"
+ },
+ {
+  "key": "gen.series.ue2",
+  "zh": "调和级数发散（虽通项趋于 0，但部分和趋于 ∞）。"
+ },
+ {
+  "key": "gen.series.uq3",
+  "zh": "级数 Σ_{n=1}^∞ {v1}ⁿ 的和（首项 {v2}、公比 {v3}）是？"
+ },
+ {
+  "key": "gen.series.ue3",
+  "zh": "等比求和（从 n=1 起）= a/(1−r) = {v1}/(1−{v2}) = {v3}。"
+ },
+ {
+  "key": "gen.series.uq4",
+  "zh": "级数 Σ_{n=0}^∞ {v1}·({v2})ⁿ（首项 {v3}、公比 {v4}）的和是？"
+ },
+ {
+  "key": "gen.series.ue4",
+  "zh": "等比求和（从 n=0 起）= a/(1−r) = {v1}/(1−{v2}) = {v3}。"
+ },
+ {
+  "key": "gen.series.uo4",
+  "zh": "≈ 0.693（ln 2）"
+ },
+ {
+  "key": "gen.series.uo5",
+  "zh": "发散"
+ },
+ {
+  "key": "gen.series.uq5",
+  "zh": "交错调和级数 Σ_{n=1}^∞ (−1)^{n−1}/n 的和收敛于？"
+ },
+ {
+  "key": "gen.series.ue5",
+  "zh": "交错级数满足莱布尼茨条件，收敛到 ln 2 ≈ 0.693。"
+ },
+ {
+  "key": "gen.series.uo6",
+  "zh": "也收敛"
+ },
+ {
+  "key": "gen.series.uo7",
+  "zh": "必发散"
+ },
+ {
+  "key": "gen.series.uo8",
+  "zh": "和为 0"
+ },
+ {
+  "key": "gen.series.uo9",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.series.uq6",
+  "zh": "比较判别：若对 n≥{v1} 有 0≤a_n≤b_n 且 Σ b_n 收敛，则 Σ a_n ？"
+ },
+ {
+  "key": "gen.series.ue6",
+  "zh": "小者被收敛级数控制，由比较判别法 Σ a_n 也收敛。"
+ },
+ {
+  "key": "gen.series.uo10",
+  "zh": "收敛"
+ },
+ {
+  "key": "gen.series.uo11",
+  "zh": "发散"
+ },
+ {
+  "key": "gen.series.uo12",
+  "zh": "条件收敛"
+ },
+ {
+  "key": "gen.series.uo13",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.series.uq7",
+  "zh": "比值判别：若 lim|a_{n+1}/a_n| = {v1} < 1，则正项级数 Σ a_n ？"
+ },
+ {
+  "key": "gen.series.ue7",
+  "zh": "比值极限 L = ${L.toFixed(1)} < 1，由比值判别法级数收敛。"
+ },
+ {
+  "key": "gen.series.uo14",
+  "zh": "≈ 1.645（π²/6）"
+ },
+ {
+  "key": "gen.series.uo15",
+  "zh": "发散"
+ },
+ {
+  "key": "gen.series.uq8",
+  "zh": "巴塞尔问题：Σ_{n=1}^{v1} 1/n²（取 n→∞ 极限）的和是？"
+ },
+ {
+  "key": "gen.series.ue8",
+  "zh": "Σ 1/n² = π²/6 ≈ 1.645（著名结果）。"
+ },
+ {
+  "key": "gen.series.uq9",
+  "zh": "有限等比和 Σ_{n=0}^{{v1}} {v2}·({v3})ⁿ = ？"
+ },
+ {
+  "key": "gen.series.ue9",
+  "zh": "S_{v1} = {v2}(1−{v3}^{v4})/(1−{v5}) ≈ {v6}。"
+ },
+ {
+  "key": "gen.jensen.uo0",
+  "zh": "下凸（凸）"
+ },
+ {
+  "key": "gen.jensen.uo1",
+  "zh": "上凸（凹）"
+ },
+ {
+  "key": "gen.jensen.uo2",
+  "zh": "线性"
+ },
+ {
+  "key": "gen.jensen.uo3",
+  "zh": "既凸又凹"
+ },
+ {
+  "key": "gen.jensen.uq0",
+  "zh": "函数 f(x)={v1}x²（{v2}>0）的凹凸性是？"
+ },
+ {
+  "key": "gen.jensen.ue0",
+  "zh": "f''={v1}>0，二阶导为正，故为下凸（凸）函数。"
+ },
+ {
+  "key": "gen.jensen.uo4",
+  "zh": "上凸（凹）"
+ },
+ {
+  "key": "gen.jensen.uo5",
+  "zh": "下凸（凸）"
+ },
+ {
+  "key": "gen.jensen.uo6",
+  "zh": "线性"
+ },
+ {
+  "key": "gen.jensen.uo7",
+  "zh": "既凸又凹"
+ },
+ {
+  "key": "gen.jensen.uq1",
+  "zh": "函数 f(x)=−{v1}x² 的凹凸性是？"
+ },
+ {
+  "key": "gen.jensen.ue1",
+  "zh": "f''=−{v1}<0，二阶导为负，故为上凸（凹）函数。"
+ },
+ {
+  "key": "gen.jensen.uq2",
+  "zh": "若 f 为下凸（凸）函数，则对任意 x={v1}, y={v2} 有？"
+ },
+ {
+  "key": "gen.jensen.ue2",
+  "zh": "凸函数满足 Jensen：f((x+y)/2) ≤ (f(x)+f(y))/2。"
+ },
+ {
+  "key": "gen.jensen.uo8",
+  "zh": "平方平均 ≥ 算术平均 ≥ 几何平均 ≥ 调和平均"
+ },
+ {
+  "key": "gen.jensen.uo9",
+  "zh": "算术平均 ≥ 平方平均 ≥ 几何平均 ≥ 调和平均"
+ },
+ {
+  "key": "gen.jensen.uo10",
+  "zh": "几何平均 ≥ 算术平均 ≥ 调和平均 ≥ 平方平均"
+ },
+ {
+  "key": "gen.jensen.uo11",
+  "zh": "调和平均 ≥ 几何平均 ≥ 算术平均 ≥ 平方平均"
+ },
+ {
+  "key": "gen.jensen.uq3",
+  "zh": "对正数 a={v1}, b={v2}，四个经典平均（平方/算术/几何/调和）的大小顺序是？"
+ },
+ {
+  "key": "gen.jensen.ue3",
+  "zh": "Q ≥ A ≥ G ≥ H。这是 Jensen（凸性）的直接推论。"
+ },
+ {
+  "key": "gen.jensen.uo12",
+  "zh": "e^(({v1}+{v2})/2) · (e^{v3}+e^{v4})/2 = 1"
+ },
+ {
+  "key": "gen.jensen.uq4",
+  "zh": "由 Jensen 不等式，对 f(t)=eᵗ 与 x={v1}, y={v2} 有？"
+ },
+ {
+  "key": "gen.jensen.ue4",
+  "zh": "f(t)=eᵗ 下凸，故 e^((x+y)/2)=f((x+y)/2) ≤ (f(x)+f(y))/2 = (e^{v1}+e^{v2})/2。"
+ },
+ {
+  "key": "gen.jensen.uo13",
+  "zh": "两者之和为 0"
+ },
+ {
+  "key": "gen.jensen.uq5",
+  "zh": "若 f 为上凸（凹）函数，则对任意 x={v1}, y={v2} 有？"
+ },
+ {
+  "key": "gen.jensen.ue5",
+  "zh": "凹函数满足反向 Jensen：f((x+y)/2) ≥ (f(x)+f(y))/2。"
+ },
+ {
+  "key": "gen.jensen.uq6",
+  "zh": "由 f(t)=ln t 的凹性，对 x={v1}, y={v2} 有？"
+ },
+ {
+  "key": "gen.jensen.ue6",
+  "zh": "ln t 上凸，故 ln((x+y)/2) ≥ (ln x+ln y)/2 = ln√(xy)，即 (x+y)/2 ≥ √(xy)。"
+ },
+ {
+  "key": "gen.jensen.uq7",
+  "zh": "下凸函数 f 与 λ={v1}（0<λ<1），Jensen 一般形式是？"
+ },
+ {
+  "key": "gen.jensen.ue7",
+  "zh": "f(λx+(1−λ)y) ≤ λf(x)+(1−λ)f(y)（λ={v1}）。"
+ },
+ {
+  "key": "gen.jensen.uo14",
+  "zh": "({v1}+{v2})/2 ≥ √({v3}·{v4})"
+ },
+ {
+  "key": "gen.jensen.uo15",
+  "zh": "({v1}+{v2})/2 ≤ √({v3}·{v4})"
+ },
+ {
+  "key": "gen.jensen.uo16",
+  "zh": "({v1}+{v2})/2 = √({v3}·{v4})"
+ },
+ {
+  "key": "gen.jensen.uo17",
+  "zh": "({v1}+{v2})/2 · √({v3}·{v4}) = 1"
+ },
+ {
+  "key": "gen.jensen.uq8",
+  "zh": "对正数 x={v1}, y={v2}，算术平均与几何平均的关系（Jensen 推论）是？"
+ },
+ {
+  "key": "gen.jensen.ue8",
+  "zh": "由 ln 的凹性得 (x+y)/2 ≥ √(xy)（算术平均 ≥ 几何平均）。"
+ },
+ {
+  "key": "gen.jensen.uo18",
+  "zh": "2·{v1}·{v2}/({v3}+{v4}) ≤ √({v5}·{v6})"
+ },
+ {
+  "key": "gen.jensen.uo19",
+  "zh": "2·{v1}·{v2}/({v3}+{v4}) + √({v5}·{v6}) = 0"
+ },
+ {
+  "key": "gen.jensen.uq9",
+  "zh": "对正数 x={v1}, y={v2}，调和平均与几何平均的关系（Jensen 推论）是？"
+ },
+ {
+  "key": "gen.jensen.ue9",
+  "zh": "调和平均 H=2xy/(x+y) ≤ √(xy)=G，故调和 ≤ 几何 ≤ 算术 ≤ 平方。"
+ },
+ {
+  "key": "gen.important_limit.uq0",
+  "zh": "lim_{x→0} sin({v1}x)/({v2}x) = ？（重要极限一）"
+ },
+ {
+  "key": "gen.important_limit.ue0",
+  "zh": "令 t={v1}x，lim_{t→0} sin t / t = 1。"
+ },
+ {
+  "key": "gen.important_limit.uo0",
+  "zh": "{v1}（即 e^{v2}）"
+ },
+ {
+  "key": "gen.important_limit.uo1",
+  "zh": "{v1}·{v2}"
+ },
+ {
+  "key": "gen.important_limit.uq1",
+  "zh": "lim_{x→∞} (1 + {v1}/x)^x = ？"
+ },
+ {
+  "key": "gen.important_limit.ue1",
+  "zh": "重要极限二推广：lim (1 + a/x)^x = e^{v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.important_limit.uo2",
+  "zh": "{v1}（即 e^{v2}）"
+ },
+ {
+  "key": "gen.important_limit.uq2",
+  "zh": "lim_{n→∞} (1 + {v1}/n)^n = ？（n 为正整数）"
+ },
+ {
+  "key": "gen.important_limit.ue2",
+  "zh": "离散推广：lim (1 + a/n)^n = e^{v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.important_limit.uo3",
+  "zh": "{v1}（即 e^{v2}）"
+ },
+ {
+  "key": "gen.important_limit.uq3",
+  "zh": "lim_{x→0} (1 + {v1}x)^{1/x} = ？"
+ },
+ {
+  "key": "gen.important_limit.ue3",
+  "zh": "令 t=1/x，则 lim (1 + {v1}/t)^t = e^{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.important_limit.uo4",
+  "zh": "{v1}（即 ln {v2}）"
+ },
+ {
+  "key": "gen.important_limit.uq4",
+  "zh": "lim_{x→0} ({v1}^x − 1)/x = ？（指数型重要极限）"
+ },
+ {
+  "key": "gen.important_limit.ue4",
+  "zh": "由 (a^x)' = a^x ln a 在 x=0 处，极限 = ln {v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.important_limit.uo5",
+  "zh": "{v1}（即 e^{v2}）"
+ },
+ {
+  "key": "gen.important_limit.uq5",
+  "zh": "lim_{n→∞} (1 + {v1}/n)^n = ？"
+ },
+ {
+  "key": "gen.important_limit.ue5",
+  "zh": "lim (1 + x/n)^n = e^{v1} ≈ {v2}（第二个重要极限的推广）。"
+ },
+ {
+  "key": "gen.important_limit.uq6",
+  "zh": "lim_{x→0} (1 − cos({v1}x)) / x² = ？"
+ },
+ {
+  "key": "gen.important_limit.ue6",
+  "zh": "1−cos({v1}x) ~ ({v2}²x²)/2，故极限 = {v3}²/2 = {v4}。"
+ },
+ {
+  "key": "gen.important_limit.uq7",
+  "zh": "lim_{x→0} tan({v1}x)/x = ？"
+ },
+ {
+  "key": "gen.important_limit.ue7",
+  "zh": "tan({v1}x) ~ {v2}x，故极限 = {v3}（亦可归为重要极限一）。"
+ },
+ {
+  "key": "gen.important_limit.uq8",
+  "zh": "lim_{x→0} ln(1 + {v1}x)/x = ？"
+ },
+ {
+  "key": "gen.important_limit.ue8",
+  "zh": "ln(1+{v1}x) ~ {v2}x，故极限 = {v3}。"
+ },
+ {
+  "key": "gen.important_limit.uq9",
+  "zh": "lim_{x→0} (e^({v1}x) − 1)/x = ？"
+ },
+ {
+  "key": "gen.important_limit.ue9",
+  "zh": "e^({v1}x)−1 ~ {v2}x，故极限 = {v3}。"
+ },
+ {
+  "key": "gen.de_moivre.uo0",
+  "zh": "cos({v1}θ)+i·sin({v2}θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo1",
+  "zh": "cos θ + i·sin({v1}θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo2",
+  "zh": "{v1}(cos θ + i·sin θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo3",
+  "zh": "cos({v1}θ)·sin({v2}θ)"
+ },
+ {
+  "key": "gen.de_moivre.uq0",
+  "zh": "(cos θ + i·sin θ)^{v1} = ？"
+ },
+ {
+  "key": "gen.de_moivre.ue0",
+  "zh": "棣莫弗定理：(cosθ+i sinθ)^{v1} = cos({v2}θ)+i sin({v3}θ)。"
+ },
+ {
+  "key": "gen.de_moivre.uo4",
+  "zh": "{v1}(cos((θ+2kπ)/{v2}) + i·sin((θ+2kπ)/{v3}))"
+ },
+ {
+  "key": "gen.de_moivre.uo5",
+  "zh": "{v1}(cos(θ/{v2}) + i·sin(θ/{v3}))"
+ },
+ {
+  "key": "gen.de_moivre.uo6",
+  "zh": "{v1}(cos θ + i·sin θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo7",
+  "zh": "{v1}(cos((θ+2kπ)/{v2}) + i·sin((θ+2kπ)/{v3}))"
+ },
+ {
+  "key": "gen.de_moivre.uq1",
+  "zh": "复数 z = {v1}(cos θ + i·sin θ) 的 {v2} 次方根（k=0,…,{v3}）是？"
+ },
+ {
+  "key": "gen.de_moivre.ue1",
+  "zh": "{v1} 次方根模为 r^{1/{v2}}={v3}，辐角 (θ+2kπ)/{v4}。"
+ },
+ {
+  "key": "gen.de_moivre.uo8",
+  "zh": "{v1} 个"
+ },
+ {
+  "key": "gen.de_moivre.uo9",
+  "zh": "1 个"
+ },
+ {
+  "key": "gen.de_moivre.uo10",
+  "zh": "2 个"
+ },
+ {
+  "key": "gen.de_moivre.uo11",
+  "zh": "无穷多个"
+ },
+ {
+  "key": "gen.de_moivre.uq2",
+  "zh": "方程 z^{v1} = 1（{v2} 为正整数）在复数范围内的根有？"
+ },
+ {
+  "key": "gen.de_moivre.ue2",
+  "zh": "单位圆上的 {v1} 次单位根共 {v2} 个：e^{2πik/{v3}}（k=0,…,{v4}-1）。"
+ },
+ {
+  "key": "gen.de_moivre.uq3",
+  "zh": "(1+i)^{v1} = ？"
+ },
+ {
+  "key": "gen.de_moivre.ue3",
+  "zh": "1+i = √2·e^{iπ/4}，故 (1+i)^{v1} = 2^{{v2}/2}·e^{i{v3}π/4} = {v4}。"
+ },
+ {
+  "key": "gen.de_moivre.uo12",
+  "zh": "cos {v1}° − i·sin {v2}°"
+ },
+ {
+  "key": "gen.de_moivre.uo13",
+  "zh": "cos {v1}° + i·sin {v2}°"
+ },
+ {
+  "key": "gen.de_moivre.uo14",
+  "zh": "−cos {v1}° + i·sin {v2}°"
+ },
+ {
+  "key": "gen.de_moivre.uo15",
+  "zh": "1/(cos {v1}° + i·sin {v2}°)"
+ },
+ {
+  "key": "gen.de_moivre.uq4",
+  "zh": "(cos {v1}° + i·sin {v2}°)^{−1} = ？"
+ },
+ {
+  "key": "gen.de_moivre.ue4",
+  "zh": "由棣莫弗：(cosθ+i sinθ)^{−1} = cos(−θ)+i sin(−θ) = cosθ − i sinθ。"
+ },
+ {
+  "key": "gen.de_moivre.uo16",
+  "zh": "cos({v1}θ) − i·sin({v2}θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo17",
+  "zh": "cos({v1}θ) + i·sin({v2}θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo18",
+  "zh": "−cos({v1}θ) + i·sin({v2}θ)"
+ },
+ {
+  "key": "gen.de_moivre.uo19",
+  "zh": "{v1}(cos θ − i·sin θ)"
+ },
+ {
+  "key": "gen.de_moivre.uq5",
+  "zh": "(cos θ + i·sin θ)^{−{v1}} = ？"
+ },
+ {
+  "key": "gen.de_moivre.ue5",
+  "zh": "负幂：= cos(−{v1}θ)+i sin(−{v2}θ) = cos({v3}θ) − i·sin({v4}θ)。"
+ },
+ {
+  "key": "gen.de_moivre.uo20",
+  "zh": "2·sinθ·cosθ"
+ },
+ {
+  "key": "gen.de_moivre.uq6",
+  "zh": "由棣莫弗，(cos {v1}° + i·sin {v2}°)² 的实部（即 cos 2{v3}°）等于？"
+ },
+ {
+  "key": "gen.de_moivre.ue6",
+  "zh": "(cosθ+i sinθ)² = cos2θ + i sin2θ = cos²θ−sin²θ + i·2sinθcosθ，实部 = cos²θ−sin²θ。"
+ },
+ {
+  "key": "gen.de_moivre.uq7",
+  "zh": "方程 z^{v1} = 1 的全部 {v2} 个根（单位根）之和 = ？"
+ },
+ {
+  "key": "gen.de_moivre.ue7",
+  "zh": "单位根 e^{2πik/{v1}}（k=0..{v2}-1）是等比数列求和，和为 0。"
+ },
+ {
+  "key": "gen.de_moivre.uq8",
+  "zh": "复数 z = {v1}(cos θ + i·sin θ) 的 {v2} 次方根的模（公共）是？"
+ },
+ {
+  "key": "gen.de_moivre.ue8",
+  "zh": "n 次方根模均为 r^{1/{v1}（≈ {v2}）}"
+ },
+ {
+  "key": "gen.de_moivre.uo21",
+  "zh": "2·sinθ·cosθ（即 sin 2θ）"
+ },
+ {
+  "key": "gen.de_moivre.uo22",
+  "zh": "2·cos²θ − 1"
+ },
+ {
+  "key": "gen.de_moivre.uq9",
+  "zh": "由棣莫弗，(cos {v1}° + i·sin {v2}°)² 的虚部（即 sin 2{v3}°）等于？"
+ },
+ {
+  "key": "gen.de_moivre.ue9",
+  "zh": "展开虚部 = 2sinθcosθ，即 sin2θ。"
+ },
+ {
+  "key": "gen.fourier.uq0",
+  "zh": "周期为 T={v1} 的函数可展开为（ω=2π/T）？"
+ },
+ {
+  "key": "gen.fourier.ue0",
+  "zh": "傅里叶级数：f(x) ~ a₀/2 + Σ(aₙ cos(nωx) + bₙ sin(nωx))。"
+ },
+ {
+  "key": "gen.fourier.uo0",
+  "zh": "只有正弦项（bₙ）"
+ },
+ {
+  "key": "gen.fourier.uo1",
+  "zh": "只有余弦项（aₙ）"
+ },
+ {
+  "key": "gen.fourier.uo2",
+  "zh": "只有常数项"
+ },
+ {
+  "key": "gen.fourier.uo3",
+  "zh": "既有正弦又有余弦"
+ },
+ {
+  "key": "gen.fourier.uq1",
+  "zh": "奇函数 f(x)=sin({v1}x)（满足 f(−x)=−f(x)）的傅里叶展开？"
+ },
+ {
+  "key": "gen.fourier.ue1",
+  "zh": "奇函数：aₙ=0，只含正弦项（正弦级数）。"
+ },
+ {
+  "key": "gen.fourier.uo4",
+  "zh": "只有余弦项（aₙ）"
+ },
+ {
+  "key": "gen.fourier.uo5",
+  "zh": "只有正弦项（bₙ）"
+ },
+ {
+  "key": "gen.fourier.uo6",
+  "zh": "只有常数项"
+ },
+ {
+  "key": "gen.fourier.uo7",
+  "zh": "既有正弦又有余弦"
+ },
+ {
+  "key": "gen.fourier.uq2",
+  "zh": "偶函数 f(x)=cos({v1}x)（满足 f(−x)=f(x)）的傅里叶展开？"
+ },
+ {
+  "key": "gen.fourier.ue2",
+  "zh": "偶函数：bₙ=0，只含余弦项（余弦级数）。"
+ },
+ {
+  "key": "gen.fourier.uq3",
+  "zh": "周期为 T={v1} 的函数，基频 ω = ？"
+ },
+ {
+  "key": "gen.fourier.ue3",
+  "zh": "基频 ω = 2π/T = 2π/{v1} = {v2}。"
+ },
+ {
+  "key": "gen.fourier.uq4",
+  "zh": "对周期 2π 的函数 f(x)={v1}·g(x)，傅里叶系数 a₀（出现在 a₀/2 中）的计算公式是？"
+ },
+ {
+  "key": "gen.fourier.ue4",
+  "zh": "a₀ = (1/π)∫_{−π}^{π} f(x) dx（故常数项为 a₀/2）。"
+ },
+ {
+  "key": "gen.fourier.uq5",
+  "zh": "对周期 2π 的函数，傅里叶正弦系数 b_{v1} = ？"
+ },
+ {
+  "key": "gen.fourier.ue5",
+  "zh": "b_n = (1/π)∫_{−π}^{π} f(x) sin(nx) dx，取 n={v1}。"
+ },
+ {
+  "key": "gen.fourier.uo8",
+  "zh": "bₙ = 0（全为 0）"
+ },
+ {
+  "key": "gen.fourier.uo9",
+  "zh": "全部非零"
+ },
+ {
+  "key": "gen.fourier.uq6",
+  "zh": "若 f(x)=cos({v1}x)（偶函数），则其傅里叶正弦系数 bₙ ？"
+ },
+ {
+  "key": "gen.fourier.ue6",
+  "zh": "偶函数只含余弦项，故所有 bₙ = 0。"
+ },
+ {
+  "key": "gen.fourier.uq7",
+  "zh": "在间断点 x={v1} 处，傅里叶级数收敛到？"
+ },
+ {
+  "key": "gen.fourier.ue7",
+  "zh": "狄利克雷定理：收敛到左右极限的平均值 (f(x₀⁺)+f(x₀⁻))/2。"
+ },
+ {
+  "key": "gen.fourier.uq8",
+  "zh": "f(x)=x（−π<x<π）的傅里叶正弦系数 b_{v1} = ？"
+ },
+ {
+  "key": "gen.fourier.ue8",
+  "zh": "b_n = 2(−1)^{n+1}/n，取 n={v1} 得 {v2}2/{v3}。"
+ },
+ {
+  "key": "gen.fourier.uo10",
+  "zh": "正弦级数（奇延拓）"
+ },
+ {
+  "key": "gen.fourier.uo11",
+  "zh": "余弦系列（偶延拓）"
+ },
+ {
+  "key": "gen.fourier.uo12",
+  "zh": "既有正弦又有余弦"
+ },
+ {
+  "key": "gen.fourier.uo13",
+  "zh": "只有常数项"
+ },
+ {
+  "key": "gen.fourier.uq9",
+  "zh": "定义在 [0,{v1}] 上的函数做奇延拓后，其傅里叶展开是？"
+ },
+ {
+  "key": "gen.fourier.ue9",
+  "zh": "奇延拓把函数变成奇函数，展开为正弦级数。"
+ },
+ {
+  "key": "gen.integral_app.uq0",
+  "zh": "函数 y=x 在 [{v1}, {v2}] 上的平均值 = ？"
+ },
+ {
+  "key": "gen.integral_app.ue0",
+  "zh": "平均值 = (1/(b−a))∫ x dx = (a+b)/2 = {v1}。"
+ },
+ {
+  "key": "gen.integral_app.uq1",
+  "zh": "曲线 y=x（0≤x≤{v1}）的弧长 = ？"
+ },
+ {
+  "key": "gen.integral_app.ue1",
+  "zh": "弧长 = ∫_0^{v1} √(1+(y')²) dx = ∫_0^{v2} √2 dx = √2·{v3} = {v4}。"
+ },
+ {
+  "key": "gen.integral_app.uq2",
+  "zh": "曲线 y=x² 与 x 轴在 [{v1}, {v2}] 围成的面积 = ∫_{{v3}}^{{v4}} x² dx = ？"
+ },
+ {
+  "key": "gen.integral_app.ue2",
+  "zh": "∫ x² dx = x³/3，面积 = ({v1}³−{v2}³)/3 = {v3}。"
+ },
+ {
+  "key": "gen.integral_app.uq3",
+  "zh": "y=x² 绕 x 轴在 [{v1}, {v2}] 旋转所得体积 = π∫_{{v3}}^{{v4}} x⁴ dx = ？"
+ },
+ {
+  "key": "gen.integral_app.ue3",
+  "zh": "π∫ x⁴ dx = π·x⁵/5，V = π({v1}⁵−{v2}⁵)/5 = {v3}。"
+ },
+ {
+  "key": "gen.integral_app.uq4",
+  "zh": "函数 y=x² 在 [{v1}, {v2}] 上的平均值 = ？"
+ },
+ {
+  "key": "gen.integral_app.ue4",
+  "zh": "平均值 = (1/(b−a))∫ x² dx = (b³−a³)/(3(b−a)) = {v1}。"
+ },
+ {
+  "key": "gen.integral_app.uq5",
+  "zh": "曲线 y=x 与直线 y={v1} 在 [{v2}, {v3}] 之间围成的面积 = ？"
+ },
+ {
+  "key": "gen.integral_app.ue5",
+  "zh": "面积 = ∫(x−{v1})dx = ({v2}²−{v3}²)/2 − {v4}({v5}−{v6}) = {v7}。"
+ },
+ {
+  "key": "gen.integral_app.uq6",
+  "zh": "曲线 y={v1}x（0≤x≤{v2}）的弧长 = ？"
+ },
+ {
+  "key": "gen.integral_app.ue6",
+  "zh": "弧长 = ∫_0^{v1} √(1+{v2}²) dx = {v3}√(1+{v4}²) = {v5}。"
+ },
+ {
+  "key": "gen.integral_app.uq7",
+  "zh": "曲线 y=x 与 x 轴在 [0, {v1}] 围成的三角形面积 = ？"
+ },
+ {
+  "key": "gen.integral_app.ue7",
+  "zh": "面积 = ∫_0^{v1} x dx = {v2}²/2 = {v3}。"
+ },
+ {
+  "key": "gen.graph_transform.uo0",
+  "zh": "向右平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo1",
+  "zh": "向左平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo2",
+  "zh": "向上平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo3",
+  "zh": "关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uq0",
+  "zh": "将 y=f(x) 变为 y=f(x−{v1}) 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue0",
+  "zh": "y=f(x−a) 是 y=f(x) 向右平移 {v1} 个单位（左加右减）。"
+ },
+ {
+  "key": "gen.graph_transform.uo4",
+  "zh": "关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uo5",
+  "zh": "关于 x 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uo6",
+  "zh": "关于原点对称"
+ },
+ {
+  "key": "gen.graph_transform.uo7",
+  "zh": "向右平移 1"
+ },
+ {
+  "key": "gen.graph_transform.uq1",
+  "zh": "y=f(x)={v1}·{v2} → y=f(−x) 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue1",
+  "zh": "x 取相反数，图像关于 y 轴对称。"
+ },
+ {
+  "key": "gen.graph_transform.uo8",
+  "zh": "纵向拉伸为 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uo9",
+  "zh": "纵向压缩为 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uo10",
+  "zh": "横向拉伸为 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uo11",
+  "zh": "横向压缩为 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uq2",
+  "zh": "y=f(x) → y={v1}f(x) 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue2",
+  "zh": "系数乘在函数值上：纵坐标变为原来的 {v1} 倍（纵向伸缩）。"
+ },
+ {
+  "key": "gen.graph_transform.uo12",
+  "zh": "将 x 轴下方的部分翻折到上方"
+ },
+ {
+  "key": "gen.graph_transform.uo13",
+  "zh": "将 y 轴左侧翻折到右侧"
+ },
+ {
+  "key": "gen.graph_transform.uo14",
+  "zh": "整体向上平移"
+ },
+ {
+  "key": "gen.graph_transform.uo15",
+  "zh": "关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uq3",
+  "zh": "y=f(x)={v1}·{v2} → y=|f(x)| 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue3",
+  "zh": "y=|f(x)|：保留 x 轴上方，将下方部分沿 x 轴翻折到上方。"
+ },
+ {
+  "key": "gen.graph_transform.uo16",
+  "zh": "向上平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo17",
+  "zh": "向下平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo18",
+  "zh": "向左平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo19",
+  "zh": "纵向拉伸 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uq4",
+  "zh": "y=f(x) → y=f(x)+{v1} 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue4",
+  "zh": "函数值整体加 {v1}：图像向上平移 {v2} 个单位。"
+ },
+ {
+  "key": "gen.graph_transform.uo20",
+  "zh": "横向压缩为原来的 1/{v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo21",
+  "zh": "横向拉伸为 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uo22",
+  "zh": "纵向压缩为 1/{v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo23",
+  "zh": "向右平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uq5",
+  "zh": "y=f(x) → y=f({v1}x)（{v2}>1）的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue5",
+  "zh": "x 乘 {v1}>1：周期变短，图像横向压缩为原来的 1/{v2}。"
+ },
+ {
+  "key": "gen.graph_transform.uo24",
+  "zh": "关于 x 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uo25",
+  "zh": "关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uo26",
+  "zh": "关于原点对称"
+ },
+ {
+  "key": "gen.graph_transform.uo27",
+  "zh": "向上平移 1"
+ },
+ {
+  "key": "gen.graph_transform.uq6",
+  "zh": "y=f(x)={v1}·{v2} → y=−f(x) 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue6",
+  "zh": "函数值取相反数，图像关于 x 轴对称（上下翻转）。"
+ },
+ {
+  "key": "gen.graph_transform.uo28",
+  "zh": "向左平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo29",
+  "zh": "向右平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo30",
+  "zh": "向上平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo31",
+  "zh": "关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uq7",
+  "zh": "y=f(x) → y=f(x+{v1}) 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue7",
+  "zh": "y=f(x+a) 是 y=f(x) 向左平移 {v1} 个单位（左加右减）。"
+ },
+ {
+  "key": "gen.graph_transform.uo32",
+  "zh": "先关于 y 轴对称再向上平移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uo33",
+  "zh": "先向上平移 {v1} 再关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uo34",
+  "zh": "向右平移 {v1} 再上移 {v2}"
+ },
+ {
+  "key": "gen.graph_transform.uo35",
+  "zh": "关于原点对称再上移 {v1}"
+ },
+ {
+  "key": "gen.graph_transform.uq8",
+  "zh": "y=f(x) → y=f(−x)+{v1} 的变换顺序是？"
+ },
+ {
+  "key": "gen.graph_transform.ue8",
+  "zh": "先作 x→−x（关于 y 轴对称），再加 {v1}（向上平移 {v2}）。"
+ },
+ {
+  "key": "gen.graph_transform.uo36",
+  "zh": "向右平移 {v1} 且向上平移 {v2}"
+ },
+ {
+  "key": "gen.graph_transform.uo37",
+  "zh": "向左平移 {v1} 且向下平移 {v2}"
+ },
+ {
+  "key": "gen.graph_transform.uo38",
+  "zh": "关于 y 轴对称"
+ },
+ {
+  "key": "gen.graph_transform.uo39",
+  "zh": "纵向拉伸 {v1} 倍"
+ },
+ {
+  "key": "gen.graph_transform.uq9",
+  "zh": "y=f(x) → y=f(x−{v1})+{v2} 的变换是？"
+ },
+ {
+  "key": "gen.graph_transform.ue9",
+  "zh": "右移 {v1} 单位、上移 {v2} 单位（x−{v3} 右移、+{v4} 上移）。"
+ },
+ {
+  "key": "gen.polar_deep.uq0",
+  "zh": "直角坐标点 ({v1}, {v2}) 的极径 ρ = ？"
+ },
+ {
+  "key": "gen.polar_deep.ue0",
+  "zh": "ρ = √(a²+b²) = √({v1}+{v2}) ≈ {v3}。"
+ },
+ {
+  "key": "gen.polar_deep.uq1",
+  "zh": "极坐标 (ρ={v1}, θ={v2}°) 的直角坐标是？"
+ },
+ {
+  "key": "gen.polar_deep.ue1",
+  "zh": "x=ρcosθ≈{v1}, y=ρsinθ≈{v2}。"
+ },
+ {
+  "key": "gen.polar_deep.uq2",
+  "zh": "极坐标方程 ρ = 2·{v1}·cosθ 表示的圆，其圆心是？"
+ },
+ {
+  "key": "gen.polar_deep.ue2",
+  "zh": "ρ=2a cosθ → x²+y²=2ax → (x−{v1})²+y²={v2}²，圆心({v3},0)。"
+ },
+ {
+  "key": "gen.polar_deep.uq3",
+  "zh": "极坐标 P1({v1}, 0)、P2({v2}, {v3}°)，两点距离 = ？"
+ },
+ {
+  "key": "gen.polar_deep.ue3",
+  "zh": "d² = ρ1²+ρ2²−2ρ1ρ2cos({v1}°) ≈ {v2}²。"
+ },
+ {
+  "key": "gen.polar_deep.uq4",
+  "zh": "直角坐标方程 x² + y² = {v1} 化为极坐标是？"
+ },
+ {
+  "key": "gen.polar_deep.ue4",
+  "zh": "x²+y²=ρ²，故 ρ²={v1} → ρ={v2}。"
+ },
+ {
+  "key": "gen.polar_deep.uq5",
+  "zh": "直角坐标点 ({v1}, {v2}) 的极角 θ（主值，度）约为？"
+ },
+ {
+  "key": "gen.polar_deep.ue5",
+  "zh": "tanθ = {v1}/{v2}，第一象限，θ ≈ {v3}°。"
+ },
+ {
+  "key": "gen.polar_deep.uq6",
+  "zh": "极坐标方程 ρ·sinθ = {v1} 化为直角坐标方程是？"
+ },
+ {
+  "key": "gen.polar_deep.ue6",
+  "zh": "ρsinθ = y，故 y = {v1}（一条水平直线）。"
+ },
+ {
+  "key": "gen.polar_deep.uq7",
+  "zh": "极坐标方程 ρ = 2·{v1}·sinθ 表示的圆，其圆心是？"
+ },
+ {
+  "key": "gen.polar_deep.ue7",
+  "zh": "ρ=2a sinθ → x²+y²=2ay → x²+(y−{v1})²={v2}²，圆心(0,{v3})。"
+ },
+ {
+  "key": "gen.polar_deep.uq8",
+  "zh": "极坐标曲线 ρ = {v1} 在 θ∈[0, {v2}°] 扫过的面积 = ？"
+ },
+ {
+  "key": "gen.polar_deep.ue8",
+  "zh": "面积 = (1/2)∫ρ²dθ = (1/2)·{v1}²·{v2}°(弧度) ≈ {v3}。"
+ },
+ {
+  "key": "gen.polar_deep.uq9",
+  "zh": "直角坐标点 ({v1}, {v2}) 的极径 ρ = ？"
+ },
+ {
+  "key": "gen.polar_deep.ue9",
+  "zh": "ρ = √(x²+y²) = √({v1}+{v2}) ≈ {v3}。"
+ },
+ {
+  "key": "gen.polar_deep.upt0",
+  "zh": "极坐标深化"
+ },
+ {
+  "key": "gen.param_extremum.uq0",
+  "zh": "参数方程 x={v1}cosθ, y={v2}sinθ，则 x+y 的最大值为？"
+ },
+ {
+  "key": "gen.param_extremum.ue0",
+  "zh": "x+y = {v1}(cosθ+sinθ)，振幅 {v2}√2，最大 {v3}。"
+ },
+ {
+  "key": "gen.param_extremum.uq1",
+  "zh": "参数方程 x={v1}cosθ, y={v2}sinθ，则 x+y 的最大值为？"
+ },
+ {
+  "key": "gen.param_extremum.ue1",
+  "zh": "a cosθ+b sinθ 振幅 √(a²+b²)=√({v1}+{v2}) ≈ {v3}。"
+ },
+ {
+  "key": "gen.param_extremum.uq2",
+  "zh": "参数方程 x=t, y=t²−{v1}t+{v2}，则 y 的最小值为？"
+ },
+ {
+  "key": "gen.param_extremum.ue2",
+  "zh": "y=(t−{v1}/2)² + ({v2} − {v3}²/4)，顶点处最小 ≈ {v4}。"
+ },
+ {
+  "key": "gen.param_extremum.uq3",
+  "zh": "参数方程 x={v1}+{v2}cosθ, y={v3}sinθ（圆），点 (x,y) 到原点距离的最大值是？"
+ },
+ {
+  "key": "gen.param_extremum.ue3",
+  "zh": "圆心({v1},0)、半径 {v2}，到原点最大距离 = {v3}+{v4}。"
+ },
+ {
+  "key": "gen.param_extremum.uq4",
+  "zh": "参数方程 x={v1}cos²θ, y={v2}sin²θ，则 xy 的最大值为？"
+ },
+ {
+  "key": "gen.param_extremum.ue4",
+  "zh": "xy = {v1}{v2}cos²θsin²θ = ({v3}{v4}/4)sin²2θ ≤ {v5}{v6}/4 ≈ {v7}。"
+ },
+ {
+  "key": "gen.param_extremum.uq5",
+  "zh": "参数方程 x={v1}cosθ, y={v2}sinθ，则 {v3}x+{v4}y 的最大值为？"
+ },
+ {
+  "key": "gen.param_extremum.ue5",
+  "zh": "{v1}·{v2}cosθ+{v3}·{v4}sinθ 振幅 √(({v5}{v6})²+({v7}{v8})²) ≈ {v9}。"
+ },
+ {
+  "key": "gen.param_extremum.uq6",
+  "zh": "参数 t>0，x = t + {v1}/t 的最小值为（均值不等式）？"
+ },
+ {
+  "key": "gen.param_extremum.ue6",
+  "zh": "t>0 时 t+{v1}/t ≥ 2√({v2}) ≈ {v3}，t=√{v4} 取等。"
+ },
+ {
+  "key": "gen.param_extremum.uq7",
+  "zh": "参数方程 y = −{v1}t² + {v2}t（抛体高度），y 的最大值为？"
+ },
+ {
+  "key": "gen.param_extremum.ue7",
+  "zh": "顶点 t={v1}/(2{v2})，y = {v3}²/(4{v4}) ≈ {v5}。"
+ },
+ {
+  "key": "gen.param_extremum.uq8",
+  "zh": "参数方程 x={v1}cosθ, y={v2}sinθ，则 x²+y² = ？"
+ },
+ {
+  "key": "gen.param_extremum.ue8",
+  "zh": "x²+y² = {v1}²cos²θ+{v2}²sin²θ = {v3}²（"
+ },
+ {
+  "key": "gen.param_extremum.uq9",
+  "zh": "参数方程 x={v1}cosθ, y={v2}sinθ 表示的椭圆面积是？"
+ },
+ {
+  "key": "gen.param_extremum.ue9",
+  "zh": "椭圆面积 = π·{v1}·{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.param_extremum.upt0",
+  "zh": "参数方程求最值"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq0",
+  "zh": "方向向量 u=({v1},0,0)、v=(0,{v2},0) 的两直线夹角 = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue0",
+  "zh": "u·v=0 → 夹角 90°。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq1",
+  "zh": "直线方向向量 s=({v1},{v2},{v3})，平面法向量 n=(0,0,1)，则线面角 φ 满足 sinφ = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue1",
+  "zh": "sinφ = |s·n|/(|s||n|) = {v1}/{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq2",
+  "zh": "两平面法向量 n1=({v1},0,0)、n2=(0,{v2},0)，二面角的余弦绝对值 = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue2",
+  "zh": "n1·n2=0，cos=0，二面角为 90°。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq3",
+  "zh": "平面 {v1}x+{v2}y+{v3}z=0 到点 P({v4},{v5},{v6}) 的距离是？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue3",
+  "zh": "d = |{v1}·{v2}+{v3}·{v4}+{v5}·{v6}|/√({v7}+{v8}+{v9}) = |{v10}|/{v11} ≈ {v12}。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq4",
+  "zh": "向量 a=({v1},0,0)、b=({v2},{v3},0) 的夹角余弦 cosθ = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue4",
+  "zh": "cosθ = a·b/(|a||b|) = {v1}·{v2}/({v3}·√({v4}+{v5})) = {v6}/√({v7}+{v8}) ≈ {v9}。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uo0",
+  "zh": "垂直"
+ },
+ {
+  "key": "gen.vector_geo_adv.uo1",
+  "zh": "平行"
+ },
+ {
+  "key": "gen.vector_geo_adv.uo2",
+  "zh": "夹角 60°"
+ },
+ {
+  "key": "gen.vector_geo_adv.uo3",
+  "zh": "重合"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq5",
+  "zh": "方向向量 u=({v1},{v2},0)、v=(−{v3},{v4},0) 的两直线位置 = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue5",
+  "zh": "u·v = −{v1}·{v2}+{v3}·{v4}+0 = 0 → 两直线垂直。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq6",
+  "zh": "向量 AB = ({v1},{v2},{v3})，则 |AB| = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue6",
+  "zh": "|AB| = √({v1}+{v2}+{v3}) = √({v4}) ≈ {v5}。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq7",
+  "zh": "过原点、法向量 n=({v1},{v2},{v3}) 的平面方程是？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue7",
+  "zh": "平面: n·(x,y,z) = 0 → {v1}x+{v2}y+{v3}z=0。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq8",
+  "zh": "向量 u=({v1},{v2},{v3})、v=({v4},{v5},{v6}) 的点积 u·v = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue8",
+  "zh": "u·v = {v1}·{v2}+{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.vector_geo_adv.uq9",
+  "zh": "向量 u=({v1},{v2},{v3}) 与自身的叉积 u×u = ？"
+ },
+ {
+  "key": "gen.vector_geo_adv.ue9",
+  "zh": "任意向量与自身的叉积为 0 向量。"
+ },
+ {
+  "key": "gen.vector_geo_adv.upt0",
+  "zh": "向量法解立体几何"
+ },
+ {
+  "key": "gen.abs_ineq.uq0",
+  "zh": "不等式 |x| < {v1} 的解集是？"
+ },
+ {
+  "key": "gen.abs_ineq.ue0",
+  "zh": "|x|<{v1} ⇔ −{v2} < x < {v3}，即 (−{v4},{v5})。"
+ },
+ {
+  "key": "gen.abs_ineq.uq1",
+  "zh": "|x−{v1}| ≤ {v2} 的解集是？"
+ },
+ {
+  "key": "gen.abs_ineq.ue1",
+  "zh": "−{v1} ≤ x−{v2} ≤ {v3} ⇔ {v4} ≤ x ≤ {v5}，即 [{v6},{v7}]。"
+ },
+ {
+  "key": "gen.abs_ineq.uq2",
+  "zh": "|x+{v1}| ≥ {v2} 的解集是？"
+ },
+ {
+  "key": "gen.abs_ineq.ue2",
+  "zh": "x+{v1}≥{v2} 或 x+{v3}≤−{v4} ⇔ x≥{v5} 或 x≤{v6}。"
+ },
+ {
+  "key": "gen.abs_ineq.uq3",
+  "zh": "|x−{v1}| < {v2} 表示 x 到 {v3} 的距离小于 {v4}，解集 = ？"
+ },
+ {
+  "key": "gen.abs_ineq.ue3",
+  "zh": "{v1}−{v2} < x < {v3}+{v4} ⇔ {v5} < x < {v6}。"
+ },
+ {
+  "key": "gen.abs_ineq.uq4",
+  "zh": "已知 |x|={v1}, |y|={v2}，则 |x+y| 的最大值是（三角不等式）？"
+ },
+ {
+  "key": "gen.abs_ineq.ue4",
+  "zh": "|x+y| ≤ |x|+|y| = {v1}+{v2}，同号时取等。"
+ },
+ {
+  "key": "gen.abs_ineq.uq5",
+  "zh": "实数 a={v1}, b={v2}（均大于 0），则 |a+b| = ？"
+ },
+ {
+  "key": "gen.abs_ineq.ue5",
+  "zh": "a,b>0 时 |a+b| = a+b = {v1}。"
+ },
+ {
+  "key": "gen.abs_ineq.uq6",
+  "zh": "函数 f(x)=|x−{v1}|+|x−{v2}| 的最小值是？"
+ },
+ {
+  "key": "gen.abs_ineq.ue6",
+  "zh": "|x−{v1}|+|x−{v2}| ≥ |(x−{v3})−(x−{v4})| = |{v5}-{v6}| = {v7}。"
+ },
+ {
+  "key": "gen.abs_ineq.uo0",
+  "zh": "x={v1} 或 x={v2}"
+ },
+ {
+  "key": "gen.abs_ineq.uq7",
+  "zh": "方程 |{v1}x−{v2}| = {v3} 的解是？"
+ },
+ {
+  "key": "gen.abs_ineq.ue7",
+  "zh": "{v1}x−{v2}=±{v3} → x=({v4}±{v5})/{v6} = {v7} 或 {v8}。"
+ },
+ {
+  "key": "gen.abs_ineq.uq8",
+  "zh": "不等式 |x| ≥ {v1} 的解集是？"
+ },
+ {
+  "key": "gen.abs_ineq.ue8",
+  "zh": "|x|≥{v1} ⇔ x≤−{v2} 或 x≥{v3}。"
+ },
+ {
+  "key": "gen.abs_ineq.uo1",
+  "zh": "|a|·|b|"
+ },
+ {
+  "key": "gen.abs_ineq.uq9",
+  "zh": "对任意实数 a,b，恒有 |a+b| ≤ ？"
+ },
+ {
+  "key": "gen.abs_ineq.ue9",
+  "zh": "绝对值三角不等式：|a+b| ≤ |a|+|b|。"
+ },
+ {
+  "key": "gen.abs_ineq.upt0",
+  "zh": "绝对值不等式"
+ },
+ {
+  "key": "gen.cauchy_app.uq0",
+  "zh": "已知 x²+y²={v1}，则 x+y 的最大值为（柯西不等式）？"
+ },
+ {
+  "key": "gen.cauchy_app.ue0",
+  "zh": "(1²+1²)(x²+y²) ≥ (x+y)² → 2·{v1} ≥ (x+y)² → 最大 √({v2}) = {v3}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq1",
+  "zh": "已知 a²+b²={v1}，则 3a+4b 的最大值为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue1",
+  "zh": "(a²+b²)(3²+4²) ≥ (3a+4b)² → {v1}·25 ≥ (...)² → 最大 5√{v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq2",
+  "zh": "x,y>0 且 x+y={v1}，则 1/x+1/y 的最小值为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue2",
+  "zh": "(x+y)(1/x+1/y) ≥ (1+1)² = 4 → 1/x+1/y ≥ 4/{v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq3",
+  "zh": "已知 x²+y²+z²={v1}，则 x+y+z 的最大值为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue3",
+  "zh": "(1+1+1)(x²+y²+z²) ≥ (x+y+z)² → 3·{v1} ≥ (x+y+z)² → 最大 √({v2}) ≈ {v3}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq4",
+  "zh": "n 维单位向量 u,v，若夹角为 {v1}°，则 Σaᵢbᵢ（点积） = ？"
+ },
+ {
+  "key": "gen.cauchy_app.ue4",
+  "zh": "点积 = |u||v|cos {v1}° = cos {v2}° = {v3}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq5",
+  "zh": "已知 x²+y²={v1}，则 2x+3y 的最大值为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue5",
+  "zh": "(x²+y²)(2²+3²) ≥ (2x+3y)² → {v1}·13 ≥ (...)² → 最大 {v2}√13 ≈ {v3}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq6",
+  "zh": "正数 a,b,c 且 a+b+c={v1}，则 1/a+1/b+1/c 的最小值为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue6",
+  "zh": "(a+b+c)(1/a+1/b+1/c) ≥ (1+1+1)² = 9 → ≥ 9/{v1} ≈ {v2}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq7",
+  "zh": "已知 x²+y²={v1}，则 {v2}x+{v3}y 的最大值为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue7",
+  "zh": "(x²+y²)({v1}²+{v2}²) ≥ ({v3}x+{v4}y)² → {v5}·{v6} ≥ (...)² → 最大 √({v7}) ≈ {v8}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq8",
+  "zh": "已知 x²+y²={v1}，则 |x−y| 的最大值约为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue8",
+  "zh": "|x−y| ≤ √(1²+(−1)²)·√(x²+y²) = √2·{v1}。"
+ },
+ {
+  "key": "gen.cauchy_app.uq9",
+  "zh": "已知 a²+b²={v1}，则 |3a−4b| 的最大值约为？"
+ },
+ {
+  "key": "gen.cauchy_app.ue9",
+  "zh": "|3a−4b| ≤ √(3²+4²)·√(a²+b²) = 5√{v1}。"
+ },
+ {
+  "key": "gen.cauchy_app.upt0",
+  "zh": "柯西不等式应用"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq0",
+  "zh": "a=({v1})、b=({v2}) 均升序，同序乘积和 = ？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue0",
+  "zh": "同序和 = {v1}·{v2}+{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq1",
+  "zh": "a=({v1}) 与自身同序相乘之和 = ？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue1",
+  "zh": "{v1}·{v2}+{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq2",
+  "zh": "a=({v1}) 升序、b=({v2}) 升序，反序配对（最大配最小）乘积和 = ？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue2",
+  "zh": "反序和 = {v1}·{v2}+{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo0",
+  "zh": "同序（都从小到大）"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo1",
+  "zh": "逆序"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo2",
+  "zh": "随意配对"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo3",
+  "zh": "交叉配对"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq3",
+  "zh": "数组 a=({v1})、b=({v2}) 均升序，要使对应乘积和最大，应让两数组如何配对？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue3",
+  "zh": "同序配对（都按从小到大）得最大和。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo4",
+  "zh": "≤（前者为乱序/反序）"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo5",
+  "zh": "无关"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq4",
+  "zh": "a=({v1}) 降序、b=({v2}) 升序，则 a₁b₃+a₂b₂+a₃b₁ 与 a₁b₁+a₂b₂+a₃b₃ 的大小？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue4",
+  "zh": "前者是乱序/反序和，后者是同序和，故前者 ≤ 后者。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo6",
+  "zh": "同序和 ≥ 乱序和 ≥ 反序和"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo7",
+  "zh": "同序 ≤ 乱序"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo8",
+  "zh": "乱序 ≥ 同序"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo9",
+  "zh": "反序 ≥ 同序"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq5",
+  "zh": "对 {v1} 项两组正数，排序不等式的三类和大小关系是？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue5",
+  "zh": "同序和 ≥ 乱序和 ≥ 反序和。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo10",
+  "zh": "不确定"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq6",
+  "zh": "正数 x=({v1}) 升序、y=({v2}) 升序，T=x₁y₃+x₂y₂+x₃y₁ 与 S=x₁y₁+x₂y₂+x₃y₃ 的关系？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue6",
+  "zh": "T 是反序/乱序和，S 是同序和，故 T ≤ S。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq7",
+  "zh": "a=({v1})、b=({v2}) 反序配对（最大配最小）的乘积和 = ？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue7",
+  "zh": "反序 = {v1}·{v2}+{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo11",
+  "zh": "同序和最大"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo12",
+  "zh": "乱序和最大"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo13",
+  "zh": "反序和最大"
+ },
+ {
+  "key": "gen.rearrange_ineq.uo14",
+  "zh": "三者相等"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq8",
+  "zh": "a=({v1})、b=({v2}) 任意配对乘积和，哪种配对最大？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue8",
+  "zh": "排序不等式：同序和 ≥ 乱序和 ≥ 反序和，故同序和最大（={v1}）。"
+ },
+ {
+  "key": "gen.rearrange_ineq.uq9",
+  "zh": "a=({v1})、b=({v2}) 反序（逆序）乘积和 = ？"
+ },
+ {
+  "key": "gen.rearrange_ineq.ue9",
+  "zh": "反序和 = {v1}·{v2}+{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.rearrange_ineq.upt0",
+  "zh": "排序不等式"
+ },
+ {
+  "key": "gen.markov.uq0",
+  "zh": "转移矩阵 P=[[{v1},{v2}],[{v3},{v4}]]（行：状态1,2），从状态1出发两步后仍在状态1的概率 = ？"
+ },
+ {
+  "key": "gen.markov.ue0",
+  "zh": "P²₁₁ = {v1}·{v2}+{v3}·{v4} = {v5}。"
+ },
+ {
+  "key": "gen.markov.uq1",
+  "zh": "转移矩阵 P=[[{v1},{v2}],[{v3},{v4}]] 的平稳分布 π=(π₁,π₂) 中 π₁ = ？"
+ },
+ {
+  "key": "gen.markov.ue1",
+  "zh": "平稳分布满足 π=πP，解得 π₁ = {v1}/({v2}+{v3}) = {v4}。"
+ },
+ {
+  "key": "gen.markov.uq2",
+  "zh": "若今天处于状态1，且一步转移 P(1→1)={v1}，则明天仍在状态1的概率 = ？"
+ },
+ {
+  "key": "gen.markov.ue2",
+  "zh": "一步转移，明天状态1 = P(1→1) = {v1}。"
+ },
+ {
+  "key": "gen.markov.uq3",
+  "zh": "转移矩阵 P=[[{v1},{v2}],[{v3},{v4}]]，从状态2出发两步后到状态1的概率 = ？"
+ },
+ {
+  "key": "gen.markov.ue3",
+  "zh": "P²₂₁ = {v1}·{v2}+{v3}·{v4} = {v5}。"
+ },
+ {
+  "key": "gen.markov.uo0",
+  "zh": "当前状态（与更早历史无关）"
+ },
+ {
+  "key": "gen.markov.uo1",
+  "zh": "初始状态"
+ },
+ {
+  "key": "gen.markov.uo2",
+  "zh": "全部历史"
+ },
+ {
+  "key": "gen.markov.uo3",
+  "zh": "下一状态"
+ },
+ {
+  "key": "gen.markov.uq4",
+  "zh": "若马尔可夫链中 P(A→B)={v1}，则“下一状态只依赖于”什么？"
+ },
+ {
+  "key": "gen.markov.ue4",
+  "zh": "无记忆性：下一状态仅取决于当前状态。"
+ },
+ {
+  "key": "gen.markov.uo4",
+  "zh": "吸收态"
+ },
+ {
+  "key": "gen.markov.uo5",
+  "zh": "平稳态"
+ },
+ {
+  "key": "gen.markov.uo6",
+  "zh": "暂态"
+ },
+ {
+  "key": "gen.markov.uo7",
+  "zh": "周期态"
+ },
+ {
+  "key": "gen.markov.uq5",
+  "zh": "若某状态 {v1} 满足 P({v2}→{v3})=1（进入后不再离开），称为？"
+ },
+ {
+  "key": "gen.markov.ue5",
+  "zh": "进入后不再离开的状态称为吸收态。"
+ },
+ {
+  "key": "gen.markov.uo8",
+  "zh": "唯一存在"
+ },
+ {
+  "key": "gen.markov.uo9",
+  "zh": "不存在"
+ },
+ {
+  "key": "gen.markov.uo10",
+  "zh": "有无穷多个"
+ },
+ {
+  "key": "gen.markov.uo11",
+  "zh": "等于初始分布"
+ },
+ {
+  "key": "gen.markov.uq6",
+  "zh": "有限状态、不可约且非周期（共 {v1} 个状态）的马尔可夫链，其平稳分布？"
+ },
+ {
+  "key": "gen.markov.ue6",
+  "zh": "遍历链有唯一平稳分布。"
+ },
+ {
+  "key": "gen.markov.uo12",
+  "zh": "平稳分布（与初始无关）"
+ },
+ {
+  "key": "gen.markov.uo13",
+  "zh": "初始分布"
+ },
+ {
+  "key": "gen.markov.uo14",
+  "zh": "均匀分布"
+ },
+ {
+  "key": "gen.markov.uo15",
+  "zh": "零向量"
+ },
+ {
+  "key": "gen.markov.uq7",
+  "zh": "对含 {v1} 个状态的遍历马尔可夫链，当步数 n→∞，状态分布趋于？"
+ },
+ {
+  "key": "gen.markov.ue7",
+  "zh": "极限分布 = 平稳分布，与初始分布无关。"
+ },
+ {
+  "key": "gen.markov.uo16",
+  "zh": "一步转移矩阵的平方 P²"
+ },
+ {
+  "key": "gen.markov.uo17",
+  "zh": "P 的转置"
+ },
+ {
+  "key": "gen.markov.uo18",
+  "zh": "P 的迹"
+ },
+ {
+  "key": "gen.markov.uq8",
+  "zh": "马尔可夫链的“两步转移概率矩阵”等于？"
+ },
+ {
+  "key": "gen.markov.ue8",
+  "zh": "两步转移概率 = P·P = P²。"
+ },
+ {
+  "key": "gen.markov.uo19",
+  "zh": "π = Pπ 转置"
+ },
+ {
+  "key": "gen.markov.uq9",
+  "zh": "马尔可夫链的平稳分布 π 满足？"
+ },
+ {
+  "key": "gen.markov.ue9",
+  "zh": "平稳分布满足 πP = π（左特征向量，特征值 1）。"
+ },
+ {
+  "key": "gen.markov.upt0",
+  "zh": "马尔可夫链"
+ },
+ {
+  "key": "gen.lln.uo0",
+  "zh": "总体期望 E[X]"
+ },
+ {
+  "key": "gen.lln.uo1",
+  "zh": "样本方差"
+ },
+ {
+  "key": "gen.lln.uo2",
+  "zh": "总体中位数"
+ },
+ {
+  "key": "gen.lln.uq0",
+  "zh": "弱大数定律：样本量 n={v1} 时，样本均值 X̄ₙ 依概率收敛于？"
+ },
+ {
+  "key": "gen.lln.ue0",
+  "zh": "弱大数定律：X̄ₙ → E[X]（依概率）。"
+ },
+ {
+  "key": "gen.lln.uq1",
+  "zh": "抛硬币 {v1} 次，正面概率 p={v2}，正面频率 m/n 当 n→∞ 时依概率收敛于？"
+ },
+ {
+  "key": "gen.lln.ue1",
+  "zh": "伯努利大数定律：频率依概率收敛于概率 {v1}。"
+ },
+ {
+  "key": "gen.lln.uo3",
+  "zh": "独立同分布且期望存在（有限）"
+ },
+ {
+  "key": "gen.lln.uo4",
+  "zh": "正态分布"
+ },
+ {
+  "key": "gen.lln.uo5",
+  "zh": "方差有限即可"
+ },
+ {
+  "key": "gen.lln.uo6",
+  "zh": "相互独立即可"
+ },
+ {
+  "key": "gen.lln.uq2",
+  "zh": "辛钦大数定律要求 {v1} 个随机变量的序列？"
+ },
+ {
+  "key": "gen.lln.ue2",
+  "zh": "辛钦：独立同分布且期望存在（有限）。"
+ },
+ {
+  "key": "gen.lln.uo7",
+  "zh": "切比雪夫不等式"
+ },
+ {
+  "key": "gen.lln.uo8",
+  "zh": "柯西不等式"
+ },
+ {
+  "key": "gen.lln.uo9",
+  "zh": "排序不等式"
+ },
+ {
+  "key": "gen.lln.uo10",
+  "zh": "詹森不等式"
+ },
+ {
+  "key": "gen.lln.uq3",
+  "zh": "用切比雪夫类不等式证明 {v1} 个样本均值收敛，常用的是？"
+ },
+ {
+  "key": "gen.lln.ue3",
+  "zh": "切比雪夫：P(|X̄−μ|≥ε) ≤ Var(X̄)/ε² → 0。"
+ },
+ {
+  "key": "gen.lln.uq4",
+  "zh": "均匀 {v1} 面骰子（点数 1..{v2}）掷很多次，点数平均值趋于？"
+ },
+ {
+  "key": "gen.lln.ue4",
+  "zh": "期望 = (1+{v1})/2 = {v2}。"
+ },
+ {
+  "key": "gen.lln.uo11",
+  "zh": "收敛性（稳定性）"
+ },
+ {
+  "key": "gen.lln.uo12",
+  "zh": "精确分布"
+ },
+ {
+  "key": "gen.lln.uo13",
+  "zh": "方差大小"
+ },
+ {
+  "key": "gen.lln.uo14",
+  "zh": "相关性"
+ },
+ {
+  "key": "gen.lln.uq5",
+  "zh": "大数定律研究 {v1} 次试验下样本均值随 n 增大的什么性质？"
+ },
+ {
+  "key": "gen.lln.ue5",
+  "zh": "大数定律研究均值随 n 增大而稳定（收敛）于期望。"
+ },
+ {
+  "key": "gen.lln.uo15",
+  "zh": "依概率收敛"
+ },
+ {
+  "key": "gen.lln.uo16",
+  "zh": "几乎必然收敛"
+ },
+ {
+  "key": "gen.lln.uo17",
+  "zh": "必然收敛"
+ },
+ {
+  "key": "gen.lln.uo18",
+  "zh": "均方收敛"
+ },
+ {
+  "key": "gen.lln.uq6",
+  "zh": "对 {v1} 次独立同分布试验，弱大数定律的收敛是？"
+ },
+ {
+  "key": "gen.lln.ue6",
+  "zh": "弱大数定律是依概率收敛；强大数定律才是几乎必然收敛。"
+ },
+ {
+  "key": "gen.lln.uo19",
+  "zh": "大量独立风险下频率趋稳于概率"
+ },
+ {
+  "key": "gen.lln.uo20",
+  "zh": "单次赔付确定"
+ },
+ {
+  "key": "gen.lln.uo21",
+  "zh": "损失为零"
+ },
+ {
+  "key": "gen.lln.uo22",
+  "zh": "利率恒定"
+ },
+ {
+  "key": "gen.lln.uq7",
+  "zh": "保险公司承保 {v1} 份独立保单能稳定定价，主要依据大数定律的哪一点？"
+ },
+ {
+  "key": "gen.lln.ue7",
+  "zh": "大数定律保证大量独立重复下频率稳定于概率，便于精算。"
+ },
+ {
+  "key": "gen.lln.uq8",
+  "zh": "独立同分布随机变量 X 取值 {v1},{v2} 等可能，则大量抽样后 X̄ 趋于？"
+ },
+ {
+  "key": "gen.lln.ue8",
+  "zh": "E[X] = ({v1}+{v2})/2 = {v3}。"
+ },
+ {
+  "key": "gen.lln.uo23",
+  "zh": "样本均值"
+ },
+ {
+  "key": "gen.lln.uo24",
+  "zh": "总体均值"
+ },
+ {
+  "key": "gen.lln.uo25",
+  "zh": "中位数"
+ },
+ {
+  "key": "gen.lln.uq9",
+  "zh": "对 {v1} 个独立同分布样本，依概率收敛于真实期望的是？"
+ },
+ {
+  "key": "gen.lln.ue9",
+  "zh": "样本均值依概率收敛于总体期望（弱大数定律）。"
+ },
+ {
+  "key": "gen.lln.upt0",
+  "zh": "大数定律"
+ },
+ {
+  "key": "gen.confidence.uo0",
+  "zh": "重复抽样时约 {v1}% 的区间覆盖参数真值"
+ },
+ {
+  "key": "gen.confidence.uo1",
+  "zh": "参数有 {v1}% 概率落在区间"
+ },
+ {
+  "key": "gen.confidence.uo2",
+  "zh": "区间一定有真值"
+ },
+ {
+  "key": "gen.confidence.uo3",
+  "zh": "真值固定在区间内"
+ },
+ {
+  "key": "gen.confidence.uq0",
+  "zh": "{v1}% 置信区间的含义是？"
+ },
+ {
+  "key": "gen.confidence.ue0",
+  "zh": "频率派解释：重复抽样下约 {v1}% 的区间含真值。"
+ },
+ {
+  "key": "gen.confidence.uq1",
+  "zh": "x̄={v1}, 标准误 SE={v2}, 95% 置信区间（z={v3}）≈？"
+ },
+ {
+  "key": "gen.confidence.ue1",
+  "zh": "{v1} ± {v2}·{v3} = {v4} ± {v5} → ({v6}, {v7})。"
+ },
+ {
+  "key": "gen.confidence.uo4",
+  "zh": "变宽"
+ },
+ {
+  "key": "gen.confidence.uo5",
+  "zh": "变窄"
+ },
+ {
+  "key": "gen.confidence.uo6",
+  "zh": "不变"
+ },
+ {
+  "key": "gen.confidence.uo7",
+  "zh": "消失"
+ },
+ {
+  "key": "gen.confidence.uq2",
+  "zh": "置信水平从 {v1}% 提高到 {v2}%，置信区间会？"
+ },
+ {
+  "key": "gen.confidence.ue2",
+  "zh": "更高置信需更大临界值，区间变宽。"
+ },
+ {
+  "key": "gen.confidence.uo8",
+  "zh": "变窄"
+ },
+ {
+  "key": "gen.confidence.uo9",
+  "zh": "变宽"
+ },
+ {
+  "key": "gen.confidence.uo10",
+  "zh": "不变"
+ },
+ {
+  "key": "gen.confidence.uo11",
+  "zh": "先窄后宽"
+ },
+ {
+  "key": "gen.confidence.uq3",
+  "zh": "样本量从 {v1} 增大到 {v2}（其他不变），置信区间会？"
+ },
+ {
+  "key": "gen.confidence.ue3",
+  "zh": "SE = σ/√n 随 n 增大而减小，区间变窄。"
+ },
+ {
+  "key": "gen.confidence.uq4",
+  "zh": "正态总体、大样本下 {v1}% 置信区间的双尾 z 临界值约为？"
+ },
+ {
+  "key": "gen.confidence.ue4",
+  "zh": "双尾 {v1}% 对应 z = {v2}。"
+ },
+ {
+  "key": "gen.confidence.uo12",
+  "zh": "样本均值 x̄"
+ },
+ {
+  "key": "gen.confidence.uo13",
+  "zh": "总体均值"
+ },
+ {
+  "key": "gen.confidence.uo14",
+  "zh": "中位数"
+ },
+ {
+  "key": "gen.confidence.uq5",
+  "zh": "以 x̄={v1} 为点估计构造的置信区间，通常是以什么为中心？"
+ },
+ {
+  "key": "gen.confidence.ue5",
+  "zh": "区间中心是样本均值 x̄（点估计）。"
+ },
+ {
+  "key": "gen.confidence.uq6",
+  "zh": "总体标准差 σ={v1}, n={v2}，标准误 SE = ？"
+ },
+ {
+  "key": "gen.confidence.ue6",
+  "zh": "SE = σ/√n = {v1}/√{v2} = {v3}/{v4} ≈ {v5}。"
+ },
+ {
+  "key": "gen.confidence.uo15",
+  "zh": "参数有 {v1}% 概率落在已算出的这个区间内"
+ },
+ {
+  "key": "gen.confidence.uo16",
+  "zh": "它是随机区间，随样本而变"
+ },
+ {
+  "key": "gen.confidence.uo17",
+  "zh": "其覆盖率在长期重复抽样下约为 {v1}%"
+ },
+ {
+  "key": "gen.confidence.uo18",
+  "zh": "用于估计总体未知参数"
+ },
+ {
+  "key": "gen.confidence.uq7",
+  "zh": "下列关于 {v1}% 置信区间的说法，错误的是？"
+ },
+ {
+  "key": "gen.confidence.ue7",
+  "zh": "频率派下参数是固定常数，不能说“有 {v1}% 概率落在此区间”。"
+ },
+ {
+  "key": "gen.confidence.uq8",
+  "zh": "已知 95% 置信区间为 ({v1} ± {v2})，则完整写法是？"
+ },
+ {
+  "key": "gen.confidence.ue8",
+  "zh": "{v1} ± {v2} 即 ({v3}, {v4})。"
+ },
+ {
+  "key": "gen.confidence.uo19",
+  "zh": "变窄"
+ },
+ {
+  "key": "gen.confidence.uo20",
+  "zh": "变宽"
+ },
+ {
+  "key": "gen.confidence.uo21",
+  "zh": "不变"
+ },
+ {
+  "key": "gen.confidence.uo22",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.confidence.uq9",
+  "zh": "将样本量由 {v1} 增至 {v2} 且置信水平不变，置信区间宽度会？"
+ },
+ {
+  "key": "gen.confidence.ue9",
+  "zh": "SE = σ/√n 变小，区间宽度变窄。"
+ },
+ {
+  "key": "gen.confidence.upt0",
+  "zh": "置信区间"
+ },
+ {
+  "key": "gen.hypothesis.uo0",
+  "zh": "原假设 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo1",
+  "zh": "备择假设 H1"
+ },
+ {
+  "key": "gen.hypothesis.uo2",
+  "zh": "样本均值"
+ },
+ {
+  "key": "gen.hypothesis.uo3",
+  "zh": "显著性水平"
+ },
+ {
+  "key": "gen.hypothesis.uq0",
+  "zh": "在检验 H0: μ={v1} 时，我们通常用证据反对的是？"
+ },
+ {
+  "key": "gen.hypothesis.ue0",
+  "zh": "检验以“拒绝 H0”为目标，H0 是原假设。"
+ },
+ {
+  "key": "gen.hypothesis.uo4",
+  "zh": "第一类错误（弃真）概率不超过 {v1}"
+ },
+ {
+  "key": "gen.hypothesis.uo5",
+  "zh": "第二类错误概率"
+ },
+ {
+  "key": "gen.hypothesis.uo6",
+  "zh": "置信度"
+ },
+ {
+  "key": "gen.hypothesis.uo7",
+  "zh": "p 值"
+ },
+ {
+  "key": "gen.hypothesis.uq1",
+  "zh": "显著性水平 α={v1} 表示？"
+ },
+ {
+  "key": "gen.hypothesis.ue1",
+  "zh": "α 是犯第一类错误（H0 真却拒绝）的上限，≤{v1}。"
+ },
+ {
+  "key": "gen.hypothesis.uo8",
+  "zh": "拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo9",
+  "zh": "不拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo10",
+  "zh": "不拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo11",
+  "zh": "拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo12",
+  "zh": "接受 H0 为真"
+ },
+ {
+  "key": "gen.hypothesis.uo13",
+  "zh": "无法判断"
+ },
+ {
+  "key": "gen.hypothesis.uq2",
+  "zh": "若 p 值 = {v1}, α = {v2}，则应？"
+ },
+ {
+  "key": "gen.hypothesis.ue2",
+  "zh": "p {v1} α → {v2} H0。"
+ },
+ {
+  "key": "gen.hypothesis.uo14",
+  "zh": "H0 为真时却拒绝了 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo15",
+  "zh": "H0 假时未拒绝"
+ },
+ {
+  "key": "gen.hypothesis.uo16",
+  "zh": "样本错误"
+ },
+ {
+  "key": "gen.hypothesis.uo17",
+  "zh": "计算错误"
+ },
+ {
+  "key": "gen.hypothesis.uq3",
+  "zh": "检验 H0: μ={v1}，第一类错误（α 错误）是指？"
+ },
+ {
+  "key": "gen.hypothesis.ue3",
+  "zh": "第一类错误 = 弃真：H0 真却拒绝。"
+ },
+ {
+  "key": "gen.hypothesis.uo18",
+  "zh": "H0 为假时却未拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo19",
+  "zh": "H0 真时拒绝"
+ },
+ {
+  "key": "gen.hypothesis.uo20",
+  "zh": "p 值过大"
+ },
+ {
+  "key": "gen.hypothesis.uo21",
+  "zh": "置信区间过宽"
+ },
+ {
+  "key": "gen.hypothesis.uq4",
+  "zh": "检验 H0: μ={v1}，第二类错误（β 错误）是指？"
+ },
+ {
+  "key": "gen.hypothesis.ue4",
+  "zh": "第二类错误 = 取伪：H0 假却未拒绝。"
+ },
+ {
+  "key": "gen.hypothesis.uo22",
+  "zh": "拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo23",
+  "zh": "接受 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo24",
+  "zh": "增大 α"
+ },
+ {
+  "key": "gen.hypothesis.uo25",
+  "zh": "停止检验"
+ },
+ {
+  "key": "gen.hypothesis.uq5",
+  "zh": "当检验统计量 z={v1} 落入拒绝域时，应当？"
+ },
+ {
+  "key": "gen.hypothesis.ue5",
+  "zh": "落入拒绝域 → 拒绝 H0。"
+ },
+ {
+  "key": "gen.hypothesis.uq6",
+  "zh": "大样本、α={v1} 的双侧 z 检验临界值约为？"
+ },
+ {
+  "key": "gen.hypothesis.ue6",
+  "zh": "双尾 {v1} 对应 {v2}。"
+ },
+ {
+  "key": "gen.hypothesis.uq7",
+  "zh": "大样本、α={v1} 的单侧（上侧）z 检验临界值约为？"
+ },
+ {
+  "key": "gen.hypothesis.ue7",
+  "zh": "单尾 {v1} 对应 z = {v2}。"
+ },
+ {
+  "key": "gen.hypothesis.uo26",
+  "zh": "拒绝域越大，越易拒绝 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo27",
+  "zh": "拒绝域越小越好"
+ },
+ {
+  "key": "gen.hypothesis.uo28",
+  "zh": "拒绝域固定不变"
+ },
+ {
+  "key": "gen.hypothesis.uo29",
+  "zh": "与 α 无关"
+ },
+ {
+  "key": "gen.hypothesis.uq8",
+  "zh": "在其他不变时，提高显著性水平 α 会使拒绝域如何？"
+ },
+ {
+  "key": "gen.hypothesis.ue8",
+  "zh": "α 增大 → 临界值减小 → 拒绝域变大，更易拒绝 H0。"
+ },
+ {
+  "key": "gen.hypothesis.uo30",
+  "zh": "p 值越小越反对 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo31",
+  "zh": "p 值越大越反对 H0"
+ },
+ {
+  "key": "gen.hypothesis.uo32",
+  "zh": "p 值是 H0 为真的概率"
+ },
+ {
+  "key": "gen.hypothesis.uo33",
+  "zh": "p 值固定为 α"
+ },
+ {
+  "key": "gen.hypothesis.uq9",
+  "zh": "检验 H0: μ={v1}，关于 p 值的正确说法是？"
+ },
+ {
+  "key": "gen.hypothesis.ue9",
+  "zh": "p 值是在 H0 下观测到当前或更极端结果的概率，越小越反对 H0。"
+ },
+ {
+  "key": "gen.hypothesis.upt0",
+  "zh": "假设检验"
+ },
+ {
+  "key": "gen.improper_int.uq0",
+  "zh": "反常积分 ∫₁^∞ 1/x^{v1} dx = ？"
+ },
+ {
+  "key": "gen.improper_int.ue0",
+  "zh": "[−1/({v1})x^{{v2}}]₁^∞ = 0 − (−1/({v3})) = {v4}。"
+ },
+ {
+  "key": "gen.improper_int.uo0",
+  "zh": "发散（∞）"
+ },
+ {
+  "key": "gen.improper_int.uo1",
+  "zh": "收敛到 1"
+ },
+ {
+  "key": "gen.improper_int.uo2",
+  "zh": "收敛到 ln{v1}"
+ },
+ {
+  "key": "gen.improper_int.uo3",
+  "zh": "收敛到 0"
+ },
+ {
+  "key": "gen.improper_int.uq1",
+  "zh": "反常积分 ∫{v1}^∞ 1/x dx 的敛散性？"
+ },
+ {
+  "key": "gen.improper_int.ue1",
+  "zh": "[ln x]{v1}^∞ = ∞，发散。"
+ },
+ {
+  "key": "gen.improper_int.uq2",
+  "zh": "反常积分 ∫₀¹ 1/x^{v1} dx = ？"
+ },
+ {
+  "key": "gen.improper_int.ue2",
+  "zh": "[x^{{v1}}/{v2}]₀¹ = {v3}（收敛）。"
+ },
+ {
+  "key": "gen.improper_int.uq3",
+  "zh": "积分 ∫₁^∞ 1/x^{v1} dx 收敛的充要条件是？"
+ },
+ {
+  "key": "gen.improper_int.ue3",
+  "zh": "p>1 收敛于 1/(p−1)；p≤1 发散。"
+ },
+ {
+  "key": "gen.improper_int.uq4",
+  "zh": "反常积分 ∫₀^∞ {v1}e^(−{v2}x) dx = ？"
+ },
+ {
+  "key": "gen.improper_int.ue4",
+  "zh": "∫₀^∞ {v1}e^{−{v2}x} dx = [−e^{−{v3}x}]₀^∞ = 0 − (−1) = 1。"
+ },
+ {
+  "key": "gen.improper_int.uq5",
+  "zh": "反常积分 ∫_{−∞}^∞ {v1}/({v2}+x²) dx = ？"
+ },
+ {
+  "key": "gen.improper_int.ue5",
+  "zh": "[arctan(x/{v1})]_{−∞}^∞ = π/2 − (−π/2) = π。"
+ },
+ {
+  "key": "gen.improper_int.uo4",
+  "zh": "发散"
+ },
+ {
+  "key": "gen.improper_int.uo5",
+  "zh": "收敛到 1"
+ },
+ {
+  "key": "gen.improper_int.uo6",
+  "zh": "收敛到 0"
+ },
+ {
+  "key": "gen.improper_int.uo7",
+  "zh": "收敛到 ln{v1}"
+ },
+ {
+  "key": "gen.improper_int.uq6",
+  "zh": "反常积分 ∫₀^{v1} 1/x dx 的敛散性？"
+ },
+ {
+  "key": "gen.improper_int.ue6",
+  "zh": "[ln x]₀^{v1} = ∞，在 0 处发散。"
+ },
+ {
+  "key": "gen.improper_int.uq7",
+  "zh": "反常积分 ∫{v1}^∞ 1/[x(ln x)²] dx 收敛到？"
+ },
+ {
+  "key": "gen.improper_int.ue7",
+  "zh": "令 u=ln x：∫_{ln {v1}}^∞ u^{−2} du = [−1/u] = 1/ln {v2} ≈ {v3}。"
+ },
+ {
+  "key": "gen.improper_int.uq8",
+  "zh": "反常积分 ∫₂^∞ 1/x^{v1} dx = ？"
+ },
+ {
+  "key": "gen.improper_int.ue8",
+  "zh": "[−1/({v1})x^{{v2}}]₂^∞ = 1/({v3})·2^{−{v4}} = {v5}。"
+ },
+ {
+  "key": "gen.improper_int.uq9",
+  "zh": "反常积分 ∫₀^∞ e^(−{v1}x) dx = ？"
+ },
+ {
+  "key": "gen.improper_int.ue9",
+  "zh": "[−e^(−{v1}x)/{v2}]₀^∞ = 1/{v3} = {v4}。"
+ },
+ {
+  "key": "gen.improper_int.upt0",
+  "zh": "反常积分"
+ },
+ {
+  "key": "gen.partial_deriv.uq0",
+  "zh": "f(x,y)={v1}x²y，求 ∂f/∂x 在 ({v2},{v3}) 的值 = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue0",
+  "zh": "∂f/∂x = 2{v1}xy = 2·{v2}·{v3}·{v4} = {v5}。"
+ },
+ {
+  "key": "gen.partial_deriv.uq1",
+  "zh": "f(x,y)={v1}x²y，求 ∂f/∂y 在 ({v2},{v3}) 的值 = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue1",
+  "zh": "∂f/∂y = {v1}x² = {v2}·{v3}² = {v4}。"
+ },
+ {
+  "key": "gen.partial_deriv.uq2",
+  "zh": "f(x,y)={v1}x²+{v2}xy，求 ∂f/∂x 在 ({v3},{v4}) 的值 = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue2",
+  "zh": "∂f/∂x = 2{v1}x+{v2}y = 2·{v3}·{v4}+{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.partial_deriv.uo0",
+  "zh": "相等"
+ },
+ {
+  "key": "gen.partial_deriv.uo1",
+  "zh": "互为相反数"
+ },
+ {
+  "key": "gen.partial_deriv.uo2",
+  "zh": "无关"
+ },
+ {
+  "key": "gen.partial_deriv.uo3",
+  "zh": "相差一个常数"
+ },
+ {
+  "key": "gen.partial_deriv.uq3",
+  "zh": "若 {v1} 元函数二阶混合偏导连续，则 ∂²f/∂x∂y 与 ∂²f/∂y∂x 的关系是？"
+ },
+ {
+  "key": "gen.partial_deriv.ue3",
+  "zh": "克莱罗定理：连续时混合偏导相等。"
+ },
+ {
+  "key": "gen.partial_deriv.uq4",
+  "zh": "二元函数 f(x,y)={v1}x²+{v2}y² 的全微分 df = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue4",
+  "zh": "df = f_x dx + f_y dy = 2{v1}x dx + 2{v2}y dy（形式即 f_x dx + f_y dy）。"
+ },
+ {
+  "key": "gen.partial_deriv.uq5",
+  "zh": "f(x,y)=e^({v1}xy)，求 ∂f/∂x 在 ({v2},{v3}) 的值 = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue5",
+  "zh": "∂f/∂x = e^{{v1}xy}·{v2}y = {v3}·{v4}·e^{{v5}·{v6}·{v7}} ≈ {v8}。"
+ },
+ {
+  "key": "gen.partial_deriv.uo4",
+  "zh": "曲面沿 x 方向切线的斜率"
+ },
+ {
+  "key": "gen.partial_deriv.uo5",
+  "zh": "曲面法向量"
+ },
+ {
+  "key": "gen.partial_deriv.uo6",
+  "zh": "体积变化率"
+ },
+ {
+  "key": "gen.partial_deriv.uo7",
+  "zh": "面积"
+ },
+ {
+  "key": "gen.partial_deriv.uq6",
+  "zh": "偏导数 ∂f/∂x（如 f(x,y)=x²+y²+{v1}）的几何意义是？"
+ },
+ {
+  "key": "gen.partial_deriv.ue6",
+  "zh": "固定 y=y0，曲面截线对 x 的切线斜率。"
+ },
+ {
+  "key": "gen.partial_deriv.uq7",
+  "zh": "f(x,y)=x²+y²−2{v1}x−2{v2}y 的唯一驻点是？"
+ },
+ {
+  "key": "gen.partial_deriv.ue7",
+  "zh": "f_x=2x−2{v1}=0, f_y=2y−2{v2}=0 → x={v3}, y={v4}，驻点({v5},{v6})。"
+ },
+ {
+  "key": "gen.partial_deriv.uq8",
+  "zh": "f(x,y)={v1}xy+{v2}y²，求 ∂f/∂y 在 ({v3},{v4}) 的值 = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue8",
+  "zh": "∂f/∂y = {v1}x+2{v2}y = {v3}·{v4}+2·{v5}·{v6} = {v7}。"
+ },
+ {
+  "key": "gen.partial_deriv.uq9",
+  "zh": "f(x,y)={v1}x·{v2}y，求 ∂²f/∂x∂y = ？"
+ },
+ {
+  "key": "gen.partial_deriv.ue9",
+  "zh": "∂f/∂x = {v1}y，再对 y 求偏导 = {v2}。"
+ },
+ {
+  "key": "gen.partial_deriv.upt0",
+  "zh": "多元函数偏导"
+ },
+ {
+  "key": "gen.gradient.uq0",
+  "zh": "f(x,y)={v1}x²+{v2}y² 的梯度 ∇f 在 ({v3},{v4}) = ？"
+ },
+ {
+  "key": "gen.gradient.ue0",
+  "zh": "∇f = (2{v1}x, 2{v2}y)，在 ({v3},{v4}) 为 ({v5}, {v6})。"
+ },
+ {
+  "key": "gen.gradient.uo0",
+  "zh": "函数值增加最快的方向"
+ },
+ {
+  "key": "gen.gradient.uo1",
+  "zh": "减小最快的方向"
+ },
+ {
+  "key": "gen.gradient.uo2",
+  "zh": "等高线切线方向"
+ },
+ {
+  "key": "gen.gradient.uo3",
+  "zh": "任意方向"
+ },
+ {
+  "key": "gen.gradient.uq1",
+  "zh": "对 f(x,y)=x²+y²+{v1}，梯度 ∇f 的方向是？"
+ },
+ {
+  "key": "gen.gradient.ue1",
+  "zh": "梯度方向是函数值增长最快的方向。"
+ },
+ {
+  "key": "gen.gradient.uo4",
+  "zh": "最大方向导数"
+ },
+ {
+  "key": "gen.gradient.uo5",
+  "zh": "函数值"
+ },
+ {
+  "key": "gen.gradient.uo6",
+  "zh": "零"
+ },
+ {
+  "key": "gen.gradient.uo7",
+  "zh": "偏导数之和"
+ },
+ {
+  "key": "gen.gradient.uq2",
+  "zh": "对 f(x,y)={v1}x+{v2}y，梯度的模 |∇f| 等于？"
+ },
+ {
+  "key": "gen.gradient.ue2",
+  "zh": "|∇f| 等于该点方向导数的最大值。"
+ },
+ {
+  "key": "gen.gradient.uo8",
+  "zh": "垂直（法向）"
+ },
+ {
+  "key": "gen.gradient.uo9",
+  "zh": "平行"
+ },
+ {
+  "key": "gen.gradient.uo10",
+  "zh": "相切"
+ },
+ {
+  "key": "gen.gradient.uo11",
+  "zh": "无关"
+ },
+ {
+  "key": "gen.gradient.uq3",
+  "zh": "对 f(x,y)=x²+{v1}y，在一点处 ∇f 与过该点的等高线的关系是？"
+ },
+ {
+  "key": "gen.gradient.ue3",
+  "zh": "梯度垂直于等高线，指向函数增大方向（法向）。"
+ },
+ {
+  "key": "gen.gradient.uo12",
+  "zh": "∇f · u"
+ },
+ {
+  "key": "gen.gradient.uq4",
+  "zh": "沿单位向量 u 的方向导数 D_u f（如 f(x,y)=x²+{v1}y）等于？"
+ },
+ {
+  "key": "gen.gradient.ue4",
+  "zh": "D_u f = ∇f · u = |∇f|cosφ。"
+ },
+ {
+  "key": "gen.gradient.uq5",
+  "zh": "f(x,y)={v1}xy 在 ({v2},{v3}) 处的梯度 = ？"
+ },
+ {
+  "key": "gen.gradient.ue5",
+  "zh": "∇f = ({v1}y, {v2}x)，在 ({v3},{v4}) 为 ({v5}, {v6})，模 {v7}。"
+ },
+ {
+  "key": "gen.gradient.uo13",
+  "zh": "−∇f（负梯度）"
+ },
+ {
+  "key": "gen.gradient.uo14",
+  "zh": "等高线方向"
+ },
+ {
+  "key": "gen.gradient.uo15",
+  "zh": "任意"
+ },
+ {
+  "key": "gen.gradient.uq6",
+  "zh": "对 f(x,y)={v1}x²+y²，要使函数值下降最快，应沿哪个方向？"
+ },
+ {
+  "key": "gen.gradient.ue6",
+  "zh": "最速下降方向 = 负梯度 −∇f。"
+ },
+ {
+  "key": "gen.gradient.uq7",
+  "zh": "f(x,y)={v1}x+{v2}y 的梯度 ∇f = ？"
+ },
+ {
+  "key": "gen.gradient.ue7",
+  "zh": "∇f = (∂f/∂x, ∂f/∂y) = ({v1}, {v2})。"
+ },
+ {
+  "key": "gen.gradient.uq8",
+  "zh": "f(x,y)={v1}(x²+y²) 在 ({v2},{v3}) 处梯度的模 = ？"
+ },
+ {
+  "key": "gen.gradient.ue8",
+  "zh": "∇f = (2{v1}x, 2{v2}y)，模 = 2{v3}√({v4}²+{v5}²) = {v6}。"
+ },
+ {
+  "key": "gen.gradient.uq9",
+  "zh": "f(x,y)={v1}x+{v2}y，使函数值增长最快的单位方向梯度的指向是？"
+ },
+ {
+  "key": "gen.gradient.ue9",
+  "zh": "∇f = ({v1}, {v2})，指向 ({v3}, {v4})（增长最快方向）。"
+ },
+ {
+  "key": "gen.gradient.upt0",
+  "zh": "梯度"
+ }
+]
