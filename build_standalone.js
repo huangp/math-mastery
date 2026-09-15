@@ -12,11 +12,12 @@ html = html.replace('<link rel="stylesheet" href="styles.css" />',
   '<style>\n' + css + '\n</style>');
 
 // 2) 按 index.html 顺序内联各 js
-const scripts = [
-  'js/data.js', 'js/animations.js', 'js/figures.js', 'js/qgen.js',
-  'js/qgen_junior.js', 'js/qgen_high.js', 'js/qgen_elementary_extra.js',
-  'js/related-projects.js', 'js/app.js'
-];
+// 直接从 index.html 解析脚本清单，而不是在这里硬编码：
+// 漏掉任何一个都会让单文件版直接报错（比如 i18n 缺席时 app.js 找不到 window.G），
+// 而硬编码的清单每次新增 js 都得记得同步——这里让它自己保持一致。
+const scripts = [...html.matchAll(/<script src="([^"]+)"><\/script>/g)].map(m => m[1]);
+if (!scripts.length) { console.error('index.html 里没找到任何 <script src>，已中止'); process.exit(1); }
+console.log('待内联脚本:', scripts.length, '个');
 for (const rel of scripts) {
   const code = fs.readFileSync(path.join(root, rel), 'utf8');
   const tag = '<script src="' + rel + '"></script>';

@@ -42,7 +42,9 @@ for (const k of Object.keys(EN)) {
   if (!q) { bad.push(k + `  (only ${t.questions.length} questions)`); continue; }
   if (m[4] !== undefined && +m[4] >= q.opts.length) bad.push(k + `  (only ${q.opts.length} options)`);
 }
-for (const t of T.filter(t => !gen.has(t.id))) {
+// 上游 f944354 给学习页加了「典型例题」区块，覆盖全部方法：
+// 静态题不再只有无 qgen 的技巧才显示，127 个方法的题都会渲染，全部都要有译文。
+for (const t of T) {
   t.questions.forEach((q, i) => {
     const base = "q." + t.id + "." + i;
     const gone = ["q", "explain", "point"].filter(f => !((base + "." + f) in EN));
@@ -54,8 +56,8 @@ for (const t of T.filter(t => !gen.has(t.id))) {
     if (new Set(shown).size !== shown.length) qDup.push(`${t.id}#${i} → ${JSON.stringify(shown)}`);
   });
 }
-const liveQ = T.filter(t => !gen.has(t.id)).reduce((s, t) => s + t.questions.length, 0);
-console.log(`live static questions: ${liveQ - qMissing.length}/${liveQ} translated`);
+const liveQ = T.reduce((s, t) => s + t.questions.length, 0);
+console.log(`worked-example questions: ${liveQ - qMissing.length}/${liveQ} translated`);
 if (qMissing.length) { console.log("questions missing text:", qMissing.length); qMissing.forEach(x => console.log("  - " + x)); }
 if (qDup.length) { console.log("DUPLICATE options after translation:", qDup.length); qDup.forEach(x => console.log("  ! " + x)); }
 bad.push(...qDup.map(x => "duplicate options " + x));
