@@ -2969,7 +2969,8 @@
         const L = rnd(2, 8) / 10;
         o = opts(G("gen.series.uo10", null, "收敛"), () => G("gen.series.uo11", null, "发散"), () => G("gen.series.uo12", null, "条件收敛"), () => G("gen.series.uo13", null, "无法判断"));
         q = G("gen.series.uq7", { v1: L.toFixed(1) }, `比值判别：若 lim|a_{n+1}/a_n| = ${L.toFixed(1)} < 1，则正项级数 Σ a_n ？`);
-        exp = G("gen.series.ue7", null, "比值极限 L = ${L.toFixed(1)} < 1，由比值判别法级数收敛。");
+        // 原为普通字符串却写了 ${...}，中文模式会把代码原样打印出来；改成模板字符串
+        exp = G("gen.series.ue7", { v1: L.toFixed(1) }, `比值极限 L = ${L.toFixed(1)} < 1，由比值判别法级数收敛。`);
       } else if (type === 8) {
         const N = rnd(2, 9);
         o = opts(G("gen.series.uo14", null, "≈ 1.645（π²/6）"), () => "= 1", () => G("gen.series.uo15", null, "发散"), () => "= 2");
@@ -3579,7 +3580,8 @@
         const R = rnd(1, 8);
         o = opts(`${R * R}`, () => `${R}`, () => `${2 * R}`, () => `${R * R * R}`);
         q = G("gen.param_extremum.uq8", { v1: R, v2: R }, `参数方程 x=${R}cosθ, y=${R}sinθ，则 x²+y² = ？`);
-        exp = G("gen.param_extremum.ue8", { v1: R, v2: R, v3: R }, `x²+y² = ${R}²cos²θ+${R}²sin²θ = ${R}²（`);
+        // 原句在全角左括号处被截断，补完：点到原点距离的平方是常数
+        exp = G("gen.param_extremum.ue8", { v1: R, v2: R, v3: R, v4: R }, `x²+y² = ${R}²cos²θ+${R}²sin²θ = ${R}²（与 θ 无关，故距离恒为 ${R}）。`);
       } else {
         const A = rnd(1, 6), B = rnd(1, 6);
         const area = (Math.PI * A * B).toFixed(2);
