@@ -247,6 +247,8 @@
     const sinV = { 0: "0", 30: "1/2", 45: "√2/2", 60: "√3/2", 90: "1", 120: "√3/2", 135: "√2/2", 150: "1/2", 180: "0", 210: "−1/2", 225: "−√2/2", 240: "−√3/2", 270: "−1", 300: "−√3/2", 315: "−√2/2", 330: "−1/2", 360: "0" };
     const cosV = { 0: "1", 30: "√3/2", 45: "√2/2", 60: "1/2", 90: "0", 120: "−1/2", 135: "−√2/2", 150: "−√3/2", 180: "−1", 210: "−√3/2", 225: "−√2/2", 240: "−1/2", 270: "0", 300: "1/2", 315: "√2/2", 330: "√3/2", 360: "1" };
     const tanV = { 0: "0", 30: "√3/3", 45: "1", 60: "√3", 90: "不存在", 120: "−√3", 135: "−1", 150: "−√3/3", 180: "0", 210: "√3/3", 225: "1", 240: "√3", 270: "不存在", 300: "−√3", 315: "−1", 330: "−√3/3", 360: "0" };
+    // tan 90°/270° 的值是「不存在」——这是文案而非数学符号，取用时要走译文
+    const tanVal = a => tanV[a] === "不存在" ? G("gen.trig.undefinedVal", null, "不存在") : tanV[a];
     const norm = a => ((a % 360) + 360) % 360;
     for (let i = 0; i < n; i++) {
       const type = i % 10;
@@ -285,9 +287,9 @@
         exp = G("gen.trig.ue5", { v1: 2 * ang, v2: c2 }, `倍角公式 cos2α = cos²α − sin²α；cos ${2 * ang}° = ${c2}。`);
       } else if (type === 6) {
         const ang = pick(ANG);
-        o = opts(tanV[ang], () => "√3", () => "1/√3", () => "0");
+        o = opts(tanVal(ang), () => "√3", () => "1/√3", () => "0");
         q = G("gen.trig.uq6", { v1: ang }, `tan ${ang}° = ？`);
-        exp = G("gen.trig.ue6", { v1: ang, v2: tanV[ang] }, `tanα = sinα/cosα；tan ${ang}° = ${tanV[ang]}。`);
+        exp = G("gen.trig.ue6", { v1: ang, v2: tanVal(ang) }, `tanα = sinα/cosα；tan ${ang}° = ${tanV[ang]}。`);
       } else if (type === 7) {
         const ang = pick(ANG);
         o = opts(sinV[ang], () => cosV[ang], () => "−" + sinV[ang], () => "0");
@@ -300,9 +302,9 @@
         exp = G("gen.trig.ue8", { v1: w }, `T = 2π/|ω| = 2π/${w}。`);
       } else {
         const ang = pick(ANG);
-        o = opts(tanV[ang], () => "1", () => "√3", () => "0");
+        o = opts(tanVal(ang), () => "1", () => "√3", () => "0");
         q = G("gen.trig.uq9", { v1: ang }, `tan ${ang}° 的值是？`);
-        exp = G("gen.trig.ue9", { v1: ang, v2: tanV[ang] }, `tan ${ang}° = ${tanV[ang]}。`);
+        exp = G("gen.trig.ue9", { v1: ang, v2: tanVal(ang) }, `tan ${ang}° = ${tanV[ang]}。`);
       }
       results.push(Q(q, o, "基础", exp, G("gen.trig.pt0", null, "三角函数")));
     }
@@ -1657,11 +1659,12 @@
       } else if (type === 3) {
         const sx = rnd(1, 6) * (Math.random() < 0.5 ? -1 : 1);
         const sy = rnd(1, 6) * (Math.random() < 0.5 ? -1 : 1);
+        // 正确答案必须和干扰项走同一套译文键，否则英文模式下它会是唯一的中文项
         let quad;
-        if (sx > 0 && sy > 0) quad = "第一象限";
-        else if (sx < 0 && sy > 0) quad = "第二象限";
-        else if (sx < 0 && sy < 0) quad = "第三象限";
-        else quad = "第四象限";
+        if (sx > 0 && sy > 0) quad = G("gen.numshape.uo8", null, "第一象限");
+        else if (sx < 0 && sy > 0) quad = G("gen.numshape.uo9", null, "第二象限");
+        else if (sx < 0 && sy < 0) quad = G("gen.numshape.uo10", null, "第三象限");
+        else quad = G("gen.numshape.uo11", null, "第四象限");
         o = opts(quad, () => G("gen.numshape.uo8", null, "第一象限"), () => G("gen.numshape.uo9", null, "第二象限"), () => G("gen.numshape.uo10", null, "第三象限"), () => G("gen.numshape.uo11", null, "第四象限"));
         q = G("gen.numshape.uq3", { v1: sx, v2: sy }, `点 (${sx}, ${sy}) 在平面直角坐标系位于？`);
         exp = G("gen.numshape.ue3", { v1: sx > 0 ? "正" : "负", v2: sy > 0 ? "正" : "负", v3: quad }, `x=${sx > 0 ? "正" : "负"}、y=${sy > 0 ? "正" : "负"}，属于${quad}。`);
@@ -1684,7 +1687,7 @@
       } else if (type === 7) {
         const a = rnd(1, 4) * (Math.random() < 0.5 ? -1 : 1);
         const b = rnd(1, 6), c = rnd(1, 6);
-        const dir = a > 0 ? "向上" : "向下";
+        const dir = a > 0 ? G("gen.numshape.uo15", null, "向上") : G("gen.numshape.uo14", null, "向下");
         o = opts(dir, () => a > 0 ? G("gen.numshape.uo14", null, "向下") : G("gen.numshape.uo15", null, "向上"), () => G("gen.numshape.uo16", null, "向左"), () => G("gen.numshape.uo17", null, "向右"));
         q = G("gen.numshape.uq7", { v1: a, v2: b >= 0 ? "+ " + b + "x" : "− " + (-b) + "x", v3: c >= 0 ? "+ " + c : "− " + (-c) }, `抛物线 y = ${a}x² ${b >= 0 ? "+ " + b + "x" : "− " + (-b) + "x"} ${c >= 0 ? "+ " + c : "− " + (-c)} 的开口朝向是？`);
         exp = G("gen.numshape.ue7", { v1: a, v2: a > 0 ? "> 0" : "< 0", v3: dir }, `二次项系数 a = ${a} ${a > 0 ? "> 0" : "< 0"}，抛物线开口${dir}。`);
