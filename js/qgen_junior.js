@@ -1035,7 +1035,7 @@
         const T = rnd(2, 6);
         const nn = rnd(T + 2, T + 20);
         const val = ((nn - 1) % T) + 1;
-        const v = 2 * val - 1;
+        const v = 2 * val + 1;   // 题面数列从 3 起：3,5,…,2T+1，故第 val 个奇数是 2val+1
         o = opts(v, () => v + 2, () => v - 2, () => v + 1);
         q = G("gen.cycle.uq9", { v1: 2*T+1, v2: nn }, `数列 3, 5, 7, …, ${2*T+1}（连续奇数）依次不断重复，第 ${nn} 项是？`);
         exp = G("gen.cycle.ue9", { v1: T, v2: nn, v3: val, v4: v }, `周期长 ${T}，第 ${nn} 项对应第 ${val} 个奇数 = ${v}。`);

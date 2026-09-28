@@ -454,7 +454,11 @@
     }
     if (type === 5) {
       const conf = pick([{ k: 100, a: "米", b: "厘米" }, { k: 1000, a: "千克", b: "克" }, { k: 10, a: "元", b: "角" }, { k: 10, a: "分米", b: "厘米" }]);
-      const v = r2(rnd(101, 999) / 100), ans = Math.round(v * conf.k);
+      // 小数位数必须与进率匹配，否则换算结果不是整数，解析里的等式会写错
+      // （旧写法：9.76 元 × 10 = 97.6，却被 round 成 98）
+      const dp = String(conf.k).length - 1;                 // k=10 → 1 位，100 → 2 位
+      const ans = rnd(101, 999) * (conf.k >= 100 ? 1 : 10); // 先定整数结果
+      const v = Number((ans / conf.k).toFixed(dp));         // 再反推小数，保证整除
       return Q(G("gen.decimal.uq5", { v1: v, v2: conf.a, v3: conf.b }, `单位换算：${v} ${conf.a} = ? ${conf.b}`), opts(ans, () => Math.round(v * conf.k) + rnd(-30, 30)), "提升",
         G("gen.decimal.ue5", { v1: conf.a, v2: conf.k, v3: conf.b, v4: v, v5: conf.k, v6: ans, v7: conf.b }, `1 ${conf.a}=${conf.k} ${conf.b}，所以 ${v}×${conf.k}=${ans}（${conf.b}）。`), G("gen.decimal.upt5", null, "单位换算"), null);
     }
