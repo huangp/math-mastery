@@ -13,12 +13,15 @@ const ROUNDS = +process.argv[2] || 60;
 
 const dom = new JSDOM("<!doctype html><body>", { url: "http://localhost/", runScripts: "outside-only" });
 const w = dom.window;
-["js/i18n/zh.js", "js/i18n/en.js", "js/i18n/en.tech.js", "js/i18n/en.q.js", "js/i18n/en.gen.js",
- "js/i18n/en.fig.js", "js/i18n.js", "js/data.js", "js/figures.js",
- "js/qgen.js", "js/qgen_junior.js", "js/qgen_high.js"].forEach(f => {
-  const p = path.join(ROOT, f);
-  if (fs.existsSync(p)) w.eval(fs.readFileSync(p, "utf8"));
-});
+// 脚本清单直接取自 index.html：写死清单会漏掉新增文件
+// （此前就漏了 js/qgen_elementary_extra.js，28 个生成器完全没被检查到）
+const INDEX = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+[...INDEX.matchAll(/<script src="([^"]+)"><\/script>/g)].map(m => m[1])
+  .filter(f => !/app\.js$|related-projects/.test(f))   // app.js 需要 DOM，这里只跑出题引擎
+  .forEach(f => {
+    const p = path.join(ROOT, f);
+    if (fs.existsSync(p)) w.eval(fs.readFileSync(p, "utf8"));
+  });
 
 const CJK = /[一-鿿]/;
 const gens = w.TECHNIQUES.filter(t => typeof t.qgen === "function");
