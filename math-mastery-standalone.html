@@ -330,6 +330,8 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
 
   "level.基础": "基础",
   "level.进阶": "进阶",
+  "level.提升": "提升",
+  "level.拔高": "拔高",
   "level.易错": "易错",
 
   /* ---------- 学习路径首页 ---------- */
@@ -533,6 +535,8 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
 
   "level.基础": "Core",
   "level.进阶": "Stretch",
+  "level.提升": "Stretch+",
+  "level.拔高": "Challenge",
   "level.易错": "Tricky",
 
   /* ---------- Learning path home ---------- */
@@ -661,6 +665,22 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "ago.never": "not recorded yet",
 
   "ui.nav.ai": "AI diagnosis",
+
+  /* ---------- shared vocabulary (arrays used across generators) ---------- */
+  "vocab.week.0": "Sun", "vocab.week.1": "Mon", "vocab.week.2": "Tue", "vocab.week.3": "Wed",
+  "vocab.week.4": "Thu", "vocab.week.5": "Fri", "vocab.week.6": "Sat",
+  "vocab.weekFull.0": "Sunday", "vocab.weekFull.1": "Monday", "vocab.weekFull.2": "Tuesday",
+  "vocab.weekFull.3": "Wednesday", "vocab.weekFull.4": "Thursday", "vocab.weekFull.5": "Friday",
+  "vocab.weekFull.6": "Saturday",
+  "vocab.beast.0": "Rat", "vocab.beast.1": "Ox", "vocab.beast.2": "Tiger", "vocab.beast.3": "Rabbit",
+  "vocab.beast.4": "Dragon", "vocab.beast.5": "Snake", "vocab.beast.6": "Horse", "vocab.beast.7": "Goat",
+  "vocab.beast.8": "Monkey", "vocab.beast.9": "Rooster", "vocab.beast.10": "Dog", "vocab.beast.11": "Pig",
+  "vocab.color.0": "red", "vocab.color.1": "yellow", "vocab.color.2": "blue", "vocab.color.3": "green",
+  "vocab.color6.0": "red", "vocab.color6.1": "yellow", "vocab.color6.2": "blue",
+  "vocab.color6.3": "green", "vocab.color6.4": "purple", "vocab.color6.5": "orange",
+  "vocab.place.0": "units", "vocab.place.1": "tens", "vocab.place.2": "hundreds",
+  "vocab.parity.0": "odd", "vocab.parity.1": "even",
+  "vocab.rank.0": "smallest", "vocab.rank.1": "middle", "vocab.rank.2": "largest",
 
   "profile.label": "Learner",
   "profile.default": "Learner {n}",
@@ -5936,7 +5956,31 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
     "gen.equation.upt11": "Consecutive numbers",
     "gen.equation.uq12": "A garment sells for {v2} yuan at {v1}/10 of its original price. What was the original price, in yuan? (solve with an equation)",
     "gen.equation.ue12": "Let the original price be x yuan: {v1}x={v2}, x={v3}÷{v4}={v5} yuan.",
-    "gen.equation.upt12": "Discounts with an equation"
+    "gen.equation.upt12": "Discounts with an equation",
+
+    /* ---- circle: radius <-> diameter (sentence was hidden in a ternary) ---- */
+    "gen.circle.uq8d": "A circle has radius {v1} cm. What is its diameter, in cm?",
+    "gen.circle.uq8r": "A circle has diameter {v1} cm. What is its radius, in cm?",
+    "gen.circle.ue8d": "diameter = radius x 2 = {v1} x 2 = {v2} cm.",
+    "gen.circle.ue8r": "radius = diameter / 2 = {v1} / 2 = {v2} cm.",
+    "gen.circle.upt8": "Radius and diameter",
+
+    /* ---- options that lived in raw Chinese arrays (item #5) ---- */
+    "gen.parity.optEither": "It could be either odd or even",
+    "gen.parity.optUnknown": "There is not enough information",
+    "gen.prime.wPrime": "prime",
+    "gen.prime.wComposite": "composite",
+    "gen.prime.optNeither": "Neither prime nor composite",
+    "gen.prime.optUnknown": "Cannot be decided",
+    "gen.prime.ue9p": "{v1} has only the factors 1 and {v2}, so it is prime.",
+    "gen.prime.ue9c": "{v1} = {v2}, so it has factors beyond 1 and itself and is composite.",
+    "gen.fraction.optEqual": "They are equal",
+    "gen.fraction.optNoCmp": "They cannot be compared",
+    "gen.cowgrass.core": "{v1} cows can graze it for {v2} days, and {v3} cows for {v4} days",
+    "gen.cowgrass.tail3": " So the grass growing each day is what {v1} cows eat in a day.",
+    "gen.cowgrass.tail4": " So the grass already there is {v1} units, which is what {v2} cows eat in one day.",
+    "gen.cowgrass.tail5": " As long as the cows eat no more than the {v1} units that grow each day, the grass never runs out, so at most {v2} cows.",
+    "gen.cowgrass.sol": "Say one cow eats 1 unit of grass a day. Totals: {v1}x{v2}={v3} units and {v4}x{v5}={v6} units; new growth per day = ({v3}-{v6}) / ({v7}-{v8}) = {v9} units, and the grass already there = {v3} - {v9}x{v7} = {v10} units."
   });
 })();
 
@@ -8568,6 +8612,28 @@ window.I18N = (function () {
     return tx(key, zhText, vars);
   }
 
+  // 共享词表：星期、生肖、颜色、数位这类「成组的词」在多个生成器里当数组用，
+  // 逐处包 G() 会散成上百个键。这里集中一份，生成器按 V("week") 取当前语言的数组。
+  const VOCAB = {
+    week:   ["日", "一", "二", "三", "四", "五", "六"],
+    weekFull: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+    beast:  ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"],
+    color:  ["红", "黄", "蓝", "绿"],
+    color6: ["红", "黄", "蓝", "绿", "紫", "橙"],
+    place:  ["个位", "十位", "百位"],
+    parity: ["奇数", "偶数"],
+    rank:   ["最小", "中间", "最大"]
+  };
+  // V(name) → 当前语言的词数组；英文缺词时回落中文，保证长度与下标不变
+  function V(name) {
+    const zh = VOCAB[name] || [];
+    if (lang === FALLBACK) return zh.slice();
+    return zh.map((w, i) => {
+      const v = cat(lang)["vocab." + name + "." + i];
+      return v === undefined ? w : String(v);
+    });
+  }
+
   // 内容型文案（技巧名/摘要/口诀/步骤/静态题）：中文原文留在 data.js，
   // 目录里只放译文；查不到就用原文兜底，避免把中文再抄一份造成两处漂移。
   function tx(key, fallbackText, vars) {
@@ -8598,7 +8664,7 @@ window.I18N = (function () {
   return {
     get lang() { return lang; },
     langs: LANGS,
-    t, tx, gen, has, setLang, onChange, applyDocument,
+    t, tx, gen, V, has, setLang, onChange, applyDocument,
     missing: () => Object.keys(missingKeys).sort()
   };
 })();
@@ -8607,6 +8673,8 @@ window.t = window.I18N.t;
 window.tx = window.I18N.tx;
 /* 出题引擎里用 G(key, vars, 中文原文) */
 window.G = window.I18N.gen;
+/* 共享词表：生成器里用 V("week")[i] 取当前语言的词 */
+window.V = window.I18N.V;
 
 </script>
   <script>
@@ -15255,8 +15323,9 @@ const Fig = {};
   function qCycle(n) {
     const results = [];
     const K = 10;
-    const WEEK = ["一","二","三","四","五","六","日"];
-    const BEASTS = ["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"];
+    // 词表改从 i18n 取，长度与下标不变，英文模式下自动出英文
+    const WEEK = V("week").slice(1).concat(V("week")[0]);   // 原数组是「一…六,日」
+    const BEASTS = V("beast");
     for (let i = 0; i < n; i++) {
       const type = i % K;
       let q, ans, o, exp;
@@ -15296,7 +15365,7 @@ const Fig = {};
         exp = G("gen.cycle.ue3", { v1: nn, v2: qd }, `季度 = ⌈${nn} ÷ 3⌉ = ${qd}。`);
       } else if (type === 4) {
         // 四色彩灯
-        const colors = ["红","黄","蓝","绿"];
+        const colors = V("color");
         const T = 4;
         const nn = rnd(T + 3, T + 25);
         const val = (nn - 1) % T;
@@ -15307,7 +15376,8 @@ const Fig = {};
       } else if (type === 5) {
         // 奇偶交替
         const nn = rnd(1, 30);
-        const parity = nn % 2 === 1 ? "奇数" : "偶数";
+        // 正确答案必须与干扰项同源，否则英文模式下它是唯一的中文项
+        const parity = nn % 2 === 1 ? G("gen.cycle.uo0", null, "奇数") : G("gen.cycle.uo1", null, "偶数");
         o = opts(parity, () => parity === G("gen.cycle.uo0", null, "奇数") ? G("gen.cycle.uo1", null, "偶数") : G("gen.cycle.uo2", null, "奇数"), () => G("gen.cycle.uo3", null, "质数"), () => G("gen.cycle.uo4", null, "合数"));
         q = G("gen.cycle.uq5", { v1: nn }, `数列 奇、偶、奇、偶…… 交替排列，第 ${nn} 项是奇数还是偶数？`);
         exp = G("gen.cycle.ue5", { v1: nn, v2: nn, v3: nn%2===1?"奇":"偶", v4: parity }, `第 ${nn} 项：${nn} 为${nn%2===1?"奇":"偶"}数，故是${parity}。`);
@@ -19869,7 +19939,7 @@ const Fig = {};
     const type = rnd(0, 11);
     if (type === 0) {
       const a = rnd(1, 9), b = rnd(0, 9), c = rnd(0, 9), N = a * 100 + b * 10 + c;
-      const names = ["个位", "十位", "百位"], digs = [c, b, a], w = rnd(0, 2), ans = digs[w];
+      const names = V("place"), digs = [c, b, a], w = rnd(0, 2), ans = digs[w];
       return Q(G("gen.count.uq0", { v1: N, v2: names[w] }, `数 ${N} 的${names[w]}上的数字是几？`), opts(ans, () => rnd(0, 9)), "基础",
         G("gen.count.ue0", { v1: N, v2: c, v3: b, v4: a, v5: names[w], v6: ans }, `${N} 从右边起：个位是 ${c}，十位是 ${b}，百位是 ${a}。所以${names[w]}上的数字是 ${ans}。`), G("gen.count.upt0", null, "认数位"), null);
     }
@@ -20219,7 +20289,7 @@ const Fig = {};
       let b = rnd(3, 12), d = rnd(3, 12), a = rnd(1, b - 1), c = rnd(1, d - 1), g = 0;
       while (a * d === c * b && g++ < 50) { c = rnd(1, d - 1); }
       const f1 = fs(a, b), f2 = fs(c, d), ans = a * d > c * b ? f1 : f2;
-      return Q(G("gen.fraction.uq4", { v1: f1, v2: f2 }, `比较大小：${f1} 和 ${f2}，较大的是哪一个？`), cats(ans, [ans === f1 ? f2 : f1, "两个相等", "无法比较"]), "提升",
+      return Q(G("gen.fraction.uq4", { v1: f1, v2: f2 }, `比较大小：${f1} 和 ${f2}，较大的是哪一个？`), cats(ans, [ans === f1 ? f2 : f1, G("gen.fraction.optEqual", null, "两个相等"), G("gen.fraction.optNoCmp", null, "无法比较")]), "提升",
         G("gen.fraction.ue4", { v1: f1, v2: a * d, v3: b * d, v4: f2, v5: c * b, v6: b * d, v7: a * d, v8: a * d > c * b ? ">" : "<", v9: c * b, v10: ans }, `通分比较：${f1}=${a * d}/${b * d}，${f2}=${c * b}/${b * d}，${a * d}${a * d > c * b ? ">" : "<"}${c * b}，所以 ${ans} 大。`), G("gen.fraction.upt4", null, "比较分数"), null);
     }
     if (type === 5) {
@@ -20631,8 +20701,13 @@ const Fig = {};
     }
     if (type === 8) {
       const r = rnd(3, 60), askD = rnd(0, 1), ans = askD ? 2 * r : r;
-      return Q(askD ? `一个圆的半径是 ${r} 厘米，直径是多少厘米？` : `一个圆的直径是 ${2 * r} 厘米，半径是多少厘米？`, opts(ans, () => rnd(2, 130)), "基础",
-        askD ? `直径=半径×2=${r}×2=${ans}（厘米）。` : `半径=直径÷2=${2 * r}÷2=${ans}（厘米）。`, "半径与直径", null);
+      // 整句藏在三元里，包装器扫不到；拆成两个键分别走译文
+      return Q(askD ? G("gen.circle.uq8d", { v1: r }, `一个圆的半径是 ${r} 厘米，直径是多少厘米？`)
+                    : G("gen.circle.uq8r", { v1: 2 * r }, `一个圆的直径是 ${2 * r} 厘米，半径是多少厘米？`),
+        opts(ans, () => rnd(2, 130)), "基础",
+        askD ? G("gen.circle.ue8d", { v1: r, v2: ans }, `直径=半径×2=${r}×2=${ans}（厘米）。`)
+             : G("gen.circle.ue8r", { v1: 2 * r, v2: ans }, `半径=直径÷2=${2 * r}÷2=${ans}（厘米）。`),
+        G("gen.circle.upt8", null, "半径与直径"), null);
     }
     if (type === 9) {
       const n = pick([30, 45, 60, 90, 120, 180, 270]), r = rnd(2, 24), ans = r2(3.14 * r * r * n / 360);
@@ -20772,7 +20847,7 @@ const Fig = {};
     }
     if (type === 10) {
       const mid = rnd(3, 60), S = 3 * mid, ask = rnd(0, 2), ans = mid - 1 + ask;
-      const names = ["最小", "中间", "最大"];
+      const names = V("rank");
       return Q(G("gen.equation.uq11", { v1: S, v2: names[ask] }, `三个连续自然数的和是 ${S}，其中${names[ask]}的一个数是多少？`), opts(ans, () => rnd(2, 70)), "提升",
         G("gen.equation.ue11", { v1: S, v2: S, v3: mid, v4: mid - 1, v5: mid, v6: mid + 1, v7: names[ask], v8: ans }, `设中间数为 x：(x−1)+x+(x+1)=${S}，3x=${S}，x=${mid}，三个数是 ${mid - 1}、${mid}、${mid + 1}，${names[ask]}的是 ${ans}。`), G("gen.equation.upt11", null, "连续数问题"), null);
     }
@@ -20912,8 +20987,11 @@ const Fig = {};
   /* ============ 17. parity 奇偶分析（四年级） ============ */
   function qParity() {
     const type = rnd(0, 11);
-    const P = ["奇数", "偶数"];
-    const pool = a => [a === "奇数" ? "偶数" : "奇数", "既可能是奇数也可能是偶数", "无法判断"];
+    const P = V("parity");
+    // 选项也要本地化：奇/偶取共享词表，另两项各自成键
+    const pool = a => [a === P[0] ? P[1] : P[0],
+      G("gen.parity.optEither", null, "既可能是奇数也可能是偶数"),
+      G("gen.parity.optUnknown", null, "无法判断")];
     if (type === 0) {
       const N = rnd(20, 500), ans = Math.ceil(N / 2);
       return Q(G("gen.parity.uq0", { v1: N }, `在 1 ~ ${N} 这些自然数中，奇数一共有多少个？`), opts(ans, () => ans + rnd(-5, 5)), "基础",
@@ -21045,8 +21123,8 @@ const Fig = {};
   /* ============ 19. remainder 余数与周期（四年级） ============ */
   function qRemainder() {
     const type = rnd(0, 11);
-    const COLORS = ["红", "黄", "蓝", "绿", "紫", "橙"];
-    const WEEK = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    const COLORS = V("color6");
+    const WEEK = V("weekFull");
     if (type === 0) {
       const d = rnd(3, 12), q = rnd(5, 40), r = rnd(1, d - 1), N = d * q + r;
       return Q(G("gen.remainder.uq0", { v1: N, v2: d }, `${N} ÷ ${d} 的余数是多少？`), opts(r, () => rnd(0, d)), "基础",
@@ -21176,9 +21254,16 @@ const Fig = {};
         G("gen.prime.ue8", { v1: N, v2: p, v3: q, v4: q, v5: q }, `${N}÷${p}=${q}，${q} 是质数，所以另一个质数是 ${q}。`), G("gen.prime.upt8", null, "质因数还原"), null);
     }
     if (type === 9) {
-      const N = rnd(11, 99), ans = isPrime(N) ? "质数" : "合数";
-      return Q(G("gen.prime.uq9", { v1: N }, `${N} 是质数还是合数？`), cats(ans, [ans === "质数" ? "合数" : "质数", "既不是质数也不是合数", "无法判断"]), "基础",
-        isPrime(N) ? `${N} 只有 1 和 ${N} 两个因数，是质数。` : `${N}=${(() => { for (let i = 2; i * i <= N; i++) if (N % i === 0) return `${i}×${N / i}`; return ""; })()}，除 1 和本身外还有别的因数，是合数。`, G("gen.prime.upt9", null, "质合判断"), null);
+      const PRIME_W = G("gen.prime.wPrime", null, "质数"), COMP_W = G("gen.prime.wComposite", null, "合数");
+      const N = rnd(11, 99), ans = isPrime(N) ? PRIME_W : COMP_W;
+      const fac = (() => { for (let i = 2; i * i <= N; i++) if (N % i === 0) return `${i}×${N / i}`; return ""; })();
+      return Q(G("gen.prime.uq9", { v1: N }, `${N} 是质数还是合数？`),
+        cats(ans, [ans === PRIME_W ? COMP_W : PRIME_W,
+          G("gen.prime.optNeither", null, "既不是质数也不是合数"),
+          G("gen.prime.optUnknown", null, "无法判断")]), "基础",
+        isPrime(N) ? G("gen.prime.ue9p", { v1: N, v2: N }, `${N} 只有 1 和 ${N} 两个因数，是质数。`)
+                   : G("gen.prime.ue9c", { v1: N, v2: fac }, `${N}=${fac}，除 1 和本身外还有别的因数，是合数。`),
+        G("gen.prime.upt9", null, "质合判断"), null);
     }
     if (type === 10) {
       const N = pick([12, 16, 18, 20, 24, 28, 30, 36, 40, 45, 48, 50, 60, 72, 96, 100]), ans = divs(N).length;
@@ -21588,9 +21673,11 @@ const Fig = {};
     const three = shuffle(ds).slice(0, 3);
     const d1 = three[0], d2 = three[1] !== undefined ? three[1] : d1 + 1, d3 = three[2] !== undefined ? three[2] : d1;
     const n1 = M / d1 + g, n2 = M / d2 + g, n3 = M / d3 + g;
-    const core = `${n1} 头牛可以吃 ${d1} 天，${n2} 头牛可以吃 ${d2} 天`;
-    const sol = `设 1 头牛 1 天吃 1 份草。总量：${n1}×${d1}=${n1 * d1}（份），${n2}×${d2}=${n2 * d2}（份）；` +
-      `每天新长的草=(${n1 * d1}−${n2 * d2})÷(${d1}−${d2})=${g}（份），原有草量=${n1 * d1}−${g}×${d1}=${M}（份）。`;
+    const core = G("gen.cowgrass.core", { v1: n1, v2: d1, v3: n2, v4: d2 }, `${n1} 头牛可以吃 ${d1} 天，${n2} 头牛可以吃 ${d2} 天`);
+    const sol = G("gen.cowgrass.sol",
+      { v1: n1, v2: d1, v3: n1 * d1, v4: n2, v5: d2, v6: n2 * d2, v7: d1, v8: d2, v9: g, v10: M },
+      `设 1 头牛 1 天吃 1 份草。总量：${n1}×${d1}=${n1 * d1}（份），${n2}×${d2}=${n2 * d2}（份）；` +
+      `每天新长的草=(${n1 * d1}−${n2 * d2})÷(${d1}−${d2})=${g}（份），原有草量=${n1 * d1}−${g}×${d1}=${M}（份）。`);
     if (d1 === d2) {
       const ans = M / d1 + g;
       return Q(G("gen.cowgrass.uq0", { v1: M, v2: g, v3: d1 }, `一片牧场的草匀速生长。原有草量相当于 ${M} 头牛吃 1 天的量，每天新长的草相当于 ${g} 头牛 1 天吃的量。要在 ${d1} 天吃完，需要多少头牛？`), opts(ans, () => rnd(2, 60)), "拔高",
@@ -21606,15 +21693,15 @@ const Fig = {};
     }
     if (type === 2) {
       return Q(G("gen.cowgrass.uq3", { v1: core }, `一片牧场上的草匀速生长，${core}。这片牧场每天新长的草相当于多少头牛一天吃的草量？`), opts(g, () => rnd(1, 14)), "拔高",
-        sol + ` 所以每天新长的草相当于 ${g} 头牛一天的吃草量。`, G("gen.cowgrass.upt3", null, "求生长量"), null);
+        sol + G("gen.cowgrass.tail3", { v1: g }, ` 所以每天新长的草相当于 ${g} 头牛一天的吃草量。`), G("gen.cowgrass.upt3", null, "求生长量"), null);
     }
     if (type === 3) {
       return Q(G("gen.cowgrass.uq4", { v1: core }, `一片牧场上的草匀速生长，${core}。牧场原有的草相当于多少头牛吃 1 天的草量？`), opts(M, () => pick([24, 36, 48, 60, 72, 90, 96, 120, 144, 180, 240]) + rnd(-2, 2)), "拔高",
-        sol + ` 所以原有草量是 ${M} 份，相当于 ${M} 头牛吃 1 天。`, G("gen.cowgrass.upt4", null, "求原有量"), null);
+        sol + G("gen.cowgrass.tail4", { v1: M, v2: M }, ` 所以原有草量是 ${M} 份，相当于 ${M} 头牛吃 1 天。`), G("gen.cowgrass.upt4", null, "求原有量"), null);
     }
     if (type === 4) {
       return Q(G("gen.cowgrass.uq5", { v1: core }, `一片牧场上的草匀速生长，${core}。最多放多少头牛，才能使草永远吃不完？`), opts(g, () => rnd(1, 14)), "拔高",
-        sol + ` 只要牛每天吃的不超过新长的 ${g} 份，草就永远吃不完，所以最多 ${g} 头。`, G("gen.cowgrass.upt5", null, "永远吃不完"), null);
+        sol + G("gen.cowgrass.tail5", { v1: g, v2: g }, ` 只要牛每天吃的不超过新长的 ${g} 份，草就永远吃不完，所以最多 ${g} 头。`), G("gen.cowgrass.upt5", null, "永远吃不完"), null);
     }
     if (type === 5) {
       return Q(G("gen.cowgrass.uq6", { v1: n1, v2: d1, v3: n2, v4: d2, v5: n3 }, `一个水池有进水管匀速进水（水池原有水量固定）。${n1} 台抽水机 ${d1} 小时可以抽干，${n2} 台抽水机 ${d2} 小时可以抽干。${n3} 台抽水机需要多少小时抽干？`), opts(d3, () => rnd(2, 45)), "拔高",
@@ -22507,9 +22594,11 @@ const Fig = {};
       const disp = judge ? { opts: q.opts, ans: q.ans } : shuffleOptions(q);
       const card = document.createElement("div"); card.className = "q"; card.dataset.done = "0";
       // 中文难度串既是判别键也是 CSS 类的来源，只在展示时取译文
-      const tag = q.level === "易错" ? `<span class="tag w">${esc(T("level.易错"))}</span>`
-        : (q.level === "进阶" ? `<span class="tag g">${esc(T("level.进阶"))}</span>`
-          : `<span class="tag">${esc(T("level.基础"))}</span>`);
+      // 上游新增了「提升 / 拔高」两档，原来只判断易错/进阶，其余一律显示成「基础」，
+      // 导致提升题、拔高题都被标成基础——中英文都会误导难度。改为按表取样式。
+      const LEVEL_CLASS = { "易错": "tag w", "拔高": "tag w", "进阶": "tag g", "提升": "tag g", "基础": "tag" };
+      const lv = LEVEL_CLASS[q.level] ? q.level : "基础";
+      const tag = `<span class="${LEVEL_CLASS[lv]}">${esc(T("level." + lv))}</span>`;
       const fig = renderFigOf(q);
       card.innerHTML = `<div class="qtext">${qi + 1}. ${esc(q.q)} ${tag}</div>
         ${fig}

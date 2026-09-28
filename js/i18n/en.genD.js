@@ -808,6 +808,30 @@
     "gen.equation.upt11": "Consecutive numbers",
     "gen.equation.uq12": "A garment sells for {v2} yuan at {v1}/10 of its original price. What was the original price, in yuan? (solve with an equation)",
     "gen.equation.ue12": "Let the original price be x yuan: {v1}x={v2}, x={v3}÷{v4}={v5} yuan.",
-    "gen.equation.upt12": "Discounts with an equation"
+    "gen.equation.upt12": "Discounts with an equation",
+
+    /* ---- circle: radius <-> diameter (sentence was hidden in a ternary) ---- */
+    "gen.circle.uq8d": "A circle has radius {v1} cm. What is its diameter, in cm?",
+    "gen.circle.uq8r": "A circle has diameter {v1} cm. What is its radius, in cm?",
+    "gen.circle.ue8d": "diameter = radius x 2 = {v1} x 2 = {v2} cm.",
+    "gen.circle.ue8r": "radius = diameter / 2 = {v1} / 2 = {v2} cm.",
+    "gen.circle.upt8": "Radius and diameter",
+
+    /* ---- options that lived in raw Chinese arrays (item #5) ---- */
+    "gen.parity.optEither": "It could be either odd or even",
+    "gen.parity.optUnknown": "There is not enough information",
+    "gen.prime.wPrime": "prime",
+    "gen.prime.wComposite": "composite",
+    "gen.prime.optNeither": "Neither prime nor composite",
+    "gen.prime.optUnknown": "Cannot be decided",
+    "gen.prime.ue9p": "{v1} has only the factors 1 and {v2}, so it is prime.",
+    "gen.prime.ue9c": "{v1} = {v2}, so it has factors beyond 1 and itself and is composite.",
+    "gen.fraction.optEqual": "They are equal",
+    "gen.fraction.optNoCmp": "They cannot be compared",
+    "gen.cowgrass.core": "{v1} cows can graze it for {v2} days, and {v3} cows for {v4} days",
+    "gen.cowgrass.tail3": " So the grass growing each day is what {v1} cows eat in a day.",
+    "gen.cowgrass.tail4": " So the grass already there is {v1} units, which is what {v2} cows eat in one day.",
+    "gen.cowgrass.tail5": " As long as the cows eat no more than the {v1} units that grow each day, the grass never runs out, so at most {v2} cows.",
+    "gen.cowgrass.sol": "Say one cow eats 1 unit of grass a day. Totals: {v1}x{v2}={v3} units and {v4}x{v5}={v6} units; new growth per day = ({v3}-{v6}) / ({v7}-{v8}) = {v9} units, and the grass already there = {v3} - {v9}x{v7} = {v10} units."
   });
 })();

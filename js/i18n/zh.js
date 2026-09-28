@@ -41,6 +41,8 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
 
   "level.基础": "基础",
   "level.进阶": "进阶",
+  "level.提升": "提升",
+  "level.拔高": "拔高",
   "level.易错": "易错",
 
   /* ---------- 学习路径首页 ---------- */

@@ -609,9 +609,11 @@
       const disp = judge ? { opts: q.opts, ans: q.ans } : shuffleOptions(q);
       const card = document.createElement("div"); card.className = "q"; card.dataset.done = "0";
       // 中文难度串既是判别键也是 CSS 类的来源，只在展示时取译文
-      const tag = q.level === "易错" ? `<span class="tag w">${esc(T("level.易错"))}</span>`
-        : (q.level === "进阶" ? `<span class="tag g">${esc(T("level.进阶"))}</span>`
-          : `<span class="tag">${esc(T("level.基础"))}</span>`);
+      // 上游新增了「提升 / 拔高」两档，原来只判断易错/进阶，其余一律显示成「基础」，
+      // 导致提升题、拔高题都被标成基础——中英文都会误导难度。改为按表取样式。
+      const LEVEL_CLASS = { "易错": "tag w", "拔高": "tag w", "进阶": "tag g", "提升": "tag g", "基础": "tag" };
+      const lv = LEVEL_CLASS[q.level] ? q.level : "基础";
+      const tag = `<span class="${LEVEL_CLASS[lv]}">${esc(T("level." + lv))}</span>`;
       const fig = renderFigOf(q);
       card.innerHTML = `<div class="qtext">${qi + 1}. ${esc(q.q)} ${tag}</div>
         ${fig}

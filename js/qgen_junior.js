@@ -946,8 +946,9 @@
   function qCycle(n) {
     const results = [];
     const K = 10;
-    const WEEK = ["一","二","三","四","五","六","日"];
-    const BEASTS = ["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"];
+    // 词表改从 i18n 取，长度与下标不变，英文模式下自动出英文
+    const WEEK = V("week").slice(1).concat(V("week")[0]);   // 原数组是「一…六,日」
+    const BEASTS = V("beast");
     for (let i = 0; i < n; i++) {
       const type = i % K;
       let q, ans, o, exp;
@@ -987,7 +988,7 @@
         exp = G("gen.cycle.ue3", { v1: nn, v2: qd }, `季度 = ⌈${nn} ÷ 3⌉ = ${qd}。`);
       } else if (type === 4) {
         // 四色彩灯
-        const colors = ["红","黄","蓝","绿"];
+        const colors = V("color");
         const T = 4;
         const nn = rnd(T + 3, T + 25);
         const val = (nn - 1) % T;
@@ -998,7 +999,8 @@
       } else if (type === 5) {
         // 奇偶交替
         const nn = rnd(1, 30);
-        const parity = nn % 2 === 1 ? "奇数" : "偶数";
+        // 正确答案必须与干扰项同源，否则英文模式下它是唯一的中文项
+        const parity = nn % 2 === 1 ? G("gen.cycle.uo0", null, "奇数") : G("gen.cycle.uo1", null, "偶数");
         o = opts(parity, () => parity === G("gen.cycle.uo0", null, "奇数") ? G("gen.cycle.uo1", null, "偶数") : G("gen.cycle.uo2", null, "奇数"), () => G("gen.cycle.uo3", null, "质数"), () => G("gen.cycle.uo4", null, "合数"));
         q = G("gen.cycle.uq5", { v1: nn }, `数列 奇、偶、奇、偶…… 交替排列，第 ${nn} 项是奇数还是偶数？`);
         exp = G("gen.cycle.ue5", { v1: nn, v2: nn, v3: nn%2===1?"奇":"偶", v4: parity }, `第 ${nn} 项：${nn} 为${nn%2===1?"奇":"偶"}数，故是${parity}。`);

@@ -42,6 +42,8 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
 
   "level.基础": "Core",
   "level.进阶": "Stretch",
+  "level.提升": "Stretch+",
+  "level.拔高": "Challenge",
   "level.易错": "Tricky",
 
   /* ---------- Learning path home ---------- */
@@ -170,6 +172,22 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "ago.never": "not recorded yet",
 
   "ui.nav.ai": "AI diagnosis",
+
+  /* ---------- shared vocabulary (arrays used across generators) ---------- */
+  "vocab.week.0": "Sun", "vocab.week.1": "Mon", "vocab.week.2": "Tue", "vocab.week.3": "Wed",
+  "vocab.week.4": "Thu", "vocab.week.5": "Fri", "vocab.week.6": "Sat",
+  "vocab.weekFull.0": "Sunday", "vocab.weekFull.1": "Monday", "vocab.weekFull.2": "Tuesday",
+  "vocab.weekFull.3": "Wednesday", "vocab.weekFull.4": "Thursday", "vocab.weekFull.5": "Friday",
+  "vocab.weekFull.6": "Saturday",
+  "vocab.beast.0": "Rat", "vocab.beast.1": "Ox", "vocab.beast.2": "Tiger", "vocab.beast.3": "Rabbit",
+  "vocab.beast.4": "Dragon", "vocab.beast.5": "Snake", "vocab.beast.6": "Horse", "vocab.beast.7": "Goat",
+  "vocab.beast.8": "Monkey", "vocab.beast.9": "Rooster", "vocab.beast.10": "Dog", "vocab.beast.11": "Pig",
+  "vocab.color.0": "red", "vocab.color.1": "yellow", "vocab.color.2": "blue", "vocab.color.3": "green",
+  "vocab.color6.0": "red", "vocab.color6.1": "yellow", "vocab.color6.2": "blue",
+  "vocab.color6.3": "green", "vocab.color6.4": "purple", "vocab.color6.5": "orange",
+  "vocab.place.0": "units", "vocab.place.1": "tens", "vocab.place.2": "hundreds",
+  "vocab.parity.0": "odd", "vocab.parity.1": "even",
+  "vocab.rank.0": "smallest", "vocab.rank.1": "middle", "vocab.rank.2": "largest",
 
   "profile.label": "Learner",
   "profile.default": "Learner {n}",

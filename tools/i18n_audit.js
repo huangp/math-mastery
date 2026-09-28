@@ -38,7 +38,7 @@ for (const f of SRC) {
 
 const zhKeys = Object.keys(ZH), enKeys = Object.keys(EN);
 // tech./q./gen./fig. 等内容键走 tx() 回落中文原文，只需存在于 en
-const CONTENT = /^(tech|q|gen|fig|figq|anim|res\.(item|cat))\./;
+const CONTENT = /^(tech|q|gen|fig|figq|anim|vocab|res\.(item|cat))\./;
 const missingEn = zhKeys.filter(k => !(k in EN));
 const missingZh = enKeys.filter(k => !(k in ZH) && !CONTENT.test(k));
 const undefinedKeys = [...asked].filter(k => !(k in ZH) && !(k in EN)).sort();
