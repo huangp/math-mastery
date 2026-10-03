@@ -793,8 +793,8 @@
     }
     if (type === 8) {
       const r = rnd(3, 60), askD = rnd(0, 1), ans = askD ? 2 * r : r;
-      return Q(askD ? `一个圆的半径是 ${r} 厘米，直径是多少厘米？` : `一个圆的直径是 ${2 * r} 厘米，半径是多少厘米？`, opts(ans, () => rnd(2, 130)), "基础",
-        askD ? `直径=半径×2=${r}×2=${ans}（厘米）。` : `半径=直径÷2=${2 * r}÷2=${ans}（厘米）。`, "半径与直径", null);
+      return Q(askD ? G("gen.circle.x0", { v1: r }, `一个圆的半径是 ${r} 厘米，直径是多少厘米？`) : G("gen.circle.x1", { v1: 2 * r }, `一个圆的直径是 ${2 * r} 厘米，半径是多少厘米？`), opts(ans, () => rnd(2, 130)), "基础",
+        askD ? G("gen.circle.x2", { v1: r, v2: ans }, `直径=半径×2=${r}×2=${ans}（厘米）。`) : G("gen.circle.x3", { v1: 2 * r, v2: ans }, `半径=直径÷2=${2 * r}÷2=${ans}（厘米）。`), G("gen.circle.x4", null, "半径与直径"), null);
     }
     if (type === 9) {
       const n = pick([30, 45, 60, 90, 120, 180, 270]), r = rnd(2, 24), ans = r2(3.14 * r * r * n / 360);
@@ -1075,7 +1075,10 @@
   function qParity() {
     const type = rnd(0, 11);
     const P = ["奇数", "偶数"];
-    const pool = a => [a === "奇数" ? "偶数" : "奇数", "既可能是奇数也可能是偶数", "无法判断"];
+    const PW = i => G("gen.parity.x" + i, null, P[i]);
+    const pool = a => [a === PW(0) ? PW(1) : PW(0), G("gen.parity.x2", null, "既可能是奇数也可能是偶数"), G("gen.parity.x3", null, "无法判断")];
+    const MONTHS = ["二月", "四月", "六月", "一月", "三月"];
+    const mo = i => G("gen.parity.xm" + i, null, MONTHS[i]);
     if (type === 0) {
       const N = rnd(20, 500), ans = Math.ceil(N / 2);
       return Q(G("gen.parity.uq0", { v1: N }, `在 1 ~ ${N} 这些自然数中，奇数一共有多少个？`), opts(ans, () => ans + rnd(-5, 5)), "基础",
@@ -1087,17 +1090,17 @@
         G("gen.parity.ue1", { v1: N, v2: N, v3: ans }, `偶数是 2,4,6,…，最大不超过 ${N}，共 ${N}÷2 取整=${ans} 个。`), G("gen.parity.upt1", null, "数偶数"), null);
     }
     if (type === 2) {
-      const a = rnd(10, 999), b = rnd(10, 999), ans = (a + b) % 2 === 0 ? P[1] : P[0];
+      const a = rnd(10, 999), b = rnd(10, 999), ans = (a + b) % 2 === 0 ? PW(1) : PW(0);
       return Q(G("gen.parity.uq2", { v1: a, v2: b }, `${a} + ${b} 的和是奇数还是偶数？`), cats(ans, pool(ans)), "基础",
         G("gen.parity.ue2", { v1: a, v2: a % 2 ? "奇" : "偶", v3: b, v4: b % 2 ? "奇" : "偶", v5: a % 2 === b % 2 ? "同奇同偶相加得偶数" : "一奇一偶相加得奇数", v6: a, v7: b, v8: a + b, v9: ans }, `${a} 是${a % 2 ? "奇" : "偶"}数，${b} 是${b % 2 ? "奇" : "偶"}数；${a % 2 === b % 2 ? "同奇同偶相加得偶数" : "一奇一偶相加得奇数"}，${a}+${b}=${a + b} 是${ans}。`), G("gen.parity.upt2", null, "加法奇偶"), null);
     }
     if (type === 3) {
-      const a = rnd(2, 99), b = rnd(2, 99), ans = (a * b) % 2 === 0 ? P[1] : P[0];
+      const a = rnd(2, 99), b = rnd(2, 99), ans = (a * b) % 2 === 0 ? PW(1) : PW(0);
       return Q(G("gen.parity.uq3", { v1: a, v2: b }, `${a} × ${b} 的积是奇数还是偶数？`), cats(ans, pool(ans)), "基础",
         G("gen.parity.ue3", { v1: a, v2: b, v3: a * b, v4: ans }, `只要有一个因数是偶数，积就是偶数；只有两个都是奇数时积才是奇数。${a}×${b}=${a * b}，是${ans}。`), G("gen.parity.upt3", null, "乘法奇偶"), null);
     }
     if (type === 4) {
-      const a = rnd(3, 60), n = rnd(3, 9), S = n * a + n * (n - 1) / 2, ans = S % 2 === 0 ? P[1] : P[0];
+      const a = rnd(3, 60), n = rnd(3, 9), S = n * a + n * (n - 1) / 2, ans = S % 2 === 0 ? PW(1) : PW(0);
       return Q(G("gen.parity.uq4", { v1: a, v2: n, v3: a, v4: a + 1, v5: a + n - 1 }, `从 ${a} 开始的 ${n} 个连续自然数（${a}, ${a + 1}, …, ${a + n - 1}）的和是奇数还是偶数？`), cats(ans, pool(ans)), "提升",
         G("gen.parity.ue4", { v1: n, v2: a, v3: a + n - 1, v4: n, v5: S, v6: ans }, `这 ${n} 个数的和=(${a}+${a + n - 1})×${n}÷2=${S}，是${ans}。`), G("gen.parity.upt4", null, "连续数奇偶"), null);
     }
@@ -1107,27 +1110,27 @@
         G("gen.parity.ue5", { v1: od, v2: ev, v3: od, v4: ev, v5: ans }, `和是奇数必须一奇一偶：奇数 ${od} 个，偶数 ${ev} 个，取法 ${od}×${ev}=${ans}（种）。`), G("gen.parity.upt5", null, "奇偶配对"), null);
     }
     if (type === 6) {
-      const k = rnd(2, 12), tot = k + rnd(1, 8), ans = k % 2 === 0 ? P[1] : P[0];
+      const k = rnd(2, 12), tot = k + rnd(1, 8), ans = k % 2 === 0 ? PW(1) : PW(0);
       return Q(G("gen.parity.uq6", { v1: tot, v2: k, v3: tot }, `有 ${tot} 个数，其中有 ${k} 个奇数，其余都是偶数。这 ${tot} 个数的和是奇数还是偶数？`), cats(ans, pool(ans)), "提升",
         G("gen.parity.ue6", { v1: k, v2: k % 2 === 0 ? "个数是偶数个，和为偶数" : "个数是奇数个，和为奇数", v3: ans }, `偶数不影响和的奇偶；${k} 个奇数相加，${k % 2 === 0 ? "个数是偶数个，和为偶数" : "个数是奇数个，和为奇数"}，所以总和是${ans}。`), G("gen.parity.upt6", null, "奇数个数定奇偶"), null);
     }
     if (type === 7) {
-      const d = pick([28, 29, 30, 31]), ans = Math.ceil(d / 2), m = d === 28 || d === 29 ? "二月" : pick(["四月", "六月", "一月", "三月"]);
+      const d = pick([28, 29, 30, 31]), ans = Math.ceil(d / 2), m = mo(d === 28 || d === 29 ? 0 : pick([1, 2, 3, 4]));
       return Q(G("gen.parity.uq7", { v1: m, v2: d }, `某年${m}有 ${d} 天，这个月中日期是奇数的一共有多少天？`), opts(ans, () => rnd(12, 18)), "提升",
         G("gen.parity.ue7", { v1: d % 2 === 0 ? `${d}÷2=${ans}` : `(${d}+1)÷2=${ans}` }, `1、3、5…是奇数日，共 ${d % 2 === 0 ? `${d}÷2=${ans}` : `(${d}+1)÷2=${ans}`} 天。`), G("gen.parity.upt7", null, "日期奇偶"), null);
     }
     if (type === 8) {
-      const N = rnd(5, 60), S = N * (N + 1) / 2, ans = S % 2 === 0 ? P[1] : P[0];
+      const N = rnd(5, 60), S = N * (N + 1) / 2, ans = S % 2 === 0 ? PW(1) : PW(0);
       return Q(G("gen.parity.uq8", { v1: N }, `1 + 2 + 3 + … + ${N} 的和是奇数还是偶数？`), cats(ans, pool(ans)), "提升",
         G("gen.parity.ue8", { v1: N, v2: N + 1, v3: S, v4: S, v5: ans }, `和=${N}×${N + 1}÷2=${S}，${S} 是${ans}。`), G("gen.parity.upt8", null, "求和奇偶"), null);
     }
     if (type === 9) {
-      const a = rnd(10, 400), ans = P[0];
+      const a = rnd(10, 400), ans = PW(0);
       return Q(G("gen.parity.uq9", { v1: a, v2: a + 1 }, `两个连续自然数 ${a} 和 ${a + 1} 的和是奇数还是偶数？`), cats(ans, pool(ans)), "基础",
         G("gen.parity.ue9", { v1: a, v2: a + 1, v3: 2 * a + 1 }, `连续两个自然数一定是一奇一偶，和 ${a}+${a + 1}=${2 * a + 1} 一定是奇数。`), G("gen.parity.upt9", null, "连续数"), null);
     }
     if (type === 10) {
-      const a = rnd(100, 999), b = rnd(10, 99), ans = (a - b) % 2 === 0 ? P[1] : P[0];
+      const a = rnd(100, 999), b = rnd(10, 99), ans = (a - b) % 2 === 0 ? PW(1) : PW(0);
       return Q(G("gen.parity.uq10", { v1: a, v2: b }, `${a} − ${b} 的差是奇数还是偶数？`), cats(ans, pool(ans)), "基础",
         G("gen.parity.ue10", { v1: a, v2: a % 2 ? "奇" : "偶", v3: b, v4: b % 2 ? "奇" : "偶", v5: a, v6: b, v7: a - b, v8: ans }, `${a} 是${a % 2 ? "奇" : "偶"}数，${b} 是${b % 2 ? "奇" : "偶"}数，差 ${a}−${b}=${a - b}，是${ans}。`), G("gen.parity.upt10", null, "减法奇偶"), null);
     }
