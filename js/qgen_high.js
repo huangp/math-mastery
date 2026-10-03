@@ -960,7 +960,8 @@
         const disc = b * b - 4 * c;
         o = opts(disc > 0 ? G("gen.func_zero.uo16", null, "两个零点") : disc === 0 ? G("gen.func_zero.uo17", null, "一个零点") : G("gen.func_zero.uo18", null, "无零点"), () => G("gen.func_zero.uo19", null, "一个零点"), () => G("gen.func_zero.uo20", null, "两个零点"), () => G("gen.func_zero.uo21", null, "无数个"));
         q = G("gen.func_zero.uq7", { v1: b, v2: c }, `二次函数 f(x) = x² − ${b}x + ${c} 的零点个数是？`);
-        exp = G("gen.func_zero.ue7", { v1: b, v2: c, v3: disc, v4: disc > 0 ? "Δ>0 两个零点" : disc === 0 ? "Δ=0 一个零点" : "Δ<0 无实零点" }, `判别式 Δ = ${b}² − 4·${c} = ${disc}，${disc > 0 ? "Δ>0 两个零点" : disc === 0 ? "Δ=0 一个零点" : "Δ<0 无实零点"}。`);
+        const dtxt7 = disc > 0 ? G("gen.func_zero.x0", null, "Δ>0 两个零点") : disc === 0 ? G("gen.func_zero.x1", null, "Δ=0 一个零点") : G("gen.func_zero.x2", null, "Δ<0 无实零点");
+        exp = G("gen.func_zero.ue7", { v1: b, v2: c, v3: disc, v4: dtxt7 }, `判别式 Δ = ${b}² − 4·${c} = ${disc}，${dtxt7}。`);
       } else if (type === 8) {
         o = opts(G("gen.func_zero.uo22", null, "方程 f(x)=0 的根"), () => G("gen.func_zero.uo23", null, "f'(x)=0 的根"), () => G("gen.func_zero.uo24", null, "f 的极值点"), () => G("gen.func_zero.uo25", null, "f 的最大值点"));
         q = G("gen.func_zero.uq8", null, `用二分法求方程 f(x)=0 的近似根，本质上是求 f 的？`);
