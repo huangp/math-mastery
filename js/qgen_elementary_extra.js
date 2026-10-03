@@ -1212,20 +1212,26 @@
     const type = rnd(0, 11);
     const COLORS = ["红", "黄", "蓝", "绿", "紫", "橙"];
     const WEEK = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    const col = i => G("gen.remainder.x" + i, null, COLORS[i]);
+    const wk = i => G("gen.remainder.x" + (6 + i), null, WEEK[i]);
     if (type === 0) {
       const d = rnd(3, 12), q = rnd(5, 40), r = rnd(1, d - 1), N = d * q + r;
       return Q(G("gen.remainder.uq0", { v1: N, v2: d }, `${N} ÷ ${d} 的余数是多少？`), opts(r, () => rnd(0, d)), "基础",
         G("gen.remainder.ue0", { v1: d, v2: q, v3: d * q, v4: N, v5: d * q, v6: r, v7: r, v8: d, v9: r }, `${d}×${q}=${d * q}，${N}−${d * q}=${r}，且 ${r}<${d}，所以余数是 ${r}。`), G("gen.remainder.upt0", null, "带余除法"), null);
     }
     if (type === 1) {
-      const L = rnd(3, 5), cyc = COLORS.slice(0, L), n = rnd(20, 300), idx = (n - 1) % L, ans = cyc[idx];
-      return Q(G("gen.remainder.uq1", { v1: cyc.join("、"), v2: n }, `一串彩珠按“${cyc.join("、")}”的顺序不断重复排列，第 ${n} 颗珠子是什么颜色？`), cats(ans, shuffle(COLORS.filter(c => c !== ans)).slice(0, 3)), "提升",
-        G("gen.remainder.ue1", { v1: L, v2: n, v3: L, v4: Math.floor(n / L), v5: n % L, v6: n % L === 0 ? `余 0 说明是一个周期的最后一个，即${cyc[L - 1]}` : `余 ${n % L} 说明是第 ${n % L} 个，即${cyc[n % L - 1]}` }, `周期是 ${L}：${n}÷${L}=${Math.floor(n / L)}……${n % L}，${n % L === 0 ? `余 0 说明是一个周期的最后一个，即${cyc[L - 1]}` : `余 ${n % L} 说明是第 ${n % L} 个，即${cyc[n % L - 1]}`}。`), G("gen.remainder.upt1", null, "周期问题"), null);
+      const L = rnd(3, 5), cyc = COLORS.slice(0, L), n = rnd(20, 300), idx = (n - 1) % L, ans = col(idx);
+      const seqText = Array.from({ length: L }, (_, i) => col(i)).join(G("gen.listSep", null, "、"));
+      const tailNote = n % L === 0
+        ? G("gen.remainder.x13", { v1: col(L - 1) }, `余 0 说明是一个周期的最后一个，即${cyc[L - 1]}`)
+        : G("gen.remainder.x14", { v1: n % L, v2: col(n % L - 1) }, `余 ${n % L} 说明是第 ${n % L} 个，即${cyc[n % L - 1]}`);
+      return Q(G("gen.remainder.uq1", { v1: seqText, v2: n }, `一串彩珠按“${cyc.join("、")}”的顺序不断重复排列，第 ${n} 颗珠子是什么颜色？`), cats(ans, shuffle([0, 1, 2, 3, 4, 5].filter(i => i !== idx)).slice(0, 3).map(col)), "提升",
+        G("gen.remainder.ue1", { v1: L, v2: n, v3: L, v4: Math.floor(n / L), v5: n % L, v6: tailNote }, `周期是 ${L}：${n}÷${L}=${Math.floor(n / L)}……${n % L}，${tailNote}。`), G("gen.remainder.upt1", null, "周期问题"), null);
     }
     if (type === 2) {
-      const w = rnd(0, 6), n = rnd(10, 200), ai = (w + n) % 7, ans = WEEK[ai];
-      return Q(G("gen.remainder.uq2", { v1: WEEK[w], v2: n }, `今天是${WEEK[w]}，再过 ${n} 天是星期几？`), cats(ans, shuffle(WEEK.filter(x => x !== ans)).slice(0, 3)), "提升",
-        G("gen.remainder.ue2", { v1: n, v2: Math.floor(n / 7), v3: n % 7, v4: WEEK[w], v5: n % 7, v6: ans }, `一周 7 天一个周期：${n}÷7=${Math.floor(n / 7)}……${n % 7}，从${WEEK[w]}往后数 ${n % 7} 天，是${ans}。`), G("gen.remainder.upt2", null, "日期周期"), null);
+      const w = rnd(0, 6), n = rnd(10, 200), ai = (w + n) % 7, ans = wk(ai);
+      return Q(G("gen.remainder.uq2", { v1: wk(w), v2: n }, `今天是${WEEK[w]}，再过 ${n} 天是星期几？`), cats(ans, shuffle([0, 1, 2, 3, 4, 5, 6].filter(i => i !== ai)).slice(0, 3).map(wk)), "提升",
+        G("gen.remainder.ue2", { v1: n, v2: Math.floor(n / 7), v3: n % 7, v4: wk(w), v5: n % 7, v6: ans }, `一周 7 天一个周期：${n}÷7=${Math.floor(n / 7)}……${n % 7}，从${WEEK[w]}往后数 ${n % 7} 天，是${ans}。`), G("gen.remainder.upt2", null, "日期周期"), null);
     }
     if (type === 3) {
       const a = pick([2, 3, 7, 8, 4, 9]), n = rnd(6, 50);
@@ -1332,8 +1338,9 @@
     }
     if (type === 7) {
       const a = rnd(4, 40), b = rnd(4, 40), ans = gcd(a, b);
+      const coprimeNote = ans === 1 ? G("gen.prime.x6", null, "，它们互质") : "";
       return Q(G("gen.prime.uq7", { v1: a, v2: b }, `${a} 和 ${b} 的最大公因数是多少？（如果是 1，说明它们互质）`), opts(ans, () => rnd(1, 12)), "提升",
-        G("gen.prime.ue7", { v1: a, v2: b, v3: a, v4: b, v5: ans, v6: ans === 1 ? "，它们互质" : "" }, `${a} 与 ${b} 的公有质因数相乘得最大公因数：(${a},${b})=${ans}${ans === 1 ? "，它们互质" : ""}。`), G("gen.prime.upt7", null, "互质与公因数"), null);
+        G("gen.prime.ue7", { v1: a, v2: b, v3: a, v4: b, v5: ans, v6: coprimeNote }, `${a} 与 ${b} 的公有质因数相乘得最大公因数：(${a},${b})=${ans}${coprimeNote}。`), G("gen.prime.upt7", null, "互质与公因数"), null);
     }
     if (type === 8) {
       const p = pick(PR.slice(0, 8)), q = pick(PR.slice(2, 14)), N = p * q;
@@ -1341,9 +1348,12 @@
         G("gen.prime.ue8", { v1: N, v2: p, v3: q, v4: q, v5: q }, `${N}÷${p}=${q}，${q} 是质数，所以另一个质数是 ${q}。`), G("gen.prime.upt8", null, "质因数还原"), null);
     }
     if (type === 9) {
-      const N = rnd(11, 99), ans = isPrime(N) ? "质数" : "合数";
-      return Q(G("gen.prime.uq9", { v1: N }, `${N} 是质数还是合数？`), cats(ans, [ans === "质数" ? "合数" : "质数", "既不是质数也不是合数", "无法判断"]), "基础",
-        isPrime(N) ? `${N} 只有 1 和 ${N} 两个因数，是质数。` : `${N}=${(() => { for (let i = 2; i * i <= N; i++) if (N % i === 0) return `${i}×${N / i}`; return ""; })()}，除 1 和本身外还有别的因数，是合数。`, G("gen.prime.upt9", null, "质合判断"), null);
+      const N = rnd(11, 99), isP = isPrime(N);
+      const wPrime = G("gen.prime.x0", null, "质数"), wComposite = G("gen.prime.x1", null, "合数");
+      const ans = isP ? wPrime : wComposite;
+      const factorStr = (() => { for (let i = 2; i * i <= N; i++) if (N % i === 0) return `${i}×${N / i}`; return ""; })();
+      return Q(G("gen.prime.uq9", { v1: N }, `${N} 是质数还是合数？`), cats(ans, [isP ? wComposite : wPrime, G("gen.prime.x2", null, "既不是质数也不是合数"), G("gen.prime.x3", null, "无法判断")]), "基础",
+        isP ? G("gen.prime.x4", { v1: N, v2: N }, `${N} 只有 1 和 ${N} 两个因数，是质数。`) : G("gen.prime.x5", { v1: N, v2: factorStr }, `${N}=${factorStr}，除 1 和本身外还有别的因数，是合数。`), G("gen.prime.upt9", null, "质合判断"), null);
     }
     if (type === 10) {
       const N = pick([12, 16, 18, 20, 24, 28, 30, 36, 40, 45, 48, 50, 60, 72, 96, 100]), ans = divs(N).length;
@@ -1753,9 +1763,10 @@
     const three = shuffle(ds).slice(0, 3);
     const d1 = three[0], d2 = three[1] !== undefined ? three[1] : d1 + 1, d3 = three[2] !== undefined ? three[2] : d1;
     const n1 = M / d1 + g, n2 = M / d2 + g, n3 = M / d3 + g;
-    const core = `${n1} 头牛可以吃 ${d1} 天，${n2} 头牛可以吃 ${d2} 天`;
-    const sol = `设 1 头牛 1 天吃 1 份草。总量：${n1}×${d1}=${n1 * d1}（份），${n2}×${d2}=${n2 * d2}（份）；` +
-      `每天新长的草=(${n1 * d1}−${n2 * d2})÷(${d1}−${d2})=${g}（份），原有草量=${n1 * d1}−${g}×${d1}=${M}（份）。`;
+    const core = G("gen.cowgrass.x0", { v1: n1, v2: d1, v3: n2, v4: d2 }, `${n1} 头牛可以吃 ${d1} 天，${n2} 头牛可以吃 ${d2} 天`);
+    const sol = G("gen.cowgrass.x1", { v1: n1, v2: d1, v3: n1 * d1, v4: n2, v5: d2, v6: n2 * d2, v7: d1, v8: d2, v9: g, v10: M }, `设 1 头牛 1 天吃 1 份草。总量：${n1}×${d1}=${n1 * d1}（份），${n2}×${d2}=${n2 * d2}（份）；` +
+      `每天新长的草=(${n1 * d1}−${n2 * d2})÷(${d1}−${d2})=${g}（份），原有草量=${n1 * d1}−${g}×${d1}=${M}（份）。`);
+    const solPump = G("gen.cowgrass.x2", { v1: n1, v2: d1, v3: n1 * d1, v4: n2, v5: d2, v6: n2 * d2, v7: d1, v8: d2, v9: g, v10: M }, sol.replace(/牛/g, "台抽水机").replace(/草/g, "水"));
     if (d1 === d2) {
       const ans = M / d1 + g;
       return Q(G("gen.cowgrass.uq0", { v1: M, v2: g, v3: d1 }, `一片牧场的草匀速生长。原有草量相当于 ${M} 头牛吃 1 天的量，每天新长的草相当于 ${g} 头牛 1 天吃的量。要在 ${d1} 天吃完，需要多少头牛？`), opts(ans, () => rnd(2, 60)), "拔高",
@@ -1771,19 +1782,19 @@
     }
     if (type === 2) {
       return Q(G("gen.cowgrass.uq3", { v1: core }, `一片牧场上的草匀速生长，${core}。这片牧场每天新长的草相当于多少头牛一天吃的草量？`), opts(g, () => rnd(1, 14)), "拔高",
-        sol + ` 所以每天新长的草相当于 ${g} 头牛一天的吃草量。`, G("gen.cowgrass.upt3", null, "求生长量"), null);
+        G("gen.cowgrass.x3", { v1: sol, v2: g }, sol + ` 所以每天新长的草相当于 ${g} 头牛一天的吃草量。`), G("gen.cowgrass.upt3", null, "求生长量"), null);
     }
     if (type === 3) {
       return Q(G("gen.cowgrass.uq4", { v1: core }, `一片牧场上的草匀速生长，${core}。牧场原有的草相当于多少头牛吃 1 天的草量？`), opts(M, () => pick([24, 36, 48, 60, 72, 90, 96, 120, 144, 180, 240]) + rnd(-2, 2)), "拔高",
-        sol + ` 所以原有草量是 ${M} 份，相当于 ${M} 头牛吃 1 天。`, G("gen.cowgrass.upt4", null, "求原有量"), null);
+        G("gen.cowgrass.x4", { v1: sol, v2: M }, sol + ` 所以原有草量是 ${M} 份，相当于 ${M} 头牛吃 1 天。`), G("gen.cowgrass.upt4", null, "求原有量"), null);
     }
     if (type === 4) {
       return Q(G("gen.cowgrass.uq5", { v1: core }, `一片牧场上的草匀速生长，${core}。最多放多少头牛，才能使草永远吃不完？`), opts(g, () => rnd(1, 14)), "拔高",
-        sol + ` 只要牛每天吃的不超过新长的 ${g} 份，草就永远吃不完，所以最多 ${g} 头。`, G("gen.cowgrass.upt5", null, "永远吃不完"), null);
+        G("gen.cowgrass.x5", { v1: sol, v2: g }, sol + ` 只要牛每天吃的不超过新长的 ${g} 份，草就永远吃不完，所以最多 ${g} 头。`), G("gen.cowgrass.upt5", null, "永远吃不完"), null);
     }
     if (type === 5) {
       return Q(G("gen.cowgrass.uq6", { v1: n1, v2: d1, v3: n2, v4: d2, v5: n3 }, `一个水池有进水管匀速进水（水池原有水量固定）。${n1} 台抽水机 ${d1} 小时可以抽干，${n2} 台抽水机 ${d2} 小时可以抽干。${n3} 台抽水机需要多少小时抽干？`), opts(d3, () => rnd(2, 45)), "拔高",
-        G("gen.cowgrass.ue3", { v1: sol.replace(/牛/g, "台抽水机").replace(/草/g, "水"), v2: n3, v3: g, v4: n3 - g, v5: M, v6: n3 - g, v7: d3 }, `与牛吃草同理。${sol.replace(/牛/g, "台抽水机").replace(/草/g, "水")} ${n3}−${g}=${n3 - g} 台用于抽原有水：${M}÷${n3 - g}=${d3}（小时）。`), G("gen.cowgrass.upt6", null, "抽水机模型"), null);
+        G("gen.cowgrass.ue3", { v1: solPump, v2: n3, v3: g, v4: n3 - g, v5: M, v6: n3 - g, v7: d3 }, `与牛吃草同理。${solPump} ${n3}−${g}=${n3 - g} 台用于抽原有水：${M}÷${n3 - g}=${d3}（小时）。`), G("gen.cowgrass.upt6", null, "抽水机模型"), null);
     }
     if (type === 6) {
       return Q(G("gen.cowgrass.uq7", { v1: n1, v2: d1, v3: n2, v4: d2, v5: d3 }, `一个水池不断有水流入。用 ${n1} 台抽水机 ${d1} 小时抽干，用 ${n2} 台抽水机 ${d2} 小时抽干。若要在 ${d3} 小时内抽干，需要多少台抽水机？`), opts(n3, () => rnd(3, 60)), "拔高",
@@ -1856,7 +1867,8 @@
     }
     if (type === 8) {
       const T = rnd(1, 9) * 100, p = rnd(5, 40), s = T * p / 100, askW = rnd(0, 1), ans = askW ? T - s : s;
-      return Q(G("gen.concentration.uq11", { v1: T, v2: p, v3: askW ? "水" : "盐" }, `要配制 ${T} 克浓度为 ${p}% 的盐水，需要${askW ? "水" : "盐"}多少克？`), opts(ans, () => rnd(10, 900)), "提升",
+      const substWord = askW ? G("gen.concentration.x0", null, "水") : G("gen.concentration.x1", null, "盐");
+      return Q(G("gen.concentration.uq11", { v1: T, v2: p, v3: substWord }, `要配制 ${T} 克浓度为 ${p}% 的盐水，需要${substWord}多少克？`), opts(ans, () => rnd(10, 900)), "提升",
         G("gen.concentration.ue11", { v1: T, v2: p, v3: s, v4: T, v5: s, v6: T - s, v7: ans }, `需要盐 ${T}×${p}%=${s}（克），需要水 ${T}−${s}=${T - s}（克）。所以答案是 ${ans} 克。`), G("gen.concentration.upt11", null, "配制溶液"), null);
     }
     if (type === 9) {
