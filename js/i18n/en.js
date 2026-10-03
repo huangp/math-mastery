@@ -70,7 +70,7 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "quiz.titlePractice": "Free practice",
   "quiz.tagGate": "Needs ≥80% and no weak spots left",
   "quiz.tagPractice": "Unlimited",
-  "quiz.descGate": "The mastery test puts your earlier weak spots first. Get everything right and clear them all to master this method and unlock the next.",
+  "quiz.descGate": "The mastery test puts your earlier weak spots first. Score at least 80% and clear them all to master this method and unlock the next.",
   "quiz.descPractice": "Practise freely. Anything you get wrong is logged as a weak spot, ready to tackle under “Weak spots”.",
   "quiz.pass": "🎉 Mastered! {name} is done",
   "quiz.nextUnlocked": "Next method unlocked: {name}",

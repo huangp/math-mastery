@@ -69,7 +69,7 @@ window.I18N_ZH = Object.assign(window.I18N_ZH || {}, {
   "quiz.titlePractice": "自由练习",
   "quiz.tagGate": "需 ≥80% 且薄弱点清零",
   "quiz.tagPractice": "不限量",
-  "quiz.descGate": "通关测试会优先把你之前的薄弱点放进题里；全部答对并清零薄弱点，才算融会贯通、解锁下一技巧。",
+  "quiz.descGate": "通关测试会优先把你之前的薄弱点放进题里；正确率 ≥80% 并清零薄弱点，才算融会贯通、解锁下一技巧。",
   "quiz.descPractice": "随手练，做错自动记入薄弱点，可去「薄弱点复习」集中攻克。",
   "quiz.pass": "🎉 融会贯通！{name} 已掌握",
   "quiz.nextUnlocked": "下一技巧已解锁：{name}",

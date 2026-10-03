@@ -952,15 +952,18 @@
       const type = i % K;
       let q, ans, o, exp;
       if (type === 0) {
-        // 字母珠子
+        // 图形珠子：不用 A–F，否则与选项角标 A/B/C/D 混淆
         const T = rnd(2, 6);
-        const letters = "ABCDEF".slice(0, T).split("");
+        const letters = ["○", "△", "□", "☆", "◇", "♡"].slice(0, T);
         const nn = rnd(T + 3, T + 20);
         const rem = nn % T, pos = rem === 0 ? T : rem;
         const ansSym = letters[pos - 1];
-        o = { opts: shuffle(letters.slice()), ans: letters.indexOf(ansSym) };
+        const optList = shuffle(letters.slice());
+        o = { opts: optList, ans: optList.indexOf(ansSym) };
         q = G("gen.cycle.uq0", { v1: letters.join(""), v2: nn }, `一串珠子按 ${letters.join("")} 的顺序不断重复排列。第 ${nn} 个珠子是什么？`);
-        exp = G("gen.cycle.ue0", { v1: T, v2: nn, v3: T, v4: Math.floor(nn/T), v5: pos, v6: pos, v7: ansSym }, `周期长 ${T}，${nn} ÷ ${T} = ${Math.floor(nn/T)} …… ${pos}，余数定位第 ${pos} 个 = ${ansSym}。`);
+        exp = rem === 0
+          ? G("gen.cycle.ue0z", { v1: T, v2: nn, v3: T, v4: Math.floor(nn/T), v5: ansSym }, `周期长 ${T}，${nn} ÷ ${T} = ${Math.floor(nn/T)}（整除，余 0），余 0 落在周期最后一个 = ${ansSym}。`)
+          : G("gen.cycle.ue0", { v1: T, v2: nn, v3: T, v4: Math.floor(nn/T), v5: rem, v6: pos, v7: ansSym }, `周期长 ${T}，${nn} ÷ ${T} = ${Math.floor(nn/T)} …… ${rem}，余数定位第 ${pos} 个 = ${ansSym}。`);
       } else if (type === 1) {
         // 数字循环 1..T
         const T = rnd(2, 9);
@@ -974,10 +977,12 @@
         const d = rnd(0, 6);
         const nn = rnd(1, 30);
         const idx = (d + nn) % 7;
-        const ansW = WEEK[idx];
-        o = opts(ansW, () => WEEK[(idx+1)%7], () => WEEK[(idx+2)%7], () => WEEK[(idx+3)%7]);
-        q = G("gen.cycle.uq2", { v1: WEEK[d], v2: nn }, `今天是星期${WEEK[d]}，过 ${nn} 天后是星期几？`);
-        exp = G("gen.cycle.ue2", { v1: nn, v2: nn%7, v3: WEEK[d], v4: nn%7, v5: ansW }, `7 天一循环，${nn} mod 7 = ${nn%7}，星期${WEEK[d]} 往后推 ${nn%7} 天 = 星期${ansW}。`);
+        // 选项本身是星期名，也要走目录，否则英文题面配中文选项
+        const wk = i => G("gen.cycle.wk" + i, null, WEEK[i]);
+        const ansW = wk(idx);
+        o = opts(ansW, () => wk((idx+1)%7), () => wk((idx+2)%7), () => wk((idx+3)%7));
+        q = G("gen.cycle.uq2", { v1: wk(d), v2: nn }, `今天是星期${WEEK[d]}，过 ${nn} 天后是星期几？`);
+        exp = G("gen.cycle.ue2", { v1: nn, v2: nn%7, v3: wk(d), v4: nn%7, v5: ansW }, `7 天一循环，${nn} mod 7 = ${nn%7}，星期${WEEK[d]} 往后推 ${nn%7} 天 = 星期${ansW}。`);
       } else if (type === 3) {
         // 季度
         const nn = rnd(1, 12);
@@ -991,20 +996,21 @@
         const T = 4;
         const nn = rnd(T + 3, T + 25);
         const val = (nn - 1) % T;
-        const ansC = colors[val];
-        o = opts(ansC, () => colors[(val+1)%4], () => colors[(val+2)%4], () => colors[(val+3)%4]);
+        const col = i => G("gen.cycle.col" + i, null, colors[i]);
+        const ansC = col(val);
+        o = opts(ansC, () => col((val+1)%4), () => col((val+2)%4), () => col((val+3)%4));
         q = G("gen.cycle.uq4", { v1: nn }, `彩灯按 红、黄、蓝、绿 循环闪烁，第 ${nn} 盏是什么颜色？`);
         exp = G("gen.cycle.ue4", { v1: nn, v2: val+1, v3: ansC }, `4 色一循环，第 ${nn} 盏 = 第 ${val+1} 个 = ${ansC}。`);
       } else if (type === 5) {
         // 奇偶交替
         const nn = rnd(1, 30);
-        const parity = nn % 2 === 1 ? "奇数" : "偶数";
+        const parity = nn % 2 === 1 ? G("gen.cycle.uo2", null, "奇数") : G("gen.cycle.uo1", null, "偶数");
         o = opts(parity, () => parity === G("gen.cycle.uo0", null, "奇数") ? G("gen.cycle.uo1", null, "偶数") : G("gen.cycle.uo2", null, "奇数"), () => G("gen.cycle.uo3", null, "质数"), () => G("gen.cycle.uo4", null, "合数"));
         q = G("gen.cycle.uq5", { v1: nn }, `数列 奇、偶、奇、偶…… 交替排列，第 ${nn} 项是奇数还是偶数？`);
         exp = G("gen.cycle.ue5", { v1: nn, v2: nn, v3: nn%2===1?"奇":"偶", v4: parity }, `第 ${nn} 项：${nn} 为${nn%2===1?"奇":"偶"}数，故是${parity}。`);
       } else if (type === 6) {
-        // 偶数序列 2..2T
-        const T = rnd(2, 5);
+        // 偶数序列 2..2T（T ≥ 3，否则「2, 4, …, 4」自相矛盾）
+        const T = rnd(3, 5);
         const nn = rnd(T + 2, T + 25);
         const val = ((nn - 1) % T) + 1;
         const v = 2 * val;
@@ -1026,19 +1032,20 @@
         const base = rnd(0, 11);
         const nn = rnd(1, 24);
         const idx = (base + nn) % 12;
-        const ansB = BEASTS[idx];
-        o = opts(ansB, () => BEASTS[(idx+1)%12], () => BEASTS[(idx+2)%12], () => BEASTS[(idx+3)%12]);
-        q = G("gen.cycle.uq8", { v1: BEASTS[base], v2: nn }, `生肖按 鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪 循环。若今年为${BEASTS[base]}，则 ${nn} 年后生肖是？`);
-        exp = G("gen.cycle.ue8", { v1: nn, v2: nn%12, v3: BEASTS[base], v4: nn%12, v5: ansB }, `12 年一循环，${nn} mod 12 = ${nn%12}，${BEASTS[base]} 往后 ${nn%12} 年 = ${ansB}。`);
+        const zod = i => G("gen.cycle.zod" + i, null, BEASTS[i]);
+        const ansB = zod(idx);
+        o = opts(ansB, () => zod((idx+1)%12), () => zod((idx+2)%12), () => zod((idx+3)%12));
+        q = G("gen.cycle.uq8", { v1: zod(base), v2: nn }, `生肖按 鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪 循环。若今年为${BEASTS[base]}，则 ${nn} 年后生肖是？`);
+        exp = G("gen.cycle.ue8", { v1: nn, v2: nn%12, v3: zod(base), v4: nn%12, v5: ansB }, `12 年一循环，${nn} mod 12 = ${nn%12}，${BEASTS[base]} 往后 ${nn%12} 年 = ${ansB}。`);
       } else {
-        // 连续奇数序列
-        const T = rnd(2, 6);
+        // 连续奇数序列 3..2T+1（T ≥ 4，否则「3, 5, 7, …, 5」把 7 写进了不含 7 的周期）
+        const T = rnd(4, 6);
         const nn = rnd(T + 2, T + 20);
         const val = ((nn - 1) % T) + 1;
-        const v = 2 * val - 1;
+        const v = 2 * val + 1; // 序列从 3 起：周期内第 val 项 = 2·val + 1
         o = opts(v, () => v + 2, () => v - 2, () => v + 1);
         q = G("gen.cycle.uq9", { v1: 2*T+1, v2: nn }, `数列 3, 5, 7, …, ${2*T+1}（连续奇数）依次不断重复，第 ${nn} 项是？`);
-        exp = G("gen.cycle.ue9", { v1: T, v2: nn, v3: val, v4: v }, `周期长 ${T}，第 ${nn} 项对应第 ${val} 个奇数 = ${v}。`);
+        exp = G("gen.cycle.ue9", { v1: T, v2: nn, v3: val, v4: v }, `周期长 ${T}，第 ${nn} 项对应周期内第 ${val} 项 = ${v}。`);
       }
       results.push(Q(q, o, "基础", exp, G("gen.cycle.upt0", null, "周期问题")));
     }

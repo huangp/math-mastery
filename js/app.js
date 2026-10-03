@@ -579,7 +579,10 @@
       const weakRemain = isPlan ? weakCount() : Object.keys(st.weak).filter(k => !st.weak[k].cleared).length;
       const banner = document.createElement("div"); banner.className = "card center";
       if (mode === "gate" && !isPlan) {
-        const pass = correct >= Math.ceil(total * 0.8) && weakRemain === 0;
+        // 参数化题 8 道共用一个薄弱点键（技巧 id），按「最后一次答对/答错」决定清零与否，结果取决于答题顺序；
+        // 所以这类技巧只看正确率，答错仍照常记入薄弱点供复习
+        const genMode = typeof t.qgen === "function";
+        const pass = correct >= Math.ceil(total * 0.8) && (genMode || weakRemain === 0);
         if (pass) {
           st.mastered = true; save(state);
           const nxt = TECHNIQUES.find(x => x.prereq === t.id);
