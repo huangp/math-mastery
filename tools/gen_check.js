@@ -4,7 +4,7 @@
  *   - ans 下标合法
  *   - 题干/解析非空、不残留 {占位符}
  *   - 英文模式下题干/解析不应再出现中文（未接目录的会被点名）
- * 用法：node tools/gen_check.js [轮数]   需要 jsdom（见 NODE_PATH）
+ * 用法：[ONLY=id1,id2] node tools/gen_check.js [轮数]   需要 jsdom（见 NODE_PATH）
  * ============================================================ */
 const { JSDOM } = require("jsdom");
 const fs = require("fs"), path = require("path");
@@ -13,15 +13,18 @@ const ROUNDS = +process.argv[2] || 60;
 
 const dom = new JSDOM("<!doctype html><body>", { url: "http://localhost/", runScripts: "outside-only" });
 const w = dom.window;
-["js/i18n/zh.js", "js/i18n/en.js", "js/i18n/en.tech.js", "js/i18n/en.q.js", "js/i18n/en.gen.js",
- "js/i18n/en.fig.js", "js/i18n.js", "js/data.js", "js/figures.js",
- "js/qgen.js", "js/qgen_junior.js", "js/qgen_high.js"].forEach(f => {
+// 脚本清单按 index.html 解析（顺序即依赖），新增目录或出题文件无需再改这里；app.js 要 DOM，不加载
+const SCRIPTS = [...fs.readFileSync(path.join(ROOT, "index.html"), "utf8").matchAll(/<script src="([^"]+)"/g)]
+  .map(m => m[1]).filter(f => !/app\.js$/.test(f));
+SCRIPTS.forEach(f => {
   const p = path.join(ROOT, f);
   if (fs.existsSync(p)) w.eval(fs.readFileSync(p, "utf8"));
 });
 
 const CJK = /[一-鿿]/;
-const gens = w.TECHNIQUES.filter(t => typeof t.qgen === "function");
+// ONLY=id1,id2 只查指定技巧（分批翻译时自检用）
+const ONLY = process.env.ONLY ? new Set(process.env.ONLY.split(",")) : null;
+const gens = w.TECHNIQUES.filter(t => typeof t.qgen === "function" && (!ONLY || ONLY.has(t.id)));
 const stats = {};   // stats[lang][id] = {dup, badAns, empty, ph, cjk, threw}
 
 // 两种语言必须跑在同一串随机数上，否则 dup 之类的差异只是抽样噪声
@@ -49,7 +52,7 @@ for (const lang of ["zh", "en"]) {
         if (!q.q || !q.explain) s.empty++;
         // 花括号：数学记号里本来就有 {a_n}，故只与中文基线比较
         if (/\{\w+\}/.test(String(q.q) + String(q.explain))) s.ph++;
-        if (CJK.test(String(q.q || "")) || CJK.test(String(q.explain || ""))) s.cjk++;
+        if (CJK.test(String(q.q || "")) || CJK.test(String(q.explain || "")) || q.opts.some(o => CJK.test(String(o)))) s.cjk++;
       }
     }
   }

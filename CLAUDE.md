@@ -17,6 +17,7 @@ start-lan-server.bat              # Windows：0.0.0.0 起服务并打印局域�
 node tools/i18n_audit.js          # zh/en 目录对齐、源码引用的键是否存在
 node tools/i18n_content_check.js  # 技巧文案与静态题的译文覆盖率、选项是否被译重
 NODE_PATH=<jsdom> node tools/gen_check.js 40   # 出题引擎：两种语言同随机序列跑，查回归
+NODE_PATH=<jsdom> node tools/zh_snapshot.js --diff base.json  # 中文出题逐字不变（先不带参数跑一次存基线）
 NODE_PATH=<jsdom> node tools/e2e_check.js      # 348 条路由 × 2 语言，扫残留中文
 NODE_PATH=<jsdom> node tools/profile_check.js  # 学员档案：迁移 / 隔离 / 删除 / 自愈
 NODE_PATH=<jsdom> node tools/portability_check.js # 进度导出/导入：往返、非破坏、拒绝非法文件

@@ -9,7 +9,9 @@ const ROOT = path.join(__dirname, "..");
 global.window = {};
 require(path.join(ROOT, "js/i18n/zh.js"));
 require(path.join(ROOT, "js/i18n/en.js"));
-["js/i18n/en.tech.js", "js/i18n/en.gen.js", "js/i18n/en.fig.js"].forEach(f => {
+// 英文目录按 index.html 解析，分文件新增后无需再改这里
+[...fs.readFileSync(path.join(ROOT, "index.html"), "utf8").matchAll(/<script src="(js\/i18n\/en\.[^"]+)"/g)]
+  .map(m => m[1]).forEach(f => {
   try { require(path.join(ROOT, f)); } catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
 });
 const ZH = global.window.I18N_ZH, EN = global.window.I18N_EN;
