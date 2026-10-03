@@ -36,8 +36,8 @@
     if (type === 0) {
       const a = rnd(1, 9), b = rnd(0, 9), c = rnd(0, 9), N = a * 100 + b * 10 + c;
       const names = ["个位", "十位", "百位"], digs = [c, b, a], w = rnd(0, 2), ans = digs[w];
-      return Q(G("gen.count.uq0", { v1: N, v2: names[w] }, `数 ${N} 的${names[w]}上的数字是几？`), opts(ans, () => rnd(0, 9)), "基础",
-        G("gen.count.ue0", { v1: N, v2: c, v3: b, v4: a, v5: names[w], v6: ans }, `${N} 从右边起：个位是 ${c}，十位是 ${b}，百位是 ${a}。所以${names[w]}上的数字是 ${ans}。`), G("gen.count.upt0", null, "认数位"), null);
+      return Q(G("gen.count.uq0", { v1: N, v2: w }, `数 ${N} 的${names[w]}上的数字是几？`), opts(ans, () => rnd(0, 9)), "基础",
+        G("gen.count.ue0", { v1: N, v2: c, v3: b, v4: a, v5: w, v6: ans }, `${N} 从右边起：个位是 ${c}，十位是 ${b}，百位是 ${a}。所以${names[w]}上的数字是 ${ans}。`), G("gen.count.upt0", null, "认数位"), null);
     }
     if (type === 1) {
       const a = rnd(1, 9), b = rnd(0, 9), c = rnd(0, 9), ans = a * 100 + b * 10 + c;
@@ -46,14 +46,14 @@
     }
     if (type === 2) {
       const N = rnd(21, 998), back = rnd(0, 1), ans = back ? N + 1 : N - 1;
-      return Q(G("gen.count.uq2", { v1: N, v2: back ? "后" : "前" }, `${N} 的${back ? "后" : "前"}一个数是多少？`), opts(ans, () => N + rnd(-6, 6)), "基础",
-        G("gen.count.ue2", { v1: back ? `后一个数就是再多 1：${N}+1=${ans}` : `前一个数就是少 1：${N}−1=${ans}` }, `${back ? `后一个数就是再多 1：${N}+1=${ans}` : `前一个数就是少 1：${N}−1=${ans}`}。`), G("gen.count.upt2", null, "相邻数"), null);
+      return Q(G("gen.count.uq2", { v1: N, v2: back }, `${N} 的${back ? "后" : "前"}一个数是多少？`), opts(ans, () => N + rnd(-6, 6)), "基础",
+        G("gen.count.ue2", { v1: N, v2: back, v3: ans }, `${back ? `后一个数就是再多 1：${N}+1=${ans}` : `前一个数就是少 1：${N}−1=${ans}`}。`), G("gen.count.upt2", null, "相邻数"), null);
     }
     if (type === 3) {
       let A = rnd(10, 999), B = rnd(10, 999); while (A === B) B = rnd(10, 999);
       const big = rnd(0, 1), ans = big ? Math.max(A, B) : Math.min(A, B);
-      return Q(G("gen.count.uq3", { v1: A, v2: B, v3: big ? "较大" : "较小" }, `${A} 和 ${B} 这两个数中，${big ? "较大" : "较小"}的是多少？`), opts(ans, () => rnd(10, 999)), "基础",
-        G("gen.count.ue3", { v1: Math.max(A, B), v2: Math.min(A, B), v3: big ? "较大" : "较小", v4: ans }, `比较数的大小：先看位数，位数多的大；位数相同就从高位比起。${Math.max(A, B)} > ${Math.min(A, B)}，所以${big ? "较大" : "较小"}的是 ${ans}。`), G("gen.count.upt3", null, "比大小"), null);
+      return Q(G("gen.count.uq3", { v1: A, v2: B, v3: big }, `${A} 和 ${B} 这两个数中，${big ? "较大" : "较小"}的是多少？`), opts(ans, () => rnd(10, 999)), "基础",
+        G("gen.count.ue3", { v1: Math.max(A, B), v2: Math.min(A, B), v3: big, v4: ans }, `比较数的大小：先看位数，位数多的大；位数相同就从高位比起。${Math.max(A, B)} > ${Math.min(A, B)}，所以${big ? "较大" : "较小"}的是 ${ans}。`), G("gen.count.upt3", null, "比大小"), null);
     }
     if (type === 4) {
       const d = pick([2, 3, 5, 10]), a = rnd(1, 100 - 4 * d), ans = a + 4 * d;
@@ -84,7 +84,7 @@
       let N = rnd(11, 99); while (N % 10 === 5 || N % 10 === 0) N = rnd(11, 99);
       const ans = Math.round(N / 10) * 10;
       return Q(G("gen.count.uq9", { v1: N }, `${N} 最接近哪个整十数？`), opts(ans, () => rnd(1, 10) * 10), "基础",
-        G("gen.count.ue9", { v1: N, v2: N % 10, v3: N % 10 < 5 ? `比 5 小，往下取到 ${ans}` : `比 5 大，往上取到 ${ans}` }, `${N} 的个位是 ${N % 10}，${N % 10 < 5 ? `比 5 小，往下取到 ${ans}` : `比 5 大，往上取到 ${ans}`}。`), G("gen.count.upt9", null, "接近整十"), null);
+        G("gen.count.ue9", { v1: N, v2: N % 10, v3: N % 10 < 5 ? `比 5 小，往下取到 ${ans}` : `比 5 大，往上取到 ${ans}`, v4: ans }, `${N} 的个位是 ${N % 10}，${N % 10 < 5 ? `比 5 小，往下取到 ${ans}` : `比 5 大，往上取到 ${ans}`}。`), G("gen.count.upt9", null, "接近整十"), null);
     }
     if (type === 10) {
       const a = rnd(1, 9), b = rnd(1, 9), c = rnd(0, 9), N = a * 100 + b * 10 + c, ans = b * 10;
@@ -92,8 +92,8 @@
         G("gen.count.ue10", { v1: b, v2: b, v3: b, v4: ans }, `十位上的 ${b} 表示 ${b} 个十，就是 ${b}×10=${ans}。`), G("gen.count.upt10", null, "数位的值"), null);
     }
     const N = rnd(20, 880), k = pick([1, 2, 5, 10, 20, 100]), more = rnd(0, 1), ans = more ? N + k : N - k;
-    return Q(G("gen.count.uq11", { v1: N, v2: more ? "多" : "少", v3: k }, `比 ${N} ${more ? "多" : "少"} ${k} 的数是多少？`), opts(ans, () => N + pick([-k, k, 2 * k, -2 * k, k + 1, 1 - k])), "基础",
-      G("gen.count.ue11", { v1: N, v2: more ? "多" : "少", v3: k, v4: N, v5: more ? "+" : "−", v6: k, v7: ans }, `比 ${N} ${more ? "多" : "少"} ${k}，就是 ${N}${more ? "+" : "−"}${k}=${ans}。`), G("gen.count.upt11", null, "多几少几"), null);
+    return Q(G("gen.count.uq11", { v1: N, v2: more, v3: k }, `比 ${N} ${more ? "多" : "少"} ${k} 的数是多少？`), opts(ans, () => N + pick([-k, k, 2 * k, -2 * k, k + 1, 1 - k])), "基础",
+      G("gen.count.ue11", { v1: N, v2: more, v3: k, v4: N, v5: more ? "+" : "−", v6: k, v7: ans }, `比 ${N} ${more ? "多" : "少"} ${k}，就是 ${N}${more ? "+" : "−"}${k}=${ans}。`), G("gen.count.upt11", null, "多几少几"), null);
   }
 
   /* ============ 2. addsub 100 以内加减法（一年级） ============ */
@@ -136,9 +136,10 @@
     }
     if (type === 7) {
       const a = rnd(15, 50), b = rnd(10, 99 - a), ans = a + b;
-      const th = pick([["本", "故事书"], ["颗", "糖"], ["张", "卡片"], ["支", "铅笔"], ["个", "气球"]]);
-      return Q(G("gen.addsub.uq8", { v1: a, v2: th[0], v3: th[1], v4: b, v5: th[0], v6: th[0] }, `小明原来有 ${a} ${th[0]}${th[1]}，妈妈又买回 ${b} ${th[0]}。现在一共有多少${th[0]}？`), opts(ans, () => ans + rnd(-11, 11)), "基础",
-        G("gen.addsub.ue8", { v1: a, v2: b, v3: ans, v4: th[0] }, `求一共多少用加法：${a}+${b}=${ans}（${th[0]}）。`), G("gen.addsub.upt8", null, "求和"), null);
+      const thi8 = rnd(0, 4), th = [["本", "故事书"], ["颗", "糖"], ["张", "卡片"], ["支", "铅笔"], ["个", "气球"]][thi8];
+      const thN8 = G("gen.addsub.x8n" + thi8, null, th[1]);
+      return Q(G("gen.addsub.uq8", { v1: a, v2: th[0], v3: thN8, v4: b, v5: th[0], v6: th[0] }, `小明原来有 ${a} ${th[0]}${th[1]}，妈妈又买回 ${b} ${th[0]}。现在一共有多少${th[0]}？`), opts(ans, () => ans + rnd(-11, 11)), "基础",
+        G("gen.addsub.ue8", { v1: a, v2: b, v3: ans, v4: thN8 }, `求一共多少用加法：${a}+${b}=${ans}（${th[0]}）。`), G("gen.addsub.upt8", null, "求和"), null);
     }
     if (type === 8) {
       const a = rnd(40, 99), b = rnd(12, a - 8), ans = a - b;
@@ -148,7 +149,7 @@
     if (type === 9) {
       let A = rnd(20, 99), B = rnd(10, 90); while (A === B) B = rnd(10, 90);
       const ans = Math.abs(A - B);
-      return Q(G("gen.addsub.uq10", { v1: A, v2: B, v3: A > B ? "多" : "少" }, `一班有 ${A} 人，二班有 ${B} 人。一班比二班${A > B ? "多" : "少"}多少人？`), opts(ans, () => ans + rnd(-10, 10)), "基础",
+      return Q(G("gen.addsub.uq10", { v1: A, v2: B, v3: A > B }, `一班有 ${A} 人，二班有 ${B} 人。一班比二班${A > B ? "多" : "少"}多少人？`), opts(ans, () => ans + rnd(-10, 10)), "基础",
         G("gen.addsub.ue10", { v1: Math.max(A, B), v2: Math.min(A, B), v3: ans }, `求相差多少用大数减小数：${Math.max(A, B)}−${Math.min(A, B)}=${ans}（人）。`), G("gen.addsub.upt10", null, "求相差"), null);
     }
     if (type === 10) {
@@ -196,9 +197,11 @@
     }
     if (type === 6) {
       const a = rnd(2, 9), b = rnd(2, 9), ans = a * b;
-      const th = pick(["盒", "袋", "排", "组", "箱"]), it = pick([["个", "乒乓球"], ["块", "饼干"], ["支", "彩笔"], ["本", "练习本"]]);
-      return Q(G("gen.multi.uq6", { v1: th, v2: a, v3: it[0], v4: it[1], v5: b, v6: th, v7: it[0], v8: it[1] }, `每${th}装 ${a} ${it[0]}${it[1]}，${b} ${th}一共有多少${it[0]}${it[1]}？`), opts(ans, () => rnd(2, 9) * rnd(2, 9)), "基础",
-        G("gen.multi.ue6", { v1: th, v2: a, v3: it[0], v4: b, v5: th, v6: a, v7: b, v8: ans, v9: it[0] }, `每${th} ${a} ${it[0]}，共 ${b} ${th}：${a}×${b}=${ans}（${it[0]}）。`), G("gen.multi.upt6", null, "图文应用"), null);
+      const thi6 = rnd(0, 4), th = ["盒", "袋", "排", "组", "箱"][thi6];
+      const iti6 = rnd(0, 3), it = [["个", "乒乓球"], ["块", "饼干"], ["支", "彩笔"], ["本", "练习本"]][iti6];
+      const thE6 = G("gen.multi.x6c" + thi6, null, th), itE6 = G("gen.multi.x6i" + iti6, null, it[1]);
+      return Q(G("gen.multi.uq6", { v1: thE6, v2: a, v3: it[0], v4: itE6, v5: b, v6: thE6, v7: it[0], v8: itE6 }, `每${th}装 ${a} ${it[0]}${it[1]}，${b} ${th}一共有多少${it[0]}${it[1]}？`), opts(ans, () => rnd(2, 9) * rnd(2, 9)), "基础",
+        G("gen.multi.ue6", { v1: thE6, v2: a, v3: it[0], v4: b, v5: thE6, v6: a, v7: b, v8: ans, v9: it[0] }, `每${th} ${a} ${it[0]}，共 ${b} ${th}：${a}×${b}=${ans}（${it[0]}）。`), G("gen.multi.upt6", null, "图文应用"), null);
     }
     if (type === 7) {
       const a = rnd(2, 9), ans = rnd(2, 9), P = a * ans;
@@ -252,7 +255,7 @@
     }
     if (type === 4) {
       const k = rnd(3, 8), q = rnd(3, 12), r = rnd(1, k - 1), N = k * q + r, askR = rnd(0, 1), ans = askR ? r : q;
-      return Q(G("gen.divide.uq4", { v1: N, v2: k, v3: askR ? "最后还剩几本" : "每组分得多少本" }, `把 ${N} 本书平均分给 ${k} 个小组，每组分得同样多。${askR ? "最后还剩几本" : "每组分得多少本"}？`), opts(ans, () => rnd(1, 15)), "基础",
+      return Q(G("gen.divide.uq4", { v1: N, v2: k, v3: askR }, `把 ${N} 本书平均分给 ${k} 个小组，每组分得同样多。${askR ? "最后还剩几本" : "每组分得多少本"}？`), opts(ans, () => rnd(1, 15)), "基础",
         G("gen.divide.ue4", { v1: N, v2: k, v3: q, v4: r, v5: q, v6: r, v7: ans }, `${N}÷${k}=${q}……${r}，每组 ${q} 本，还剩 ${r} 本。所以答案是 ${ans}。`), G("gen.divide.upt4", null, "平均分"), null);
     }
     if (type === 5) {
@@ -334,7 +337,7 @@
       const a = rnd(50, 200), b = rnd(11, 60); let c = rnd(11, 60); while (c === b) c = rnd(11, 60);
       const W = a + c, ans = a + b;
       return Q(G("gen.fourops.uq7", { v1: a, v2: b, v3: b, v4: c, v5: W }, `小明计算 ${a} + ${b} 时，把 ${b} 看成了 ${c}，得到的结果是 ${W}。正确的结果应是多少？`), opts(ans, () => W + rnd(-20, 20)), "拔高",
-        G("gen.fourops.ue7", { v1: Math.abs(c - b), v2: a, v3: b, v4: ans, v5: W, v6: c > b ? "减去" : "加上", v7: Math.abs(c - b), v8: ans }, `他把加数看错，多算/少算了 ${Math.abs(c - b)}。正确结果=${a}+${b}=${ans}（错误结果 ${W} ${c > b ? "减去" : "加上"} ${Math.abs(c - b)} 也得 ${ans}）。`), G("gen.fourops.upt7", null, "错中求解"), null);
+        G("gen.fourops.ue7", { v1: Math.abs(c - b), v2: a, v3: b, v4: ans, v5: W, v6: c > b, v7: Math.abs(c - b), v8: ans }, `他把加数看错，多算/少算了 ${Math.abs(c - b)}。正确结果=${a}+${b}=${ans}（错误结果 ${W} ${c > b ? "减去" : "加上"} ${Math.abs(c - b)} 也得 ${ans}）。`), G("gen.fourops.upt7", null, "错中求解"), null);
     }
     if (type === 8) {
       const a = rnd(6, 40), b = rnd(4, 30), c = rnd(3, 9), ans = (a + b) * c;
@@ -385,7 +388,7 @@
       let b = rnd(3, 12), d = rnd(3, 12), a = rnd(1, b - 1), c = rnd(1, d - 1), g = 0;
       while (a * d === c * b && g++ < 50) { c = rnd(1, d - 1); }
       const f1 = fs(a, b), f2 = fs(c, d), ans = a * d > c * b ? f1 : f2;
-      return Q(G("gen.fraction.uq4", { v1: f1, v2: f2 }, `比较大小：${f1} 和 ${f2}，较大的是哪一个？`), cats(ans, [ans === f1 ? f2 : f1, "两个相等", "无法比较"]), "提升",
+      return Q(G("gen.fraction.uq4", { v1: f1, v2: f2 }, `比较大小：${f1} 和 ${f2}，较大的是哪一个？`), cats(ans, [ans === f1 ? f2 : f1, G("gen.fraction.x4eq", null, "两个相等"), G("gen.fraction.x4nc", null, "无法比较")]), "提升",
         G("gen.fraction.ue4", { v1: f1, v2: a * d, v3: b * d, v4: f2, v5: c * b, v6: b * d, v7: a * d, v8: a * d > c * b ? ">" : "<", v9: c * b, v10: ans }, `通分比较：${f1}=${a * d}/${b * d}，${f2}=${c * b}/${b * d}，${a * d}${a * d > c * b ? ">" : "<"}${c * b}，所以 ${ans} 大。`), G("gen.fraction.upt4", null, "比较分数"), null);
     }
     if (type === 5) {
@@ -453,10 +456,11 @@
         G("gen.decimal.ue4", { v1: k, v2: String(k).length - 1, v3: x, v4: ans }, `扩大 ${k} 倍就是小数点向右移动 ${String(k).length - 1} 位：${x} → ${ans}。`), G("gen.decimal.upt4", null, "小数点移动"), null);
     }
     if (type === 5) {
-      const conf = pick([{ k: 100, a: "米", b: "厘米" }, { k: 1000, a: "千克", b: "克" }, { k: 10, a: "元", b: "角" }, { k: 10, a: "分米", b: "厘米" }]);
+      const confi5 = rnd(0, 3), conf = [{ k: 100, a: "米", b: "厘米" }, { k: 1000, a: "千克", b: "克" }, { k: 10, a: "元", b: "角" }, { k: 10, a: "分米", b: "厘米" }][confi5];
+      const confA5 = G("gen.decimal.x5a" + confi5, null, conf.a), confB5 = G("gen.decimal.x5b" + confi5, null, conf.b);
       const v = r2(rnd(101, 999) / 100), ans = Math.round(v * conf.k);
-      return Q(G("gen.decimal.uq5", { v1: v, v2: conf.a, v3: conf.b }, `单位换算：${v} ${conf.a} = ? ${conf.b}`), opts(ans, () => Math.round(v * conf.k) + rnd(-30, 30)), "提升",
-        G("gen.decimal.ue5", { v1: conf.a, v2: conf.k, v3: conf.b, v4: v, v5: conf.k, v6: ans, v7: conf.b }, `1 ${conf.a}=${conf.k} ${conf.b}，所以 ${v}×${conf.k}=${ans}（${conf.b}）。`), G("gen.decimal.upt5", null, "单位换算"), null);
+      return Q(G("gen.decimal.uq5", { v1: v, v2: confA5, v3: confB5 }, `单位换算：${v} ${conf.a} = ? ${conf.b}`), opts(ans, () => Math.round(v * conf.k) + rnd(-30, 30)), "提升",
+        G("gen.decimal.ue5", { v1: confA5, v2: conf.k, v3: confB5, v4: v, v5: conf.k, v6: ans, v7: confB5 }, `1 ${conf.a}=${conf.k} ${conf.b}，所以 ${v}×${conf.k}=${ans}（${conf.b}）。`), G("gen.decimal.upt5", null, "单位换算"), null);
     }
     if (type === 6) {
       let a = r2(rnd(100, 999) / 100), b = r2(rnd(100, 999) / 100); while (a === b) b = r2(rnd(100, 999) / 100);
@@ -571,8 +575,8 @@
     if (type === 2) {
       const pr = pick([[2, 3], [3, 4], [1, 4], [2, 5], [3, 5], [4, 5], [5, 7], [3, 7]]), k = rnd(3, 30);
       const S = (pr[0] + pr[1]) * k, big = rnd(0, 1), ans = big ? pr[1] * k : pr[0] * k;
-      return Q(G("gen.ratio.uq2", { v1: S, v2: pr[0], v3: pr[1], v4: big ? "乙" : "甲" }, `把 ${S} 个苹果按 ${pr[0]} : ${pr[1]} 分给甲、乙两班，${big ? "乙" : "甲"}班分得多少个？`), opts(ans, () => rnd(1, S - 1)), "提升",
-        G("gen.ratio.ue2", { v1: pr[0], v2: pr[1], v3: pr[0] + pr[1], v4: S, v5: pr[0] + pr[1], v6: k, v7: big ? "乙" : "甲", v8: k, v9: big ? pr[1] : pr[0], v10: ans }, `总份数=${pr[0]}+${pr[1]}=${pr[0] + pr[1]}（份），每份 ${S}÷${pr[0] + pr[1]}=${k}（个），${big ? "乙" : "甲"}班 ${k}×${big ? pr[1] : pr[0]}=${ans}（个）。`), G("gen.ratio.upt2", null, "按比分配"), null);
+      return Q(G("gen.ratio.uq2", { v1: S, v2: pr[0], v3: pr[1], v4: big }, `把 ${S} 个苹果按 ${pr[0]} : ${pr[1]} 分给甲、乙两班，${big ? "乙" : "甲"}班分得多少个？`), opts(ans, () => rnd(1, S - 1)), "提升",
+        G("gen.ratio.ue2", { v1: pr[0], v2: pr[1], v3: pr[0] + pr[1], v4: S, v5: pr[0] + pr[1], v6: k, v7: big, v8: k, v9: big ? pr[1] : pr[0], v10: ans }, `总份数=${pr[0]}+${pr[1]}=${pr[0] + pr[1]}（份），每份 ${S}÷${pr[0] + pr[1]}=${k}（个），${big ? "乙" : "甲"}班 ${k}×${big ? pr[1] : pr[0]}=${ans}（个）。`), G("gen.ratio.upt2", null, "按比分配"), null);
     }
     if (type === 3) {
       const k = pick([100, 200, 500, 1000, 2000, 5000]), x = rnd(2, 30), ans = x * k / 100;
