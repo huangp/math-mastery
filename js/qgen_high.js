@@ -1658,13 +1658,14 @@
         const sx = rnd(1, 6) * (Math.random() < 0.5 ? -1 : 1);
         const sy = rnd(1, 6) * (Math.random() < 0.5 ? -1 : 1);
         let quad;
-        if (sx > 0 && sy > 0) quad = "第一象限";
-        else if (sx < 0 && sy > 0) quad = "第二象限";
-        else if (sx < 0 && sy < 0) quad = "第三象限";
-        else quad = "第四象限";
+        if (sx > 0 && sy > 0) quad = G("gen.numshape.uo8", null, "第一象限");
+        else if (sx < 0 && sy > 0) quad = G("gen.numshape.uo9", null, "第二象限");
+        else if (sx < 0 && sy < 0) quad = G("gen.numshape.uo10", null, "第三象限");
+        else quad = G("gen.numshape.uo11", null, "第四象限");
+        const sign = s => s > 0 ? G("gen.numshape.x0", null, "正") : G("gen.numshape.x1", null, "负");
         o = opts(quad, () => G("gen.numshape.uo8", null, "第一象限"), () => G("gen.numshape.uo9", null, "第二象限"), () => G("gen.numshape.uo10", null, "第三象限"), () => G("gen.numshape.uo11", null, "第四象限"));
         q = G("gen.numshape.uq3", { v1: sx, v2: sy }, `点 (${sx}, ${sy}) 在平面直角坐标系位于？`);
-        exp = G("gen.numshape.ue3", { v1: sx > 0 ? "正" : "负", v2: sy > 0 ? "正" : "负", v3: quad }, `x=${sx > 0 ? "正" : "负"}、y=${sy > 0 ? "正" : "负"}，属于${quad}。`);
+        exp = G("gen.numshape.ue3", { v1: sign(sx), v2: sign(sy), v3: quad }, `x=${sx > 0 ? "正" : "负"}、y=${sy > 0 ? "正" : "负"}，属于${quad}。`);
       } else if (type === 4) {
         const A = rnd(2, 9);
         o = opts("0", () => `${A}`, () => `−${A}`, () => G("gen.numshape.uo12", null, "不存在"));
@@ -1684,7 +1685,7 @@
       } else if (type === 7) {
         const a = rnd(1, 4) * (Math.random() < 0.5 ? -1 : 1);
         const b = rnd(1, 6), c = rnd(1, 6);
-        const dir = a > 0 ? "向上" : "向下";
+        const dir = a > 0 ? G("gen.numshape.uo15", null, "向上") : G("gen.numshape.uo14", null, "向下");
         o = opts(dir, () => a > 0 ? G("gen.numshape.uo14", null, "向下") : G("gen.numshape.uo15", null, "向上"), () => G("gen.numshape.uo16", null, "向左"), () => G("gen.numshape.uo17", null, "向右"));
         q = G("gen.numshape.uq7", { v1: a, v2: b >= 0 ? "+ " + b + "x" : "− " + (-b) + "x", v3: c >= 0 ? "+ " + c : "− " + (-c) }, `抛物线 y = ${a}x² ${b >= 0 ? "+ " + b + "x" : "− " + (-b) + "x"} ${c >= 0 ? "+ " + c : "− " + (-c)} 的开口朝向是？`);
         exp = G("gen.numshape.ue7", { v1: a, v2: a > 0 ? "> 0" : "< 0", v3: dir }, `二次项系数 a = ${a} ${a > 0 ? "> 0" : "< 0"}，抛物线开口${dir}。`);
