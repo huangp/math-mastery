@@ -112,7 +112,7 @@
         const arr = [rnd(-9, 9), rnd(-9, 9), rnd(-9, 9)];
         const mx = Math.max.apply(null, arr);
         o = opts(mx, () => Math.min.apply(null, arr), () => 0, () => arr[0] + arr[1]);
-        q = G("gen.rational.uq8", { v1: arr.join("、") }, `三个数 ${arr.join("、")} 中最大的是？`);
+        q = G("gen.rational.uq8", { v1: arr.join("、"), v2: arr[0], v3: arr[1], v4: arr[2] }, `三个数 ${arr.join("、")} 中最大的是？`);
         exp = G("gen.rational.ue8", { v1: mx }, `比较大小得最大值是 ${mx}。`);
       }
       results.push(Q(q, o, "基础", exp, G("gen.rational.pt0", null, "有理数基础")));
