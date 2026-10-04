@@ -74,12 +74,13 @@ with sync_playwright() as p:
     pg.reload(wait_until="networkidle")
 
     def go(route):
-        """切 hash 并等路由渲染完（两帧），返回 #view 的 innerHTML。"""
+        """切 hash 并等路由渲染完（两帧），返回 #view 的可见文字（含 SVG <text>）。
+        不用 innerHTML：属性里的中文是数据键（data-stage="小学" 等），按约定保持中文。"""
         cur["route"] = route
         return pg.evaluate("""r => new Promise(res => {
             location.hash = r;
             requestAnimationFrame(() => requestAnimationFrame(() =>
-              res(document.getElementById("view").innerHTML)));
+              res(document.getElementById("view").textContent)));
         })""", route)
 
     # ---- 1. 全路由扫描 ----
@@ -93,7 +94,7 @@ with sync_playwright() as p:
     for r in routes:
         html = go(r)
         if LANG != "zh" and CJK.search(html):
-            hits = list(dict.fromkeys(re.findall(r"[^<>\"]*[\u4e00-\u9fff][^<>\"]*", html)))[:3]
+            hits = list(dict.fromkeys(s.strip() for s in re.findall(r"[^\n]*[\u4e00-\u9fff][^\n]*", html)))[:3]
             cjk_pages.append(f"{r} → {' | '.join(hits)[:160]}")
 
     # 动画在学习页挂到 #animBox，单独扫一遍其文字

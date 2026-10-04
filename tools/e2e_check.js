@@ -48,9 +48,10 @@ for (const lang of ["zh", "en"]) {
   const cjkPages = [];
   for (const r of routes) {
     try { go(r); } catch (e) { errors.push(`${r}: THREW ${e.message}`); continue; }
-    const html = w.document.getElementById("view").innerHTML;
-    if (lang === "en" && CJK.test(html)) {
-      const hits = [...new Set((html.match(/[^<>"]*[一-鿿][^<>"]*/g) || []))].slice(0, 3);
+    // 只看可见文字（含 SVG <text>）；属性里的中文是数据键（data-stage="小学" 等），按约定保持中文
+    const text = w.document.getElementById("view").textContent;
+    if (lang === "en" && CJK.test(text)) {
+      const hits = [...new Set((text.match(/[^\n]*[一-鿿][^\n]*/g) || []).map(s => s.trim()))].slice(0, 3);
       cjkPages.push(`${r} → ${hits.join(" | ").slice(0, 160)}`);
     }
   }
