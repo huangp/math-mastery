@@ -405,10 +405,12 @@
         q = G("gen.trig_id.uq8", { v1: a, v2: qv, v3: r, v4: qv }, `已知 sinα=${a}/${qv}, cosα=${r}/${qv}，则 sin²α + cos²α = ？`);
         exp = G("gen.trig_id.ue8", { v1: a * a, v2: qv * qv, v3: r * r, v4: qv * qv, v5: a * a + r * r, v6: qv * qv, v7: v.toFixed(3) }, `sin²α+cos²α = ${a * a}/${qv * qv} + ${r * r}/${qv * qv} = ${a * a + r * r}/${qv * qv} = 1（即 ${v.toFixed(3)}）。`);
       } else {
-        const p = rnd(1, 6), q2 = rnd(1, 6);
-        o = opts(`${(2 * p * q2)}/(${q2 * q2 - p * p})`, () => `${(p * q2)}/(${q2 * q2 - p * p})`, () => `${(2 * p * q2)}/(${q2 * q2 + p * p})`, () => `${(2 * p)}/(${q2})`);
+        // p = q 时 tanα = 1，1 − tan²α = 0，tan2α 无定义；重抽直到 p ≠ q
+        const p = rnd(1, 6); let q2 = rnd(1, 6); while (q2 === p) q2 = rnd(1, 6);
+        const t2 = frac(2 * p * q2, q2 * q2 - p * p);
+        o = opts(t2, () => frac(p * q2, q2 * q2 - p * p), () => frac(2 * p * q2, q2 * q2 + p * p), () => frac(2 * p, q2));
         q = G("gen.trig_id.uq9", { v1: p, v2: q2 }, `已知 tanα = ${p}/${q2}，则 tan2α = ？`);
-        exp = G("gen.trig_id.ue9", { v1: p, v2: q2, v3: p, v4: q2, v5: 2 * p * q2, v6: q2 * q2, v7: p * p }, `tan2α = 2tanα/(1−tan²α) = 2(${p}/${q2})/(1−(${p}/${q2})²) = ${2 * p * q2}/(${q2 * q2}−${p * p})。`);
+        exp = G("gen.trig_id.ue9", { v1: p, v2: q2, v3: p, v4: q2, v5: 2 * p * q2, v6: q2 * q2, v7: p * p, v8: t2 }, `tan2α = 2tanα/(1−tan²α) = 2(${p}/${q2})/(1−(${p}/${q2})²) = ${2 * p * q2}/(${q2 * q2}−${p * p}) = ${t2}。`);
       }
       results.push(Q(q, o, "基础", exp, G("gen.trig_id.pt0", null, "三角恒等变换")));
     }

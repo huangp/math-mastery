@@ -147,7 +147,7 @@
     "gen.trig_id.uq8": "Given sinα={v1}/{v2} and cosα={v3}/{v4}, find sin²α + cos²α.",
     "gen.trig_id.ue8": "sin²α+cos²α = {v1}/{v2} + {v3}/{v4} = {v5}/{v6} = 1 (i.e. {v7}).",
     "gen.trig_id.uq9": "Given tanα = {v1}/{v2}, find tan2α.",
-    "gen.trig_id.ue9": "tan2α = 2tanα/(1−tan²α) = 2({v1}/{v2})/(1−({v3}/{v4})²) = {v5}/({v6}−{v7}).",
+    "gen.trig_id.ue9": "tan2α = 2tanα/(1−tan²α) = 2({v1}/{v2})/(1−({v3}/{v4})²) = {v5}/({v6}−{v7}) = {v8}.",
     "gen.trig_id.pt0": "Trigonometric identities",
 
     /* ---- seqsum: 数列求和技巧 ---- */
