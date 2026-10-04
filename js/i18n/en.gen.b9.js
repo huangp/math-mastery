@@ -341,7 +341,7 @@
     "gen.gradient.uq7": "f(x,y)={v1}x+{v2}y. The gradient ∇f = ?",
     "gen.gradient.ue7": "∇f = (∂f/∂x, ∂f/∂y) = ({v1}, {v2}).",
     "gen.gradient.uq8": "f(x,y)={v1}(x²+y²). The magnitude of the gradient at ({v2},{v3}) = ?",
-    "gen.gradient.ue8": "∇f = (2{v1}x, 2{v2}y), magnitude = 2{v3}√({v4}²+{v5}²) = {v6}.",
+    "gen.gradient.ue8": "∇f = ({v1}x, {v2}y), magnitude = {v3}√({v4}²+{v5}²) = {v6}.",
     "gen.gradient.uq9": "f(x,y)={v1}x+{v2}y. Which unit direction does the gradient point in, for the fastest increase of the function?",
     "gen.gradient.ue9": "∇f = ({v1}, {v2}), pointing towards ({v3}, {v4}) (the direction of fastest increase).",
     "gen.gradient.upt0": "gradient",

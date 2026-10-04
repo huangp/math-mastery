@@ -4363,10 +4363,11 @@
         exp = G("gen.gradient.ue7", { v1: p, v2: q2 }, `∇f = (∂f/∂x, ∂f/∂y) = (${p}, ${q2})。`);
       } else if (type === 8) {
         const c = rnd(1, 6), X = rnd(1, 5), Y = rnd(1, 5);
-        const mod = (c * Math.sqrt(X * X + Y * Y)).toFixed(2);
+        // ∇f = (2cx, 2cy)，模 = 2c√(x²+y²)；此前漏了因子 2，标成正确的选项只有真值的一半
+        const mod = (2 * c * Math.sqrt(X * X + Y * Y)).toFixed(2);
         o = opts(`${mod}`, () => `${c}`, () => `${(c * X).toFixed(2)}`, () => `${(c * (X + Y)).toFixed(2)}`);
         q = G("gen.gradient.uq8", { v1: c, v2: X, v3: Y }, `f(x,y)=${c}(x²+y²) 在 (${X},${Y}) 处梯度的模 = ？`);
-        exp = G("gen.gradient.ue8", { v1: c, v2: c, v3: c, v4: X, v5: Y, v6: mod }, `∇f = (2${c}x, 2${c}y)，模 = 2${c}√(${X}²+${Y}²) = ${mod}。`);
+        exp = G("gen.gradient.ue8", { v1: 2 * c, v2: 2 * c, v3: 2 * c, v4: X, v5: Y, v6: mod }, `∇f = (${2 * c}x, ${2 * c}y)，模 = ${2 * c}√(${X}²+${Y}²) = ${mod}。`);
       } else {
         const c = rnd(1, 6);
         const dir = `(${c}, ${c})`;
