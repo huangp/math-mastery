@@ -156,7 +156,7 @@
     "gen.conic_chord.uo7": "The line does not pass through a fixed point",
     "gen.conic_chord.uq5": "The line y − {v1} = k(x − {v2}) (k a parameter) always passes through which fixed point?",
     "gen.conic_chord.ue5": "Rearranging: y = k(x−{v1}) + {v2}. When x={v3}, y={v4}, so it passes through the fixed point ({v5}, {v6}).",
-    "gen.conic_chord.uq6": "For {v1}x² + {v2}x + {v3} = 0 (Δ={v4}), what is the distance between the roots |x₁−x₂|?",
+    "gen.conic_chord.uq6": "For {v1}x² + {v2}x {v3} = 0 (Δ={v4}), what is the distance between the roots |x₁−x₂|?",
     "gen.conic_chord.ue6": "|x₁−x₂| = √Δ/|a| = √{v1} / {v2} = {v3}.",
     "gen.conic_chord.uq7": "Two points have x-coordinates {v1} and {v2}. What is their distance along the x-axis?",
     "gen.conic_chord.ue7": "Distance = |{v1} − {v2}| = {v3}.",

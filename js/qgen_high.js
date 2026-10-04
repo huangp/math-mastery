@@ -52,8 +52,18 @@
     let d = q; while (d % 2 === 0) d /= 2; while (d % 5 === 0) d /= 5;
     return d === 1 ? String(+(p / q).toFixed(6)) : `${p}/${q}`;
   }
+  // √n / d 的最简形式：√116 → 2√29，√9/2 → 3/2（完全平方时退回 frac）
+  function radOver(n, d) {
+    let k = 1, m = n;
+    for (let f = 2; f * f <= m; f++) while (m % (f * f) === 0) { m /= f * f; k *= f; }
+    if (m === 1) return frac(k, d);
+    const g = gcdInt(k, d); k /= g; d /= g;
+    return `${k === 1 ? "" : k}√${m}${d === 1 ? "" : "/" + d}`;
+  }
   // 负数跟在运算符后面要加括号：(3 − (-4))、3x + (-1)，不然会写成 3−-4
   function pn(n) { return n < 0 ? `(${n})` : `${n}`; }
+  // 式子里的常数项：x² + 3x − 2，而不是 x² + 3x + -2
+  function tm(n) { return n < 0 ? `− ${-n}` : `+ ${n}`; }
   // 复数 a+bi：虚部为负时写成 a−bi，而不是 a+-bi
   function cx(re, im) { const m = Math.abs(im) === 1 ? "" : Math.abs(im); return im < 0 ? `${re}−${m}i` : `${re}+${m}i`; }
 
@@ -1112,10 +1122,11 @@
         q = G("gen.conic_chord.0q", { v1: x1, v2: x2 }, `线段两端点横坐标为 ${x1} 和 ${x2}，中点横坐标是？`);
         exp = G("gen.conic_chord.1e", { v1: x1, v2: x2, v3: mid }, `中点横坐标 = (${x1} + ${x2}) / 2 = ${mid}。`);
       } else if (type === 1) {
-        const a = 1, b = rnd(2, 12), c = rnd(1, 9);
+        // c 取在 b²/4 以下，保证 Δ>0（此前常出现 Δ<0，答案成了 NaN）
+        const a = 1, b = rnd(3, 12), c = rnd(1, Math.min(9, Math.ceil(b * b / 4) - 1));
         const delta = b * b - 4 * a * c;
-        const dist = Math.sqrt(delta) / a;
-        o = opts(dist, () => delta, () => Math.sqrt(delta), () => delta / 2);
+        const dist = radOver(delta, a);
+        o = opts(dist, () => `${delta}`, () => radOver(delta, 2), () => frac(delta, 2));
         q = G("gen.conic_chord.uq0", { v1: b, v2: c }, `方程 x² + ${b}x + ${c} = 0 的两根距离 |x₁−x₂| = ？`);
         exp = G("gen.conic_chord.ue0", { v1: delta, v2: dist }, `|x₁−x₂| = √Δ/|a| = √${delta} / 1 = ${dist}。`);
       } else if (type === 2) {
@@ -1147,12 +1158,13 @@
         q = G("gen.conic_chord.uq5", { v1: a + 1, v2: a }, `直线 y − ${a + 1} = k(x − ${a}) (k 为参数) 恒过定点？`);
         exp = G("gen.conic_chord.ue5", { v1: a, v2: a + 1, v3: a, v4: a + 1, v5: a, v6: a + 1 }, `整理 y = k(x−${a}) + ${a + 1}，当 x=${a} 时 y=${a + 1}，过定点 (${a}, ${a + 1})。`);
       } else if (type === 7) {
-        const a = rnd(2, 6), b = rnd(1, 5), c = rnd(1, 5);
+        // 常数项取负，Δ = b² + 4a|c| 恒正（此前 c>0 时 Δ 多为负，却把 0 当成两根距离）
+        const a = rnd(2, 6), b = rnd(1, 5), c = -rnd(1, 5);
         const delta = b * b - 4 * a * c;
-        const dist = Math.sqrt(Math.max(delta, 0)) / a;
-        o = opts(dist, () => (-b / a), () => (c / a), () => Math.sqrt(Math.max(delta, 0)));
-        q = G("gen.conic_chord.uq6", { v1: a, v2: b, v3: c, v4: delta }, `方程 ${a}x² + ${b}x + ${c} = 0（Δ=${delta}）的两根距离 |x₁−x₂| = ？`);
-        exp = G("gen.conic_chord.ue6", { v1: Math.max(delta, 0), v2: a, v3: dist }, `|x₁−x₂| = √Δ/|a| = √${Math.max(delta, 0)} / ${a} = ${dist}。`);
+        const dist = radOver(delta, a);
+        o = opts(dist, () => frac(-b, a), () => radOver(delta, 2 * a), () => radOver(delta, 1));
+        q = G("gen.conic_chord.uq6", { v1: a, v2: b, v3: tm(c), v4: delta }, `方程 ${a}x² + ${b}x ${tm(c)} = 0（Δ=${delta}）的两根距离 |x₁−x₂| = ？`);
+        exp = G("gen.conic_chord.ue6", { v1: delta, v2: a, v3: dist }, `|x₁−x₂| = √Δ/|a| = √${delta} / ${a} = ${dist}。`);
       } else if (type === 8) {
         const x1 = rnd(1, 12), x2 = rnd(1, 12);
         o = opts(Math.abs(x1 - x2), () => x1 + x2, () => Math.max(x1, x2), () => Math.min(x1, x2));
