@@ -741,7 +741,8 @@
         G("gen.profit.ue7", { v1: A, v2: r, v3: A * r / 100, v4: A, v5: A * r / 100, v6: ans }, `税款=${A}×${r}%=${A * r / 100}（元），实得=${A}−${A * r / 100}=${ans}（元）。`), G("gen.profit.upt7", null, "税后所得"), null);
     }
     if (type === 8) {
-      const C = rnd(10, 200) * 10, loss = rnd(2, 30) * 5, Sp = C - loss;
+      // 亏损额要小于成本，否则售价成了负数（成本 120 元卖了 -20 元）
+      const C = rnd(10, 200) * 10, loss = rnd(2, Math.min(30, C / 5 - 1)) * 5, Sp = C - loss;
       return Q(G("gen.profit.uq8", { v1: C, v2: Sp }, `一件商品成本 ${C} 元，只卖了 ${Sp} 元，亏了多少元？`), opts(loss, () => rnd(2, 40) * 5), "基础",
         G("gen.profit.ue8", { v1: C, v2: Sp, v3: loss }, `售价低于成本就是亏损：${C}−${Sp}=${loss}（元）。`), G("gen.profit.upt8", null, "亏损"), null);
     }
