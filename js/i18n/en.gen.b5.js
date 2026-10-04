@@ -54,7 +54,7 @@
     "gen.deriv_ineq.uo22": "maximum {v1}",
     "gen.deriv_ineq.uo23": "maximum {v1}",
     "gen.deriv_ineq.uq8": "By the AM–GM inequality, for any real x, x² + {v1} ≥ ?",
-    "gen.deriv_ineq.ue8": "x² + {v1} ≥ 2·x·{v2} = 2{v3}x (equality iff x={v4}).",
+    "gen.deriv_ineq.ue8": "x² + {v1} ≥ 2·x·{v2} = {v3}x (equality iff x={v4}).",
     "gen.deriv_ineq.uq9": "If f(x) = x² + {v1} ≥ m holds for all real x, what must the parameter m satisfy?",
     "gen.deriv_ineq.ue9": "The minimum of f(x) is {v1}, so m ≤ {v2} is required for it to always hold.",
 

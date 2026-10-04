@@ -16,9 +16,13 @@
   function opts(ans, make1, make2, make3) {
     const A = String(ans);
     const list = [A];
+    // 数值先抹掉浮点噪声（0.19999999999999996 → 0.2），否则会原样显示在选项里
     const add = v => {
-      const s = String(v);
-      if (s && s !== "NaN" && s !== "undefined" && list.indexOf(s) < 0) list.push(s);
+      let s = String(typeof v === "number" ? +v.toFixed(10) : v);
+      if (/^-0(\.0+)?$/.test(s)) s = s.slice(1);   // -0.00 与 0.00 是同一个数
+      // 数值相等但写法不同（4.00 与 4）也算重复
+      const same = x => x === s || (s.trim() !== "" && x.trim() !== "" && isFinite(Number(s)) && Number(x) === Number(s));
+      if (s && !/NaN|Infinity|undefined/.test(s) && !list.some(same)) list.push(s);
     };
     for (const mk of [make1, make2, make3]) {
       for (let i = 0; i < 8 && list.length < 4; i++) {
@@ -28,13 +32,30 @@
     // 数值题可以安全地造偏移量；文字题造不出有意义的干扰项，宁可少给也不编乱码
     if (list.length < 4 && A !== "" && isFinite(Number(A))) {
       const base = Number(A);
+      // 偏移项与答案保持同样的小数位（0.904 → 1.904 / -0.096），不然会冒出 -0.09599999999999997
+      const dp = (A.split(".")[1] || "").length;
+      const off = x => dp ? x.toFixed(dp) : x;
       for (let k = 1; k <= 20 && list.length < 4; k++) {
-        add(base + k);
-        if (list.length < 4) add(base - k);
+        add(off(base + k));
+        if (list.length < 4) add(off(base - k));
       }
     }
     return { opts: list, ans: list.indexOf(A) };
   }
+
+  // 精确有理数 p/q 的显示：整除给整数，有限小数给小数，否则给最简分数（8/3），避免 2.6666666666666665
+  function gcdInt(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a; }
+  function frac(p, q) {
+    if (q < 0) { p = -p; q = -q; }
+    const g = gcdInt(p, q) || 1; p /= g; q /= g;
+    if (q === 1) return String(p);
+    let d = q; while (d % 2 === 0) d /= 2; while (d % 5 === 0) d /= 5;
+    return d === 1 ? String(+(p / q).toFixed(6)) : `${p}/${q}`;
+  }
+  // 负数跟在运算符后面要加括号：(3 − (-4))、3x + (-1)，不然会写成 3−-4
+  function pn(n) { return n < 0 ? `(${n})` : `${n}`; }
+  // 复数 a+bi：虚部为负时写成 a−bi，而不是 a+-bi
+  function cx(re, im) { const m = Math.abs(im) === 1 ? "" : Math.abs(im); return im < 0 ? `${re}−${m}i` : `${re}+${m}i`; }
 
   const G = window.G;
 
@@ -268,7 +289,8 @@
         exp = G("gen.trig.ue2", { v1: ang }, `基本三角恒等式：sin²α + cos²α = 1（对 ${ang}° 也成立）。`);
       } else if (type === 3) {
         const ang = pick(ANG);
-        o = opts(sinV[ang], () => cosV[ang], () => "−" + sinV[ang], () => "1");
+        const neg = s => s === "0" ? "0" : (s[0] === "−" ? s.slice(1) : "−" + s);
+        o = opts(sinV[ang], () => cosV[ang], () => neg(sinV[ang]), () => "1");
         q = G("gen.trig.uq3", { v1: ang }, `sin(180° − ${ang}°) = ？`);
         exp = G("gen.trig.ue3", { v1: ang, v2: sinV[ang] }, `诱导公式：sin(180°−α) = sinα，故 sin(180°−${ang}°) = ${sinV[ang]}。`);
       } else if (type === 4) {
@@ -564,19 +586,19 @@
       let q, ans, o, exp;
       if (type === 0) {
         const nn = rnd(3, 8);
-        o = opts(2 * nn + G("gen.solid.uo0", null, "个"), () => (2 * nn + 2) + G("gen.solid.uo1", null, "个"), () => (3 * nn) + G("gen.solid.uo2", null, "个"), () => G("gen.solid.uo3", null, "8个"));
+        o = opts(2 * nn + G("gen.solid.uo0", null, "个"), () => (2 * nn + 2) + G("gen.solid.uo1", null, "个"), () => (3 * nn) + G("gen.solid.uo2", null, "个"), () => (nn + 2) + G("gen.solid.uo3", null, "个"));
         q = G("gen.solid.uq0", { v1: nn, v2: nn }, `${nn} 棱柱（底面为 ${nn} 边形）的顶点个数是？`);
-        exp = G("gen.solid.ue0", { v1: nn, v2: nn, v3: 2 * nn }, `棱柱上下底各 ${nn} 个顶点，共 2${nn} = ${2 * nn} 个。`);
+        exp = G("gen.solid.ue0", { v1: nn, v2: nn, v3: 2 * nn }, `棱柱上下底各 ${nn} 个顶点，共 2×${nn} = ${2 * nn} 个。`);
       } else if (type === 1) {
         const nn = rnd(3, 8);
-        o = opts(nn + G("gen.solid.uo4", null, "个"), () => (nn + 1) + G("gen.solid.uo5", null, "个"), () => (2 * nn) + G("gen.solid.uo6", null, "个"), () => G("gen.solid.uo7", null, "3个"));
+        o = opts(nn + G("gen.solid.uo4", null, "个"), () => (nn + 1) + G("gen.solid.uo5", null, "个"), () => (2 * nn) + G("gen.solid.uo6", null, "个"), () => (nn - 1) + G("gen.solid.uo7", null, "个"));
         q = G("gen.solid.uq1", { v1: nn, v2: nn }, `${nn} 棱锥（底面为 ${nn} 边形）的侧面个数是？`);
         exp = G("gen.solid.ue1", { v1: nn, v2: nn }, `${nn} 棱锥有 ${nn} 个侧面（每个底边对应一个）。`);
       } else if (type === 2) {
         const nn = rnd(3, 8);
-        o = opts(3 * nn + G("gen.solid.uo8", null, "条"), () => (2 * nn) + G("gen.solid.uo9", null, "条"), () => nn + G("gen.solid.uo10", null, "条"), () => G("gen.solid.uo11", null, "12条"));
+        o = opts(3 * nn + G("gen.solid.uo8", null, "条"), () => (2 * nn) + G("gen.solid.uo9", null, "条"), () => nn + G("gen.solid.uo10", null, "条"), () => (3 * nn + 3) + G("gen.solid.uo11", null, "条"));
         q = G("gen.solid.uq2", { v1: nn }, `${nn} 棱柱的棱的条数是？`);
-        exp = G("gen.solid.ue2", { v1: nn, v2: nn, v3: nn }, `棱柱有 3${nn} 条棱（侧棱 ${nn} + 上下底各 ${nn}）。`);
+        exp = G("gen.solid.ue2", { v1: nn, v2: nn, v3: nn }, `棱柱有 3×${nn} 条棱（侧棱 ${nn} + 上下底各 ${nn}）。`);
       } else if (type === 3) {
         const a = rnd(2, 13);
         o = opts(6 * a * a, () => 4 * a * a, () => a * a * a, () => 12 * a);
@@ -802,12 +824,12 @@
         const a = rnd(1, 9);
         o = opts(G("gen.deriv_mon.uo0", null, "(-∞, 0) 递减，(0, +∞) 递增"), () => G("gen.deriv_mon.uo1", null, "(-∞, 0) 递增，(0, +∞) 递减"), () => G("gen.deriv_mon.uo2", null, "R 上递增"), () => G("gen.deriv_mon.uo3", null, "R 上递减"));
         q = G("gen.deriv_mon.uq1", { v1: a }, `函数 f(x) = ${a}x² (a>0) 的单调区间是？`);
-        exp = G("gen.deriv_mon.ue1", { v1: a }, `f'(x) = 2${a}x，x<0 递减，x>0 递增。`);
+        exp = G("gen.deriv_mon.ue1", { v1: 2 * a }, `f'(x) = ${2 * a}x，x<0 递减，x>0 递增。`);
       } else if (type === 2) {
         const a = rnd(1, 9);
         o = opts(G("gen.deriv_mon.uo4", null, `x = 0 处取极小值`), () => G("gen.deriv_mon.uo5", null, `x = 0 处取极大值`), () => G("gen.deriv_mon.uo6", { v1: a }, `x = ${a} 处取极值`), () => G("gen.deriv_mon.uo7", null, "无极值"));
         q = G("gen.deriv_mon.uq2", { v1: a }, `函数 f(x) = ${a}x² 在 x = 0 处的极值是？`);
-        exp = G("gen.deriv_mon.ue2", { v1: a, v2: a }, `f'(x) = 2${a}x，x=0 驻点，f''=2${a}>0，取极小值。`);
+        exp = G("gen.deriv_mon.ue2", { v1: 2 * a, v2: 2 * a }, `f'(x) = ${2 * a}x，x=0 驻点，f''=${2 * a}>0，取极小值。`);
       } else if (type === 3) {
         const a = rnd(1, 5), b = rnd(1, 5);
         o = opts(`${a}`, () => `${a} − ${b}`, () => `${a} × ${b}`, () => `${a}`);
@@ -833,7 +855,7 @@
         const a = rnd(1, 9);
         o = opts(G("gen.deriv_mon.uo16", null, "(-∞, 0) 递减，(0, +∞) 递增"), () => G("gen.deriv_mon.uo17", null, "(0, +∞) 递减"), () => G("gen.deriv_mon.uo18", null, "R 上递增"), () => G("gen.deriv_mon.uo19", null, "R 上递减"));
         q = G("gen.deriv_mon.uq7", { v1: a }, `函数 f(x) = ${a}x² (a>0) 的单调递减区间是？`);
-        exp = G("gen.deriv_mon.ue7", { v1: a }, `f'(x)=2${a}x，x<0 时 f'<0，递减区间 (-∞,0)。`);
+        exp = G("gen.deriv_mon.ue7", { v1: 2 * a }, `f'(x)=${2 * a}x，x<0 时 f'<0，递减区间 (-∞,0)。`);
       } else if (type === 8) {
         const a = rnd(2, 5), b = rnd(1, 4);
         o = opts(`${a * b}x^${b - 1}`, () => `${a}x^${b}`, () => `${a}x^${b - 1}`, () => `${a * b}x^${b}`);
@@ -901,9 +923,9 @@
         exp = G("gen.deriv_ineq.ue7", { v1: a, v2: a, v3: a, v4: a, v5: a * a / 8 }, `顶点 x = ${a}/4，f_max = −2·(${a}/4)² + ${a}·(${a}/4) = ${a * a / 8}。`);
       } else if (type === 8) {
         const b = rnd(1, 10);
-        o = opts(`2${b}x`, () => `${b}x`, () => `${b * b}`, () => `x² + ${b * b}`);
+        o = opts(`${2 * b}x`, () => `${b}x`, () => `${b * b}`, () => `x² + ${b * b}`);
         q = G("gen.deriv_ineq.uq8", { v1: b * b }, `由均值不等式，对任意实数 x 有 x² + ${b * b} ≥ ？`);
-        exp = G("gen.deriv_ineq.ue8", { v1: b * b, v2: b, v3: b, v4: b }, `x² + ${b * b} ≥ 2·x·${b} = 2${b}x（当且仅当 x=${b} 取等）。`);
+        exp = G("gen.deriv_ineq.ue8", { v1: b * b, v2: b, v3: 2 * b, v4: b }, `x² + ${b * b} ≥ 2·x·${b} = ${2 * b}x（当且仅当 x=${b} 取等）。`);
       } else {
         const K = rnd(2, 15);
         o = opts(`m ≤ ${K}`, () => `m ≥ ${K}`, () => `m < ${K}`, () => `m > ${K}`);
@@ -1242,7 +1264,7 @@
         exp = G("gen.param_eq.ue2", null, `参数方程中的变量 t（或 θ）称为参数。`);
       } else if (type === 3) {
         const a = rnd(2, 8), b = rnd(2, 8);
-        o = opts(`x²/${a * a} + y²/${b * b} = 1`, () => `x²/${a * a} − y²/${b * b} = 1`, () => `y = ${b / a}x`, () => `x² + y² = 1`);
+        o = opts(`x²/${a * a} + y²/${b * b} = 1`, () => `x²/${a * a} − y²/${b * b} = 1`, () => `y = ${frac(b, a)}x`, () => `x² + y² = 1`);
         q = G("gen.param_eq.uq3", { v1: a, v2: b }, `参数方程 x = ${a}cosθ, y = ${b}sinθ 消参后是？`);
         exp = G("gen.param_eq.ue3", { v1: a, v2: b, v3: a * a, v4: b * b }, `cosθ=x/${a}, sinθ=y/${b}，平方和得 x²/${a * a} + y²/${b * b} = 1（椭圆）。`);
       } else if (type === 4) {
@@ -1295,7 +1317,7 @@
         const a = rnd(1, 5), b = rnd(1, 5);
         const c = rnd(1, 5), d = rnd(1, 5);
         const real = a + c, imag = b + d;
-        o = opts(`${real}+${imag}i`, () => `${real + 1}+${imag}i`, () => `${real}+${imag + 1}i`, () => `${a + c}+${b - d}i`);
+        o = opts(cx(real, imag), () => cx(real + 1, imag), () => cx(real, imag + 1), () => cx(a + c, b - d));
         q = G("gen.complex.0q", { v1: a, v2: b, v3: c, v4: d }, `( ${a}+${b}i ) + ( ${c}+${d}i ) = ？`);
         exp = G("gen.complex.1e", { v1: real, v2: imag }, `复数加法：实部加实部，虚部加虚部 = (${real}) + (${imag})i。`);
       } else if (type === 1) {
@@ -1304,7 +1326,7 @@
         const c = rnd(1, 3), d = rnd(1, 3);
         const real = a * c - b * d;
         const imag = a * d + b * c;
-        o = opts(`${real}+${imag}i`, () => `${real + 1}+${imag}i`, () => `${real}+${imag + 1}i`, () => `${a * c}+${b * d}i`);
+        o = opts(cx(real, imag), () => cx(real + 1, imag), () => cx(real, imag + 1), () => cx(a * c, b * d));
         q = G("gen.complex.2q", { v1: a, v2: b, v3: c, v4: d }, `( ${a}+${b}i ) · ( ${c}+${d}i ) = ？`);
         exp = G("gen.complex.3e", { v1: real, v2: imag }, `复数乘法：(a+bi)(c+di) = (ac−bd) + (ad+bc)i = ${real} + ${imag}i。`);
       } else if (type === 2) {
@@ -2264,10 +2286,10 @@
         exp = G("gen.linearprog.ue0", { v1: m, v2: m, v3: m }, `在顶点 (${m},0) 或 (0,${m}) 处 z = ${m} 达到最大。`);
       } else if (type === 1) {
         const a = 2 * rnd(2, 6);
-        const zmax = 2 * a / 3;
-        o = opts(`${zmax}`, () => `${a}`, () => `${a / 3}`, () => `${2 * a}`);
+        const zmax = frac(2 * a, 3);
+        o = opts(zmax, () => `${a}`, () => frac(a, 3), () => `${2 * a}`);
         q = G("gen.linearprog.uq1", { v1: a, v2: a }, `约束 x≥0, y≥0, 2x+y≤${a}, x+2y≤${a}，目标 z = x+y 的最大值是？`);
-        exp = G("gen.linearprog.ue1", { v1: a, v2: a, v3: zmax }, `两约束交于 x=y=${a}/3，z = 2×${a}/3 = ${zmax}；比坐标轴上的顶点更大。`);
+        exp = G("gen.linearprog.ue1", { v1: frac(a, 3), v2: frac(a, 3), v3: zmax }, `两约束交于 x=y=${frac(a, 3)}，z = 2×${frac(a, 3)} = ${zmax}；比坐标轴上的顶点更大。`);
       } else if (type === 2) {
         const ncons = rnd(2, 5);
         o = opts(G("gen.linearprog.uo0", null, "凸多边形（凸集）"), () => G("gen.linearprog.uo1", null, "任意形状"), () => G("gen.linearprog.uo2", null, "圆形"), () => G("gen.linearprog.uo3", null, "一条直线"));
@@ -2893,7 +2915,7 @@
         const imv = a1 * b2 + b1 * a2;
         o = opts(fmt(re, imv), () => fmt(a1 * a2, b1 * b2), () => fmt(re, -imv), () => fmt(a1 + a2, b1 + b2));
         q = G("gen.complex_geo.uq4", { v1: a1, v2: b1, v3: a2, v4: b2 }, `复数乘法 (${a1}+${b1}i)(${a2}+${b2}i) = ？`);
-        exp = G("gen.complex_geo.ue4", { v1: a1, v2: a2, v3: b1, v4: b2, v5: a1, v6: b2, v7: b1, v8: a2, v9: fmt(re, imv) }, `= (${a1}${a2}−${b1}${b2}) + (${a1}${b2}+${b1}${a2})i = ${fmt(re, imv)}。`);
+        exp = G("gen.complex_geo.ue4", { v1: a1, v2: a2, v3: b1, v4: b2, v5: a1, v6: b2, v7: b1, v8: a2, v9: fmt(re, imv) }, `= (${a1}·${a2}−${b1}·${b2}) + (${a1}·${b2}+${b1}·${a2})i = ${fmt(re, imv)}。`);
       } else if (type === 6) {
         const a1 = rnd(1, 5), b1 = rnd(1, 4), a2 = rnd(1, 5), b2 = rnd(1, 4);
         const r1 = Math.sqrt(a1 * a1 + b1 * b1), r2 = Math.sqrt(a2 * a2 + b2 * b2);
@@ -2968,7 +2990,7 @@
         const L = rnd(2, 8) / 10;
         o = opts(G("gen.series.uo10", null, "收敛"), () => G("gen.series.uo11", null, "发散"), () => G("gen.series.uo12", null, "条件收敛"), () => G("gen.series.uo13", null, "无法判断"));
         q = G("gen.series.uq7", { v1: L.toFixed(1) }, `比值判别：若 lim|a_{n+1}/a_n| = ${L.toFixed(1)} < 1，则正项级数 Σ a_n ？`);
-        exp = G("gen.series.ue7", null, "比值极限 L = ${L.toFixed(1)} < 1，由比值判别法级数收敛。");
+        exp = G("gen.series.ue7", { v1: L.toFixed(1) }, `比值极限 L = ${L.toFixed(1)} < 1，由比值判别法级数收敛。`);
       } else if (type === 8) {
         const N = rnd(2, 9);
         o = opts(G("gen.series.uo14", null, "≈ 1.645（π²/6）"), () => "= 1", () => G("gen.series.uo15", null, "发散"), () => "= 2");
@@ -2999,7 +3021,7 @@
         const d2 = (x2 - x1) ** 2 + (y2 - y1) ** 2, d = Math.sqrt(d2);
         o = opts(d.toFixed(2), () => Math.sqrt(d2 + rnd(1, 10)).toFixed(2), () => Math.sqrt(Math.abs(d2 - rnd(1, 10))).toFixed(2), () => (Math.abs(x2 - x1) + Math.abs(y2 - y1)).toFixed(2));
         q = G("gen.coord_geo.0q", { v1: x1, v2: y1, v3: x2, v4: y2 }, `点 A(${x1},${y1}) 与 B(${x2},${y2}) 的距离是？`);
-        exp = G("gen.coord_geo.1e", { v1: x2, v2: x1, v3: y2, v4: y1, v5: d2, v6: d.toFixed(2) }, `d = √[(${x2}−${x1})² + (${y2}−${y1})²] = √${d2} ≈ ${d.toFixed(2)}。`);
+        exp = G("gen.coord_geo.1e", { v1: x2, v2: pn(x1), v3: y2, v4: pn(y1), v5: d2, v6: d.toFixed(2) }, `d = √[(${x2}−${pn(x1)})² + (${y2}−${pn(y1)})²] = √${d2} ≈ ${d.toFixed(2)}。`);
       } else if (type === 1) {
         const x1 = rnd(-8, 8), y1 = rnd(-8, 8), x2 = rnd(-8, 8), y2 = rnd(-8, 8);
         const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
@@ -3012,7 +3034,7 @@
         const y2 = rnd(-5, 5), k = (y2 - y1) / (x2 - x1);
         o = opts(k.toFixed(2), () => ((y1 - y2) / (x2 - x1)).toFixed(2), () => ((x2 - x1) / (y2 - y1)).toFixed(2), () => rnd(1, 5).toFixed(2));
         q = G("gen.coord_geo.4q", { v1: x1, v2: y1, v3: x2, v4: y2 }, `过 A(${x1},${y1})、B(${x2},${y2}) 的直线斜率 k = ？`);
-        exp = G("gen.coord_geo.5e", { v1: y2, v2: y1, v3: x2, v4: x1, v5: k.toFixed(2) }, `k = (y₂−y₁)/(x₂−x₁) = (${y2}−${y1})/(${x2}−${x1}) = ${k.toFixed(2)}。`);
+        exp = G("gen.coord_geo.5e", { v1: y2, v2: pn(y1), v3: x2, v4: pn(x1), v5: k.toFixed(2) }, `k = (y₂−y₁)/(x₂−x₁) = (${y2}−${pn(y1)})/(${x2}−${pn(x1)}) = ${k.toFixed(2)}。`);
       } else {
         const a = rnd(-5, 5), b = rnd(-5, 5), r = rnd(2, 6);
         o = opts(`(x${sgn(a)})²+(y${sgn(b)})²=${r * r}`, () => `(x${sgn(a)})²+(y${sgn(b)})²=${r * r + 1}`, () => `(x${sgn(a)})²+y²=${r * r}`, () => `x²+y²=${r * r}`);
@@ -3242,7 +3264,7 @@
         exp = G("gen.random_var.3e", { v1: a, v2: s2, v3: a * a * s2 }, `D(aX)=a²D(X)=${a}²·${s2}=${a * a * s2}。`);
       } else if (type === 2) {
         const p = rnd(2, 8) / 10, dp = (p * (1 - p)).toFixed(2);
-        o = opts(`E=${p}, D=${dp}`, () => `E=${p}, D=${(p * p).toFixed(2)}`, () => `E=${dp}, D=${p}`, () => `E=${1 - p}, D=${p}`);
+        o = opts(`E=${p}, D=${dp}`, () => `E=${p}, D=${(p * p).toFixed(2)}`, () => `E=${dp}, D=${p}`, () => `E=${+(1 - p).toFixed(1)}, D=${p}`);
         q = G("gen.random_var.4q", { v1: p }, `X~两点分布，P(X=1)=${p}，则 E(X)、D(X) 是？`);
         exp = G("gen.random_var.5e", { v1: p, v2: dp }, `两点分布：E=p=${p}，D=p(1-p)=${dp}。`);
       } else {
@@ -3305,10 +3327,12 @@
         exp = G("gen.fourier.ue7", null, `狄利克雷定理：收敛到左右极限的平均值 (f(x₀⁺)+f(x₀⁻))/2。`);
       } else if (type === 8) {
         const N = rnd(1, 5);
-        const sign = (N % 2 === 1) ? "" : "−";
-        o = opts(`${sign}2/${N}`, () => `2/${N}`, () => `${sign}1/${N}`, () => `${sign}2/${N + 1}`);
+        const sign = (N % 2 === 1) ? "" : "−", flip = sign ? "" : "−";
+        const ov = (num, den) => den === 1 ? `${num}` : `${num}/${den}`;
+        const bN = `${sign}${ov(2, N)}`;
+        o = opts(bN, () => `${flip}${ov(2, N)}`, () => `${sign}${ov(1, N)}`, () => `${sign}2/${N === 1 ? 3 : N + 1}`);
         q = G("gen.fourier.uq8", { v1: N }, `f(x)=x（−π<x<π）的傅里叶正弦系数 b_${N} = ？`);
-        exp = G("gen.fourier.ue8", { v1: N, v2: sign, v3: N }, `b_n = 2(−1)^{n+1}/n，取 n=${N} 得 ${sign}2/${N}。`);
+        exp = G("gen.fourier.ue8", { v1: N, v2: sign, v3: N, v4: bN }, `b_n = 2(−1)^{n+1}/n，取 n=${N} 得 ${bN}。`);
       } else {
         const L = rnd(2, 6);
         o = opts(G("gen.fourier.uo10", null, "正弦级数（奇延拓）"), () => G("gen.fourier.uo11", null, "余弦系列（偶延拓）"), () => G("gen.fourier.uo12", null, "既有正弦又有余弦"), () => G("gen.fourier.uo13", null, "只有常数项"));
@@ -3578,7 +3602,7 @@
         const R = rnd(1, 8);
         o = opts(`${R * R}`, () => `${R}`, () => `${2 * R}`, () => `${R * R * R}`);
         q = G("gen.param_extremum.uq8", { v1: R, v2: R }, `参数方程 x=${R}cosθ, y=${R}sinθ，则 x²+y² = ？`);
-        exp = G("gen.param_extremum.ue8", { v1: R, v2: R, v3: R }, `x²+y² = ${R}²cos²θ+${R}²sin²θ = ${R}²（`);
+        exp = G("gen.param_extremum.ue8", { v1: R, v2: R, v3: R, v4: R * R }, `x²+y² = ${R}²cos²θ+${R}²sin²θ = ${R}²（cos²θ+sin²θ）= ${R * R}。`);
       } else {
         const A = rnd(1, 6), B = rnd(1, 6);
         const area = (Math.PI * A * B).toFixed(2);
@@ -4230,7 +4254,7 @@
         const v = 2 * a * X * Y;
         o = opts(`${v}`, () => `${a * X * Y}`, () => `${2 * a * X}`, () => `${Y}`);
         q = G("gen.partial_deriv.uq0", { v1: a, v2: X, v3: Y }, `f(x,y)=${a}x²y，求 ∂f/∂x 在 (${X},${Y}) 的值 = ？`);
-        exp = G("gen.partial_deriv.ue0", { v1: a, v2: a, v3: X, v4: Y, v5: v }, `∂f/∂x = 2${a}xy = 2·${a}·${X}·${Y} = ${v}。`);
+        exp = G("gen.partial_deriv.ue0", { v1: 2 * a, v2: a, v3: X, v4: Y, v5: v }, `∂f/∂x = ${2 * a}xy = 2·${a}·${X}·${Y} = ${v}。`);
       } else if (type === 1) {
         const a = rnd(1, 6), X = rnd(1, 5);
         const v = a * X * X;
@@ -4242,7 +4266,7 @@
         const v = 2 * a * X + b * Y;
         o = opts(`${v}`, () => `${2 * a * X}`, () => `${a * X + b * Y}`, () => `${b * Y}`);
         q = G("gen.partial_deriv.uq2", { v1: a, v2: b, v3: X, v4: Y }, `f(x,y)=${a}x²+${b}xy，求 ∂f/∂x 在 (${X},${Y}) 的值 = ？`);
-        exp = G("gen.partial_deriv.ue2", { v1: a, v2: b, v3: a, v4: X, v5: b, v6: Y, v7: v }, `∂f/∂x = 2${a}x+${b}y = 2·${a}·${X}+${b}·${Y} = ${v}。`);
+        exp = G("gen.partial_deriv.ue2", { v1: 2 * a, v2: b, v3: a, v4: X, v5: b, v6: Y, v7: v }, `∂f/∂x = ${2 * a}x+${b}y = 2·${a}·${X}+${b}·${Y} = ${v}。`);
       } else if (type === 3) {
         const nn = rnd(2, 4);
         o = opts(G("gen.partial_deriv.uo0", null, "相等"), () => G("gen.partial_deriv.uo1", null, "互为相反数"), () => G("gen.partial_deriv.uo2", null, "无关"), () => G("gen.partial_deriv.uo3", null, "相差一个常数"));
@@ -4252,7 +4276,7 @@
         const a = rnd(1, 6), b = rnd(1, 6);
         o = opts("(∂f/∂x)dx + (∂f/∂y)dy", () => "∂f/∂x + ∂f/∂y", () => "(∂f/∂x)(∂f/∂y)", () => "dx+dy");
         q = G("gen.partial_deriv.uq4", { v1: a, v2: b }, `二元函数 f(x,y)=${a}x²+${b}y² 的全微分 df = ？`);
-        exp = G("gen.partial_deriv.ue4", { v1: a, v2: b }, `df = f_x dx + f_y dy = 2${a}x dx + 2${b}y dy（形式即 f_x dx + f_y dy）。`);
+        exp = G("gen.partial_deriv.ue4", { v1: 2 * a, v2: 2 * b }, `df = f_x dx + f_y dy = ${2 * a}x dx + ${2 * b}y dy（形式即 f_x dx + f_y dy）。`);
       } else if (type === 5) {
         const a = rnd(1, 5), X = rnd(1, 4), Y = rnd(1, 4);
         const v = (a * Y * Math.exp(a * X * Y)).toFixed(3);
@@ -4267,14 +4291,14 @@
       } else if (type === 7) {
         const P = rnd(1, 6), Q = rnd(1, 6);
         o = opts(`(${P},${Q})`, () => `(${Q},${P})`, () => `(0,0)`, () => `(${P + Q},${P})`);
-        q = G("gen.partial_deriv.uq7", { v1: P, v2: Q }, `f(x,y)=x²+y²−2${P}x−2${Q}y 的唯一驻点是？`);
+        q = G("gen.partial_deriv.uq7", { v1: 2 * P, v2: 2 * Q }, `f(x,y)=x²+y²−${2 * P}x−${2 * Q}y 的唯一驻点是？`);
         exp = G("gen.partial_deriv.ue7", { v1: P, v2: Q, v3: P, v4: Q, v5: P, v6: Q }, `f_x=2x−2${P}=0, f_y=2y−2${Q}=0 → x=${P}, y=${Q}，驻点(${P},${Q})。`);
       } else if (type === 8) {
         const a = rnd(1, 6), b = rnd(1, 6), X = rnd(1, 5), Y = rnd(1, 5);
         const v = 2 * b * Y + a * X;
         o = opts(`${v}`, () => `${2 * b * Y}`, () => `${a * X + b * Y}`, () => `${a * X}`);
         q = G("gen.partial_deriv.uq8", { v1: a, v2: b, v3: X, v4: Y }, `f(x,y)=${a}xy+${b}y²，求 ∂f/∂y 在 (${X},${Y}) 的值 = ？`);
-        exp = G("gen.partial_deriv.ue8", { v1: a, v2: b, v3: a, v4: X, v5: b, v6: Y, v7: v }, `∂f/∂y = ${a}x+2${b}y = ${a}·${X}+2·${b}·${Y} = ${v}。`);
+        exp = G("gen.partial_deriv.ue8", { v1: a, v2: 2 * b, v3: a, v4: X, v5: b, v6: Y, v7: v }, `∂f/∂y = ${a}x+${2 * b}y = ${a}·${X}+2·${b}·${Y} = ${v}。`);
       } else {
         const c = rnd(1, 6), d = rnd(1, 6);
         const v = (c * d).toFixed(3);
@@ -4298,9 +4322,9 @@
       if (type === 0) {
         const a = rnd(1, 6), b = rnd(1, 6), X = rnd(1, 5), Y = rnd(1, 5);
         const v = `(${2 * a * X}, ${2 * b * Y})`;
-        o = opts(`${v}`, () => `(${a * X}, ${b * Y})`, () => `(${2 * a}, ${2 * b})`, () => `(${2 * a * X + 2 * b * Y})`);
+        o = opts(`${v}`, () => `(${a * X}, ${b * Y})`, () => `(${2 * a}, ${2 * b})`, () => `${2 * a * X + 2 * b * Y}`);
         q = G("gen.gradient.uq0", { v1: a, v2: b, v3: X, v4: Y }, `f(x,y)=${a}x²+${b}y² 的梯度 ∇f 在 (${X},${Y}) = ？`);
-        exp = G("gen.gradient.ue0", { v1: a, v2: b, v3: X, v4: Y, v5: 2 * a * X, v6: 2 * b * Y }, `∇f = (2${a}x, 2${b}y)，在 (${X},${Y}) 为 (${2 * a * X}, ${2 * b * Y})。`);
+        exp = G("gen.gradient.ue0", { v1: 2 * a, v2: 2 * b, v3: X, v4: Y, v5: 2 * a * X, v6: 2 * b * Y }, `∇f = (${2 * a}x, ${2 * b}y)，在 (${X},${Y}) 为 (${2 * a * X}, ${2 * b * Y})。`);
       } else if (type === 1) {
         const a = rnd(1, 9);
         o = opts(G("gen.gradient.uo0", null, "函数值增加最快的方向"), () => G("gen.gradient.uo1", null, "减小最快的方向"), () => G("gen.gradient.uo2", null, "等高线切线方向"), () => G("gen.gradient.uo3", null, "任意方向"));

@@ -19,6 +19,14 @@
   function r2(x) { return Math.round(x * 100) / 100; }
   function r3(x) { return Math.round(x * 1000) / 1000; }
   function fs(a, b) { return a + "/" + b; }
+  // 精确有理数 p/q：整除给整数，有限小数给小数，否则给最简分数，避免 666.6666666666666
+  function frac(p, q) {
+    if (q < 0) { p = -p; q = -q; }
+    const g = gcd(p, q) || 1; p /= g; q /= g;
+    if (q === 1) return p;
+    let d = q; while (d % 2 === 0) d /= 2; while (d % 5 === 0) d /= 5;
+    return d === 1 ? +(p / q).toFixed(6) : `${p}/${q}`;
+  }
   function divs(n) { const a = []; for (let i = 1; i <= n; i++) if (n % i === 0) a.push(i); return a; }
   function isPrime(n) { if (n < 2) return false; for (let i = 2; i * i <= n; i++) if (n % i === 0) return false; return true; }
   function ceilDiv(a, b) { return Math.ceil(a / b); }
@@ -1845,7 +1853,7 @@
     if (type === 4) {
       const a = rnd(1, 6) * 100, p = pick([20, 30, 40, 50, 60]), s = a * p / 100, q = pick([5, 10, 15, 20, 25]);
       if (q >= p) return Q(G("gen.concentration.uq5", { v1: a, v2: p }, `${a} 克浓度 ${p}% 的盐水中，水有多少克？`), opts(a - s, () => rnd(20, 500)), "基础", G("gen.concentration.ue5", { v1: a, v2: p, v3: s, v4: a, v5: s, v6: a - s }, `盐=${a}×${p}%=${s}（克），水=${a}−${s}=${a - s}（克）。`), G("gen.concentration.upt5", null, "求溶剂"), null);
-      const T2 = s * 100 / q, ans = T2 - a;
+      const T2 = frac(s * 100, q), ans = frac(s * 100 - a * q, q);
       return Q(G("gen.concentration.uq6", { v1: a, v2: p, v3: q }, `${a} 克浓度为 ${p}% 的盐水，要把浓度稀释到 ${q}%，需要加入多少克水？`), opts(ans, () => rnd(20, 900)), "拔高",
         G("gen.concentration.ue6", { v1: s, v2: q, v3: s, v4: q, v5: T2, v6: T2, v7: a, v8: ans }, `盐不变=${s} 克；要达到 ${q}%，盐水应有 ${s}÷${q}%=${T2}（克），需加水 ${T2}−${a}=${ans}（克）。`), G("gen.concentration.upt6", null, "求加水量"), null);
     }

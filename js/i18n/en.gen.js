@@ -283,9 +283,9 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   /* linear functions */
   "gen.func1.0q": "What is the gradient of the line through ({v1},{v2}) and ({v3},{v4})?",
   "gen.func1.1e": "Gradient k = (y₂−y₁)/(x₂−x₁) = ({v1}−{v2})/({v3}−{v4}) = {v5}.",
-  "gen.func1.2q": "For y = {v1}x + {v2}, what is the y-intercept?",
+  "gen.func1.2q": "For y = {v1}x {v2}, what is the y-intercept?",
   "gen.func1.3e": "The y-intercept is the value of y when x = 0, that is b = {v1}.",
-  "gen.func1.4q": "For y = {v1}x + {v2}, what is y when x = {v3}?",
+  "gen.func1.4q": "For y = {v1}x {v2}, what is y when x = {v3}?",
   "gen.func1.p0e": "y = {v1}×{v2} + {v3} = {v4}.",
   "gen.func1.5q": "For y = {v1}x + 1, what does the graph do from left to right?",
   "gen.func1.6e": "k = {v1} > 0, so the graph rises from left to right.",
@@ -305,16 +305,16 @@ window.I18N_EN = Object.assign(window.I18N_EN || {}, {
   "gen.inverse.pt0": "Inverse proportion",
 
   /* quadratic functions */
-  "gen.quadfunc.0q": "What is the vertex of y = (x − {v1})² + {v2}?",
+  "gen.quadfunc.0q": "What is the vertex of y = (x {v1})² {v2}?",
   "gen.quadfunc.1e": "In vertex form y = a(x−h)² + k, the vertex is ({v1},{v2}).",
   "gen.quadfunc.2q": "Which way does y = {v1}x² + 2x + 1 open?",
   // v3 是中文方向词，英文这里改用 v1 的正负自行判断
   "gen.quadfunc.3e": v => `a = ${v.v1} ${v.v2} 0, so the parabola opens ${Number(v.v1) > 0 ? "upward" : "downward"}.`,
-  "gen.quadfunc.4q": "What is the axis of symmetry of y = (x + {v1})²?",
+  "gen.quadfunc.4q": "What is the axis of symmetry of y = (x {v1})²?",
   "gen.quadfunc.5e": "The axis of symmetry is x = {v1}.",
-  "gen.quadfunc.6q": "Where does y = x² + 2x + {v1} cross the y-axis?",
+  "gen.quadfunc.6q": "Where does y = x² + 2x {v1} cross the y-axis?",
   "gen.quadfunc.7e": "Put x = 0 to get y = {v1}, so it crosses at (0, {v2}).",
-  "gen.quadfunc.8q": "Does y = {v1}x² + 2x + {v2} have a maximum or minimum?",
+  "gen.quadfunc.8q": "Does y = {v1}x² + 2x {v2} have a maximum or minimum?",
   "gen.quadfunc.9e": "a = {v1} < 0, so it opens downward and has a maximum of {v2}.",
   "gen.quadfunc.o0": "Opens upward", "gen.quadfunc.o1": "Opens downward",
   "gen.quadfunc.o2": "Opens downward", "gen.quadfunc.o3": "Opens upward",

@@ -17,9 +17,13 @@
   function opts(ans, make1, make2, make3) {
     const A = String(ans);
     const list = [A];
+    // 数值先抹掉浮点噪声（0.19999999999999996 → 0.2），否则会原样显示在选项里
     const add = v => {
-      const s = String(v);
-      if (s && s !== "NaN" && s !== "undefined" && list.indexOf(s) < 0) list.push(s);
+      let s = String(typeof v === "number" ? +v.toFixed(10) : v);
+      if (/^-0(\.0+)?$/.test(s)) s = s.slice(1);   // -0.00 与 0.00 是同一个数
+      // 数值相等但写法不同（4.00 与 4）也算重复
+      const same = x => x === s || (s.trim() !== "" && x.trim() !== "" && isFinite(Number(s)) && Number(x) === Number(s));
+      if (s && !/NaN|Infinity|undefined/.test(s) && !list.some(same)) list.push(s);
     };
     for (const mk of [make1, make2, make3]) {
       for (let i = 0; i < 8 && list.length < 4; i++) {
@@ -29,13 +33,33 @@
     // 数值题可以安全地造偏移量；文字题造不出有意义的干扰项，宁可少给也不编乱码
     if (list.length < 4 && A !== "" && isFinite(Number(A))) {
       const base = Number(A);
+      // 偏移项与答案保持同样的小数位（0.904 → 1.904 / -0.096），不然会冒出 -0.09599999999999997
+      const dp = (A.split(".")[1] || "").length;
+      const off = x => dp ? x.toFixed(dp) : x;
       for (let k = 1; k <= 20 && list.length < 4; k++) {
-        add(base + k);
-        if (list.length < 4) add(base - k);
+        add(off(base + k));
+        if (list.length < 4) add(off(base - k));
       }
     }
     return { opts: list, ans: list.indexOf(A) };
   }
+
+  // 精确有理数 p/q 的显示：整除给整数，有限小数给小数（4.8），否则给最简分数（10/3）
+  // 直接打印 p/q 的浮点结果会出现 3.3333333333333335、57.599999999999994 这类噪声
+  function gcdInt(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a; }
+  function frac(p, q) {
+    if (q < 0) { p = -p; q = -q; }
+    const g = gcdInt(p, q) || 1; p /= g; q /= g;
+    if (q === 1) return String(p);
+    let d = q; while (d % 2 === 0) d /= 2; while (d % 5 === 0) d /= 5;
+    return d === 1 ? String(+(p / q).toFixed(6)) : `${p}/${q}`;
+  }
+  // 分数接在「1/」「÷」后面时加括号，免得 1/10/3 产生歧义
+  function par(s) { return /\//.test(s) ? `(${s})` : s; }
+  // 负数跟在运算符后面要加括号：|-12 − (-4)|，不然会写成 -12 − -4
+  function pn(n) { return n < 0 ? `(${n})` : `${n}`; }
+  // 式子里的常数项：y = 3x − 1，而不是 y = 3x + -1
+  function tm(n) { return n < 0 ? `− ${-n}` : `+ ${n}`; }
 
   const G = window.G;
 
@@ -79,21 +103,21 @@
         const dist = Math.abs(a - b);
         o = opts(dist, () => dist + 1, () => dist - 1, () => dist + 2);
         q = G("gen.rational.uq3", { v1: a, v2: b }, `数轴上点 A 表示 ${a}，点 B 表示 ${b}，线段 AB 的长度是？`);
-        exp = G("gen.rational.ue3", { v1: a, v2: b, v3: dist }, `AB = |${a} − ${b}| = ${dist}。`);
+        exp = G("gen.rational.ue3", { v1: a, v2: pn(b), v3: dist }, `AB = |${a} − ${pn(b)}| = ${dist}。`);
       } else if (type === 4) {
         // 加法
         const a = rnd(-12, 12), b = rnd(-12, 12);
         const s = a + b;
         o = opts(s, () => s + 1, () => s - 1, () => s + 2);
         q = G("gen.rational.uq4", { v1: a, v2: b }, `${a} + (${b}) = ？`);
-        exp = G("gen.rational.ue4", { v1: a, v2: b, v3: s }, `异号相加取绝对值较大符号：${a} + ${b} = ${s}。`);
+        exp = G("gen.rational.ue4", { v1: a, v2: pn(b), v3: s }, `异号相加取绝对值较大符号：${a} + ${pn(b)} = ${s}。`);
       } else if (type === 5) {
         // 减法
         const a = rnd(-12, 12), b = rnd(-12, 12);
         const s = a - b;
         o = opts(s, () => s + 1, () => s - 1, () => s + 2);
         q = G("gen.rational.uq5", { v1: a, v2: b }, `${a} − (${b}) = ？`);
-        exp = G("gen.rational.ue5", { v1: a, v2: b, v3: s }, `减去一个数等于加相反数：${a} − ${b} = ${s}。`);
+        exp = G("gen.rational.ue5", { v1: a, v2: pn(b), v3: s }, `减去一个数等于加相反数：${a} − ${pn(b)} = ${s}。`);
       } else if (type === 6) {
         // 同号相乘为正
         const a = rnd(2, 9), b = rnd(2, 9);
@@ -224,9 +248,10 @@
         const a = rnd(1, 5);
         const b = rnd(1, 9);
         const c = a * rnd(1, 3) + b + 5;
-        o = opts(`x < ${(c - b) / a}`, () => `x > ${(c - b) / a}`, () => `x < ${((c - b) / a) + 1}`, () => `x > ${((c - b) / a) - 1}`);
+        const xs = frac(c - b, a);
+        o = opts(`x < ${xs}`, () => `x > ${xs}`, () => `x < ${frac(c - b + a, a)}`, () => `x > ${frac(c - b - a, a)}`);
         q = G("gen.inequal.2q", { v1: a, v2: b, v3: c }, `解不等式 ${a}x + ${b} < ${c}，解集是？`);
-        exp = G("gen.inequal.3e", { v1: a, v2: c - b, v3: (c - b) / a }, `移项：${a}x < ${c - b}，x < ${(c - b) / a}。`);
+        exp = G("gen.inequal.3e", { v1: a, v2: c - b, v3: xs }, `移项：${a}x < ${c - b}，x < ${xs}。`);
       }
       results.push(Q(q, o, "基础", exp, G("gen.inequal.pt0", null, "一元一次不等式")));
     }
@@ -693,17 +718,17 @@
       } else if (type === 4) {
         // 弧长
         const r = rnd(2, 10), deg = rnd(2, 12) * 10;
-        const arc = (deg / 360) * 2 * r;
-        o = opts(arc, () => arc + 1, () => arc - 1, () => 2 * r);
+        const arc = frac(deg * 2 * r, 360);
+        o = opts(arc, () => frac(deg * 2 * r + 360, 360), () => frac(deg * 2 * r - 360, 360), () => 2 * r);
         q = G("gen.circ.uq1", { v1: r, v2: deg }, `半径为 ${r}、圆心角为 ${deg}° 的弧长（保留 π 前系数，即 ___π）是？`);
-        exp = G("gen.circ.ue1", { v1: deg, v2: deg / 360, v3: r, v4: arc }, `弧长 = (${deg}°/360°) × 2πr = ${deg / 360} × 2 × ${r}π = ${arc}π。`);
+        exp = G("gen.circ.ue1", { v1: deg, v2: frac(deg, 360), v3: r, v4: arc }, `弧长 = (${deg}°/360°) × 2πr = ${frac(deg, 360)} × 2 × ${r}π = ${arc}π。`);
       } else if (type === 5) {
         // 扇形面积
         const r = rnd(2, 10), deg = rnd(2, 12) * 10;
-        const sa = (deg / 360) * r * r;
-        o = opts(sa, () => sa + 1, () => sa - 1, () => r * r);
+        const sa = frac(deg * r * r, 360);
+        o = opts(sa, () => frac(deg * r * r + 360, 360), () => frac(deg * r * r - 360, 360), () => r * r);
         q = G("gen.circ.uq2", { v1: r, v2: deg }, `半径为 ${r}、圆心角为 ${deg}° 的扇形面积（保留 π 前系数，即 ___π）是？`);
-        exp = G("gen.circ.ue2", { v1: deg, v2: deg / 360, v3: r, v4: sa }, `扇形面积 = (${deg}°/360°) × πr² = ${deg / 360} × ${r}²π = ${sa}π。`);
+        exp = G("gen.circ.ue2", { v1: deg, v2: frac(deg, 360), v3: r, v4: sa }, `扇形面积 = (${deg}°/360°) × πr² = ${frac(deg, 360)} × ${r}²π = ${sa}π。`);
       } else {
         // 弦与直径
         o = opts(G("gen.circ.o0", null, "直径"), () => G("gen.circ.o1", null, "弦"), () => G("gen.circ.o2", null, "切线"), () => G("gen.circ.o3", null, "弧"));
@@ -729,9 +754,10 @@
         const y1 = rnd(0, 5);
         const x2 = x1 + rnd(1, 5);
         const y2 = y1 + rnd(1, 5);
-        const slope = (y2 - y1) / (x2 - x1);
+        const dy = y2 - y1, dx = x2 - x1;
+        const slope = frac(dy, dx);
         // (y1−y2)/(x1−x2) 与斜率恒等，等于把正确答案又当成了干扰项；换成「分子分母写反」
-        o = opts(slope, () => slope + 1, () => slope - 1, () => (x2 - x1) / (y2 - y1));
+        o = opts(slope, () => frac(dy + dx, dx), () => frac(dy - dx, dx), () => frac(dx, dy));
         q = G("gen.func1.0q", { v1: x1, v2: y1, v3: x2, v4: y2 }, `点 (${x1},${y1}) 和 (${x2},${y2}) 连线的斜率是？`);
         exp = G("gen.func1.1e", { v1: y2, v2: y1, v3: x2, v4: x1, v5: slope }, `斜率 k = (y₂−y₁)/(x₂−x₁) = (${y2}−${y1})/(${x2}−${x1}) = ${slope}。`);
       } else if (type === 1) {
@@ -739,7 +765,7 @@
         const k = rnd(1, 3);
         const b = rnd(-5, 5);
         o = opts(b, () => k, () => 0, () => -b);
-        q = G("gen.func1.2q", { v1: k, v2: b }, `一次函数 y = ${k}x + ${b}，y 轴截距是？`);
+        q = G("gen.func1.2q", { v1: k, v2: tm(b) }, `一次函数 y = ${k}x ${tm(b)}，y 轴截距是？`);
         exp = G("gen.func1.3e", { v1: b }, `y 轴截距是 x=0 时的 y 值，即 b = ${b}。`);
       } else if (type === 2) {
         // 函数值
@@ -748,7 +774,7 @@
         const x = rnd(1, 5);
         const y = k * x + b;
         o = opts(y, () => k + b, () => x * b, () => k * b);
-        q = G("gen.func1.4q", { v1: k, v2: b, v3: x }, `一次函数 y = ${k}x + ${b}，当 x = ${x} 时，y = ？`);
+        q = G("gen.func1.4q", { v1: k, v2: tm(b), v3: x }, `一次函数 y = ${k}x ${tm(b)}，当 x = ${x} 时，y = ？`);
         exp = G("gen.func1.p0e", { v1: k, v2: x, v3: b, v4: y }, `y = ${k}×${x} + ${b} = ${y}。`);
       } else {
         // 图像性质
@@ -774,8 +800,8 @@
         // 求 k 值
         const k = rnd(2, 12);
         const x = rnd(1, 5);
-        const y = k / x;
-        o = opts(k, () => k * 2, () => k / 2, () => x + y);
+        const y = frac(k, x);
+        o = opts(k, () => k * 2, () => frac(k, 2), () => frac(x * x + k, x));
         q = G("gen.inverse.0q", { v1: x, v2: y }, `反比例函数 y = k/x 经过点 (${x},${y})，k 的值为？`);
         exp = G("gen.inverse.p0e", { v1: x, v2: y, v3: k }, `k = x × y = ${x} × ${y} = ${k}。`);
       } else if (type === 1) {
@@ -788,8 +814,8 @@
         // 函数值
         const k = rnd(2, 10);
         const x = rnd(1, 5);
-        const y = k / x;
-        o = opts(y, () => k + x, () => k - x, () => x / k);
+        const y = frac(k, x);
+        o = opts(y, () => k + x, () => k - x, () => frac(x, k));
         q = G("gen.inverse.3q", { v1: k, v2: x }, `反比例函数 y = ${k}/x，当 x = ${x} 时，y = ？`);
         exp = G("gen.inverse.p1e", { v1: k, v2: x, v3: y }, `y = ${k} ÷ ${x} = ${y}。`);
       }
@@ -811,7 +837,7 @@
         const h = rnd(-3, 3);
         const k = rnd(-3, 3);
         o = opts(`(${h},${k})`, () => `(${-h},${k})`, () => `(${h},${-k})`, () => `(${-h},${-k})`);
-        q = G("gen.quadfunc.0q", { v1: h, v2: k }, `二次函数 y = (x − ${h})² + ${k} 的顶点坐标是？`);
+        q = G("gen.quadfunc.0q", { v1: tm(-h), v2: tm(k) }, `二次函数 y = (x ${tm(-h)})² ${tm(k)} 的顶点坐标是？`);
         exp = G("gen.quadfunc.1e", { v1: h, v2: k }, `顶点式为 y = a(x−h)² + k，顶点为 (${h},${k})。`);
       } else if (type === 1) {
         // 开口方向
@@ -823,20 +849,20 @@
         // 对称轴
         const h = rnd(-3, 3);
         o = opts(`x = ${h}`, () => `x = ${-h}`, () => `y = ${h}`, () => `y = ${-h}`);
-        q = G("gen.quadfunc.4q", { v1: h > 0 ? -h : h }, `二次函数 y = (x + ${h > 0 ? -h : h})² 的对称轴是？`);
+        q = G("gen.quadfunc.4q", { v1: tm(h > 0 ? -h : h) }, `二次函数 y = (x ${tm(h > 0 ? -h : h)})² 的对称轴是？`);
         exp = G("gen.quadfunc.5e", { v1: h }, `对称轴为 x = ${h}。`);
       } else if (type === 3) {
         // 与 y 轴交点
         const c = rnd(-5, 5);
         o = opts(`(0,${c})`, () => `(${c},0)`, () => `(0,0)`, () => `(1,${c})`);
-        q = G("gen.quadfunc.6q", { v1: c }, `二次函数 y = x² + 2x + ${c}，与 y 轴交点是？`);
+        q = G("gen.quadfunc.6q", { v1: tm(c) }, `二次函数 y = x² + 2x ${tm(c)}，与 y 轴交点是？`);
         exp = G("gen.quadfunc.7e", { v1: c, v2: c }, `令 x = 0，y = ${c}，交点为 (0, ${c})。`);
       } else {
         // 最值
         const a = -Math.abs(rnd(1, 3));
         const k = rnd(1, 5);
         o = opts(G("gen.quadfunc.o6", { v1: k }, `最大值 ${k}`), () => G("gen.quadfunc.o7", { v1: k }, `最小值 ${k}`), () => G("gen.quadfunc.o8", { v1: -k }, `最大值 ${-k}`), () => G("gen.quadfunc.o9", null, `无最值`));
-        q = G("gen.quadfunc.8q", { v1: a, v2: k + 1 }, `二次函数 y = ${a}x² + 2x + ${k + 1}，有最值吗？`);
+        q = G("gen.quadfunc.8q", { v1: a, v2: tm(k + 1) }, `二次函数 y = ${a}x² + 2x ${tm(k + 1)}，有最值吗？`);
         exp = G("gen.quadfunc.9e", { v1: a, v2: k }, `a = ${a} < 0，开口向下，有最大值 ${k}。`);
       }
       results.push(Q(q, o, "基础", exp, G("gen.quadfunc.pt0", null, "二次函数")));
@@ -857,23 +883,23 @@
       if (type === 0) {
         // 两人合作
         const pr = pick(PAIRS); const a = pr[0], b = pr[1];
-        const coop = a * b / (a + b);
-        o = opts(coop, () => coop + 1, () => coop - 1, () => Math.max(a, b));
+        const coop = frac(a * b, a + b);
+        o = opts(coop, () => frac(a * b + a + b, a + b), () => frac(a * b - a - b, a + b), () => Math.max(a, b));
         q = G("gen.engineer.uq0", { v1: a, v2: b }, `一项工程，甲单独做需 ${a} 天，乙单独做需 ${b} 天。两人合作需几天完成？`);
         exp = G("gen.engineer.ue0", { v1: a, v2: b, v3: a, v4: b, v5: a*b, v6: a*b, v7: a, v8: b, v9: coop }, `合作效率 = 1/${a} + 1/${b} = (${a}+${b})/${a*b}，时间 = ${a*b}/(${a}+${b}) = ${coop} 天。`);
       } else if (type === 1) {
         // 反求乙
         const pr = pick(PAIRS); const a = pr[0], b = pr[1];
-        const coop = a * b / (a + b);
+        const coop = frac(a * b, a + b), aCoop = frac(a * a * b, a + b);
         o = opts(b, () => b + 1, () => b - 1, () => a);
         q = G("gen.engineer.uq1", { v1: a, v2: coop }, `一项工程，甲单独做需 ${a} 天，甲乙合作需 ${coop} 天。乙单独做需几天？`);
-        exp = G("gen.engineer.ue1", { v1: coop, v2: a, v3: a, v4: coop, v5: a*coop, v6: a*coop, v7: a, v8: coop, v9: b }, `1/乙 = 1/${coop} − 1/${a} = (${a} − ${coop})/(${a*coop})，乙 = ${a*coop}/(${a}−${coop}) = ${b} 天。`);
+        exp = G("gen.engineer.ue1", { v1: par(coop), v2: a, v3: a, v4: coop, v5: par(aCoop), v6: aCoop, v7: a, v8: coop, v9: b }, `1/乙 = 1/${par(coop)} − 1/${a} = (${a} − ${coop})/(${aCoop})，乙 = ${aCoop}/(${a}−${coop}) = ${b} 天。`);
       } else if (type === 2) {
         // 合作比甲单独少用
         const pr = pick(PAIRS); const a = pr[0], b = pr[1];
-        const coop = a * b / (a + b);
-        const save = a - coop;
-        o = opts(save, () => save + 1, () => save - 1, () => coop);
+        const coop = frac(a * b, a + b);
+        const save = frac(a * a, a + b);   // a − ab/(a+b) = a²/(a+b)
+        o = opts(save, () => frac(a * a + a + b, a + b), () => frac(a * a - a - b, a + b), () => coop);
         q = G("gen.engineer.uq2", { v1: a, v2: coop }, `甲单独做 ${a} 天，两人合作 ${coop} 天。合作比甲单独少用几天？`);
         exp = G("gen.engineer.ue2", { v1: a, v2: coop, v3: save }, `少用 = ${a} − ${coop} = ${save} 天。`);
       } else if (type === 3) {
@@ -882,14 +908,14 @@
         const a = 2 * k, b = 3 * k, c = 6 * k;
         o = opts(k, () => k + 1, () => k - 1, () => a);
         q = G("gen.engineer.uq3", { v1: a, v2: b, v3: c }, `一项工程，甲、乙、丙单独做分别需 ${a}、${b}、${c} 天。三人合作需几天？`);
-        exp = G("gen.engineer.ue3", { v1: a, v2: b, v3: c, v4: k, v5: k }, `效率和 = 1/${a} + 1/${b} + 1/${c} = 1/${k}，合作需 ${k} 天。`);
+        exp = G("gen.engineer.ue3", { v1: a, v2: b, v3: c, v4: k === 1 ? "1" : `1/${k}`, v5: k }, `效率和 = 1/${a} + 1/${b} + 1/${c} = ${k === 1 ? "1" : `1/${k}`}，合作需 ${k} 天。`);
       } else if (type === 4) {
         // 三人合作（家族 [2k,4k,4k]）
         const k = rnd(1, 4);
         const a = 2 * k, b = 4 * k, c = 4 * k;
         o = opts(k, () => k + 1, () => k - 1, () => b);
         q = G("gen.engineer.uq4", { v1: a, v2: b, v3: c }, `甲、乙、丙单独做分别需 ${a}、${b}、${c} 天。三人合作需几天？`);
-        exp = G("gen.engineer.ue4", { v1: a, v2: b, v3: c, v4: k, v5: k }, `效率和 = 1/${a} + 1/${b} + 1/${c} = 1/${k}，合作需 ${k} 天。`);
+        exp = G("gen.engineer.ue4", { v1: a, v2: b, v3: c, v4: k === 1 ? "1" : `1/${k}`, v5: k }, `效率和 = 1/${a} + 1/${b} + 1/${c} = ${k === 1 ? "1" : `1/${k}`}，合作需 ${k} 天。`);
       } else if (type === 5) {
         // 效率比求甲单独
         const p = rnd(1, 4), e = rnd(1, 4), t = p * rnd(1, 4);

@@ -290,7 +290,7 @@
     "gen.linearprog.uq8": "In standard linear programming, besides the constraints, what condition must the decision variables usually also satisfy (as in this problem's x≥0, y≥0, x+y≤{v1})?",
     "gen.linearprog.uq9": "Subject to x≥0, y≥0, x+y≤{v1}, what is the maximum value of the objective z = x − y?",
     "gen.linearprog.ue0": "At the vertex ({v1},0) or (0,{v2}), z = {v3} attains its maximum.",
-    "gen.linearprog.ue1": "The two constraints meet at x=y={v1}/3, giving z = 2×{v2}/3 = {v3}, which is larger than at the axis vertices.",
+    "gen.linearprog.ue1": "The two constraints meet at x=y={v1}, giving z = 2×{v2} = {v3}, which is larger than at the axis vertices.",
     "gen.linearprog.ue2": "The intersection of linear constraints is a convex set; when bounded, it forms a convex polygon.",
     "gen.linearprog.ue3": "By the fundamental theorem of linear programming, the optimum is attained at some vertex of the feasible region.",
     "gen.linearprog.ue4": "Setting y=0 gives x ≤ {v1}/{v2}, so the maximum of z=x is {v3} (at ({v4},0)).",
