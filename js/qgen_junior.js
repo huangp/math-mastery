@@ -846,10 +846,10 @@
         q = G("gen.quadfunc.2q", { v1: a }, `二次函数 y = ${a}x² + 2x + 1，开口方向？`);
         exp = G("gen.quadfunc.3e", { v1: a, v2: a > 0 ? ">" : "<", v3: a > 0 ? "向上" : "向下" }, `a = ${a} ${a > 0 ? ">" : "<"} 0，开口${a > 0 ? "向上" : "向下"}。`);
       } else if (type === 2) {
-        // 对称轴
+        // 对称轴：题面写 (x − h)²，对称轴 x = h（此前 h<0 时题面仍写成 x − |h|，答案符号反了）
         const h = rnd(-3, 3);
         o = opts(`x = ${h}`, () => `x = ${-h}`, () => `y = ${h}`, () => `y = ${-h}`);
-        q = G("gen.quadfunc.4q", { v1: tm(h > 0 ? -h : h) }, `二次函数 y = (x ${tm(h > 0 ? -h : h)})² 的对称轴是？`);
+        q = G("gen.quadfunc.4q", { v1: tm(-h) }, `二次函数 y = (x ${tm(-h)})² 的对称轴是？`);
         exp = G("gen.quadfunc.5e", { v1: h }, `对称轴为 x = ${h}。`);
       } else if (type === 3) {
         // 与 y 轴交点
