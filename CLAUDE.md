@@ -10,8 +10,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 python -m http.server 8142        # 本地预览 → http://127.0.0.1:8142/
-python verify.py                  # Playwright 截图 QA，输出到 shots/（PORT=9000 换端口）
-LANG_UI=en python verify.py       # 英文版截图，输出到 shots-en/
+python verify.py                  # 真浏览器扫全部路由 + 关键页截图，输出到 shots/（PORT=9000 换端口）
+LANG_UI=en python verify.py       # 英文版：另扫残留中文，截图到 shots-en/
 start-lan-server.bat              # Windows：0.0.0.0 起服务并打印局域网地址
 
 node tools/i18n_audit.js          # zh/en 目录对齐、源码引用的键是否存在
@@ -26,7 +26,7 @@ NODE_PATH=<jsdom> node tools/portability_check.js # 进度导出/导入：往返
 标了 `NODE_PATH=<jsdom>` 的四个脚本需要 jsdom（仓库本身零依赖，按需
 `npm i jsdom` 到任意目录后用 `NODE_PATH` 指过去即可）；前两个纯 node，无依赖。
 
-`verify.py` 自带临时静态服务器，逐个路由截图并收集 console 报错，末尾打印 `CONSOLE_ISSUES: n`——改完 JS 后跑它是唯一的自动化验证手段（依赖 `pip install playwright && playwright install chromium`）。没有测试框架、lint、构建步骤。
+`verify.py` 自带临时静态服务器，在真浏览器里把全部路由（与 `e2e_check.js` 同一份路由表）和 18 个动画走一遍，收集 console 报错，英文模式下另列残留中文的页面，再给关键页截图；末尾打印 `ROUTES` / `CONSOLE_ISSUES` / `CJK_PAGES`，有 console 报错时退出码为 1。全程约半分钟，是改完 JS 后的首选验证（依赖 `pip install playwright && playwright install chromium`）。装不了浏览器时用 `tools/e2e_check.js`（jsdom 版，覆盖相同但要十几分钟）。没有测试框架、lint、构建步骤。
 
 ## 架构
 

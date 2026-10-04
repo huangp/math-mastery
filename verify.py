@@ -1,140 +1,151 @@
 # -*- coding: utf-8 -*-
 """
-math-mastery 可视化 QA 脚本（自包含版）
+math-mastery 浏览器 QA 脚本（自包含版）
 
-- 路径相对化：截图输出到本脚本同级的 shots/
-- 内置临时静态服务器，无需手动起 http 服务
-- 浏览器优先用本机 Edge，缺失时回退 playwright 自带 chromium
-- 用法：python verify.py            （默认端口 8137）
-        PORT=9000 python verify.py  （自定义端口）
+- 真浏览器把所有路由走一遍（与 tools/e2e_check.js 同一份路由表），收集 console 报错
+- LANG_UI=en 时同时扫页面里残留的中文
+- 关键页面截图：中文到 shots/，英文到 shots-en/
+- 内置临时静态服务器；浏览器优先用本机 Edge，缺失时回退 playwright 自带 chromium
+- 用法：python verify.py                  （中文，默认端口 8137）
+        LANG_UI=en python verify.py      （英文）
+        PORT=9000 python verify.py       （自定义端口）
+- 有 console 报错时退出码为 1，便于脚本里串联
 依赖：pip install playwright && playwright install chromium
 """
-import os, sys, time, json, threading
+import os, sys, re, json, threading
 import http.server, socketserver
 
 from playwright.sync_api import sync_playwright
 
-# ---- 路径相对化 ----
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = HERE                       # index.html 在本目录
-OUT = os.path.join(HERE, "shots")
+LANG = os.environ.get("LANG_UI", "zh")
+OUT = os.path.join(HERE, "shots" if LANG == "zh" else "shots-" + LANG)
 os.makedirs(OUT, exist_ok=True)
 
 PORT = int(os.environ.get("PORT", "8137"))
 BASE = "http://127.0.0.1:%d/" % PORT
+CJK = re.compile(r"[\u4e00-\u9fff]")
+
+# 与 tools/e2e_check.js 保持一致：这些技巧的学习页挂着动画
+ANIM_IDS = ["chicken", "general", "melon", "func1", "moving", "trip", "area_equal",
+            "solid_axis", "conic_link", "euler", "taylor", "numshape", "tree", "linearprog",
+            "normal_app", "complex_geo", "important_limit", "graph_transform"]
 
 # ---- 内置静态服务器（守护线程，退出即销毁）----
 class _Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **k):
-        super().__init__(*a, directory=ROOT, **k)
+        super().__init__(*a, directory=HERE, **k)
     def log_message(self, *a, **k):
         pass
 
+socketserver.TCPServer.allow_reuse_address = True
 httpd = socketserver.TCPServer(("127.0.0.1", PORT), _Handler)
 threading.Thread(target=httpd.serve_forever, daemon=True).start()
-print("本地服务已启动：", BASE)
+print("本地服务已启动：", BASE, "语言：", LANG)
+
+# 每次加载、在 app.js 执行前写好语言和学员档案；进度键要用技巧 id，等首屏加载后再写入并重载。
+# 只写旧的 mathMastery.v1 是到不了应用的（档案表一旦存在就不再迁移），见 CLAUDE.md。
+SEED = """
+localStorage.setItem("mathMastery.lang", %s);
+localStorage.setItem("mathMastery.profiles",
+  JSON.stringify({ active: "test", list: [{ id: "test", name: "Test", created: 0 }] }));
+""" % json.dumps(LANG)
+
+issues = []          # (route, message)
+cur = {"route": "(boot)"}
 
 EDGE = r"C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
-errors = []
 with sync_playwright() as p:
     if os.path.exists(EDGE):
         b = p.chromium.launch(executable_path=EDGE, args=["--no-sandbox"])
     else:
-        print("未找到本机 Edge，回退 playwright 自带 chromium")
         b = p.chromium.launch(args=["--no-sandbox"])
-    pg = b.new_page(viewport={"width": 960, "height": 1040})
-    pg.on("console", lambda m: errors.append(f"{m.type}: {m.text}") if m.type in ("error", "warning") else None)
-    pg.on("pageerror", lambda e: errors.append(f"pageerror: {e}"))
+    ctx = b.new_context(viewport={"width": 960, "height": 1040})
+    ctx.add_init_script(SEED)
+    pg = ctx.new_page()
+    pg.on("console", lambda m: issues.append((cur["route"], f"{m.type}: {m.text}"))
+          if m.type in ("error", "warning") else None)
+    pg.on("pageerror", lambda e: issues.append((cur["route"], f"pageerror: {e}")))
+
     pg.goto(BASE, wait_until="networkidle")
-    # dynamically unlock every technique so all pages are open
-    ids = pg.evaluate("window.TECHNIQUES.map(t=>t.id)")
-    seed = "{" + ",".join('"%s":{"mastered":true,"weak":{}}' % i for i in ids) + "}"
-    pg.evaluate("localStorage.setItem('mathMastery.v1', arguments[0])", seed)
+    ids = pg.evaluate("window.TECHNIQUES.map(t => t.id)")
+    seed = {i: {"mastered": True, "weak": {}} for i in ids}
+    pg.evaluate("s => localStorage.setItem('mathMastery.v1.test', s)", json.dumps(seed))
     pg.reload(wait_until="networkidle")
-    time.sleep(0.5)
 
-    pg.goto(BASE + "#/path", wait_until="networkidle"); time.sleep(0.5)
-    pg.screenshot(path=os.path.join(OUT, "1-path.png"))
-    print("techniques count:", len(ids))
+    def go(route):
+        """切 hash 并等路由渲染完（两帧），返回 #view 的 innerHTML。"""
+        cur["route"] = route
+        return pg.evaluate("""r => new Promise(res => {
+            location.hash = r;
+            requestAnimationFrame(() => requestAnimationFrame(() =>
+              res(document.getElementById("view").innerHTML)));
+        })""", route)
 
-    # chicken animation
-    pg.goto(BASE + "#/learn/chicken", wait_until="networkidle"); time.sleep(0.6)
+    # ---- 1. 全路由扫描 ----
+    routes = ["#/path", "#/grade/%E4%B8%80%E5%B9%B4%E7%BA%A7",          # 一年级
+              "#/grade/%E5%8D%81%E4%BA%8C%E5%B9%B4%E7%BA%A7",           # 十二年级
+              "#/review", "#/progress", "#/resources"]
+    for i in ids:
+        routes += ["#/learn/" + i, "#/practice/" + i, "#/gate/" + i]
+
+    cjk_pages = []
+    for r in routes:
+        html = go(r)
+        if LANG != "zh" and CJK.search(html):
+            hits = list(dict.fromkeys(re.findall(r"[^<>\"]*[\u4e00-\u9fff][^<>\"]*", html)))[:3]
+            cjk_pages.append(f"{r} → {' | '.join(hits)[:160]}")
+
+    # 动画在学习页挂到 #animBox，单独扫一遍其文字
+    for a in ANIM_IDS:
+        go("#/learn/" + a)
+        txt = pg.evaluate("(() => { const b = document.getElementById('animBox'); return b ? b.textContent : ''; })()")
+        if LANG != "zh" and CJK.search(txt):
+            flat = re.sub(r"\s+", " ", txt)
+            cjk_pages.append(f"anim {a} → {flat[:120]}")
+
+    # ---- 2. 关键页面截图（按钮用 data-act 定位，与语言无关）----
+    def shot(name, route, act=None, clicks=1, wait=600):
+        go(route); pg.wait_for_timeout(wait)
+        if act:
+            try:
+                btn = pg.locator(f"#animBox [data-act='{act}']").first
+                for _ in range(clicks):
+                    btn.click(timeout=2000); pg.wait_for_timeout(700)
+            except Exception as e:
+                issues.append((route, f"{act}-button: {e}"))
+        pg.screenshot(path=os.path.join(OUT, name))
+
+    shot("1-path.png", "#/path", wait=400)
+    shot("2-learn-chicken.png", "#/learn/chicken", act="play", clicks=3)
+    shot("3-learn-general.png", "#/learn/general")
+    shot("4-learn-melon.png", "#/learn/melon", wait=1200)
+    shot("5-learn-func1.png", "#/learn/func1", wait=800)
+    shot("6-learn-func-quad.png", "#/learn/func1", act="toggle")
+    shot("7-learn-moving.png", "#/learn/moving", wait=1200)
+    shot("8-practice.png", "#/practice/ratio", wait=400)
     try:
-        btn = pg.locator("button:has-text('演示假设法')")
-        for _ in range(3):
-            btn.click(timeout=2000); time.sleep(0.8)
-        pg.screenshot(path=os.path.join(OUT, "2-learn-chicken.png"))
-    except Exception as e:
-        errors.append("chicken-btn: " + str(e))
-
-    # general (drag)
-    pg.goto(BASE + "#/learn/general", wait_until="networkidle"); time.sleep(0.6)
-    pg.screenshot(path=os.path.join(OUT, "3-learn-general.png"))
-
-    # melon loop
-    pg.goto(BASE + "#/learn/melon", wait_until="networkidle"); time.sleep(1.2)
-    pg.screenshot(path=os.path.join(OUT, "4-learn-melon.png"))
-
-    # func (new: 一次函数)
-    pg.goto(BASE + "#/learn/func1", wait_until="networkidle"); time.sleep(0.8)
-    pg.screenshot(path=os.path.join(OUT, "5-learn-func1.png"))
-
-    # func quadratic toggle: click 切换
-    try:
-        pg.locator("button:has-text('切换')").click(timeout=2000); time.sleep(0.6)
-        pg.screenshot(path=os.path.join(OUT, "6-learn-func-quad.png"))
-    except Exception as e:
-        errors.append("func-toggle: " + str(e))
-
-    # moving (new: 动点)
-    pg.goto(BASE + "#/learn/moving", wait_until="networkidle"); time.sleep(1.2)
-    pg.screenshot(path=os.path.join(OUT, "7-learn-moving.png"))
-
-    # practice on a random skill
-    pg.goto(BASE + "#/practice/ratio", wait_until="networkidle"); time.sleep(0.5)
-    pg.screenshot(path=os.path.join(OUT, "8-practice.png"))
-    try:
-        first = pg.locator(".q").first
-        first.locator(".opt").nth(0).click(timeout=2000)
-        time.sleep(0.4)
+        pg.locator(".q").first.locator(".opt").nth(0).click(timeout=2000)
+        pg.wait_for_timeout(400)
         pg.screenshot(path=os.path.join(OUT, "9-practice-answer.png"))
     except Exception as e:
-        errors.append("practice-click: " + str(e))
-
-    # 奥数新动图 trip（相遇演示）
-    pg.goto(BASE + "#/learn/meet", wait_until="networkidle"); time.sleep(0.6)
-    try:
-        pg.locator("button:has-text('相遇演示')").click(timeout=2000); time.sleep(1.4)
-        pg.screenshot(path=os.path.join(OUT, "11-ao-meet-trip.png"))
-    except Exception as e:
-        errors.append("trip-meet: " + str(e))
-
-    # 奥数新动图 geo（等积变形）
-    pg.goto(BASE + "#/learn/area_equal", wait_until="networkidle"); time.sleep(0.6)
-    pg.screenshot(path=os.path.join(OUT, "12-ao-area-geo.png"))
-
-    # 高中专题新动图 conic（圆锥曲线）
-    pg.goto(BASE + "#/learn/conic_link", wait_until="networkidle"); time.sleep(0.8)
-    try:
-        pg.locator("button:has-text('切换')").click(timeout=2000); time.sleep(0.6)
-        pg.screenshot(path=os.path.join(OUT, "13-hs-conic.png"))
-    except Exception as e:
-        errors.append("conic-toggle: " + str(e))
-
-    # 高中专题新动图 solid（空间向量建系）
-    pg.goto(BASE + "#/learn/solid_axis", wait_until="networkidle"); time.sleep(0.8)
-    try:
-        pg.locator("button:has-text('向量 OP 扫过')").click(timeout=2000); time.sleep(0.6)
-        pg.screenshot(path=os.path.join(OUT, "14-hs-solid.png"))
-    except Exception as e:
-        errors.append("solid-play: " + str(e))
-
-    # progress
-    pg.goto(BASE + "#/progress", wait_until="networkidle"); time.sleep(0.4)
-    pg.screenshot(path=os.path.join(OUT, "10-progress.png"))
+        issues.append(("#/practice/ratio", "practice-click: " + str(e)))
+    shot("10-progress.png", "#/progress", wait=400)
+    shot("11-ao-meet-trip.png", "#/learn/meet", act="meet", wait=600)
+    shot("12-ao-area-geo.png", "#/learn/area_equal")
+    shot("13-hs-conic.png", "#/learn/conic_link", act="toggle", wait=800)
+    shot("14-hs-solid.png", "#/learn/solid_axis", act="play", wait=800)
 
     b.close()
 
-print("CONSOLE_ISSUES:", len(errors))
-for e in errors[:40]:
-    print(" -", e)
+print("techniques:", len(ids))
+print("ROUTES:", len(routes), "+", len(ANIM_IDS), "animations")
+print("CONSOLE_ISSUES:", len(issues))
+for r, m in issues[:40]:
+    print(" -", r, "→", m[:200])
+if LANG != "zh":
+    print("CJK_PAGES:", len(cjk_pages))
+    for c in cjk_pages[:40]:
+        print(" -", c)
+print("screenshots →", OUT)
+sys.exit(1 if issues else 0)
