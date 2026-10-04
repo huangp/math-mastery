@@ -557,7 +557,8 @@
           const k = n <= 6 ? n : Math.max(5, Math.ceil(n * 0.7));
           pool = shuffle(t.questions.map((_, i) => i)).slice(0, k);
         }
-        items = pool.map(i => ({ q: t.questions[i], qidx: i, gen: false, t, key: "" + i }));
+        // 静态题按当前语言取译文（此前只有学习页的例题做了这一步，练习/通关仍显示中文）
+        items = pool.map(i => ({ q: localizeStatic(t, t.questions[i], i), qidx: i, gen: false, t, key: "" + i }));
       }
     }
     const total = items.length;
@@ -693,7 +694,7 @@
         if (st.weak[k].cleared) return;
         items.push(gen
           ? { t, gen: true, key: t.id, q: t.qgen(1)[0] }       // 整法为薄弱点
-          : { t, gen: false, key: "" + k, q: t.questions[+k] }); // 具体某题
+          : { t, gen: false, key: "" + k, q: localizeStatic(t, t.questions[+k], +k) }); // 具体某题
       });
     });
     if (!items.length) {
