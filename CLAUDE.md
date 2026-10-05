@@ -21,9 +21,10 @@ NODE_PATH=<jsdom> node tools/zh_snapshot.js --diff base.json  # 中文出题逐�
 NODE_PATH=<jsdom> node tools/e2e_check.js      # 348 条路由 × 2 语言，扫残留中文
 NODE_PATH=<jsdom> node tools/profile_check.js  # 学员档案：迁移 / 隔离 / 删除 / 自愈
 NODE_PATH=<jsdom> node tools/portability_check.js # 进度导出/导入：往返、非破坏、拒绝非法文件
+NODE_PATH=<jsdom> node tools/quiz_session_check.js # 测验会话：离开/切语言/换学员不丢进度、通关线、种子重放
 ```
 
-标了 `NODE_PATH=<jsdom>` 的四个脚本需要 jsdom（仓库本身零依赖，按需
+标了 `NODE_PATH=<jsdom>` 的脚本需要 jsdom（仓库本身零依赖，按需
 `npm i jsdom` 到任意目录后用 `NODE_PATH` 指过去即可）；前两个纯 node，无依赖。
 
 `verify.py` 自带临时静态服务器，在真浏览器里把全部路由（与 `e2e_check.js` 同一份路由表）和 18 个动画走一遍，收集 console 报错，英文模式下另列残留中文的页面，再给关键页截图；末尾打印 `ROUTES` / `CONSOLE_ISSUES` / `CJK_PAGES`，有 console 报错时退出码为 1。全程约半分钟，是改完 JS 后的首选验证（依赖 `pip install playwright && playwright install chromium`）。装不了浏览器时用 `tools/e2e_check.js`（jsdom 版，覆盖相同但要十几分钟）。没有测试框架、lint、构建步骤。
@@ -160,7 +161,16 @@ i18n 必须最先加载：其余文件在**求值时**就会调用 `window.G` / 
 
 ### 进度与薄弱点
 
-单个学员的进度形如 `{ [techId]: { mastered, weak: { [key]: { fails, cleared } } } }`。薄弱点的 key 分两制：静态题用**题号**，参数化题（`qgen` 存在）用**技巧 id 本身**——因为随机题没有稳定题号，薄弱点指向整个方法，复习时现场再生成一道。改动答题记账逻辑（`renderQuiz` / `renderReview`）时必须同时照顾两条分支。通关（gate）判定：正确率 ≥80% **且** 该技巧薄弱点清零。
+单个学员的进度形如 `{ [techId]: { mastered, weak: { [key]: { fails, cleared } } } }`。薄弱点的 key 分两制：静态题用**题号**，参数化题（`qgen` 存在）用**技巧 id 本身**——因为随机题没有稳定题号，薄弱点指向整个方法，复习时现场再生成一道。改动答题记账逻辑（`renderQuiz` / `renderReview`）时必须同时照顾两条分支。通关（gate）判定：答对 ≥ `min(ceil(80%·n), n−1)` 题（8 题要 7、4 题要 3），只看正确率；答错的题照常记入薄弱点，但**不拦通关**——静态题库只有 4 题，再加「薄弱点清零」就等于必须全对。
+
+### 测验会话
+
+`renderQuiz` 的作答进度存在模块级 `quizSessions`（键 `学员id|mode|技巧id`，只在内存里，关标签页即清空），
+所以离开页面、切换语言、换学员再回来都接着做；「再练一组」「再测一次」传 `fresh` 显式开新会话。
+会话里只存题目**出处**：静态题存题号，生成题存 `{ seed, i, n }`——`genRound` 每批都在 `withSeed()` 下出题，
+切换语言时 `replayGen()` 用同一种子重放，数字不变、只换文案。这依赖生成器在两种语言下消耗 `Math.random`
+的序列一致；个别生成器（`set`/`tree`/`de_moivre`）会因中英文选项去重结果不同而分叉，`sameQuestion()`
+对不上时就保留原语言题面。改生成器后跑 `tools/quiz_session_check.js` 第 5 节确认没有新增分叉。
 
 ## 一次性数据脚本
 

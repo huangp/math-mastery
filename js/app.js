@@ -58,6 +58,7 @@
     const p = readProfiles();
     p.list = p.list.filter(x => x.id !== id);
     try { localStorage.removeItem(progressKey(id)); } catch (e) { }   // 真正把数据删掉
+    Object.keys(quizSessions).forEach(k => { if (k.indexOf(id + "|") === 0) delete quizSessions[k]; }); // 做到一半的测验也一并丢掉
     if (!p.list.length) {                                             // 删到一个不剩就补一个空档案
       const nid = newId();
       p.list.push({ id: nid, name: defaultName(1), created: Date.now() });
@@ -494,6 +495,24 @@
     const ans = q.opts ? String(q.opts[q.ans]) : "";
     return (q.q || "").replace(/\s+/g, "") + " " + ans;
   }
+  /* 种子化出题：每道生成题记下「种子 + 批内下标」，切换语言后用同一种子重放，数字不变、只换文案。
+   * 依赖各生成器在两种语言下消耗 Math.random 的序列一致（tools/gen_check.js 也靠这一点）。 */
+  function withSeed(seed, fn) {
+    const orig = Math.random; let a = seed >>> 0;
+    Math.random = function () { // mulberry32
+      a = (a + 0x6D2B79F5) >>> 0; let x = a;
+      x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61);
+      return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+    };
+    try { return fn(); } finally { Math.random = orig; }
+  }
+  function seededBatch(t, n) {
+    const seed = Math.floor(Math.random() * 4294967296);
+    return withSeed(seed, () => t.qgen(n)).map((q, i) => ({ q, src: { seed, i, n } }));
+  }
+  function replayGen(t, src) { return withSeed(src.seed, () => t.qgen(src.n))[src.i]; }
+
+  // 返回 [{ q, src }]，src 供 replayGen 按当前语言重放
   function genRound(t, count) {
     const arr = roundHistory[t.id] || [];
     const hist = new Set();
@@ -503,9 +522,9 @@
     let tries = 0;
     while (out.length < count && tries < 80) {
       tries++;
-      const b = t.qgen(count);
+      const b = seededBatch(t, count);
       for (const c of b) {
-        const f = quizFP(c);
+        const f = quizFP(c.q);
         if (hist.has(f) || used.has(f)) continue;
         used.add(f); out.push(c);
         if (out.length >= count) break;
@@ -515,22 +534,74 @@
     let t2 = 0;
     while (out.length < count && t2 < 80) {
       t2++;
-      const b = t.qgen(count);
+      const b = seededBatch(t, count);
       for (const c of b) {
-        const f = quizFP(c);
+        const f = quizFP(c.q);
         if (used.has(f)) continue;
         used.add(f); out.push(c);
         if (out.length >= count) break;
       }
     }
-    while (out.length < count) { const b = t.qgen(count); out.push(b[out.length % b.length]); }
+    while (out.length < count) { const b = seededBatch(t, count); out.push(b[out.length % b.length]); }
     arr.push(used);
     if (arr.length > 10) arr.shift();
     roundHistory[t.id] = arr;
     return out.slice(0, count);
   }
 
-  function renderQuiz(id, mode, planItems) {
+  /* 一次作答 = 一个会话：离开页面、切换语言、换学员再回来都接着做，不重新出题。
+   * 题目只存与语言无关的出处（静态题题号 / 生成题种子），每次渲染按当前语言取文案。
+   * 只存在内存里，关掉标签页即清空；「再练一组」「再测一次」显式开新会话。 */
+  const quizSessions = {}; // "学员id|mode|技巧id" → { items, perms, picks, answered, correct, lang, qs }
+  function quizSessionKey(mode, id) { return readProfiles().active + "|" + mode + "|" + id; }
+  function quizItems(t, mode, st) {
+    if (typeof t.qgen === "function") {
+      // 参数化出题 + 跨组去重：再练一组会与最近 10 组已做过的题去重，做到 10 组内不重复
+      return genRound(t, 8).map((c, idx) => ({ q: c.q, src: c.src, qidx: idx, gen: true, t, key: t.id }));
+    }
+    let pool;
+    if (mode === "gate") {
+      const weakIdx = Object.keys(st.weak).filter(k => !st.weak[k].cleared).map(Number);
+      const rest = shuffle(t.questions.map((_, i) => i)).filter(i => !weakIdx.includes(i));
+      pool = weakIdx.concat(rest).slice(0, Math.max(5, weakIdx.length));
+    } else {
+      const n = t.questions.length;
+      const k = n <= 6 ? n : Math.max(5, Math.ceil(n * 0.7));
+      pool = shuffle(t.questions.map((_, i) => i)).slice(0, k);
+    }
+    // 静态题按当前语言取译文（此前只有学习页的例题做了这一步，练习/通关仍显示中文）
+    return pool.map(i => ({ q: localizeStatic(t, t.questions[i], i), qidx: i, gen: false, t, key: "" + i }));
+  }
+  function newQuizSession(items) {
+    const qs = items.map(it => it.q);
+    return {
+      items, qs, lang: window.I18N.lang, answered: 0, correct: 0,
+      picks: items.map(() => null),
+      // 选项顺序存成原下标的排列，重绘时 A/B/C/D 不跳
+      perms: qs.map(q => { const idx = q.opts.map((_, i) => i); return isJudge(q) ? idx : shuffle(idx); })
+    };
+  }
+  // 重放出的题是否还是「同一道」：答案下标、选项数一致，且题面或选项里的数字（不计语序）一致。
+  // 个别生成器在两种语言下选项去重结果不同（如「20个」不会被补成第 4 个数值选项），随机序列从此分叉
+  const numsOf = s => (String(s).replace(/[₀-₉]/g, c => c.charCodeAt(0) - 0x2080)
+    .replace(/[⁰¹²³⁴-⁹]/g, c => "⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(c)).match(/\d+(\.\d+)?/g) || []).sort().join();
+  const sameQuestion = (a, b) => !!a && !!b && a.ans === b.ans && a.opts.length === b.opts.length &&
+    (numsOf(a.q) === numsOf(b.q) || a.opts.every((o, i) => numsOf(o) === numsOf(b.opts[i])));
+  // 按当前语言取题面：静态题重取译文，生成题用同一种子重放；重放对不上、或套餐里没有种子的生成题，保持原样
+  function sessionQuestions(ses) {
+    if (ses.lang !== window.I18N.lang) {
+      ses.qs = ses.items.map((it, i) => {
+        if (!it.gen) return localizeStatic(it.t, it.t.questions[it.qidx], it.qidx);
+        if (!it.src) return ses.qs[i];
+        const q = replayGen(it.t, it.src);
+        return sameQuestion(q, ses.qs[i]) ? q : ses.qs[i];
+      });
+      ses.lang = window.I18N.lang;
+    }
+    return ses.qs;
+  }
+
+  function renderQuiz(id, mode, planItems, fresh) {
     const v = view(); v.innerHTML = "";
     const isPlan = !!planItems;
     let t = id ? tech(id) : null;
@@ -538,36 +609,22 @@
     if (!isPlan && !unlocked(id)) { toast(T("toast.locked")); location.hash = "#/path"; return; }
     const st = isPlan ? null : tstate(id);
 
-    let items; // {q, qidx, gen, t, key}
-    if (isPlan) {
-      items = planItems;
-    } else {
-      const genMode = typeof t.qgen === "function";
-      if (genMode) {
-        // 参数化出题 + 跨组去重：再练一组会与最近 10 组已做过的题去重，做到 10 组内不重复
-        items = genRound(t, 8).map((q, idx) => ({ q, qidx: idx, gen: true, t, key: t.id }));
-      } else {
-        let pool;
-        if (mode === "gate") {
-          const weakIdx = Object.keys(st.weak).filter(k => !st.weak[k].cleared).map(Number);
-          const rest = shuffle(t.questions.map((_, i) => i)).filter(i => !weakIdx.includes(i));
-          pool = weakIdx.concat(rest).slice(0, Math.max(5, weakIdx.length));
-        } else {
-          const n = t.questions.length;
-          const k = n <= 6 ? n : Math.max(5, Math.ceil(n * 0.7));
-          pool = shuffle(t.questions.map((_, i) => i)).slice(0, k);
-        }
-        // 静态题按当前语言取译文（此前只有学习页的例题做了这一步，练习/通关仍显示中文）
-        items = pool.map(i => ({ q: localizeStatic(t, t.questions[i], i), qidx: i, gen: false, t, key: "" + i }));
-      }
+    let ses;
+    if (isPlan) ses = newQuizSession(planItems);
+    else {
+      const sk = quizSessionKey(mode, id);
+      if (fresh || !quizSessions[sk]) quizSessions[sk] = newQuizSession(quizItems(t, mode, st));
+      ses = quizSessions[sk];
     }
+    const items = ses.items, qs = sessionQuestions(ses);
     const total = items.length;
-    let answered = 0, correct = 0;
+    // 通关线：≥80%，但最多只要求全对减 1——静态题库只有 3–4 题，纯按 80% 等于必须全对
+    const need = Math.max(1, Math.min(Math.ceil(total * 0.8), total - 1));
 
     const headTitle = isPlan ? esc(T("plan.title"))
       : `${esc(techName(t))} · ${esc(mode === "gate" ? T("quiz.titleGate") : T("quiz.titlePractice"))}`;
     const headSub = isPlan ? T("plan.sub")
-      : (mode === "gate" ? T("quiz.descGate") : T("quiz.descPractice"));
+      : (mode === "gate" ? T("quiz.descGate", { need, total }) : T("quiz.descPractice"));
     const head = document.createElement("div"); head.className = "card";
     head.innerHTML = `<div class="tech-head"><h2 class="section" style="margin:0">${headTitle}</h2>
       <span class="tag">${esc(isPlan ? T("plan.tag") : (mode === "gate" ? T("quiz.tagGate") : T("quiz.tagPractice")))}</span></div>
@@ -577,13 +634,11 @@
     const list = document.createElement("div"); v.appendChild(list);
 
     function finish() {
-      const weakRemain = isPlan ? weakCount() : Object.keys(st.weak).filter(k => !st.weak[k].cleared).length;
+      const correct = ses.correct;
       const banner = document.createElement("div"); banner.className = "card center";
       if (mode === "gate" && !isPlan) {
-        // 参数化题 8 道共用一个薄弱点键（技巧 id），按「最后一次答对/答错」决定清零与否，结果取决于答题顺序；
-        // 所以这类技巧只看正确率，答错仍照常记入薄弱点供复习
-        const genMode = typeof t.qgen === "function";
-        const pass = correct >= Math.ceil(total * 0.8) && (genMode || weakRemain === 0);
+        // 只看正确率；答错的题照常记入薄弱点供复习，但不拦通关（否则任何一题错都过不了）
+        const pass = correct >= need;
         if (pass) {
           st.mastered = true; save(state);
           const nxt = TECHNIQUES.find(x => x.prereq === t.id);
@@ -594,9 +649,12 @@
               : (freeToEnter ? `<div class="muted">${esc(T("quiz.freeToEnter"))}</div>`
                 : `<div class="muted">${esc(T("quiz.lastOne"))}</div>`)}`;
         } else {
-          banner.innerHTML = `<div class="qres" style="color:var(--warn)">${esc(T("quiz.fail", { correct, total, weak: weakRemain ? T("quiz.failWeak", { n: weakRemain }) : "" }))}</div>
+          banner.innerHTML = `<div class="qres" style="color:var(--warn)">${esc(T("quiz.fail", { correct, total, need }))}</div>
             <div class="muted">${esc(T("quiz.failHint"))}</div>
-            <a class="btn soft" href="#/review" style="margin-top:8px">${esc(T("quiz.goReview"))}</a>`;
+            <div class="row" style="justify-content:center;margin-top:8px">
+              <a class="btn soft" href="#/review">${esc(T("quiz.goReview"))}</a>
+              <a class="btn ghost" id="retakeBtn" href="#/gate/${t.id}">${esc(T("quiz.retake"))}</a></div>`;
+          banner.querySelector("#retakeBtn").addEventListener("click", (e) => { e.preventDefault(); renderQuiz(t.id, "gate", null, true); });
         }
       } else {
         banner.innerHTML = `<div class="qres">${esc(T("quiz.doneRound", { total, correct }))}</div>
@@ -607,10 +665,19 @@
       updateBadge();
     }
 
+    // 只画「已作答」的样子，不记账——点击和恢复会话共用
+    function paintAnswered(card, opts, perm, q, pick) {
+      card.dataset.done = "1";
+      const ans = perm.indexOf(q.ans), chosen = perm.indexOf(pick);
+      opts.forEach((o, i) => { o.style.pointerEvents = "none"; if (i === ans) o.classList.add("correct"); });
+      if (chosen !== ans && opts[chosen]) opts[chosen].classList.add("wrong");
+      const ex = document.createElement("div"); ex.className = "explain"; ex.innerHTML = esc(T("quiz.explain")) + esc(q.explain); card.appendChild(ex);
+    }
+
     items.forEach((it, qi) => {
-      const q = it.q;
+      const q = qs[qi], perm = ses.perms[qi];
       const judge = isJudge(q);
-      const disp = judge ? { opts: q.opts, ans: q.ans } : shuffleOptions(q);
+      const dispOpts = perm.map(i => q.opts[i]);
       const card = document.createElement("div"); card.className = "q"; card.dataset.done = "0";
       // 中文难度串既是判别键也是 CSS 类的来源，只在展示时取译文
       const tag = q.level === "易错" ? `<span class="tag w">${esc(T("level.易错"))}</span>`
@@ -619,22 +686,20 @@
       const fig = renderFigOf(q);
       card.innerHTML = `<div class="qtext">${qi + 1}. ${esc(q.q)} ${tag}</div>
         ${fig}
-        <div class="opts${judge ? " judge" : ""}">${disp.opts.map((o, i) => `<div class="opt${judge ? " judge" : ""}" data-i="${i}"><span class="mark${judge ? " judge" : ""}">${judge ? judgeMark(o) : String.fromCharCode(65 + i)}</span><span>${esc(o)}</span></div>`).join("")}</div>`;
+        <div class="opts${judge ? " judge" : ""}">${dispOpts.map((o, i) => `<div class="opt${judge ? " judge" : ""}" data-i="${i}"><span class="mark${judge ? " judge" : ""}">${judge ? judgeMark(o) : String.fromCharCode(65 + i)}</span><span>${esc(o)}</span></div>`).join("")}</div>`;
       list.appendChild(card);
 
       const opts = card.querySelectorAll(".opt");
+      if (ses.picks[qi] !== null) { paintAnswered(card, opts, perm, q, ses.picks[qi]); return; }
       opts.forEach(op => op.addEventListener("click", () => {
         if (card.dataset.done === "1") return;
-        card.dataset.done = "1";
-        const chosen = +op.dataset.i;
-        const ans = disp.ans;
-        opts.forEach((o, i) => { o.style.pointerEvents = "none"; if (i === ans) o.classList.add("correct"); });
-        if (chosen === ans) op.classList.add("correct"); else op.classList.add("wrong");
-        const ex = document.createElement("div"); ex.className = "explain"; ex.innerHTML = esc(T("quiz.explain")) + esc(q.explain); card.appendChild(ex);
+        const pick = perm[+op.dataset.i];
+        ses.picks[qi] = pick;
+        paintAnswered(card, opts, perm, q, pick);
 
         const itT = it.t, itSt = tstate(itT.id), itKey = it.gen ? itT.id : it.key;
-        if (chosen === ans) {
-          correct++;
+        if (pick === q.ans) {
+          ses.correct++;
           if (mode === "gate" && !isPlan) {
             // 通关测试（正式测验）：做对一次即清零该薄弱点
             if (it.gen) itSt.weak[itT.id] = { fails: 0, cleared: true, passes: 1, lastTime: Date.now(), attempts: 1 };
@@ -653,10 +718,11 @@
           else { const w = itSt.weak[itKey] || { fails: 0, cleared: false, passes: 0, attempts: 0 }; w.fails++; w.cleared = false; w.passes = 0; w.lastTime = Date.now(); w.attempts = (w.attempts || 0) + 1; itSt.weak[itKey] = w; }
         }
         save(state); updateBadge();
-        answered++;
-        if (answered === total) finish();
+        ses.answered++;
+        if (ses.answered === total) finish();
       }));
     });
+    if (ses.answered === total) finish(); // 回到已做完的会话：重画结果
 
     if (mode === "practice" || isPlan) {
       const again = document.createElement("div"); again.className = "row"; again.style.margin = "6px 0 16px";
@@ -668,7 +734,7 @@
       v.appendChild(again);
       again.querySelector("#againBtn").addEventListener("click", (e) => {
         e.preventDefault();
-        if (isPlan) startPlan(); else renderQuiz(t.id, "practice"); // 重新进入会重新随机抽题 / 重新生成，做到「再练一组」立即出新题
+        if (isPlan) startPlan(); else renderQuiz(t.id, "practice", null, true); // 显式开新会话：重新随机抽题 / 重新生成，做到「再练一组」立即出新题
       });
       again.querySelector("#backBtn").addEventListener("click", (e) => {
         e.preventDefault();
@@ -1112,7 +1178,7 @@
   $("#langBtn").addEventListener("click", () => {
     window.I18N.setLang(window.I18N.lang === "zh" ? "en" : "zh");
   });
-  // 题目每次渲染都重新生成/取译文，故切换语言只需重画外壳 + 重走路由
+  // 测验会话只存题目出处，重走路由时按新语言重取文案/重放生成题，故切换语言只需重画外壳 + 重走路由
   window.I18N.onChange(() => { paintShell(); route(); });
 
   paintShell();
