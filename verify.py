@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
+# /// script
+# requires-python = ">=3.9"
+# dependencies = ["playwright"]
+# ///
 """
 math-mastery 浏览器 QA 脚本（自包含版）
 
 - 真浏览器把所有路由走一遍（与 tools/e2e_check.js 同一份路由表），收集 console 报错
 - LANG_UI=en 时同时扫页面里残留的中文
 - 关键页面截图：中文到 shots/，英文到 shots-en/
-- 内置临时静态服务器；浏览器优先用本机 Edge，缺失时回退 playwright 自带 chromium
-- 用法：python verify.py                  （中文，默认端口 8137）
-        LANG_UI=en python verify.py      （英文）
-        PORT=9000 python verify.py       （自定义端口）
+- 内置临时静态服务器；浏览器优先用本机 Edge，其次 playwright 自带 chromium，
+  版本对不上（未下载对应构建）时再回退本机 Google Chrome
+- 用法：uv run verify.py                  （中文，默认端口 8137）
+        LANG_UI=en uv run verify.py      （英文）
+        PORT=9000 uv run verify.py       （自定义端口）
+  已能 import playwright 的 Python 也可直接 python verify.py
 - 有 console 报错时退出码为 1，便于脚本里串联
-依赖：pip install playwright && playwright install chromium
+依赖：uv（按上方 script 头自动装 playwright）；每台机器一次 playwright install chromium
 """
 import os, sys, re, json, threading
 import http.server, socketserver
@@ -59,12 +65,17 @@ with sync_playwright() as p:
     if os.path.exists(EDGE):
         b = p.chromium.launch(executable_path=EDGE, args=["--no-sandbox"])
     else:
-        b = p.chromium.launch(args=["--no-sandbox"])
+        try:
+            b = p.chromium.launch(args=["--no-sandbox"])
+        except Exception:
+            b = p.chromium.launch(channel="chrome", args=["--no-sandbox"])
     ctx = b.new_context(viewport={"width": 960, "height": 1040})
     ctx.add_init_script(SEED)
     pg = ctx.new_page()
     pg.on("console", lambda m: issues.append((cur["route"], f"{m.type}: {m.text}"))
-          if m.type in ("error", "warning") else None)
+          if m.type in ("error", "warning")
+          # 完整版 Chrome 会自动请求 /favicon.ico，应用没有这个文件，不算问题
+          and not m.location.get("url", "").endswith("/favicon.ico") else None)
     pg.on("pageerror", lambda e: issues.append((cur["route"], f"pageerror: {e}")))
 
     pg.goto(BASE, wait_until="networkidle")
