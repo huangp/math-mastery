@@ -176,27 +176,36 @@ i18n 必须最先加载：其余文件在**求值时**就会调用 `window.G` / 
 ## 插件钩子 / 自托管
 
 核心应用保持纯静态，能独立跟上游合并；跟具体部署相关的功能都写成插件放进 `plugins/<name>/`，
-由 `server/host.js` 托管。核心里**只有** app.js 顶部的钩子总线和 `renderQuiz` 里的两处 `emit`。
-上游改动 `renderQuiz` 时，要保住这两处 emit 及其载荷。
+由 `server/host.js` 托管。核心里**只有** app.js 顶部的钩子总线、`renderQuiz` 里的两处 `emit`、
+`save()` / `writeProfiles()` 里各一处 `emit`，以及 `MathMastery.refresh`。上游改动这些函数时，要保住 emit 及其载荷。
 
 - **注册**：插件脚本由 host 注入到 `js/app.js` **之前**，先把订阅存进
-  `window.MathMastery = { queue: [], on(e, f) { this.queue.push([e, f]) } }`，app.js 启动时接管这个队列。
+  `window.MathMastery = { queue: [], on(e, f) { this.queue.push([e, f]) } }`。app.js 启动时接管队列，
+  并且**沿用同一个对象**（只换掉 `on`、挂上 `refresh`），插件手里留的引用一直有效。
   之所以不排在 app.js 之后：app.js 首屏是同步 `route()`，直接打开 `#/gate/x` 创建的第一个会话，后注册的插件赶不上。
 - **`quiz:start`** `{ mode, techId, profileId, session }`：每开一个新会话触发一次（plan 套餐除外）。
 - **`quiz:finish`** `{ mode, isPlan, techId, profileId, lang, pass, correct, total, need, items, picks, session, el }`：
   - 每次画结果卡时触发，所以回到一个已做完的会话也会再触发，插件要自己做到幂等。
   - `items` 只给出处：生成题是 `{techId, src:{seed,i,n}}`，静态题是 `{techId, qidx}`。`picks` 是原选项下标。
   - `el` 是结果卡，插件往里追加内容。
+- **`progress:save`** `{ profileId, progress }`：每次 `save()` 之后。「重置进度」保存的是空对象 `{}`。
+- **`profiles:change`** `{ profiles }`：每次 `writeProfiles()` 之后（新建、改名、删除、切换、导入、自愈）。
+- **`MathMastery.refresh()`**：插件直接改了 `mathMastery.profiles` / `mathMastery.v1.<id>` 之后调用，
+  应用会重读进度、重画外壳并重走路由（即 `afterProfileChange`）。
 - `session.ext` 是给插件放私有状态的地方，随会话一起保留：离开页面、切换语言都不会丢。
 
 `server/host.js` 是零依赖的 Node 服务器：
 - 静态文件只放行 `index.html`、`styles.css`、`js/**` 和插件的 `public/`，其余路径一律 404。
 - 用 `PLUGINS=a,b` 启用插件，插件的 `server.js` 挂在 `/api/<name>/`。
+  它可以导出 `inject: [...]`，列出要按顺序注入的 `public/` 文件；默认注入 `client.css`、`client.js`。
 - `server/engine.js` 把出题引擎装进 `node:vm`，插件可以在服务端按种子重放题目、判分。
 - 运行：`PLUGINS=screentime ... node server/host.js`；部署用 `docker compose up -d --build`。
 
-现有插件：`plugins/screentime/`，通关后领取屏幕时间兑换码，见其 README。
-体检：`node plugins/screentime/check.js`（零依赖）。
+现有插件，各见其 README：
+- `plugins/screentime/`：通关后领取屏幕时间兑换码。
+- `plugins/progress/`：学员名单与进度存在服务器，多设备共用。只合并、不倒退。
+
+体检：`node plugins/screentime/check.js`、`node plugins/progress/check.js`（都零依赖）。
 
 ## 一次性数据脚本
 

@@ -14,9 +14,12 @@
    * window.MathMastery.queue，这里接管——这样首屏同步渲染出的第一个会话也有人订阅。
    * 纯静态部署时无人订阅，零影响。事件与载荷约定见 CLAUDE.md「插件钩子」。 */
   const hooks = {};
-  const queued = (window.MathMastery && window.MathMastery.queue) || [];
-  window.MathMastery = { on(evt, fn) { (hooks[evt] = hooks[evt] || []).push(fn); } };
-  queued.forEach(([evt, fn]) => window.MathMastery.on(evt, fn));
+  // 沿用插件建的同一个对象（插件手里留着引用，之后还要调 MathMastery.refresh 等）
+  const MM = window.MathMastery = window.MathMastery || {};
+  const queued = MM.queue || [];
+  delete MM.queue;
+  MM.on = function (evt, fn) { (hooks[evt] = hooks[evt] || []).push(fn); };
+  queued.forEach(([evt, fn]) => MM.on(evt, fn));
   function emit(evt, payload) { (hooks[evt] || []).forEach(fn => { try { fn(payload); } catch (e) { console.error(e); } }); }
 
   /* ---------------- 学员档案（同一台设备多人共用） ----------------
@@ -29,7 +32,7 @@
   function progressKey(id) { return KEY + "." + id; }
   function newId() { return "p" + Date.now().toString(36) + Math.floor(Math.random() * 1296).toString(36); }
   function defaultName(n) { return T("profile.default", { n }); }
-  function writeProfiles(p) { try { localStorage.setItem(PROFILES_KEY, JSON.stringify(p)); } catch (e) { } }
+  function writeProfiles(p) { try { localStorage.setItem(PROFILES_KEY, JSON.stringify(p)); } catch (e) { } emit("profiles:change", { profiles: p }); }
 
   // 首次运行：把旧的单人进度收进第一个档案。旧键只复制不删除，回退时数据还在。
   function migrateOrCreate() {
@@ -78,7 +81,7 @@
   }
 
   function load() { try { return JSON.parse(localStorage.getItem(progressKey(activeId()))) || {}; } catch (e) { return {}; } }
-  function save(s) { try { localStorage.setItem(progressKey(activeId()), JSON.stringify(s)); } catch (e) { } }
+  function save(s) { try { localStorage.setItem(progressKey(activeId()), JSON.stringify(s)); } catch (e) { } emit("progress:save", { profileId: activeId(), progress: s }); }
 
   /* ---------------- 进度导出 / 导入 ----------------
    * localStorage 按 origin 隔离：换域名、换设备都带不走数据。这里给学员一个
@@ -1170,6 +1173,8 @@
   function afterProfileChange() {
     state = load(); paintProfiles(); updateBadge(); route();
   }
+  // 插件改了 localStorage 里的档案/进度后调用，让应用重读并重画
+  window.MathMastery.refresh = afterProfileChange;
   $("#profileSel").addEventListener("change", e => {
     const v = e.target.value;
     if (v === "__new") {

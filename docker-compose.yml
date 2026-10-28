@@ -6,9 +6,9 @@ services:
     ports:
       - "127.0.0.1:8142:8142"       # 只给本机 nginx 访问，局域网一律走 http://math.lan
     environment:
-      PLUGINS: screentime
+      PLUGINS: screentime,progress
     env_file: plugins/screentime/credit.env   # CODE_SECRET / KIDS / DAILY_CAP / TZ，不入库
     volumes:
-      - math-data:/data             # 账本 /data/screentime/ledger.jsonl
+      - math-data:/data             # /data/screentime/ledger.jsonl、/data/progress/learners.json
 volumes:
   math-data:

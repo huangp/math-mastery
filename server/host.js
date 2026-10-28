@@ -8,8 +8,10 @@
  * 插件约定（plugins/<name>/）：
  *   server.js   module.exports = { init(ctx) → handler(req, res, subpath) }（init 可为 async），挂在 /api/<name>/
  *               ctx = { engine, dataDir, env, json, readJson }；init 抛错即拒绝启动
- *   public/     对外静态目录；client.css / client.js 存在时注入 index.html（脚本排在 app.js 之前，
- *               用 window.MathMastery.queue 预注册钩子，见 CLAUDE.md「插件钩子」）
+ *               可选 module.exports.inject = ["merge.js", "client.js", ...]：按序注入的 public/ 文件，
+ *               缺省为 ["client.css", "client.js"]（存在才注入）
+ *   public/     对外静态目录；注入的脚本排在 app.js 之前，用 window.MathMastery.queue 预注册钩子，
+ *               见 CLAUDE.md「插件钩子」
  * 核心文件一律不改：注入只发生在响应里。只放行白名单路径，server/ data/ 与插件私有文件一律 404。
  * ============================================================ */
 const http = require("http"), fs = require("fs"), path = require("path");
@@ -52,8 +54,9 @@ async function start() {
     const dir = path.join(ROOT, "plugins", name);
     const dataDir = path.join(DATA_DIR, name);
     fs.mkdirSync(dataDir, { recursive: true });
-    handlers[name] = await require(path.join(dir, "server.js")).init({ engine, dataDir, env: process.env, json, readJson });
-    for (const f of ["client.css", "client.js"]) {
+    const mod = require(path.join(dir, "server.js"));
+    handlers[name] = await mod.init({ engine, dataDir, env: process.env, json, readJson });
+    for (const f of mod.inject || ["client.css", "client.js"]) {
       if (!fs.existsSync(path.join(dir, "public", f))) continue;
       const url = `plugins/${name}/public/${f}`;
       (f.endsWith(".css") ? css : js).push(f.endsWith(".css") ? `<link rel="stylesheet" href="${url}" />` : `<script src="${url}"></script>`);
