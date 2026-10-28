@@ -49,9 +49,21 @@ docker compose up -d --build
 docker compose logs -f math
 ```
 
-- 默认只监听 `192.168.50.10:8142`，换机器时改 `docker-compose.yml`。
-- 想用 `http://math.lan:8142` 访问，就在 home-network-ctrl 的 dnsmasq 配置里加一行
-  `address=/math.lan/192.168.50.10`，然后重启 dnsmasq。
+- 容器只监听 `127.0.0.1:8142`，由本机 nginx 按主机名反代成 `http://math.lan`：
+  ```nginx
+  server {
+      listen 80;
+      server_name math.lan;
+      location / {
+          proxy_pass http://127.0.0.1:8142;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      }
+  }
+  ```
+  DNS 两处都要加 `address=/math.lan/192.168.50.10`：mini 的 dnsmasq（受管设备用）和路由器的
+  `/jffs/configs/dnsmasq.conf.add`（其余设备用）。
 - 账本在名为 `math-data` 的 volume 里：`docker compose exec math cat /data/screentime/ledger.jsonl`。
 - 启动时会自检：`CODE_SECRET`、`KIDS`、`TZ` 缺失或写错，或者签名测试向量对不上，容器都会直接退出，不会带病运行。
 

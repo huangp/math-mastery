@@ -1,10 +1,10 @@
-# Mac mini 自托管：docker compose up -d --build   → http://math.lan:8142（或 http://192.168.50.10:8142）
+# Mac mini 自托管：docker compose up -d --build   → 经 nginx 反代为 http://math.lan（见 plugins/screentime/README.md）
 services:
   math:
     build: .
     restart: unless-stopped
     ports:
-      - "192.168.50.10:8142:8142"   # 只绑 LAN 地址；换机器时改这里
+      - "127.0.0.1:8142:8142"       # 只给本机 nginx 访问，局域网一律走 http://math.lan
     environment:
       PLUGINS: screentime
     env_file: plugins/screentime/credit.env   # CODE_SECRET / KIDS / DAILY_CAP / TZ，不入库
