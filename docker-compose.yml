@@ -1,0 +1,14 @@
+# Mac mini 自托管：docker compose up -d --build   → http://math.lan:8142（或 http://192.168.50.10:8142）
+services:
+  math:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "192.168.50.10:8142:8142"   # 只绑 LAN 地址；换机器时改这里
+    environment:
+      PLUGINS: screentime
+    env_file: plugins/screentime/credit.env   # CODE_SECRET / KIDS / DAILY_CAP / TZ，不入库
+    volumes:
+      - math-data:/data             # 账本 /data/screentime/ledger.jsonl
+volumes:
+  math-data:

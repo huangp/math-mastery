@@ -1,0 +1,8 @@
+*
+!index.html
+!styles.css
+!js/
+!server/
+!plugins/
+plugins/*/credit.env
+plugins/*/check.js

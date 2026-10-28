@@ -9,6 +9,16 @@
   // 译文取用别名用 T：本文件里 t 已被「技巧对象」占用
   const T = window.I18N.t;
 
+  /* ---------------- 插件钩子 ----------------
+   * 插件（如自托管时由 server/host.js 注入的脚本）排在 app.js 之前加载，先把 on(evt, fn) 存进
+   * window.MathMastery.queue，这里接管——这样首屏同步渲染出的第一个会话也有人订阅。
+   * 纯静态部署时无人订阅，零影响。事件与载荷约定见 CLAUDE.md「插件钩子」。 */
+  const hooks = {};
+  const queued = (window.MathMastery && window.MathMastery.queue) || [];
+  window.MathMastery = { on(evt, fn) { (hooks[evt] = hooks[evt] || []).push(fn); } };
+  queued.forEach(([evt, fn]) => window.MathMastery.on(evt, fn));
+  function emit(evt, payload) { (hooks[evt] || []).forEach(fn => { try { fn(payload); } catch (e) { console.error(e); } }); }
+
   /* ---------------- 学员档案（同一台设备多人共用） ----------------
    * mathMastery.profiles   {active, list:[{id,name,created}]}
    * mathMastery.v1.<id>    该学员的进度（结构与旧版逐字一致）
@@ -575,7 +585,7 @@
   function newQuizSession(items) {
     const qs = items.map(it => it.q);
     return {
-      items, qs, lang: window.I18N.lang, answered: 0, correct: 0,
+      items, qs, lang: window.I18N.lang, answered: 0, correct: 0, ext: {}, // ext：插件私有状态，随会话保留
       picks: items.map(() => null),
       // 选项顺序存成原下标的排列，重绘时 A/B/C/D 不跳
       perms: qs.map(q => { const idx = q.opts.map((_, i) => i); return isJudge(q) ? idx : shuffle(idx); })
@@ -613,7 +623,10 @@
     if (isPlan) ses = newQuizSession(planItems);
     else {
       const sk = quizSessionKey(mode, id);
-      if (fresh || !quizSessions[sk]) quizSessions[sk] = newQuizSession(quizItems(t, mode, st));
+      if (fresh || !quizSessions[sk]) {
+        quizSessions[sk] = newQuizSession(quizItems(t, mode, st));
+        emit("quiz:start", { mode, techId: t.id, profileId: activeId(), session: quizSessions[sk] });
+      }
       ses = quizSessions[sk];
     }
     const items = ses.items, qs = sessionQuestions(ses);
@@ -663,6 +676,13 @@
       }
       list.appendChild(banner);
       updateBadge();
+      // 只给出处（生成题种子 / 静态题号）与原下标作答，插件可据此在服务端重放判分
+      emit("quiz:finish", {
+        mode, isPlan, techId: t ? t.id : null, profileId: activeId(), lang: window.I18N.lang,
+        pass: !isPlan && mode === "gate" && correct >= need, correct, total, need,
+        items: items.map(it => it.gen ? { techId: it.t.id, src: it.src || null } : { techId: it.t.id, qidx: it.qidx }),
+        picks: ses.picks.slice(), session: ses, el: banner
+      });
     }
 
     // 只画「已作答」的样子，不记账——点击和恢复会话共用

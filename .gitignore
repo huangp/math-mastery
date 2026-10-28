@@ -25,3 +25,7 @@ baijiahao-article.html
 upload_draft.js
 token_cache.json
 assets/wechat-group-qrcode.jpg
+
+# 自托管：插件密钥与本地账本
+plugins/*/credit.env
+data/
